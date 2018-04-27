@@ -4,7 +4,7 @@ A fully autonomous counter of visitors - **MCounter attom**.
 
 This small device can work approximately 1 year with just 2 *LiSOCl2* AA batteries. And it can be assembled manually in small lab without expensive equipment and components used. All parts of this device was designed by me. Main purpose why I share this project - it's demonstration of my skills (part of my portfolio). Fill free use it under [GNU GPL v3](./LICENSE) license terms.
 
-I have no much time to provide good documentation for this projects. But I believe it's well-structured even for people with minimal experience in Embedding Devices. PCB layouts includes mechanical layers which can be visualized in 3D to easy understand location of all components and it physical sizes.
+I have no much time to provide good documentation for this projects. But I believe it's well-structured even for people with minimal experience in Embedded Devices. PCB layouts includes mechanical layers which can be visualized in 3D to easy understand location of all components and it physical sizes.
 
 ![Battery Counter](./images/main.png)
 
