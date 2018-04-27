@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project>
+  <fileVersion>2</fileVersion>
+  <fileChecksum>3942476346</fileChecksum>
+  <configuration>
+    <name>Release - Atmega48PA</name>
+    <outputs>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\KeyBoardDriver.r90</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\UserInterfaceMenuBuilder.r90</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\IndicatorDriver.pbi</file>
+      <file>$PROJ_DIR$\MainThread.cpp</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\MultyThreading.r90</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\UserInterface_ScreenSaver.pbi</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\PhotoSensor.pbi</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Exe\BattTX.hex</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\ysizet.h</file>
+      <file>$PROJ_DIR$\GlobalRTC.cpp</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\MemAT25Driver.pbi</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\MainThread.pbi</file>
+      <file>$TOOLKIT_DIR$\lib\dlib\dlAVR-1s-ec_mul-n.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\MultyThreading.pbi</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\UserInterfaceMenuBuilder.pbi</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\CommonFunctions.pbi</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\GlobalDeviceProfile.r90</file>
+      <file>$PROJ_DIR$\UserInterface_ScreenSaver.cpp</file>
+      <file>$PROJ_DIR$\UserInterface_Widget.cpp</file>
+      <file>$PROJ_DIR$\UserInterfaceMenuBuilder.cpp</file>
+      <file>$PROJ_DIR$\GlobalRTC.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\GlobalADC.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\pgmspace.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\GlobalADC.r90</file>
+      <file>$PROJ_DIR$\MainThread.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\GlobalCounter.pbi</file>
+      <file>$PROJ_DIR$\CommProtocol_SPI_Master.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\List\IndicatorDriver.s90</file>
+      <file>$PROJ_DIR$\UserInterfaceMenuBuilder.h</file>
+      <file>$TOOLKIT_DIR$\inc\iomacro.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\GlobalRTC.pbi</file>
+      <file>$TOOLKIT_DIR$\lib\dlib\dlAVR-1s-ec_mul-n.r90</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\Timer2Handler.pbi</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\KeyBoardDriver.pbi</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\CRC8.pbi</file>
+      <file>$PROJ_DIR$\PhotoSensor.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\List\Timer0Handler.s90</file>
+      <file>$PROJ_DIR$\UserInterface.h</file>
+      <file>$PROJ_DIR$\MultyThreading.cpp</file>
+      <file>$PROJ_DIR$\DeviceManager.cpp</file>
+      <file>$PROJ_DIR$\GlobalDeviceProfile.cpp</file>
+      <file>$PROJ_DIR$\GlobalDef_Parameters.h</file>
+      <file>$PROJ_DIR$\Timer0Handler.cpp</file>
+      <file>$PROJ_DIR$\KeyBoardDriver.cpp</file>
+      <file>$PROJ_DIR$\IndicatorDriver.cpp</file>
+      <file>$PROJ_DIR$\GlobalDef_PortMap.h</file>
+      <file>$PROJ_DIR$\GlobalDef_Timers.h</file>
+      <file>$PROJ_DIR$\GlobalSpace.h</file>
+      <file>$PROJ_DIR$\GlobalDefinitions.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\UserInterface.pbi</file>
+      <file>$PROJ_DIR$\UserInterface.cpp</file>
+      <file>$PROJ_DIR$\DeviceManager.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\CommProtocol_TWI_Master.r90</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\List\CRC8.s90</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\CRC8.r90</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\List\MultyThreading.s90</file>
+      <file>$PROJ_DIR$\GlobalCounter.h</file>
+      <file>$PROJ_DIR$\GlobalDeviceProfile.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\List\UserInterfaceMenuBuilder.s90</file>
+      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\UserInterface_Widget.pbi</file>
+      <file>$PROJ_DIR$\PhotoSensor.cpp</file>
+      <file>$PROJ_DIR$\CommProtocol_TWI_Master.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\List\UserInterfaceLang.s90</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\CommProtocol_SPI_Master.r90</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\MemAT25Driver.r90</file>
+      <file>$PROJ_DIR$\IndicatorDriver.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\GlobalCounter.r90</file>
+      <file>$PROJ_DIR$\LCDDriver.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\main.pbi</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\IndicatorDriver.r90</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\stdio.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\BattTX.pbd</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\CommProtocol_TWI_Master.pbi</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\UserInterfaceLang.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
+      <file>$PROJ_DIR$\CRC8.h</file>
+      <file>$TOOLKIT_DIR$\inc\ioavr.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\main.r90</file>
+      <file>$PROJ_DIR$\lnkm48pas.xcl</file>
+      <file>$PROJ_DIR$\Timer2Handler.cpp</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\Timer0Handler.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\ystdio.h</file>
+      <file>$PROJ_DIR$\main.cpp</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Exe\BattTX_data.hex</file>
+      <file>$PROJ_DIR$\menu.xml</file>
+      <file>$PROJ_DIR$\CommonFunctions.h</file>
+      <file>$PROJ_DIR$\UserInterfaceLang.cpp</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\GlobalDeviceProfile.pbi</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Exe\BattTX_eeprom.hex</file>
+      <file>$PROJ_DIR$\MemAT25Driver.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\List\KeyBoardDriver.s90</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\DeviceManager.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\string.h</file>
+      <file>$PROJ_DIR$\KeyBoardDriver.h</file>
+      <file>$PROJ_DIR$\GlobalADC.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\List\CommonFunctions.s90</file>
+      <file>$PROJ_DIR$\Timer2Handler.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\List\main.s90</file>
+      <file>$PROJ_DIR$\CommProtocol_TWI_Master.cpp</file>
+      <file>$PROJ_DIR$\MultyThreading.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\List\GlobalDeviceProfile.s90</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\GlobalRTC.r90</file>
+      <file>$PROJ_DIR$\UserInterface_Ref.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\PhotoSensor.r90</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\Timer0Handler.r90</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\CommProtocol_SPI_Master.pbi</file>
+      <file>$PROJ_DIR$\LCDDriver.cpp</file>
+      <file>$PROJ_DIR$\GlobalCounter.cpp</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\CommonFunctions.r90</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\Timer2Handler.r90</file>
+      <file>$PROJ_DIR$\UserInterfaceLang_RUS.h</file>
+      <file>$PROJ_DIR$\CommProtocol_SPI_Master.cpp</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\LCDDriver.r90</file>
+      <file>$PROJ_DIR$\MemAT25Driver.cpp</file>
+      <file>$PROJ_DIR$\CRC8.cpp</file>
+      <file>$PROJ_DIR$\Timer0Handler.h</file>
+      <file>$PROJ_DIR$\UserInterfaceLang.h</file>
+      <file>$TOOLKIT_DIR$\inc\bitdefinitions\iom48pa.inc</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\List\GlobalADC.s90</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\DeviceManager.r90</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\stdarg.h</file>
+      <file>$TOOLKIT_DIR$\inc\iom48pa.h</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\LCDDriver.pbi</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\List\DeviceManager.s90</file>
+      <file>$PROJ_DIR$\Release - Atmega48PA\Obj\UserInterfaceLang.r90</file>
+      <file>$PROJ_DIR$\CommonFunctions.cpp</file>
+      <file>$PROJ_DIR$\GlobalADC.cpp</file>
+    </outputs>
+    <file>
+      <name>$PROJ_DIR$\MainThread.cpp</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 13</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 26 49 80 127 31 122 61 96 0 73 124 14 78 107 5 10 24 74 85 126 89 50 43 47 48 59 97 68 103 120</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 26 49 80 127 31 122 61 96 0 73 124 78 107 5 10 24 74 85 126 89 50 43 47 48 59 97 68 103 120</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Release - Atmega48PA\Exe\BattTX.hex</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 87 92</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 82 113 125 25 18 72 1 6 109 81 33</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\GlobalRTC.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 105</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 32</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 22 49 80 127 31 122 61 96 0 73 124 78 107 5 10 24 74 85 126 89 50 43 47 48 59 58 53 98 26 68</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\UserInterface_ScreenSaver.cpp</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 7</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 106 39 121 30 49 80 127 31 122 61 96 0 73 124 14 78 107 5 10 24 74 85 126 89 50 43 47 48 59</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 106 39 121 30 49 80 127 31 122 61 96 0 73 124 78 107 5 10 24 74 85 126 89 50 43 47 48 59 70 103 22 98 37 97 58 93 53 26</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\UserInterface_Widget.cpp</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 62</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 106 39 121 30 49 80 127 31 122 61 96 0 73 124 14 78 107 5 10 24 74 85 126 89 50 43 47 48 59</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 106 39 121 30 49 80 127 31 122 61 96 0 73 124 78 107 5 10 24 74 85 126 89 50 43 47 48 59 70 103 22 98 37 97 58 93 53 26</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\UserInterfaceMenuBuilder.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 60 2</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 16</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 30 39 121</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 30 39 121</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 87 92 9</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\MultyThreading.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 57 6</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 15</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 103 49 80 127 31 122 61 96 0 73 124 14 78 107 5 10 24 74 85 126 89 50 43 47 48 59</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 103 49 80 127 31 122 61 96 0 73 124 78 107 5 10 24 74 85 126 89 50 43 47 48 59</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\DeviceManager.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 129 125</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 95</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 53 49 80 127 31 122 61 96 0 73 124 14 78 107 5 10 24 74 85 126 89 50 43 47 48 59 98 103 120 97 68</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 53 49 80 127 31 122 61 96 0 73 124 78 107 5 10 24 74 85 126 89 50 43 47 48 59 98 103 120 97 68</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\GlobalDeviceProfile.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 104 18</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 91</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 59 49 80 127 31 122 61 96 0 73 124 14 78 107 5 10 24 74 85 126 89 50 43 47 48</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 59 49 80 127 31 122 61 96 0 73 124 78 107 5 10 24 74 85 126 89 50 43 47 48</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Timer0Handler.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 38 109</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 84</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 120 49 80 127 31 122 61 96 0 73 124 14 78 107 5 10 24 74 85 126 89 50 43 47 48 59 103</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 120 49 80 127 31 122 61 96 0 73 124 78 107 5 10 24 74 85 126 89 50 43 47 48 59 103</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\KeyBoardDriver.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 94 1</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 35</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 49 80 127 31 122 61 96 0 73 124 14 78 107 5 10 24 74 85 126 89 50 43 47 48 59 97 103 53</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 49 80 127 31 122 61 96 0 73 124 78 107 5 10 24 74 85 126 89 50 43 47 48 59 97 103 53</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\IndicatorDriver.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 29 72</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 3</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 68 49 80 127 31 122 61 96 0 73 124 14 78 107 5 10 24 74 85 126 89 50 43 47 48 59 103</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 68 49 80 127 31 122 61 96 0 73 124 78 107 5 10 24 74 85 126 89 50 43 47 48 59 103</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\UserInterface.cpp</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 51</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 106 39 121 30 49 80 127 31 122 61 96 0 73 124 14 78 107 5 10 24 74 85 126 89 50 43 47 48 59</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 106 39 121 30 49 80 127 31 122 61 96 0 73 124 78 107 5 10 24 74 85 126 89 50 43 47 48 59 70 103 22 98 37 97 58 93 53 26</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\PhotoSensor.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 108</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 8</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 37 49 80 127 31 122 61 96 0 73 124 78 107 5 10 24 74 85 126 89 50 43 47 48 59 58 22 120</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Release - Atmega48PA\Obj\BattTX.pbd</name>
+      <inputs>
+        <tool>
+          <name>BILINK</name>
+          <file> 17 95 23 91 3 35 15 84 71</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Timer2Handler.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 114</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 34</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 100 49 80 127 31 122 61 96 0 73 124 78 107 5 10 24 74 85 126 89 50 43 47 48 59 22</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\main.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 101 81</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 71</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 49 80 127 31 122 61 96 0 73 124 14 78 107 5 10 24 74 85 126 89 50 43 47 48 59 53</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 49 80 127 31 122 61 96 0 73 124 78 107 5 10 24 74 85 126 89 50 43 47 48 59 53</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\UserInterfaceLang.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 65 130</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 77</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 121 115 49 80 127 31 122 61 96 0 73 124 14 78 107 5 10 24 74 85 126 89 50 43 47 48 59</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 121 115 49 80 127 31 122 61 96 0 73 124 78 107 5 10 24 74 85 126 89 50 43 47 48 59</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\CommProtocol_TWI_Master.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 54</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 76</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 64 49 80 127 31 122 61 96 0 73 124 78 107 5 10 24 74 85 126 89 50 43 47 48 59 103</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\LCDDriver.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 117</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 128</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 70 49 80 127 31 122 61 96 0 73 124 78 107 5 10 24 74 85 126 89 50 43 47 48 59 64 103 98</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\GlobalCounter.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 69</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 27</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 58 22 49 80 127 31 122 61 96 0 73 124 78 107 5 10 24 74 85 126 89 50 43 47 48 59 93 53</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\CommProtocol_SPI_Master.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 66</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 110</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 28 49 80 127 31 122 61 96 0 73 124 78 107 5 10 24 74 85 126 89 50 43 47 48 59 103</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\MemAT25Driver.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 67</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 12</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 96 0 73 124 78 107 5 10 93 49 80 127 31 122 61 24 74 85 126 89 50 43 47 48 59 58 22 28 103 79</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\CRC8.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 55 56</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 36</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 79</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 79</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\CommonFunctions.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 99 113</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 17</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 89</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 89</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\GlobalADC.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 123 25</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 23</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 98 49 80 127 31 122 61 96 0 73 124 14 78 107 5 10 24 74 85 126 89 50 43 47 48 59 103 68</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 98 49 80 127 31 122 61 96 0 73 124 78 107 5 10 24 74 85 126 89 50 43 47 48 59 103 68</file>
+        </tool>
+      </inputs>
+    </file>
+  </configuration>
+</project>
+
+

@@ -1,0 +1,8 @@
+[ProjectGroup]
+Version=1.0
+[Project1]
+ProjectPath=BatteryCounterRX\BatteryCounterRX.PrjPcb
+[Project2]
+ProjectPath=BatteryCounterTX\BatteryCounterTX.PrjPcb
+[Project3]
+ProjectPath=..\Common\Library\MCounter_Common\MCounter_Common.LibPkg

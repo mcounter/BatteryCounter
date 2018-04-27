@@ -1,0 +1,3691 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V6.12.1.50500 for Atmel AVR       02/Aug/2014  01:50:51 /
+// Copyright 1996-2012 IAR Systems AB.                                        /
+//                                                                            /
+//    Source file  =  D:\Projects\BatteryCounter\_micro\BattRX\MemAT25Driver. /
+//                    cpp                                                     /
+//    Command line =  D:\Projects\BatteryCounter\_micro\BattRX\MemAT25Driver. /
+//                    cpp --cpu=m328p -ms -o "D:\Projects\BatteryCounter\_mic /
+//                    ro\BattRX\Release - Atmega328P\Obj\" -D NDEBUG -lA      /
+//                    "D:\Projects\BatteryCounter\_micro\BattRX\Release -     /
+//                    Atmega328P\List\" --initializers_in_flash               /
+//                    -DENABLE_BIT_DEFINITIONS --do_cross_call -e             /
+//                    --eeprom_size 1024 --dlib --dlib_config "C:\Program     /
+//                    Files (x86)\IAR Systems\Embedded Workbench              /
+//                    6.0\avr\LIB\DLIB\dlAVR-3s-ec_mul-sf-n.h" --eec++ -Ohs   /
+//    List file    =  D:\Projects\BatteryCounter\_micro\BattRX\Release -      /
+//                    Atmega328P\List\MemAT25Driver.s90                       /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME MemAT25Driver
+
+        RTMODEL "__64bit_doubles", "disabled"
+        RTMODEL "__SystemLibrary", "DLib"
+        RTMODEL "__cpu", "3"
+        RTMODEL "__cpu_name", "ATmega328P"
+        RTMODEL "__dlib_file_descriptor", "0"
+        RTMODEL "__enhanced_core", "enabled"
+        RTMODEL "__has_elpm", "false"
+        RTMODEL "__memory_model", "2"
+        RTMODEL "__rt_version", "3"
+
+        RSEG CSTACK:DATA:NOROOT(0)
+        RSEG RSTACK:DATA:NOROOT(0)
+
+        ERROR
+//NOTE: This module defines or uses C++ features that are not
+//      accessible from assembler code. Assembling this file will
+//      not produce an equivalent object file to the one produced
+//      by the C++ compiler.
+
+        EXTERN ?L_SHL_L03
+        EXTERN ?Register_R4_is_cg_reg
+        EXTERN ?Register_R5_is_cg_reg
+        EXTERN ?Register_R6_is_cg_reg
+        EXTERN ?Register_R7_is_cg_reg
+        EXTERN ?UL_DIVMOD_L03
+        EXTERN ?UL_SHR_L03
+        EXTERN ?US_DIVMOD_L02
+        EXTERN ?need_segment_init
+
+        PUBWEAK `?<Segment init: NEAR_Z>`
+        PUBLIC ??blockMemOperations
+        FUNCTION ??blockMemOperations,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??blocked
+        FUNCTION ??blocked,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??counterValue
+        PUBLIC ??dataSegment
+        PUBLIC ??disable
+        FUNCTION ??disable,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??enable
+        FUNCTION ??enable,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??enabled
+        FUNCTION ??enabled,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??finish
+        FUNCTION ??finish,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??inProcess
+        FUNCTION ??inProcess,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??init
+        FUNCTION ??init,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??maskOperationBuffer
+        FUNCTION ??maskOperationBuffer,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBWEAK ??minof
+        FUNCTION ??minof,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??operation
+        PUBLIC ??operationBuffer
+        PUBLIC ??operationResult
+        PUBLIC ??populateValueBuffer
+        FUNCTION ??populateValueBuffer,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??populateValueBufferDay
+        FUNCTION ??populateValueBufferDay,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??populateValueBufferHour
+        FUNCTION ??populateValueBufferHour,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??populateValueBufferMonth
+        FUNCTION ??populateValueBufferMonth,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??processMemOperation
+        FUNCTION ??processMemOperation,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??protocolStatus
+        PUBLIC ??ready
+        FUNCTION ??ready,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??resourceStatus
+        PUBLIC ??run
+        FUNCTION ??run,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??schedule
+        FUNCTION ??schedule,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??scheduleCmd
+        FUNCTION ??scheduleCmd,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??scheduleCmdRDSR
+        FUNCTION ??scheduleCmdRDSR,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??scheduleCmdRead
+        FUNCTION ??scheduleCmdRead,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??scheduleCmdWREN
+        FUNCTION ??scheduleCmdWREN,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??scheduleCmdWRSR
+        FUNCTION ??scheduleCmdWRSR,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??scheduleCmdWrite
+        FUNCTION ??scheduleCmdWrite,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??scheduleCmdWriteDay
+        FUNCTION ??scheduleCmdWriteDay,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 3, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??scheduleCmdWriteHour
+        FUNCTION ??scheduleCmdWriteHour,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 7, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??scheduleCmdWriteMonth
+        FUNCTION ??scheduleCmdWriteMonth,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??setMemAddr
+        FUNCTION ??setMemAddr,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??startMemOperation
+        FUNCTION ??startMemOperation,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??waitingStatus
+        PUBWEAK _A_DDRB
+        PUBWEAK _A_PORTB
+        PUBWEAK __?EEARH
+        PUBWEAK __?EEARL
+        PUBWEAK __?EECR
+        PUBWEAK __?EEDR
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_Y Y DATA
+          CFI StackFrame CFA_SP SP DATA
+          CFI VirtualResource ?RetPad:1, ?RetHigh:8, ?RetLow:8, ?Ret:17
+          CFI Resource R0:8, R1:8, R2:8, R3:8, R4:8, R5:8, R6:8, R7:8, R8:8, R9:8
+          CFI Resource R10:8, R11:8, R12:8, R13:8, R14:8, R15:8, R16:8, R17:8
+          CFI Resource R18:8, R19:8, R20:8, R21:8, R22:8, R23:8, R24:8, R25:8
+          CFI Resource R26:8, R27:8, R28:8, R29:8, R30:8, R31:8
+          CFI Resource ?RetHighByteMask:8, SP:16, SPH:8, SPL:8, Y:16
+          CFI ResourceParts ?Ret ?RetHigh, ?RetLow, ?RetPad
+          CFI ResourceParts SP SPH, SPL
+          CFI ResourceParts Y R29, R28
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Y+0
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 Undefined
+          CFI R17 Undefined
+          CFI R18 Undefined
+          CFI R19 Undefined
+          CFI R20 Undefined
+          CFI R21 Undefined
+          CFI R22 Undefined
+          CFI R23 Undefined
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 Undefined
+          CFI R31 Undefined
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Notused
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 SameValue
+          CFI R1 SameValue
+          CFI R2 SameValue
+          CFI R3 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 SameValue
+          CFI R17 SameValue
+          CFI R18 SameValue
+          CFI R19 SameValue
+          CFI R20 SameValue
+          CFI R21 SameValue
+          CFI R22 SameValue
+          CFI R23 SameValue
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 SameValue
+          CFI R31 SameValue
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI Y SameValue
+          CFI EndCommon cfiCommon1
+        
+`?<Name GLOBAL 0>`  SYMBOL "GLOBAL"
+`?<Name DeviceProfile 1>` SYMBOL "DeviceProfile", `?<Name GLOBAL 0>`
+??MemorySecureTemplate SYMBOL "MemorySecureTemplate", `?<Name DeviceProfile 1>`
+`?<Name CommProtocol_SPI_Mas 3>` SYMBOL "CommProtocol_SPI_Master"
+??bufferSPI         SYMBOL "bufferSPI", `?<Name CommProtocol_SPI_Mas 3>`
+`?<Name MemAT25Driver 21>` SYMBOL "MemAT25Driver"
+??counterValue      SYMBOL "counterValue", `?<Name MemAT25Driver 21>`
+??dataSegment       SYMBOL "dataSegment", `?<Name MemAT25Driver 21>`
+??operation         SYMBOL "operation", `?<Name MemAT25Driver 21>`
+??operationBuffer   SYMBOL "operationBuffer", `?<Name MemAT25Driver 21>`
+??operationResult   SYMBOL "operationResult", `?<Name MemAT25Driver 21>`
+??protocolStatus    SYMBOL "protocolStatus", `?<Name MemAT25Driver 21>`
+??resourceStatus    SYMBOL "resourceStatus", `?<Name MemAT25Driver 21>`
+??waitingStatus     SYMBOL "waitingStatus", `?<Name MemAT25Driver 21>`
+
+        EXTERN ??MemorySecureTemplate
+        EXTERN ??bufferSPI
+        EXTERN ??calcCRC8
+        FUNCTION ??calcCRC8,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??disable_1
+        FUNCTION ??disable_1,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??enable_1
+        FUNCTION ??enable_1,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??getTimer
+        FUNCTION ??getTimer,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??setTimer
+        FUNCTION ??setTimer,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN memcmp
+        FUNCTION memcmp,010202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN memcpy
+        FUNCTION memcpy,010202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN memset
+        FUNCTION memset,010202H
+        ARGFRAME RSTACK, 0, STACK
+
+// D:\Projects\BatteryCounter\_micro\BattRX\MemAT25Driver.cpp
+//    1 #ifndef __MEMAT25DRIVER_CPP_
+//    2 #define __MEMAT25DRIVER_CPP_
+//    3 
+//    4 #include <string.h>
+//    5 #include "MemAT25Driver.h"
+
+        ASEGN ABSOLUTE:DATA:NOROOT,025H
+// union <unnamed> volatile __io _A_PORTB
+_A_PORTB:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,024H
+// union <unnamed> volatile __io _A_DDRB
+_A_DDRB:
+        DS8 1
+
+        RSEG CODE:CODE:NOROOT(1)
+// __version_3 unsigned short Functions::Common::minof<unsigned short>(unsigned short, unsigned short)
+??minof:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function ??minof
+        CP      R18, R16
+        CPC     R19, R17
+        BRCS    ??minof_1
+        MOVW    R21:R20, R17:R16
+        RJMP    ??minof_2
+??minof_1:
+        MOVW    R21:R20, R19:R18
+??minof_2:
+        MOVW    R17:R16, R21:R20
+        RET
+          CFI EndBlock cfiBlock0
+//    6 #include "CommProtocol_SPI_Master.h"
+//    7 #include "MultyThreading.h"
+//    8 #include "CommonFunctions.h"
+//    9 #include "CRC8.h"
+//   10 
+//   11 #define MEMAT25_VALPERSEGMENT_HOUR    (3)
+//   12 #define MEMAT25_VALPERSEGMENT_DAY     (2)
+//   13 #define MEMAT25_VALPERSEGMENT_MONTH   (2)
+//   14 
+//   15 #define MEMAT25_ERRORIDLETIME   (3000)
+//   16 #define MEMAT25_BLOCKTIME       (30000)
+//   17 
+//   18 #define MEMAT25CMD_WREN         (0x06)
+//   19 #define MEMAT25CMD_WRDI         (0x04)
+//   20 #define MEMAT25CMD_RDSR         (0x05)
+//   21 #define MEMAT25CMD_WRSR         (0x01)
+//   22 #define MEMAT25CMD_READ         (0x03)
+//   23 #define MEMAT25CMD_WRITE        (0x02)
+//   24 
+//   25 #define MEMAT25STATUS_NORMAL    (0x02)
+//   26 #define MEMAT25STATUS_FLG_BUSY  (0x01)
+//   27 
+//   28 using namespace Functions::Common;
+//   29 
+//   30 namespace MemAT25Driver
+//   31 {
+//   32   typedef enum
+//   33   {
+//   34     MemAT25ResourceStatus_Disabled = 0x00,
+//   35     MemAT25ResourceStatus_Ready = 0x01,
+//   36     MemAT25ResourceStatus_Scheduled = 0x02,
+//   37     MemAT25ResourceStatus_InProcess = 0x03,
+//   38     MemAT25ResourceStatus_Blocked = 0x04,
+//   39   } TMemAT25ResourceStatus;
+//   40 
+//   41   typedef enum
+//   42   {
+//   43     MemAT25ProtocolStatus_WriteStatusRegWREN = 0,
+//   44     MemAT25ProtocolStatus_WriteStatusReg = 1,
+//   45     MemAT25ProtocolStatus_WriteDataWREN = 2,
+//   46     MemAT25ProtocolStatus_WriteData = 3,
+//   47     MemAT25ProtocolStatus_ReadData = 4,
+//   48     MemAT25ProtocolStatus_ParseData = 5,
+//   49     MemAT25ProtocolStatus_ReadDataValidate = 6,
+//   50     MemAT25ProtocolStatus_ValidateData = 7,
+//   51   } TMemAT25ProtocolStatus;
+//   52 
+//   53   typedef enum
+//   54   {
+//   55     MemAT25WaitingStatus_None = 0,
+//   56     MemAT25WaitingStatus_Schedule = 1,
+//   57     MemAT25WaitingStatus_Wait = 2,
+//   58   } TMemAT25WaitingStatus;
+//   59 
+//   60   typedef struct
+//   61   {
+//   62     unsigned char data[12];
+//   63 
+//   64     unsigned long periodNum:24;
+//   65     unsigned long crc8:8;
+//   66   } TMem25DataSegmentStd;
+//   67 
+//   68   typedef struct
+//   69   {
+//   70     unsigned long InCnt1:13;
+//   71     unsigned long OutCnt1:13;
+//   72     unsigned long NoSensorMin1:6;
+//   73 
+//   74     unsigned long InCnt2:13;
+//   75     unsigned long OutCnt2:13;
+//   76     unsigned long NoSensorMin2:6;
+//   77 
+//   78     unsigned long InCnt3:13;
+//   79     unsigned long OutCnt3:13;
+//   80     unsigned long NoSensorMin3:6;
+//   81 
+//   82   } TMem25DataSegmentHour;
+//   83 
+//   84   typedef struct
+//   85   {
+//   86     unsigned short InCnt1;
+//   87     unsigned short OutCnt1;
+//   88     unsigned short NoSensorMin1;
+//   89 
+//   90     unsigned short InCnt2;
+//   91     unsigned short OutCnt2;
+//   92     unsigned short NoSensorMin2;
+//   93   } TMem25DataSegmentDay;
+//   94 
+//   95   typedef struct
+//   96   {
+//   97     unsigned char InCnt1H;
+//   98     unsigned short InCnt1L;
+//   99     unsigned char OutCnt1H;
+//  100     unsigned short OutCnt1L;
+//  101 
+//  102     unsigned char InCnt2H;
+//  103     unsigned short InCnt2L;
+//  104     unsigned char OutCnt2H;
+//  105     unsigned short OutCnt2L;
+//  106   } TMem25DataSegmentMonth;
+//  107 
+
+        RSEG NEAR_Z:DATA:NOROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//  108   TMemAT25Operation operation;
+//  109   TMemAT25DataSegment dataSegment;
+//  110 
+//  111   TMem25DataSegmentStd operationBuffer;
+//  112   GLOBAL::Counter::TCounterPeriodData counterValue;
+??counterValue:
+        DS8 32
+??operationBuffer:
+        DS8 16
+??operation:
+        DS8 1
+??dataSegment:
+        DS8 1
+//  113   TMemAT25COperationResult operationResult;
+??operationResult:
+        DS8 1
+//  114 
+//  115   TMemAT25ResourceStatus resourceStatus = MemAT25ResourceStatus_Disabled;
+??resourceStatus:
+        DS8 1
+//  116   unsigned char protocolStatus;
+??protocolStatus:
+        DS8 1
+//  117   TMemAT25WaitingStatus waitingStatus;
+??waitingStatus:
+        DS8 1
+//  118 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  119   __monitor void enable()
+??enable:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function ??enable
+//  120   {
+        FUNCALL ??enable, ??enable_1
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine4
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+//  121     CommProtocol_SPI_Master::enable();
+??CrossCallReturnLabel_8:
+        CALL    ??enable_1
+//  122 
+//  123     resourceStatus = MemAT25ResourceStatus_Ready;
+        RCALL   ?Subroutine5
+//  124   }
+??CrossCallReturnLabel_11:
+        OUT     0x3F, R24
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock1
+//  125 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  126   __monitor void disable()
+??disable:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function ??disable
+//  127   {
+        FUNCALL ??disable, ??disable_1
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine4
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+//  128     MEM_SS_DIR = 1;
+??CrossCallReturnLabel_9:
+        SBI     0x04, 0x02
+//  129     MEM_SS_PORT = 1;
+        SBI     0x05, 0x02
+//  130 
+//  131     CommProtocol_SPI_Master::disable();
+        CALL    ??disable_1
+//  132 
+//  133     resourceStatus = MemAT25ResourceStatus_Disabled;
+        LDI     R16, 0
+        RCALL   ?Subroutine6
+//  134   }
+??CrossCallReturnLabel_12:
+        OUT     0x3F, R24
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock2
+        REQUIRE _A_DDRB
+        REQUIRE _A_PORTB
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine4:
+          CFI Block cfiCond3 Using cfiCommon0
+          CFI Function ??enable
+          CFI Conditional ??CrossCallReturnLabel_8
+          CFI CFA_SP SP+4
+          CFI Block cfiCond4 Using cfiCommon0
+          CFI (cfiCond4) Function ??disable
+          CFI (cfiCond4) Conditional ??CrossCallReturnLabel_9
+          CFI (cfiCond4) CFA_SP SP+4
+          CFI Block cfiCond5 Using cfiCommon0
+          CFI (cfiCond5) Function ??init
+          CFI (cfiCond5) Conditional ??CrossCallReturnLabel_10
+          CFI (cfiCond5) CFA_SP SP+4
+          CFI Block cfiPicker6 Using cfiCommon1
+          CFI (cfiPicker6) NoFunction
+          CFI (cfiPicker6) Picker
+        ST      -Y, R24
+          CFI (cfiCond3) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond3) CFA_Y Y+1
+          CFI (cfiCond4) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond4) CFA_Y Y+1
+          CFI (cfiCond5) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond5) CFA_Y Y+1
+          CFI (cfiPicker6) R24 Frame(CFA_Y, -1)
+        IN      R24, 0x3F
+        CLI
+        RET
+          CFI EndBlock cfiCond3
+          CFI EndBlock cfiCond4
+          CFI EndBlock cfiCond5
+          CFI EndBlock cfiPicker6
+//  135 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  136   bool enabled()
+??enabled:
+          CFI Block cfiBlock7 Using cfiCommon0
+          CFI Function ??enabled
+//  137   {
+//  138     return resourceStatus != MemAT25ResourceStatus_Disabled;
+        RCALL   ?Subroutine3
+??CrossCallReturnLabel_2:
+        TST     R16
+        BREQ    ??enabled_1
+        LDI     R16, 1
+        RET
+??enabled_1:
+        LDI     R16, 0
+        RET
+          CFI EndBlock cfiBlock7
+//  139   }
+//  140 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  141   bool ready()
+??ready:
+          CFI Block cfiBlock8 Using cfiCommon0
+          CFI Function ??ready
+//  142   {
+//  143     return resourceStatus == MemAT25ResourceStatus_Ready;
+        RCALL   ?Subroutine3
+??CrossCallReturnLabel_3:
+        CPI     R16, 1
+        BRNE    ??ready_1
+        LDI     R16, 1
+        RET
+??ready_1:
+        LDI     R16, 0
+        RET
+          CFI EndBlock cfiBlock8
+//  144   }
+//  145 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  146   __monitor void init()
+??init:
+          CFI Block cfiBlock9 Using cfiCommon0
+          CFI Function ??init
+//  147   {
+        FUNCALL ??init, ??disable
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine4
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+//  148     disable();
+??CrossCallReturnLabel_10:
+        RCALL   ?Subroutine7
+//  149   }
+??CrossCallReturnLabel_17:
+        OUT     0x3F, R24
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock9
+//  150 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  151   void schedule()
+??schedule:
+          CFI Block cfiBlock10 Using cfiCommon0
+          CFI Function ??schedule
+//  152   {
+//  153     resourceStatus = MemAT25ResourceStatus_Scheduled;
+        LDI     R16, 2
+          CFI EndBlock cfiBlock10
+        REQUIRE ?Subroutine6
+        ;               // Fall through to label ?Subroutine6
+//  154   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine6:
+          CFI Block cfiCond11 Using cfiCommon0
+          CFI Function ??disable
+          CFI Conditional ??CrossCallReturnLabel_12
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+1
+          CFI Block cfiCond12 Using cfiCommon0
+          CFI (cfiCond12) Function ??processMemOperation
+          CFI (cfiCond12) Conditional ??CrossCallReturnLabel_13
+          CFI (cfiCond12) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond12) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond12) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond12) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond12) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond12) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond12) CFA_SP SP+4
+          CFI (cfiCond12) CFA_Y Y+6
+          CFI Block cfiCond13 Using cfiCommon0
+          CFI (cfiCond13) Function ??blockMemOperations
+          CFI (cfiCond13) Conditional ??CrossCallReturnLabel_14
+          CFI (cfiCond13) CFA_SP SP+4
+          CFI Block cfiBlock14 Using cfiCommon0
+          CFI (cfiBlock14) NoFunction
+          CFI Block cfiPicker15 Using cfiCommon1
+          CFI (cfiPicker15) NoFunction
+          CFI (cfiPicker15) Picker
+        STS     (??counterValue + 51), R16
+        RET
+          CFI EndBlock cfiCond11
+          CFI EndBlock cfiCond12
+          CFI EndBlock cfiCond13
+          CFI EndBlock cfiBlock14
+          CFI EndBlock cfiPicker15
+//  155 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  156   void finish()
+??finish:
+//  157   {
+//  158     resourceStatus = MemAT25ResourceStatus_Ready;
+        REQUIRE ?Subroutine5
+        ;               // Fall through to label ?Subroutine5
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine5:
+          CFI Block cfiCond16 Using cfiCommon0
+          CFI Function ??enable
+          CFI Conditional ??CrossCallReturnLabel_11
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+1
+          CFI Block cfiBlock17 Using cfiCommon0
+          CFI (cfiBlock17) NoFunction
+          CFI Block cfiPicker18 Using cfiCommon1
+          CFI (cfiPicker18) NoFunction
+          CFI (cfiPicker18) Picker
+        LDI     R16, 1
+        STS     (??counterValue + 51), R16
+        RET
+          CFI EndBlock cfiCond16
+          CFI EndBlock cfiBlock17
+          CFI EndBlock cfiPicker18
+//  159   }
+//  160 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  161   void inProcess()
+??inProcess:
+//  162   {
+//  163     GLOBAL::MultyThreading::setTimer(GLOBALTIMERS_MEMAT25_ERRORTIMER, MEMAT25_ERRORIDLETIME);
+        FUNCALL ??inProcess, ??setTimer
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        REQUIRE ?Subroutine2
+        ;               // Fall through to label ?Subroutine2
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine2:
+          CFI Block cfiCond19 Using cfiCommon0
+          CFI Function ??processMemOperation
+          CFI Conditional ??CrossCallReturnLabel_1
+          CFI R26 Frame(CFA_Y, -6)
+          CFI R27 Frame(CFA_Y, -5)
+          CFI R4 Frame(CFA_Y, -4)
+          CFI R5 Frame(CFA_Y, -3)
+          CFI R6 Frame(CFA_Y, -2)
+          CFI R7 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+6
+          CFI Block cfiBlock20 Using cfiCommon0
+          CFI (cfiBlock20) NoFunction
+          CFI Block cfiPicker21 Using cfiCommon1
+          CFI (cfiPicker21) NoFunction
+          CFI (cfiPicker21) Picker
+        LDI     R18, 184
+        LDI     R19, 11
+        RCALL   ?Subroutine27
+??CrossCallReturnLabel_54:
+        LDI     R16, 3
+        STS     (??counterValue + 51), R16
+//  164     resourceStatus = MemAT25ResourceStatus_InProcess;
+//  165   }
+        RET
+          CFI EndBlock cfiCond19
+          CFI EndBlock cfiBlock20
+          CFI EndBlock cfiPicker21
+//  166 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  167   bool startMemOperation(TMemAT25Operation _operation, TMemAT25DataSegment _dataSegment)
+??startMemOperation:
+          CFI Block cfiBlock22 Using cfiCommon0
+          CFI Function ??startMemOperation
+//  168   {
+//  169     if (!ready())
+        RCALL   ?Subroutine11
+??CrossCallReturnLabel_22:
+        LDD     R18, Z+51
+        CPI     R18, 1
+        BRNE    ??startMemOperation_1
+//  170     {
+//  171       return false;
+//  172     }
+//  173 
+//  174     operation = _operation;
+        STD     Z+48, R16
+//  175     dataSegment = _dataSegment;
+        STD     Z+49, R17
+//  176     operationResult = MemAT25COperationResult_None;
+        LDI     R16, 0
+        STD     Z+50, R16
+//  177     waitingStatus = MemAT25WaitingStatus_None;
+        STD     Z+53, R16
+//  178 
+//  179     schedule();
+        LDI     R16, 2
+        STD     Z+51, R16
+//  180 
+//  181     return true;
+        LDI     R16, 1
+        RET
+??startMemOperation_1:
+        LDI     R16, 0
+        RET
+          CFI EndBlock cfiBlock22
+//  182   }
+//  183 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  184   void scheduleCmd(unsigned char _cmd, unsigned char _parmLng)
+??scheduleCmd:
+          CFI Block cfiBlock23 Using cfiCommon0
+          CFI Function ??scheduleCmd
+//  185   {
+//  186     CommProtocol_SPI_Master::bufferSPI.length = _parmLng + 1;
+        FUNCALL ??scheduleCmd, memset
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDI     R30, LOW(??bufferSPI)
+        LDI     R31, (??bufferSPI) >> 8
+        MOV     R18, R17
+        INC     R18
+        ST      Z, R18
+//  187     CommProtocol_SPI_Master::bufferSPI.status = CommProtocol_SPI_Master::SPIBufferStatus_Ready;
+        LDI     R18, 1
+        STD     Z+1, R18
+//  188     CommProtocol_SPI_Master::bufferSPI.result = CommProtocol_SPI_Master::SPIResultCodeType_OK;
+        LDI     R18, 0
+        STD     Z+2, R18
+//  189     CommProtocol_SPI_Master::bufferSPI.buffer[0] = _cmd;
+        STD     Z+3, R16
+//  190 
+//  191     memset(CommProtocol_SPI_Master::bufferSPI.buffer + 1, 0xFF, _parmLng);
+        MOV     R20, R17
+        LDI     R21, 0
+        LDI     R18, 255
+        LDI     R19, 0
+        ADIW    R31:R30, 4
+        MOVW    R17:R16, R31:R30
+        JMP     memset
+          CFI EndBlock cfiBlock23
+//  192   }
+//  193 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  194   void scheduleCmdWREN()
+??scheduleCmdWREN:
+          CFI Block cfiBlock24 Using cfiCommon0
+          CFI Function ??scheduleCmdWREN
+//  195   {
+//  196     scheduleCmd(MEMAT25CMD_WREN, 0);
+        FUNCALL ??scheduleCmdWREN, ??scheduleCmd
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDI     R17, 0
+        LDI     R16, 6
+        RJMP    ??scheduleCmd
+          CFI EndBlock cfiBlock24
+//  197   }
+//  198 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  199   void scheduleCmdRDSR()
+??scheduleCmdRDSR:
+          CFI Block cfiBlock25 Using cfiCommon0
+          CFI Function ??scheduleCmdRDSR
+//  200   {
+//  201     waitingStatus = MemAT25WaitingStatus_Wait;
+        FUNCALL ??scheduleCmdRDSR, ??scheduleCmd
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine24
+//  202     scheduleCmd(MEMAT25CMD_RDSR, 1);
+??CrossCallReturnLabel_49:
+        RJMP    ??scheduleCmd
+          CFI EndBlock cfiBlock25
+//  203   }
+//  204 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  205   void scheduleCmdWRSR()
+??scheduleCmdWRSR:
+//  206   {
+//  207     waitingStatus = MemAT25WaitingStatus_Wait;
+        FUNCALL ??scheduleCmdWRSR, ??scheduleCmd
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        REQUIRE ?Subroutine0
+        ;               // Fall through to label ?Subroutine0
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine0:
+          CFI Block cfiCond26 Using cfiCommon0
+          CFI Function ??processMemOperation
+          CFI Conditional ??CrossCallReturnLabel_0
+          CFI R26 Frame(CFA_Y, -6)
+          CFI R27 Frame(CFA_Y, -5)
+          CFI R4 Frame(CFA_Y, -4)
+          CFI R5 Frame(CFA_Y, -3)
+          CFI R6 Frame(CFA_Y, -2)
+          CFI R7 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+6
+          CFI Block cfiBlock27 Using cfiCommon0
+          CFI (cfiBlock27) NoFunction
+          CFI Block cfiPicker28 Using cfiCommon1
+          CFI (cfiPicker28) NoFunction
+          CFI (cfiPicker28) Picker
+        RCALL   ?Subroutine32
+//  208     scheduleCmd(MEMAT25CMD_WRSR, 1);
+??CrossCallReturnLabel_66:
+        LDI     R16, 1
+        RCALL   ?Subroutine28
+??CrossCallReturnLabel_60:
+        LDI     R16, 2
+        STS     (??bufferSPI + 4), R16
+//  209     CommProtocol_SPI_Master::bufferSPI.buffer[1] = MEMAT25STATUS_NORMAL;
+//  210   }
+        RET
+          CFI EndBlock cfiCond26
+          CFI EndBlock cfiBlock27
+          CFI EndBlock cfiPicker28
+//  211 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  212   void setMemAddr()
+??setMemAddr:
+          CFI Block cfiBlock29 Using cfiCommon0
+          CFI Function ??setMemAddr
+//  213   {
+//  214     unsigned short memAddr;
+//  215 
+//  216     switch (dataSegment)
+        RCALL   ?Subroutine11
+??CrossCallReturnLabel_23:
+        LDD     R16, Z+49
+        TST     R16
+        BREQ    ??setMemAddr_1
+        DEC     R16
+        BREQ    ??setMemAddr_2
+        DEC     R16
+        BREQ    ??setMemAddr_3
+        RJMP    ??setMemAddr_4
+//  217     {
+//  218       case MemAT25DataSegment_Hour:
+//  219         memAddr = ((counterValue.periodNumHour / MEMAT25_VALPERSEGMENT_HOUR) % (EXT_MEMORY_SIZE_HOUR_SEGMENT / EXT_MEMORY_SEGMENTSIZE)) * EXT_MEMORY_SEGMENTSIZE;
+??setMemAddr_1:
+        RCALL   ?Subroutine10
+??CrossCallReturnLabel_20:
+        LDI     R20, 0
+        LDI     R21, 3
+        LDI     R22, 0
+        LDI     R23, 0
+        RCALL   ?Subroutine29
+??CrossCallReturnLabel_68:
+        RCALL   ?Subroutine15
+//  220         break;
+??CrossCallReturnLabel_64:
+        RJMP    ??setMemAddr_4
+//  221 
+//  222       case MemAT25DataSegment_Day:
+//  223         memAddr = (((counterValue.periodNumDay / MEMAT25_VALPERSEGMENT_DAY) % (EXT_MEMORY_SIZE_DAY_SEGMENT / EXT_MEMORY_SEGMENTSIZE)) * EXT_MEMORY_SEGMENTSIZE) + EXT_MEMORY_SIZE_HOUR_SEGMENT;
+??setMemAddr_2:
+        LDD     R16, Z+10
+        LDD     R17, Z+11
+        LDD     R18, Z+12
+        LDD     R19, Z+13
+        RCALL   ?Subroutine30
+??CrossCallReturnLabel_61:
+        LDI     R20, 224
+        RCALL   ?Subroutine12
+??CrossCallReturnLabel_28:
+        RCALL   ?Subroutine15
+??CrossCallReturnLabel_65:
+        SUBI    R21, 208
+//  224         break;
+        RJMP    ??setMemAddr_4
+//  225 
+//  226       case MemAT25DataSegment_Month:
+//  227         memAddr = (((counterValue.periodNumMonth / MEMAT25_VALPERSEGMENT_MONTH) % (EXT_MEMORY_SIZE_MONTH_SEGMENT / EXT_MEMORY_SEGMENTSIZE)) * EXT_MEMORY_SEGMENTSIZE) + EXT_MEMORY_SIZE_HOUR_SEGMENT + EXT_MEMORY_SIZE_DAY_SEGMENT;
+??setMemAddr_3:
+        LDD     R20, Z+22
+        LSR     R20
+        LDI     R21, 0
+        ANDI    R20, 0x1F
+        LSL     R20
+        LSL     R20
+        LSL     R20
+        LSL     R20
+        ROL     R21
+        SUBI    R21, 194
+//  228         break;
+//  229     }
+//  230 
+//  231     CommProtocol_SPI_Master::bufferSPI.buffer[1] = (unsigned char)(memAddr >> 8);
+??setMemAddr_4:
+        STS     (??bufferSPI + 4), R21
+//  232     CommProtocol_SPI_Master::bufferSPI.buffer[2] = (unsigned char)memAddr;
+        STS     (??bufferSPI + 5), R20
+//  233   }
+        RET
+          CFI EndBlock cfiBlock29
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine15:
+          CFI Block cfiCond30 Using cfiCommon0
+          CFI Function ??setMemAddr
+          CFI Conditional ??CrossCallReturnLabel_64
+          CFI CFA_SP SP+4
+          CFI Block cfiCond31 Using cfiCommon0
+          CFI (cfiCond31) Function ??setMemAddr
+          CFI (cfiCond31) Conditional ??CrossCallReturnLabel_65
+          CFI (cfiCond31) CFA_SP SP+4
+          CFI Block cfiPicker32 Using cfiCommon1
+          CFI (cfiPicker32) NoFunction
+          CFI (cfiPicker32) Picker
+        RCALL   ?Subroutine31
+          CFI EndBlock cfiCond30
+          CFI EndBlock cfiCond31
+          CFI EndBlock cfiPicker32
+??CrossCallReturnLabel_63:
+        REQUIRE ?Subroutine31
+        ;               // Fall through to label ?Subroutine31
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine31:
+          CFI Block cfiCond33 Using cfiCommon0
+          CFI Function ??setMemAddr
+          CFI Conditional ??CrossCallReturnLabel_63, ??CrossCallReturnLabel_64
+          CFI CFA_SP SP+6
+          CFI Block cfiCond34 Using cfiCommon0
+          CFI (cfiCond34) Function ??setMemAddr
+          CFI (cfiCond34) Conditional ??CrossCallReturnLabel_63, ??CrossCallReturnLabel_65
+          CFI (cfiCond34) CFA_SP SP+6
+          CFI Block cfiCond35 Using cfiCommon0
+          CFI (cfiCond35) Function ??setMemAddr
+          CFI (cfiCond35) Conditional ??CrossCallReturnLabel_64
+          CFI (cfiCond35) CFA_SP SP+4
+          CFI Block cfiCond36 Using cfiCommon0
+          CFI (cfiCond36) Function ??setMemAddr
+          CFI (cfiCond36) Conditional ??CrossCallReturnLabel_65
+          CFI (cfiCond36) CFA_SP SP+4
+          CFI Block cfiPicker37 Using cfiCommon1
+          CFI (cfiPicker37) NoFunction
+          CFI (cfiPicker37) Picker
+        LSL     R20
+        ROL     R21
+        LSL     R20
+        ROL     R21
+        RET
+          CFI EndBlock cfiCond33
+          CFI EndBlock cfiCond34
+          CFI EndBlock cfiCond35
+          CFI EndBlock cfiCond36
+          CFI EndBlock cfiPicker37
+//  234 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  235   void scheduleCmdRead()
+??scheduleCmdRead:
+          CFI Block cfiBlock38 Using cfiCommon0
+          CFI Function ??scheduleCmdRead
+//  236   {
+//  237     scheduleCmd(MEMAT25CMD_READ, 2 + EXT_MEMORY_SEGMENTSIZE);
+        FUNCALL ??scheduleCmdRead, ??scheduleCmd
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??scheduleCmdRead, ??setMemAddr
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDI     R17, 18
+        LDI     R16, 3
+        RCALL   ?Subroutine28
+//  238     setMemAddr();
+??CrossCallReturnLabel_59:
+        RJMP    ??setMemAddr
+          CFI EndBlock cfiBlock38
+//  239   }
+//  240 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  241   void maskOperationBuffer()
+??maskOperationBuffer:
+          CFI Block cfiBlock39 Using cfiCommon0
+          CFI Function ??maskOperationBuffer
+//  242   {
+        MOV     R19, R27
+        MOV     R20, R26
+//  243     unsigned char* operationBufferPtr = (unsigned char*)(&operationBuffer);
+//  244 
+//  245     for (unsigned char i = 0; i < sizeof(TMem25DataSegmentStd); i++)
+        LDI     R30, LOW((??counterValue + 32))
+        LDI     R31, HIGH((??counterValue + 32))
+        LDI     R26, LOW(??MemorySecureTemplate)
+        LDI     R27, (??MemorySecureTemplate) >> 8
+        LDI     R16, 16
+//  246     {
+//  247       operationBufferPtr[i] ^= GLOBAL::DeviceProfile::MemorySecureTemplate[i];
+??maskOperationBuffer_1:
+        LD      R17, X+
+        LD      R18, Z
+        EOR     R18, R17
+        ST      Z+, R18
+//  248     }
+        DEC     R16
+        BRNE    ??maskOperationBuffer_1
+//  249   }
+        MOV     R26, R20
+        MOV     R27, R19
+        RET
+          CFI EndBlock cfiBlock39
+//  250 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  251   void scheduleCmdWriteHour()
+??scheduleCmdWriteHour:
+          CFI Block cfiBlock40 Using cfiCommon0
+          CFI Function ??scheduleCmdWriteHour
+//  252   {
+        RCALL   ?Subroutine17
+          CFI R26 Frame(CFA_Y, -4)
+          CFI R27 Frame(CFA_Y, -3)
+          CFI R4 Frame(CFA_Y, -2)
+          CFI R5 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+4
+??CrossCallReturnLabel_36:
+        ST      -Y, R24
+          CFI R24 Frame(CFA_Y, -5)
+          CFI CFA_Y Y+5
+        REQUIRE ?Register_R4_is_cg_reg
+        REQUIRE ?Register_R5_is_cg_reg
+//  253     TMem25DataSegmentHour* curDataSegment = (TMem25DataSegmentHour*)(operationBuffer.data);
+//  254 
+//  255     unsigned char subPeriodNum = counterValue.periodNumHour % MEMAT25_VALPERSEGMENT_HOUR;
+        RCALL   ?Subroutine8
+??CrossCallReturnLabel_71:
+        MOV     R24, R20
+//  256     operationBuffer.periodNum = (counterValue.periodNumHour / MEMAT25_VALPERSEGMENT_HOUR) * MEMAT25_VALPERSEGMENT_HOUR;
+        MOVW    R31:R30, R27:R26
+        CLR     R4
+        RCALL   ?Subroutine10
+??CrossCallReturnLabel_21:
+        MOV     R20, R16
+        LDI     R16, 3
+        MUL     R16, R18
+        MOV     R18, R0
+        MUL     R16, R17
+        MOV     R17, R0
+        ADD     R18, R1
+        MUL     R16, R20
+        ADD     R17, R1
+        ADC     R18, R4
+        LDI     R30, (??counterValue & 0xff) & 0xFF
+        STD     Z+44, R0
+        STD     Z+45, R17
+        STD     Z+46, R18
+//  257 
+//  258     unsigned char noSensorMinTmp = (unsigned char)minof<unsigned short>(60, counterValue.NoSensorSecHour / 60);
+        LDD     R16, Z+8
+        LDD     R17, Z+9
+        LDI     R20, 60
+        LDI     R21, 0
+        CALL    ?US_DIVMOD_L02
+        CPI     R16, 60
+        LDI     R18, 0
+        SBCI    R17, 0
+        BRCS    ??scheduleCmdWriteHour_1
+        LDI     R22, 60
+        RJMP    ??scheduleCmdWriteHour_2
+??scheduleCmdWriteHour_1:
+        MOV     R22, R16
+//  259     switch(subPeriodNum)
+??scheduleCmdWriteHour_2:
+        TST     R24
+        BREQ    ??scheduleCmdWriteHour_3
+        DEC     R24
+        BREQ    ??scheduleCmdWriteHour_4
+        DEC     R24
+        BREQ    ??scheduleCmdWriteHour_5
+        RJMP    ??scheduleCmdWriteHour_6
+??scheduleCmdWriteHour_3:
+        LDI     R30, (??counterValue & 0xff) & 0xFF
+        LDD     R17, Z+33
+        LDD     R3, Z+35
+        ANDI    R17, 0xE0
+        LDD     R4, Z+4
+        LDD     R5, Z+5
+        LDI     R20, 31
+        AND     R5, R20
+        MOV     R1, R17
+        OR      R1, R5
+        STD     Z+32, R4
+        STD     Z+33, R1
+//  260     {
+//  261       case 0:
+//  262         curDataSegment->InCnt1 = counterValue.InCntHour;
+//  263         curDataSegment->OutCnt1 = counterValue.OutCntHour;
+//  264         curDataSegment->NoSensorMin1 = noSensorMinTmp;
+        AND     R1, R20
+        LDI     R16, 252
+        AND     R3, R16
+        RCALL   ?Subroutine26
+??CrossCallReturnLabel_51:
+        OR      R3, R19
+        RCALL   ?Subroutine23
+??CrossCallReturnLabel_48:
+        STD     Z+33, R1
+        STD     Z+34, R18
+        STD     Z+35, R3
+//  265         break;
+        RJMP    ??scheduleCmdWriteHour_6
+//  266 
+//  267       case 1:
+//  268         curDataSegment->InCnt2 = counterValue.InCntHour;
+//  269         curDataSegment->OutCnt2 = counterValue.OutCntHour;
+//  270         curDataSegment->NoSensorMin2 = noSensorMinTmp;
+??scheduleCmdWriteHour_4:
+        RCALL   ?Subroutine9
+??CrossCallReturnLabel_18:
+        STD     Z+36, R0
+        STD     Z+37, R1
+        STD     Z+38, R18
+        STD     Z+39, R3
+//  271         break;
+        RJMP    ??scheduleCmdWriteHour_6
+//  272 
+//  273       case 2:
+//  274         curDataSegment->InCnt3 = counterValue.InCntHour;
+//  275         curDataSegment->OutCnt3 = counterValue.OutCntHour;
+//  276         curDataSegment->NoSensorMin3 = noSensorMinTmp;
+??scheduleCmdWriteHour_5:
+        RCALL   ?Subroutine9
+??CrossCallReturnLabel_19:
+        STD     Z+40, R0
+        STD     Z+41, R1
+        STD     Z+42, R18
+        STD     Z+43, R3
+//  277         break;
+//  278     }
+//  279   }
+??scheduleCmdWriteHour_6:
+        LD      R24, Y+
+          CFI EndBlock cfiBlock40
+        REQUIRE ?Subroutine20
+        ;               // Fall through to label ?Subroutine20
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine20:
+          CFI Block cfiCond41 Using cfiCommon0
+          CFI Function ??processMemOperation
+          CFI Conditional ??CrossCallReturnLabel_43
+          CFI R26 Frame(CFA_Y, -6)
+          CFI R27 Frame(CFA_Y, -5)
+          CFI R4 Frame(CFA_Y, -4)
+          CFI R5 Frame(CFA_Y, -3)
+          CFI R6 Frame(CFA_Y, -2)
+          CFI R7 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+6
+          CFI Block cfiBlock42 Using cfiCommon0
+          CFI (cfiBlock42) NoFunction
+          CFI (cfiBlock42) CFA_Y Y+4
+          CFI (cfiBlock42) R4 Frame(CFA_Y, -2)
+          CFI (cfiBlock42) R5 Frame(CFA_Y, -1)
+          CFI (cfiBlock42) R26 Frame(CFA_Y, -4)
+          CFI (cfiBlock42) R27 Frame(CFA_Y, -3)
+          CFI Block cfiPicker43 Using cfiCommon1
+          CFI (cfiPicker43) NoFunction
+          CFI (cfiPicker43) Picker
+        LD      R26, Y+
+          CFI (cfiCond41) R26 SameValue
+          CFI (cfiCond41) CFA_Y Y+5
+          CFI (cfiBlock42) CFA_Y Y+3
+          CFI (cfiBlock42) R26 SameValue
+        LD      R27, Y+
+          CFI (cfiCond41) R27 SameValue
+          CFI (cfiCond41) CFA_Y Y+4
+          CFI (cfiBlock42) CFA_Y Y+2
+          CFI (cfiBlock42) R27 SameValue
+        LD      R4, Y+
+          CFI (cfiCond41) R4 SameValue
+          CFI (cfiCond41) CFA_Y Y+3
+          CFI (cfiBlock42) CFA_Y Y+1
+          CFI (cfiBlock42) R4 SameValue
+        LD      R5, Y+
+          CFI (cfiCond41) R5 SameValue
+          CFI (cfiCond41) CFA_Y Y+2
+          CFI (cfiBlock42) CFA_Y Y+0
+          CFI (cfiBlock42) R5 SameValue
+        RET
+          CFI EndBlock cfiCond41
+          CFI EndBlock cfiBlock42
+          CFI EndBlock cfiPicker43
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine10:
+          CFI Block cfiCond44 Using cfiCommon0
+          CFI Function ??setMemAddr
+          CFI Conditional ??CrossCallReturnLabel_20
+          CFI CFA_SP SP+4
+          CFI Block cfiCond45 Using cfiCommon0
+          CFI (cfiCond45) Function ??scheduleCmdWriteHour
+          CFI (cfiCond45) Conditional ??CrossCallReturnLabel_21
+          CFI (cfiCond45) R24 Frame(CFA_Y, -5)
+          CFI (cfiCond45) R26 Frame(CFA_Y, -4)
+          CFI (cfiCond45) R27 Frame(CFA_Y, -3)
+          CFI (cfiCond45) R4 Frame(CFA_Y, -2)
+          CFI (cfiCond45) R5 Frame(CFA_Y, -1)
+          CFI (cfiCond45) CFA_SP SP+4
+          CFI (cfiCond45) CFA_Y Y+5
+          CFI Block cfiPicker46 Using cfiCommon1
+          CFI (cfiPicker46) NoFunction
+          CFI (cfiPicker46) Picker
+        RCALL   ?Subroutine25
+??CrossCallReturnLabel_74:
+        LD      R16, Z
+        LDD     R17, Z+1
+        LDD     R18, Z+2
+        LDD     R19, Z+3
+        RJMP    ?Subroutine29
+          CFI EndBlock cfiCond44
+          CFI EndBlock cfiCond45
+          CFI EndBlock cfiPicker46
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine25:
+          CFI Block cfiCond47 Using cfiCommon0
+          CFI Function ??setMemAddr
+          CFI Conditional ??CrossCallReturnLabel_74, ??CrossCallReturnLabel_20
+          CFI CFA_SP SP+6
+          CFI Block cfiCond48 Using cfiCommon0
+          CFI (cfiCond48) Function ??scheduleCmdWriteHour
+          CFI (cfiCond48) Conditional ??CrossCallReturnLabel_74, ??CrossCallReturnLabel_21
+          CFI (cfiCond48) R24 Frame(CFA_Y, -5)
+          CFI (cfiCond48) R26 Frame(CFA_Y, -4)
+          CFI (cfiCond48) R27 Frame(CFA_Y, -3)
+          CFI (cfiCond48) R4 Frame(CFA_Y, -2)
+          CFI (cfiCond48) R5 Frame(CFA_Y, -1)
+          CFI (cfiCond48) CFA_SP SP+6
+          CFI (cfiCond48) CFA_Y Y+5
+          CFI Block cfiCond49 Using cfiCommon0
+          CFI (cfiCond49) Function ??scheduleCmdWriteHour
+          CFI (cfiCond49) Conditional ??CrossCallReturnLabel_75, ??CrossCallReturnLabel_71
+          CFI (cfiCond49) R24 Frame(CFA_Y, -5)
+          CFI (cfiCond49) R26 Frame(CFA_Y, -4)
+          CFI (cfiCond49) R27 Frame(CFA_Y, -3)
+          CFI (cfiCond49) R4 Frame(CFA_Y, -2)
+          CFI (cfiCond49) R5 Frame(CFA_Y, -1)
+          CFI (cfiCond49) CFA_SP SP+6
+          CFI (cfiCond49) CFA_Y Y+5
+          CFI Block cfiCond50 Using cfiCommon0
+          CFI (cfiCond50) Function ??populateValueBufferHour
+          CFI (cfiCond50) Conditional ??CrossCallReturnLabel_75, ??CrossCallReturnLabel_72
+          CFI (cfiCond50) R24 Frame(CFA_Y, -3)
+          CFI (cfiCond50) R26 Frame(CFA_Y, -2)
+          CFI (cfiCond50) R27 Frame(CFA_Y, -1)
+          CFI (cfiCond50) CFA_SP SP+6
+          CFI (cfiCond50) CFA_Y Y+3
+          CFI Block cfiCond51 Using cfiCommon0
+          CFI (cfiCond51) Function ??processMemOperation
+          CFI (cfiCond51) Conditional ??CrossCallReturnLabel_75, ??CrossCallReturnLabel_70
+          CFI (cfiCond51) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond51) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond51) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond51) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond51) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond51) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond51) CFA_SP SP+6
+          CFI (cfiCond51) CFA_Y Y+6
+          CFI Block cfiPicker52 Using cfiCommon1
+          CFI (cfiPicker52) NoFunction
+          CFI (cfiPicker52) Picker
+        LDI     R20, 3
+          CFI EndBlock cfiCond47
+          CFI EndBlock cfiCond48
+          CFI EndBlock cfiCond49
+          CFI EndBlock cfiCond50
+          CFI EndBlock cfiCond51
+          CFI EndBlock cfiPicker52
+        REQUIRE ??Subroutine33_0
+        ;               // Fall through to label ??Subroutine33_0
+
+        RSEG CODE:CODE:NOROOT(1)
+??Subroutine33_0:
+          CFI Block cfiCond53 Using cfiCommon0
+          CFI Function ??setMemAddr
+          CFI Conditional ??CrossCallReturnLabel_73, ??CrossCallReturnLabel_28
+          CFI CFA_SP SP+6
+          CFI Block cfiCond54 Using cfiCommon0
+          CFI (cfiCond54) Function ??processMemOperation
+          CFI (cfiCond54) Conditional ??CrossCallReturnLabel_73, ??CrossCallReturnLabel_29
+          CFI (cfiCond54) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond54) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond54) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond54) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond54) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond54) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond54) CFA_SP SP+6
+          CFI (cfiCond54) CFA_Y Y+6
+          CFI Block cfiCond55 Using cfiCommon0
+          CFI (cfiCond55) Function ??setMemAddr
+          CFI (cfiCond55) Conditional ??CrossCallReturnLabel_74, ??CrossCallReturnLabel_20
+          CFI (cfiCond55) CFA_SP SP+6
+          CFI Block cfiCond56 Using cfiCommon0
+          CFI (cfiCond56) Function ??scheduleCmdWriteHour
+          CFI (cfiCond56) Conditional ??CrossCallReturnLabel_74, ??CrossCallReturnLabel_21
+          CFI (cfiCond56) R24 Frame(CFA_Y, -5)
+          CFI (cfiCond56) R26 Frame(CFA_Y, -4)
+          CFI (cfiCond56) R27 Frame(CFA_Y, -3)
+          CFI (cfiCond56) R4 Frame(CFA_Y, -2)
+          CFI (cfiCond56) R5 Frame(CFA_Y, -1)
+          CFI (cfiCond56) CFA_SP SP+6
+          CFI (cfiCond56) CFA_Y Y+5
+          CFI Block cfiCond57 Using cfiCommon0
+          CFI (cfiCond57) Function ??scheduleCmdWriteHour
+          CFI (cfiCond57) Conditional ??CrossCallReturnLabel_75, ??CrossCallReturnLabel_71
+          CFI (cfiCond57) R24 Frame(CFA_Y, -5)
+          CFI (cfiCond57) R26 Frame(CFA_Y, -4)
+          CFI (cfiCond57) R27 Frame(CFA_Y, -3)
+          CFI (cfiCond57) R4 Frame(CFA_Y, -2)
+          CFI (cfiCond57) R5 Frame(CFA_Y, -1)
+          CFI (cfiCond57) CFA_SP SP+6
+          CFI (cfiCond57) CFA_Y Y+5
+          CFI Block cfiCond58 Using cfiCommon0
+          CFI (cfiCond58) Function ??populateValueBufferHour
+          CFI (cfiCond58) Conditional ??CrossCallReturnLabel_75, ??CrossCallReturnLabel_72
+          CFI (cfiCond58) R24 Frame(CFA_Y, -3)
+          CFI (cfiCond58) R26 Frame(CFA_Y, -2)
+          CFI (cfiCond58) R27 Frame(CFA_Y, -1)
+          CFI (cfiCond58) CFA_SP SP+6
+          CFI (cfiCond58) CFA_Y Y+3
+          CFI Block cfiCond59 Using cfiCommon0
+          CFI (cfiCond59) Function ??processMemOperation
+          CFI (cfiCond59) Conditional ??CrossCallReturnLabel_75, ??CrossCallReturnLabel_70
+          CFI (cfiCond59) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond59) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond59) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond59) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond59) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond59) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond59) CFA_SP SP+6
+          CFI (cfiCond59) CFA_Y Y+6
+          CFI Block cfiPicker60 Using cfiCommon1
+          CFI (cfiPicker60) NoFunction
+          CFI (cfiPicker60) Picker
+        LDI     R21, 0
+        LDI     R22, 0
+        LDI     R23, 0
+        RET
+          CFI EndBlock cfiCond53
+          CFI EndBlock cfiCond54
+          CFI EndBlock cfiCond55
+          CFI EndBlock cfiCond56
+          CFI EndBlock cfiCond57
+          CFI EndBlock cfiCond58
+          CFI EndBlock cfiCond59
+          CFI EndBlock cfiPicker60
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine9:
+          CFI Block cfiCond61 Using cfiCommon0
+          CFI Function ??scheduleCmdWriteHour
+          CFI Conditional ??CrossCallReturnLabel_18
+          CFI R24 Frame(CFA_Y, -5)
+          CFI R26 Frame(CFA_Y, -4)
+          CFI R27 Frame(CFA_Y, -3)
+          CFI R4 Frame(CFA_Y, -2)
+          CFI R5 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+5
+          CFI Block cfiCond62 Using cfiCommon0
+          CFI (cfiCond62) Function ??scheduleCmdWriteHour
+          CFI (cfiCond62) Conditional ??CrossCallReturnLabel_19
+          CFI (cfiCond62) R24 Frame(CFA_Y, -5)
+          CFI (cfiCond62) R26 Frame(CFA_Y, -4)
+          CFI (cfiCond62) R27 Frame(CFA_Y, -3)
+          CFI (cfiCond62) R4 Frame(CFA_Y, -2)
+          CFI (cfiCond62) R5 Frame(CFA_Y, -1)
+          CFI (cfiCond62) CFA_SP SP+4
+          CFI (cfiCond62) CFA_Y Y+5
+          CFI Block cfiPicker63 Using cfiCommon1
+          CFI (cfiPicker63) NoFunction
+          CFI (cfiPicker63) Picker
+        LDI     R30, (??counterValue & 0xff) & 0xFF
+        LDD     R0, Z+4
+        LDD     R1, Z+5
+        LDI     R16, 31
+        AND     R1, R16
+        RCALL   ?Subroutine26
+??CrossCallReturnLabel_52:
+        MOV     R3, R19
+        RJMP    ?Subroutine23
+          CFI EndBlock cfiCond61
+          CFI EndBlock cfiCond62
+          CFI EndBlock cfiPicker63
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine26:
+          CFI Block cfiCond64 Using cfiCommon0
+          CFI Function ??scheduleCmdWriteHour
+          CFI Conditional ??CrossCallReturnLabel_51
+          CFI R24 Frame(CFA_Y, -5)
+          CFI R26 Frame(CFA_Y, -4)
+          CFI R27 Frame(CFA_Y, -3)
+          CFI R4 Frame(CFA_Y, -2)
+          CFI R5 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+5
+          CFI Block cfiCond65 Using cfiCommon0
+          CFI (cfiCond65) Function ??scheduleCmdWriteHour
+          CFI (cfiCond65) Conditional ??CrossCallReturnLabel_52, ??CrossCallReturnLabel_18
+          CFI (cfiCond65) R24 Frame(CFA_Y, -5)
+          CFI (cfiCond65) R26 Frame(CFA_Y, -4)
+          CFI (cfiCond65) R27 Frame(CFA_Y, -3)
+          CFI (cfiCond65) R4 Frame(CFA_Y, -2)
+          CFI (cfiCond65) R5 Frame(CFA_Y, -1)
+          CFI (cfiCond65) CFA_SP SP+6
+          CFI (cfiCond65) CFA_Y Y+5
+          CFI Block cfiCond66 Using cfiCommon0
+          CFI (cfiCond66) Function ??scheduleCmdWriteHour
+          CFI (cfiCond66) Conditional ??CrossCallReturnLabel_52, ??CrossCallReturnLabel_19
+          CFI (cfiCond66) R24 Frame(CFA_Y, -5)
+          CFI (cfiCond66) R26 Frame(CFA_Y, -4)
+          CFI (cfiCond66) R27 Frame(CFA_Y, -3)
+          CFI (cfiCond66) R4 Frame(CFA_Y, -2)
+          CFI (cfiCond66) R5 Frame(CFA_Y, -1)
+          CFI (cfiCond66) CFA_SP SP+6
+          CFI (cfiCond66) CFA_Y Y+5
+          CFI Block cfiPicker67 Using cfiCommon1
+          CFI (cfiPicker67) NoFunction
+          CFI (cfiPicker67) Picker
+        LDD     R16, Z+6
+        LDD     R17, Z+7
+        LDI     R19, 0
+        LDI     R20, 13
+        CALL    ?L_SHL_L03
+        OR      R1, R17
+        RET
+          CFI EndBlock cfiCond64
+          CFI EndBlock cfiCond65
+          CFI EndBlock cfiCond66
+          CFI EndBlock cfiPicker67
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine23:
+          CFI Block cfiCond68 Using cfiCommon0
+          CFI Function ??scheduleCmdWriteHour
+          CFI Conditional ??CrossCallReturnLabel_48
+          CFI R24 Frame(CFA_Y, -5)
+          CFI R26 Frame(CFA_Y, -4)
+          CFI R27 Frame(CFA_Y, -3)
+          CFI R4 Frame(CFA_Y, -2)
+          CFI R5 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+5
+          CFI Block cfiCond69 Using cfiCommon0
+          CFI (cfiCond69) Function ??scheduleCmdWriteHour
+          CFI (cfiCond69) Conditional ??CrossCallReturnLabel_18
+          CFI (cfiCond69) R24 Frame(CFA_Y, -5)
+          CFI (cfiCond69) R26 Frame(CFA_Y, -4)
+          CFI (cfiCond69) R27 Frame(CFA_Y, -3)
+          CFI (cfiCond69) R4 Frame(CFA_Y, -2)
+          CFI (cfiCond69) R5 Frame(CFA_Y, -1)
+          CFI (cfiCond69) CFA_SP SP+4
+          CFI (cfiCond69) CFA_Y Y+5
+          CFI Block cfiCond70 Using cfiCommon0
+          CFI (cfiCond70) Function ??scheduleCmdWriteHour
+          CFI (cfiCond70) Conditional ??CrossCallReturnLabel_19
+          CFI (cfiCond70) R24 Frame(CFA_Y, -5)
+          CFI (cfiCond70) R26 Frame(CFA_Y, -4)
+          CFI (cfiCond70) R27 Frame(CFA_Y, -3)
+          CFI (cfiCond70) R4 Frame(CFA_Y, -2)
+          CFI (cfiCond70) R5 Frame(CFA_Y, -1)
+          CFI (cfiCond70) CFA_SP SP+4
+          CFI (cfiCond70) CFA_Y Y+5
+          CFI Block cfiPicker71 Using cfiCommon1
+          CFI (cfiPicker71) NoFunction
+          CFI (cfiPicker71) Picker
+        LDI     R16, 3
+        AND     R3, R16
+        MOV     R19, R22
+        LSL     R19
+        LSL     R19
+        OR      R3, R19
+        RET
+          CFI EndBlock cfiCond68
+          CFI EndBlock cfiCond69
+          CFI EndBlock cfiCond70
+          CFI EndBlock cfiPicker71
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine8:
+          CFI Block cfiCond72 Using cfiCommon0
+          CFI Function ??scheduleCmdWriteHour
+          CFI Conditional ??CrossCallReturnLabel_71
+          CFI R24 Frame(CFA_Y, -5)
+          CFI R26 Frame(CFA_Y, -4)
+          CFI R27 Frame(CFA_Y, -3)
+          CFI R4 Frame(CFA_Y, -2)
+          CFI R5 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+5
+          CFI Block cfiCond73 Using cfiCommon0
+          CFI (cfiCond73) Function ??populateValueBufferHour
+          CFI (cfiCond73) Conditional ??CrossCallReturnLabel_72
+          CFI (cfiCond73) R24 Frame(CFA_Y, -3)
+          CFI (cfiCond73) R26 Frame(CFA_Y, -2)
+          CFI (cfiCond73) R27 Frame(CFA_Y, -1)
+          CFI (cfiCond73) CFA_SP SP+4
+          CFI (cfiCond73) CFA_Y Y+3
+          CFI Block cfiPicker74 Using cfiCommon1
+          CFI (cfiPicker74) NoFunction
+          CFI (cfiPicker74) Picker
+        LDI     R26, LOW(??counterValue)
+        LDI     R27, (??counterValue) >> 8
+          CFI EndBlock cfiCond72
+          CFI EndBlock cfiCond73
+          CFI EndBlock cfiPicker74
+        REQUIRE ?Subroutine29
+        REQUIRE ??Subroutine34_0
+        ;               // Fall through to label ??Subroutine34_0
+
+        RSEG CODE:CODE:NOROOT(1)
+??Subroutine34_0:
+          CFI Block cfiCond75 Using cfiCommon0
+          CFI Function ??processMemOperation
+          CFI Conditional ??CrossCallReturnLabel_70
+          CFI R26 Frame(CFA_Y, -6)
+          CFI R27 Frame(CFA_Y, -5)
+          CFI R4 Frame(CFA_Y, -4)
+          CFI R5 Frame(CFA_Y, -3)
+          CFI R6 Frame(CFA_Y, -2)
+          CFI R7 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+6
+          CFI Block cfiCond76 Using cfiCommon0
+          CFI (cfiCond76) Function ??scheduleCmdWriteHour
+          CFI (cfiCond76) Conditional ??CrossCallReturnLabel_71
+          CFI (cfiCond76) R24 Frame(CFA_Y, -5)
+          CFI (cfiCond76) R26 Frame(CFA_Y, -4)
+          CFI (cfiCond76) R27 Frame(CFA_Y, -3)
+          CFI (cfiCond76) R4 Frame(CFA_Y, -2)
+          CFI (cfiCond76) R5 Frame(CFA_Y, -1)
+          CFI (cfiCond76) CFA_SP SP+4
+          CFI (cfiCond76) CFA_Y Y+5
+          CFI Block cfiCond77 Using cfiCommon0
+          CFI (cfiCond77) Function ??populateValueBufferHour
+          CFI (cfiCond77) Conditional ??CrossCallReturnLabel_72
+          CFI (cfiCond77) R24 Frame(CFA_Y, -3)
+          CFI (cfiCond77) R26 Frame(CFA_Y, -2)
+          CFI (cfiCond77) R27 Frame(CFA_Y, -1)
+          CFI (cfiCond77) CFA_SP SP+4
+          CFI (cfiCond77) CFA_Y Y+3
+          CFI Block cfiPicker78 Using cfiCommon1
+          CFI (cfiPicker78) NoFunction
+          CFI (cfiPicker78) Picker
+        RCALL   ?Subroutine25
+??CrossCallReturnLabel_75:
+        LD      R16, X+
+        LD      R17, X+
+        LD      R18, X+
+        LD      R19, X
+        SBIW    R27:R26, 3
+          CFI EndBlock cfiCond75
+          CFI EndBlock cfiCond76
+          CFI EndBlock cfiCond77
+          CFI EndBlock cfiPicker78
+        REQUIRE ?Subroutine29
+        ;               // Fall through to label ?Subroutine29
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine29:
+          CFI Block cfiCond79 Using cfiCommon0
+          CFI Function ??setMemAddr
+          CFI Conditional ??CrossCallReturnLabel_68
+          CFI CFA_SP SP+4
+          CFI Block cfiCond80 Using cfiCommon0
+          CFI (cfiCond80) Function ??setMemAddr
+          CFI (cfiCond80) Conditional ??CrossCallReturnLabel_20
+          CFI (cfiCond80) CFA_SP SP+4
+          CFI Block cfiCond81 Using cfiCommon0
+          CFI (cfiCond81) Function ??scheduleCmdWriteHour
+          CFI (cfiCond81) Conditional ??CrossCallReturnLabel_21
+          CFI (cfiCond81) R24 Frame(CFA_Y, -5)
+          CFI (cfiCond81) R26 Frame(CFA_Y, -4)
+          CFI (cfiCond81) R27 Frame(CFA_Y, -3)
+          CFI (cfiCond81) R4 Frame(CFA_Y, -2)
+          CFI (cfiCond81) R5 Frame(CFA_Y, -1)
+          CFI (cfiCond81) CFA_SP SP+4
+          CFI (cfiCond81) CFA_Y Y+5
+          CFI Block cfiCond82 Using cfiCommon0
+          CFI (cfiCond82) Function ??scheduleCmdWriteHour
+          CFI (cfiCond82) Conditional ??CrossCallReturnLabel_71
+          CFI (cfiCond82) R24 Frame(CFA_Y, -5)
+          CFI (cfiCond82) R26 Frame(CFA_Y, -4)
+          CFI (cfiCond82) R27 Frame(CFA_Y, -3)
+          CFI (cfiCond82) R4 Frame(CFA_Y, -2)
+          CFI (cfiCond82) R5 Frame(CFA_Y, -1)
+          CFI (cfiCond82) CFA_SP SP+4
+          CFI (cfiCond82) CFA_Y Y+5
+          CFI Block cfiCond83 Using cfiCommon0
+          CFI (cfiCond83) Function ??populateValueBufferHour
+          CFI (cfiCond83) Conditional ??CrossCallReturnLabel_72
+          CFI (cfiCond83) R24 Frame(CFA_Y, -3)
+          CFI (cfiCond83) R26 Frame(CFA_Y, -2)
+          CFI (cfiCond83) R27 Frame(CFA_Y, -1)
+          CFI (cfiCond83) CFA_SP SP+4
+          CFI (cfiCond83) CFA_Y Y+3
+          CFI Block cfiCond84 Using cfiCommon0
+          CFI (cfiCond84) Function ??processMemOperation
+          CFI (cfiCond84) Conditional ??CrossCallReturnLabel_70
+          CFI (cfiCond84) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond84) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond84) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond84) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond84) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond84) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond84) CFA_SP SP+4
+          CFI (cfiCond84) CFA_Y Y+6
+          CFI Block cfiCond85 Using cfiCommon0
+          CFI (cfiCond85) Function ??scheduleCmdWriteDay
+          CFI (cfiCond85) Conditional ??CrossCallReturnLabel_69
+          CFI (cfiCond85) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond85) CFA_SP SP+4
+          CFI (cfiCond85) CFA_Y Y+1
+          CFI Block cfiCond86 Using cfiCommon0
+          CFI (cfiCond86) Function ??setMemAddr
+          CFI (cfiCond86) Conditional ??CrossCallReturnLabel_28
+          CFI (cfiCond86) CFA_SP SP+4
+          CFI Block cfiCond87 Using cfiCommon0
+          CFI (cfiCond87) Function ??processMemOperation
+          CFI (cfiCond87) Conditional ??CrossCallReturnLabel_29
+          CFI (cfiCond87) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond87) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond87) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond87) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond87) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond87) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond87) CFA_SP SP+4
+          CFI (cfiCond87) CFA_Y Y+6
+          CFI Block cfiPicker88 Using cfiCommon1
+          CFI (cfiPicker88) NoFunction
+          CFI (cfiPicker88) Picker
+        JMP     ?UL_DIVMOD_L03
+          CFI EndBlock cfiCond79
+          CFI EndBlock cfiCond80
+          CFI EndBlock cfiCond81
+          CFI EndBlock cfiCond82
+          CFI EndBlock cfiCond83
+          CFI EndBlock cfiCond84
+          CFI EndBlock cfiCond85
+          CFI EndBlock cfiCond86
+          CFI EndBlock cfiCond87
+          CFI EndBlock cfiPicker88
+//  280 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  281   void scheduleCmdWriteDay()
+??scheduleCmdWriteDay:
+          CFI Block cfiBlock89 Using cfiCommon0
+          CFI Function ??scheduleCmdWriteDay
+//  282   {
+        ST      -Y, R24
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+//  283     TMem25DataSegmentDay* curDataSegment = (TMem25DataSegmentDay*)(operationBuffer.data);
+//  284 
+//  285     unsigned char subPeriodNum = counterValue.periodNumDay % MEMAT25_VALPERSEGMENT_DAY;
+        RCALL   ?Subroutine11
+??CrossCallReturnLabel_24:
+        LDD     R24, Z+10
+        ANDI    R24, 0x01
+//  286     operationBuffer.periodNum = (counterValue.periodNumDay / MEMAT25_VALPERSEGMENT_DAY) * MEMAT25_VALPERSEGMENT_DAY;
+        LDD     R20, Z+10
+        LDD     R21, Z+11
+        LDD     R22, Z+12
+        ANDI    R20, 0xFE
+        LDI     R23, 0
+        STD     Z+44, R20
+        STD     Z+45, R21
+        STD     Z+46, R22
+//  287 
+//  288     unsigned char noSensorMinTmp = (unsigned char)minof<unsigned short>(1440, counterValue.NoSensorSecDay / 60);
+        LDD     R16, Z+18
+        LDD     R17, Z+19
+        LDD     R18, Z+20
+        LDD     R19, Z+21
+        LDI     R20, 60
+        LDI     R21, 0
+        LDI     R22, 0
+        RCALL   ?Subroutine29
+??CrossCallReturnLabel_69:
+        MOV     R19, R17
+        CPI     R16, 160
+        SBCI    R19, 5
+        BRCS    ??scheduleCmdWriteDay_1
+        LDI     R16, 160
+//  289     switch(subPeriodNum)
+??scheduleCmdWriteDay_1:
+        TST     R24
+        BREQ    ??scheduleCmdWriteDay_2
+        DEC     R24
+        BREQ    ??scheduleCmdWriteDay_3
+        RJMP    ??scheduleCmdWriteDay_4
+//  290     {
+//  291       case 0:
+//  292         curDataSegment->InCnt1 = counterValue.InCntDay;
+??scheduleCmdWriteDay_2:
+        LDI     R30, LOW(??counterValue)
+        LDD     R18, Z+14
+        LDD     R19, Z+15
+        STD     Z+32, R18
+        STD     Z+33, R19
+//  293         curDataSegment->OutCnt1 = counterValue.OutCntDay;
+        LDD     R18, Z+16
+        LDD     R19, Z+17
+        STD     Z+34, R18
+        STD     Z+35, R19
+//  294         curDataSegment->NoSensorMin1 = noSensorMinTmp;
+        LDI     R17, 0
+        STD     Z+36, R16
+        STD     Z+37, R17
+//  295         break;
+        RJMP    ??scheduleCmdWriteDay_4
+//  296 
+//  297       case 1:
+//  298         curDataSegment->InCnt2 = counterValue.InCntDay;
+??scheduleCmdWriteDay_3:
+        LDI     R30, LOW(??counterValue)
+        LDD     R18, Z+14
+        LDD     R19, Z+15
+        STD     Z+38, R18
+        STD     Z+39, R19
+//  299         curDataSegment->OutCnt2 = counterValue.OutCntDay;
+        LDD     R18, Z+16
+        LDD     R19, Z+17
+        STD     Z+40, R18
+        STD     Z+41, R19
+//  300         curDataSegment->NoSensorMin2 = noSensorMinTmp;
+        LDI     R17, 0
+        STD     Z+42, R16
+        STD     Z+43, R17
+//  301         break;
+//  302     }
+//  303   }
+??scheduleCmdWriteDay_4:
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock89
+//  304 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  305   void scheduleCmdWriteMonth()
+??scheduleCmdWriteMonth:
+          CFI Block cfiBlock90 Using cfiCommon0
+          CFI Function ??scheduleCmdWriteMonth
+//  306   {
+//  307     TMem25DataSegmentMonth* curDataSegment = (TMem25DataSegmentMonth*)(operationBuffer.data);
+//  308 
+//  309     unsigned char subPeriodNum = counterValue.periodNumMonth % MEMAT25_VALPERSEGMENT_MONTH;
+//  310     operationBuffer.periodNum = (counterValue.periodNumMonth / MEMAT25_VALPERSEGMENT_MONTH) * MEMAT25_VALPERSEGMENT_MONTH;
+        RCALL   ?Subroutine11
+??CrossCallReturnLabel_25:
+        LDI     R18, 0
+        LDD     R20, Z+22
+        LDD     R21, Z+23
+        ANDI    R20, 0xFE
+        STD     Z+44, R20
+        STD     Z+45, R21
+        STD     Z+46, R18
+//  311 
+//  312     switch(subPeriodNum)
+        LDD     R16, Z+22
+        ANDI    R16, 0x01
+        BREQ    ??scheduleCmdWriteMonth_1
+        DEC     R16
+        BREQ    ??scheduleCmdWriteMonth_2
+        RET
+//  313     {
+//  314       case 0:
+//  315         curDataSegment->InCnt1H = (unsigned char)(counterValue.InCntMonth >> 16);
+??scheduleCmdWriteMonth_1:
+        LDD     R16, Z+26
+        STD     Z+32, R16
+//  316         curDataSegment->InCnt1L = (unsigned short)counterValue.InCntMonth;
+        LDD     R16, Z+24
+        LDD     R17, Z+25
+        STD     Z+33, R16
+        STD     Z+34, R17
+//  317         curDataSegment->OutCnt1H = (unsigned char)(counterValue.OutCntMonth >> 16);
+        LDD     R16, Z+30
+        STD     Z+35, R16
+//  318         curDataSegment->OutCnt1L = (unsigned short)counterValue.OutCntMonth;
+        LDD     R16, Z+28
+        LDD     R17, Z+29
+        STD     Z+36, R16
+        STD     Z+37, R17
+//  319         break;
+        RET
+//  320 
+//  321       case 1:
+//  322         curDataSegment->InCnt2H = (unsigned char)(counterValue.InCntMonth >> 16);
+??scheduleCmdWriteMonth_2:
+        LDD     R16, Z+26
+        STD     Z+38, R16
+//  323         curDataSegment->InCnt2L = (unsigned short)counterValue.InCntMonth;
+        LDD     R16, Z+24
+        LDD     R17, Z+25
+        STD     Z+39, R16
+        STD     Z+40, R17
+//  324         curDataSegment->OutCnt2H = (unsigned char)(counterValue.OutCntMonth >> 16);
+        LDD     R16, Z+30
+        STD     Z+41, R16
+//  325         curDataSegment->OutCnt2L = (unsigned short)counterValue.OutCntMonth;
+        LDD     R16, Z+28
+        LDD     R17, Z+29
+        STD     Z+42, R16
+        STD     Z+43, R17
+//  326         break;
+//  327     }
+//  328   }
+        RET
+          CFI EndBlock cfiBlock90
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine11:
+          CFI Block cfiCond91 Using cfiCommon0
+          CFI Function ??startMemOperation
+          CFI Conditional ??CrossCallReturnLabel_22
+          CFI CFA_SP SP+4
+          CFI Block cfiCond92 Using cfiCommon0
+          CFI (cfiCond92) Function ??setMemAddr
+          CFI (cfiCond92) Conditional ??CrossCallReturnLabel_23
+          CFI (cfiCond92) CFA_SP SP+4
+          CFI Block cfiCond93 Using cfiCommon0
+          CFI (cfiCond93) Function ??scheduleCmdWriteDay
+          CFI (cfiCond93) Conditional ??CrossCallReturnLabel_24
+          CFI (cfiCond93) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond93) CFA_SP SP+4
+          CFI (cfiCond93) CFA_Y Y+1
+          CFI Block cfiCond94 Using cfiCommon0
+          CFI (cfiCond94) Function ??scheduleCmdWriteMonth
+          CFI (cfiCond94) Conditional ??CrossCallReturnLabel_25
+          CFI (cfiCond94) CFA_SP SP+4
+          CFI Block cfiCond95 Using cfiCommon0
+          CFI (cfiCond95) Function ??populateValueBufferDay
+          CFI (cfiCond95) Conditional ??CrossCallReturnLabel_26
+          CFI (cfiCond95) CFA_SP SP+4
+          CFI Block cfiCond96 Using cfiCommon0
+          CFI (cfiCond96) Function ??populateValueBufferMonth
+          CFI (cfiCond96) Conditional ??CrossCallReturnLabel_27
+          CFI (cfiCond96) CFA_SP SP+4
+          CFI Block cfiPicker97 Using cfiCommon1
+          CFI (cfiPicker97) NoFunction
+          CFI (cfiPicker97) Picker
+        LDI     R30, LOW(??counterValue)
+        LDI     R31, (??counterValue) >> 8
+        RET
+          CFI EndBlock cfiCond91
+          CFI EndBlock cfiCond92
+          CFI EndBlock cfiCond93
+          CFI EndBlock cfiCond94
+          CFI EndBlock cfiCond95
+          CFI EndBlock cfiCond96
+          CFI EndBlock cfiPicker97
+//  329 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  330   void scheduleCmdWrite()
+??scheduleCmdWrite:
+          CFI Block cfiBlock98 Using cfiCommon0
+          CFI Function ??scheduleCmdWrite
+//  331   {
+        FUNCALL ??scheduleCmdWrite, ??scheduleCmd
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??scheduleCmdWrite, ??setMemAddr
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??scheduleCmdWrite, ??scheduleCmdWriteHour
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??scheduleCmdWrite, ??scheduleCmdWriteDay
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??scheduleCmdWrite, ??scheduleCmdWriteMonth
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??scheduleCmdWrite, ??calcCRC8
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??scheduleCmdWrite, ??maskOperationBuffer
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??scheduleCmdWrite, memcpy
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R27
+          CFI R27 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        ST      -Y, R26
+          CFI R26 Frame(CFA_Y, -2)
+          CFI CFA_Y Y+2
+//  332     scheduleCmd(MEMAT25CMD_WRITE, 2 + EXT_MEMORY_SEGMENTSIZE);
+        LDI     R17, 18
+        LDI     R16, 2
+        RCALL   ?Subroutine13
+//  333     setMemAddr();
+//  334 
+//  335     switch (dataSegment)
+??CrossCallReturnLabel_31:
+        LDI     R26, LOW((??counterValue + 47))
+        LDI     R27, HIGH((??counterValue + 47))
+        RCALL   ?Subroutine19
+??CrossCallReturnLabel_40:
+        BREQ    ??scheduleCmdWrite_1
+        DEC     R16
+        BREQ    ??scheduleCmdWrite_2
+        DEC     R16
+        BREQ    ??scheduleCmdWrite_3
+        RJMP    ??scheduleCmdWrite_4
+//  336     {
+//  337       case MemAT25DataSegment_Hour:
+//  338         scheduleCmdWriteHour();
+??scheduleCmdWrite_1:
+        RCALL   ??scheduleCmdWriteHour
+//  339         break;
+        RJMP    ??scheduleCmdWrite_4
+//  340 
+//  341       case MemAT25DataSegment_Day:
+//  342         scheduleCmdWriteDay();
+??scheduleCmdWrite_2:
+        RCALL   ??scheduleCmdWriteDay
+//  343         break;
+        RJMP    ??scheduleCmdWrite_4
+//  344 
+//  345       case MemAT25DataSegment_Month:
+//  346         scheduleCmdWriteMonth();
+??scheduleCmdWrite_3:
+        RCALL   ??scheduleCmdWriteMonth
+//  347         break;
+//  348     }
+//  349 
+//  350     operationBuffer.crc8 = CRC8::calcCRC8((unsigned char*)(&operationBuffer), sizeof(TMem25DataSegmentStd) - sizeof(CRC8::TCRC8));
+??scheduleCmdWrite_4:
+        RCALL   ?Subroutine18
+??CrossCallReturnLabel_39:
+        ST      X, R16
+        SBIW    R27:R26, 15
+//  351     maskOperationBuffer();
+        RCALL   ??maskOperationBuffer
+//  352 
+//  353     memcpy(CommProtocol_SPI_Master::bufferSPI.buffer + 3, &operationBuffer, sizeof(TMem25DataSegmentStd));
+        LDI     R20, 16
+        LDI     R21, 0
+        MOVW    R19:R18, R27:R26
+        LDI     R16, LOW((??bufferSPI + 6))
+        LDI     R17, HIGH((??bufferSPI + 6))
+        CALL    memcpy
+//  354   }
+        LD      R26, Y+
+          CFI R26 SameValue
+          CFI CFA_Y Y+1
+        LD      R27, Y+
+          CFI R27 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock98
+//  355 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  356   void populateValueBufferHour()
+??populateValueBufferHour:
+          CFI Block cfiBlock99 Using cfiCommon0
+          CFI Function ??populateValueBufferHour
+//  357   {
+        ST      -Y, R27
+          CFI R27 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        ST      -Y, R26
+          CFI R26 Frame(CFA_Y, -2)
+          CFI CFA_Y Y+2
+        ST      -Y, R24
+          CFI R24 Frame(CFA_Y, -3)
+          CFI CFA_Y Y+3
+//  358     TMem25DataSegmentHour* curDataSegment = (TMem25DataSegmentHour*)(operationBuffer.data);
+//  359 
+//  360     unsigned char subPeriodNum = counterValue.periodNumHour % MEMAT25_VALPERSEGMENT_HOUR;
+//  361 
+//  362     unsigned short noSensorMinTmp = 0;
+        LDI     R24, 0
+//  363     switch(subPeriodNum)
+        RCALL   ?Subroutine8
+??CrossCallReturnLabel_72:
+        TST     R20
+        BREQ    ??populateValueBufferHour_1
+        DEC     R20
+        BREQ    ??populateValueBufferHour_2
+        DEC     R20
+        BREQ    ??populateValueBufferHour_3
+        RJMP    ??populateValueBufferHour_4
+//  364     {
+//  365       case 0:
+//  366         counterValue.InCntHour = curDataSegment->InCnt1;
+??populateValueBufferHour_1:
+        MOVW    R31:R30, R27:R26
+        LDD     R16, Z+32
+        LDD     R1, Z+33
+        LDD     R18, Z+34
+        LDD     R3, Z+35
+        RJMP    ??populateValueBufferHour_5
+//  367         counterValue.OutCntHour = curDataSegment->OutCnt1;
+//  368         noSensorMinTmp = curDataSegment->NoSensorMin1;
+//  369         break;
+//  370 
+//  371       case 1:
+//  372         counterValue.InCntHour = curDataSegment->InCnt2;
+??populateValueBufferHour_2:
+        MOVW    R31:R30, R27:R26
+        LDD     R16, Z+36
+        LDD     R1, Z+37
+        LDD     R18, Z+38
+        LDD     R3, Z+39
+        RJMP    ??populateValueBufferHour_5
+//  373         counterValue.OutCntHour = curDataSegment->OutCnt2;
+//  374         noSensorMinTmp = curDataSegment->NoSensorMin2;
+//  375         break;
+//  376 
+//  377       case 2:
+//  378         counterValue.InCntHour = curDataSegment->InCnt3;
+??populateValueBufferHour_3:
+        MOVW    R31:R30, R27:R26
+        LDD     R16, Z+40
+        LDD     R1, Z+41
+        LDD     R18, Z+42
+        LDD     R3, Z+43
+??populateValueBufferHour_5:
+        MOV     R17, R1
+        ANDI    R17, 0x1F
+        STD     Z+4, R16
+        STD     Z+5, R17
+//  379         counterValue.OutCntHour = curDataSegment->OutCnt3;
+        LDI     R20, 13
+        MOV     R17, R1
+        MOV     R19, R3
+        CALL    ?UL_SHR_L03
+        ANDI    R17, 0x1F
+        STD     Z+6, R16
+        STD     Z+7, R17
+//  380         noSensorMinTmp = curDataSegment->NoSensorMin3;
+        MOV     R0, R3
+        LSR     R0
+        LSR     R0
+        MOV     R24, R0
+//  381         break;
+//  382     }
+//  383 
+//  384     counterValue.NoSensorSecHour = noSensorMinTmp * 60;
+??populateValueBufferHour_4:
+        LDI     R16, 60
+        MUL     R16, R24
+        MOVW    R31:R30, R27:R26
+        STD     Z+8, R0
+        STD     Z+9, R1
+//  385   }
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+2
+        LD      R26, Y+
+          CFI R26 SameValue
+          CFI CFA_Y Y+1
+        LD      R27, Y+
+          CFI R27 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock99
+//  386 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  387   void populateValueBufferDay()
+??populateValueBufferDay:
+          CFI Block cfiBlock100 Using cfiCommon0
+          CFI Function ??populateValueBufferDay
+//  388   {
+//  389     TMem25DataSegmentDay* curDataSegment = (TMem25DataSegmentDay*)(operationBuffer.data);
+//  390 
+//  391     unsigned char subPeriodNum = counterValue.periodNumDay % MEMAT25_VALPERSEGMENT_DAY;
+//  392 
+//  393     unsigned long noSensorMinTmp = 0;
+        LDI     R20, 0
+        LDI     R21, 0
+//  394     switch(subPeriodNum)
+        RCALL   ?Subroutine11
+??CrossCallReturnLabel_26:
+        LDD     R16, Z+10
+        ANDI    R16, 0x01
+        BREQ    ??populateValueBufferDay_1
+        DEC     R16
+        BREQ    ??populateValueBufferDay_2
+        RJMP    ??populateValueBufferDay_3
+//  395     {
+//  396       case 0:
+//  397         counterValue.InCntDay = curDataSegment->InCnt1;
+??populateValueBufferDay_1:
+        LDD     R16, Z+32
+        LDD     R17, Z+33
+        STD     Z+14, R16
+        STD     Z+15, R17
+//  398         counterValue.OutCntDay = curDataSegment->OutCnt1;
+        LDD     R16, Z+34
+        LDD     R17, Z+35
+        STD     Z+16, R16
+        STD     Z+17, R17
+//  399         noSensorMinTmp = curDataSegment->NoSensorMin1;
+        LDD     R20, Z+36
+        LDD     R21, Z+37
+//  400         break;
+        RJMP    ??populateValueBufferDay_3
+//  401 
+//  402       case 1:
+//  403         counterValue.InCntDay = curDataSegment->InCnt2;
+??populateValueBufferDay_2:
+        LDD     R16, Z+38
+        LDD     R17, Z+39
+        STD     Z+14, R16
+        STD     Z+15, R17
+//  404         counterValue.OutCntDay = curDataSegment->OutCnt2;
+        LDD     R16, Z+40
+        LDD     R17, Z+41
+        STD     Z+16, R16
+        STD     Z+17, R17
+//  405         noSensorMinTmp = curDataSegment->NoSensorMin2;
+        LDD     R20, Z+42
+        LDD     R21, Z+43
+//  406         break;
+//  407     }
+//  408 
+//  409     counterValue.NoSensorSecDay = noSensorMinTmp * 60;
+??populateValueBufferDay_3:
+        LDI     R16, 60
+        LDI     R19, 0
+        MUL     R16, R21
+        MOV     R17, R0
+        MOV     R18, R1
+        MUL     R16, R20
+        ADD     R17, R1
+        ADC     R18, R19
+        ADC     R19, R19
+        STD     Z+18, R0
+        STD     Z+19, R17
+        STD     Z+20, R18
+        STD     Z+21, R19
+//  410   }
+        RET
+          CFI EndBlock cfiBlock100
+//  411 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  412   void populateValueBufferMonth()
+??populateValueBufferMonth:
+          CFI Block cfiBlock101 Using cfiCommon0
+          CFI Function ??populateValueBufferMonth
+//  413   {
+//  414     TMem25DataSegmentMonth* curDataSegment = (TMem25DataSegmentMonth*)(operationBuffer.data);
+//  415 
+//  416     unsigned char subPeriodNum = counterValue.periodNumMonth % MEMAT25_VALPERSEGMENT_MONTH;
+//  417 
+//  418     switch(subPeriodNum)
+        RCALL   ?Subroutine11
+??CrossCallReturnLabel_27:
+        LDD     R16, Z+22
+        ANDI    R16, 0x01
+        BREQ    ??populateValueBufferMonth_1
+        DEC     R16
+        BREQ    ??populateValueBufferMonth_2
+        RET
+//  419     {
+//  420       case 0:
+//  421         counterValue.InCntMonth = (((unsigned long)(curDataSegment->InCnt1H)) << 16) + curDataSegment->InCnt1L;
+??populateValueBufferMonth_1:
+        LDD     R22, Z+32
+        LDI     R23, 0
+        LDD     R16, Z+33
+        LDD     R17, Z+34
+        RCALL   ?Subroutine22
+//  422         counterValue.OutCntMonth = (((unsigned long)(curDataSegment->OutCnt1H)) << 16) + curDataSegment->OutCnt1L;
+??CrossCallReturnLabel_46:
+        LDD     R22, Z+35
+        LDD     R16, Z+36
+        LDD     R17, Z+37
+        RJMP    ??populateValueBufferMonth_3
+//  423         break;
+//  424 
+//  425       case 1:
+//  426         counterValue.InCntMonth = (((unsigned long)(curDataSegment->InCnt2H)) << 16) + curDataSegment->InCnt2L;
+??populateValueBufferMonth_2:
+        LDD     R22, Z+38
+        LDI     R23, 0
+        LDD     R16, Z+39
+        LDD     R17, Z+40
+        RCALL   ?Subroutine22
+//  427         counterValue.OutCntMonth = (((unsigned long)(curDataSegment->OutCnt2H)) << 16) + curDataSegment->OutCnt2L;
+??CrossCallReturnLabel_47:
+        LDD     R22, Z+41
+        LDD     R16, Z+42
+        LDD     R17, Z+43
+??populateValueBufferMonth_3:
+        STD     Z+28, R16
+        STD     Z+29, R17
+        STD     Z+30, R22
+        STD     Z+31, R23
+//  428         break;
+//  429     }
+//  430   }
+        RET
+          CFI EndBlock cfiBlock101
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine22:
+          CFI Block cfiCond102 Using cfiCommon0
+          CFI Function ??populateValueBufferMonth
+          CFI Conditional ??CrossCallReturnLabel_46
+          CFI CFA_SP SP+4
+          CFI Block cfiCond103 Using cfiCommon0
+          CFI (cfiCond103) Function ??populateValueBufferMonth
+          CFI (cfiCond103) Conditional ??CrossCallReturnLabel_47
+          CFI (cfiCond103) CFA_SP SP+4
+          CFI Block cfiPicker104 Using cfiCommon1
+          CFI (cfiPicker104) NoFunction
+          CFI (cfiPicker104) Picker
+        STD     Z+24, R16
+        STD     Z+25, R17
+        STD     Z+26, R22
+        STD     Z+27, R23
+        RET
+          CFI EndBlock cfiCond102
+          CFI EndBlock cfiCond103
+          CFI EndBlock cfiPicker104
+//  431 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  432   void populateValueBuffer()
+??populateValueBuffer:
+          CFI Block cfiBlock105 Using cfiCommon0
+          CFI Function ??populateValueBuffer
+//  433   {
+//  434     switch (dataSegment)
+        FUNCALL ??populateValueBuffer, ??populateValueBufferHour
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??populateValueBuffer, ??populateValueBufferDay
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??populateValueBuffer, ??populateValueBufferMonth
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine19
+??CrossCallReturnLabel_41:
+        BREQ    ??populateValueBuffer_1
+        DEC     R16
+        BREQ    ??populateValueBuffer_2
+        DEC     R16
+        BREQ    ??populateValueBuffer_3
+        RET
+//  435     {
+//  436       case MemAT25DataSegment_Hour:
+//  437         populateValueBufferHour();
+??populateValueBuffer_1:
+        RJMP    ??populateValueBufferHour
+//  438         break;
+//  439 
+//  440       case MemAT25DataSegment_Day:
+//  441         populateValueBufferDay();
+??populateValueBuffer_2:
+        RJMP    ??populateValueBufferDay
+//  442         break;
+//  443 
+//  444       case MemAT25DataSegment_Month:
+//  445         populateValueBufferMonth();
+??populateValueBuffer_3:
+        RJMP    ??populateValueBufferMonth
+          CFI EndBlock cfiBlock105
+//  446         break;
+//  447     }
+//  448   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine19:
+          CFI Block cfiCond106 Using cfiCommon0
+          CFI Function ??scheduleCmdWrite
+          CFI Conditional ??CrossCallReturnLabel_40
+          CFI R26 Frame(CFA_Y, -2)
+          CFI R27 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+2
+          CFI Block cfiCond107 Using cfiCommon0
+          CFI (cfiCond107) Function ??populateValueBuffer
+          CFI (cfiCond107) Conditional ??CrossCallReturnLabel_41
+          CFI (cfiCond107) CFA_SP SP+4
+          CFI Block cfiCond108 Using cfiCommon0
+          CFI (cfiCond108) Function ??processMemOperation
+          CFI (cfiCond108) Conditional ??CrossCallReturnLabel_42
+          CFI (cfiCond108) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond108) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond108) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond108) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond108) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond108) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond108) CFA_SP SP+4
+          CFI (cfiCond108) CFA_Y Y+6
+          CFI Block cfiPicker109 Using cfiCommon1
+          CFI (cfiPicker109) NoFunction
+          CFI (cfiPicker109) Picker
+        LDS     R16, (??counterValue + 49)
+        TST     R16
+        RET
+          CFI EndBlock cfiCond106
+          CFI EndBlock cfiCond107
+          CFI EndBlock cfiCond108
+          CFI EndBlock cfiPicker109
+//  449 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  450   void processMemOperation()
+??processMemOperation:
+          CFI Block cfiBlock110 Using cfiCommon0
+          CFI Function ??processMemOperation
+//  451   {
+        FUNCALL ??processMemOperation, ??scheduleCmd
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processMemOperation, ??setTimer
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processMemOperation, ??scheduleCmd
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processMemOperation, ??scheduleCmd
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processMemOperation, ??scheduleCmd
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processMemOperation, ??scheduleCmdWrite
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processMemOperation, ??scheduleCmd
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processMemOperation, ??setMemAddr
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processMemOperation, memcpy
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processMemOperation, ??maskOperationBuffer
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processMemOperation, ??calcCRC8
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processMemOperation, memset
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processMemOperation, ??populateValueBufferMonth
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processMemOperation, ??populateValueBufferDay
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processMemOperation, ??populateValueBufferHour
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processMemOperation, memcmp
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R7
+          CFI R7 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        ST      -Y, R6
+          CFI R6 Frame(CFA_Y, -2)
+          CFI CFA_Y Y+2
+        RCALL   ?Subroutine17
+          CFI R26 Frame(CFA_Y, -6)
+          CFI R27 Frame(CFA_Y, -5)
+          CFI R4 Frame(CFA_Y, -4)
+          CFI R5 Frame(CFA_Y, -3)
+          CFI CFA_Y Y+6
+??CrossCallReturnLabel_37:
+        REQUIRE ?Register_R4_is_cg_reg
+        REQUIRE ?Register_R5_is_cg_reg
+        REQUIRE ?Register_R6_is_cg_reg
+        REQUIRE ?Register_R7_is_cg_reg
+//  452     if (resourceStatus == MemAT25ResourceStatus_Scheduled)
+        LDI     R26, LOW(??counterValue)
+        LDI     R27, (??counterValue) >> 8
+        RCALL   ?Subroutine3
+??CrossCallReturnLabel_4:
+        CPI     R16, 2
+        BRNE    ??processMemOperation_1
+//  453     {
+//  454       switch (CommProtocol_SPI_Master::bufferSPI.status)
+        LDS     R17, (??bufferSPI + 1)
+        TST     R17
+        BREQ    ??processMemOperation_2
+        SUBI    R17, 3
+        BRNE    ??processMemOperation_1
+//  455       {
+//  456         case CommProtocol_SPI_Master::SPIBufferStatus_None:
+//  457         case CommProtocol_SPI_Master::SPIBufferStatus_Processed:
+//  458           protocolStatus = MemAT25ProtocolStatus_ReadData;
+??processMemOperation_2:
+        LDI     R16, 4
+        STS     (??counterValue + 52), R16
+//  459           scheduleCmdRDSR();
+        RCALL   ?Subroutine1
+//  460           inProcess();
+??CrossCallReturnLabel_55:
+        RCALL   ?Subroutine2
+//  461           break;
+??CrossCallReturnLabel_1:
+        RJMP    ??processMemOperation_3
+//  462       }
+//  463     }
+//  464 
+//  465     bool validationResult;
+//  466 
+//  467     if (resourceStatus == MemAT25ResourceStatus_InProcess)
+??processMemOperation_1:
+        CPI     R16, 3
+        BREQ    $+2+2
+        RJMP    ??CrossCallReturnLabel_13
+//  468     {
+//  469       if (CommProtocol_SPI_Master::bufferSPI.status == CommProtocol_SPI_Master::SPIBufferStatus_Processed)
+??processMemOperation_3:
+        LDS     R16, (??bufferSPI + 1)
+        CPI     R16, 3
+        BREQ    $+2+2
+        RJMP    ??CrossCallReturnLabel_13
+//  470       {
+//  471         if (CommProtocol_SPI_Master::bufferSPI.result == CommProtocol_SPI_Master::SPIResultCodeType_OK)
+        LDS     R16, (??bufferSPI + 2)
+        TST     R16
+        BREQ    $+2+2
+        RJMP    ??processMemOperation_4
+//  472         {
+//  473           if ((waitingStatus == MemAT25WaitingStatus_Schedule) ||
+//  474               ((waitingStatus == MemAT25WaitingStatus_Wait) &&
+//  475                ((CommProtocol_SPI_Master::bufferSPI.buffer[1] & MEMAT25STATUS_FLG_BUSY) != 0x00)))
+        LDS     R16, (??counterValue + 53)
+        CPI     R16, 1
+        BREQ    ??processMemOperation_5
+        CPI     R16, 2
+        BRNE    ??processMemOperation_6
+        LDI     R30, LOW(??bufferSPI)
+        LDI     R31, (??bufferSPI) >> 8
+        LDD     R16, Z+4
+        SBRS    R16, 0
+        RJMP    ??processMemOperation_6
+//  476           {
+//  477             scheduleCmdRDSR();
+??processMemOperation_5:
+        RCALL   ?Subroutine1
+//  478             return;
+??CrossCallReturnLabel_56:
+        RJMP    ??CrossCallReturnLabel_13
+//  479           }
+//  480 
+//  481           waitingStatus = MemAT25WaitingStatus_None;
+??processMemOperation_6:
+        LDI     R16, 0
+        STS     (??counterValue + 53), R16
+//  482 
+//  483           switch (protocolStatus)
+        LDS     R16, (??counterValue + 52)
+        TST     R16
+        BREQ    ??processMemOperation_7
+        DEC     R16
+        BREQ    ??processMemOperation_8
+        DEC     R16
+        BREQ    ??processMemOperation_7
+        DEC     R16
+        BREQ    ??processMemOperation_9
+        DEC     R16
+        BREQ    ??processMemOperation_10
+        DEC     R16
+        BREQ    ??processMemOperation_11
+        DEC     R16
+        BREQ    ??processMemOperation_10
+        DEC     R16
+        BRNE    $+2+2
+        RJMP    ??processMemOperation_12
+        RJMP    ??CrossCallReturnLabel_13
+//  484           {
+//  485             case MemAT25ProtocolStatus_WriteStatusRegWREN:
+//  486             case MemAT25ProtocolStatus_WriteDataWREN:
+//  487               scheduleCmdWREN();
+??processMemOperation_7:
+        LDI     R17, 0
+        LDI     R16, 6
+        RCALL   ?Subroutine28
+//  488               protocolStatus++;
+??CrossCallReturnLabel_58:
+        RJMP    ??CrossCallReturnLabel_30
+//  489               break;
+//  490 
+//  491             case MemAT25ProtocolStatus_WriteStatusReg:
+//  492               scheduleCmdWRSR();
+??processMemOperation_8:
+        RCALL   ?Subroutine0
+//  493               protocolStatus = MemAT25ProtocolStatus_WriteDataWREN;
+??CrossCallReturnLabel_0:
+        RJMP    ??processMemOperation_13
+//  494               waitingStatus = MemAT25WaitingStatus_Schedule;
+//  495               break;
+//  496 
+//  497             case MemAT25ProtocolStatus_WriteData:
+//  498               scheduleCmdWrite();
+??processMemOperation_9:
+        RCALL   ??scheduleCmdWrite
+//  499               protocolStatus = MemAT25ProtocolStatus_ReadDataValidate;
+        LDI     R16, 6
+??processMemOperation_13:
+        STS     (??counterValue + 52), R16
+//  500               waitingStatus = MemAT25WaitingStatus_Schedule;
+        LDI     R16, 1
+        STS     (??counterValue + 53), R16
+//  501               break;
+        RJMP    ??CrossCallReturnLabel_13
+//  502 
+//  503             case MemAT25ProtocolStatus_ReadData:
+//  504             case MemAT25ProtocolStatus_ReadDataValidate:
+//  505               scheduleCmdRead();
+??processMemOperation_10:
+        LDI     R17, 18
+        LDI     R16, 3
+        RCALL   ?Subroutine13
+//  506               protocolStatus++;
+??CrossCallReturnLabel_30:
+        MOVW    R31:R30, R27:R26
+        LDD     R16, Z+52
+        INC     R16
+        STD     Z+52, R16
+//  507               break;
+        RJMP    ??CrossCallReturnLabel_13
+//  508 
+//  509             case MemAT25ProtocolStatus_ParseData:
+//  510               memcpy(&operationBuffer, CommProtocol_SPI_Master::bufferSPI.buffer + 3, sizeof(TMem25DataSegmentStd));
+??processMemOperation_11:
+        RCALL   ?Subroutine21
+??CrossCallReturnLabel_44:
+        LDI     R16, ((??counterValue + 32) & 0xff) & 0xFF
+        LDI     R17, (((??counterValue + 32) >> 8) & 0xff) & 0xFF
+        CALL    memcpy
+//  511               maskOperationBuffer();
+        RCALL   ??maskOperationBuffer
+//  512 
+//  513               validationResult = true;
+//  514               if (operationBuffer.crc8 != CRC8::calcCRC8((unsigned char*)(&operationBuffer), sizeof(TMem25DataSegmentStd) - sizeof(CRC8::TCRC8)))
+        RCALL   ?Subroutine18
+??CrossCallReturnLabel_38:
+        MOV     R0, R16
+        MOVW    R31:R30, R27:R26
+        LDD     R16, Z+44
+        LDD     R17, Z+45
+        LDD     R18, Z+46
+        LDD     R19, Z+47
+        MOV     R20, R19
+        CP      R20, R0
+        BRNE    ??processMemOperation_14
+//  515               {
+//  516                 validationResult = false;
+//  517               }
+//  518               else
+//  519               {
+//  520                 switch (dataSegment)
+        LDD     R20, Z+49
+        TST     R20
+        BREQ    ??processMemOperation_15
+        DEC     R20
+        BREQ    ??processMemOperation_16
+        DEC     R20
+        BREQ    ??processMemOperation_17
+        RJMP    ??processMemOperation_18
+//  521                 {
+//  522                   case MemAT25DataSegment_Hour:
+//  523                     if ((operationBuffer.periodNum / MEMAT25_VALPERSEGMENT_HOUR) != (counterValue.periodNumHour / MEMAT25_VALPERSEGMENT_HOUR))
+??processMemOperation_15:
+        LDI     R19, 0
+        LDI     R20, 3
+        RCALL   ?Subroutine12
+??CrossCallReturnLabel_29:
+        MOVW    R5:R4, R17:R16
+        MOVW    R7:R6, R19:R18
+        RCALL   ??Subroutine34_0
+??CrossCallReturnLabel_70:
+        CP      R4, R16
+        CPC     R5, R17
+        CPC     R6, R18
+        CPC     R7, R19
+        RJMP    ??processMemOperation_19
+//  524                     {
+//  525                       validationResult = false;
+//  526                     }
+//  527                     break;
+//  528 
+//  529                   case MemAT25DataSegment_Day:
+//  530                     if ((operationBuffer.periodNum / MEMAT25_VALPERSEGMENT_DAY) != (counterValue.periodNumDay / MEMAT25_VALPERSEGMENT_DAY))
+??processMemOperation_16:
+        RCALL   ?Subroutine16
+??CrossCallReturnLabel_34:
+        LDD     R20, Z+10
+        LDD     R21, Z+11
+        LDD     R22, Z+12
+        LDD     R23, Z+13
+        LSR     R23
+        ROR     R22
+        ROR     R21
+        ROR     R20
+        CP      R16, R20
+        CPC     R17, R21
+        CPC     R18, R22
+        CPC     R19, R23
+??processMemOperation_19:
+        BREQ    ??processMemOperation_18
+        RJMP    ??processMemOperation_14
+//  531                     {
+//  532                       validationResult = false;
+//  533                     }
+//  534                     break;
+//  535 
+//  536                   case MemAT25DataSegment_Month:
+//  537                     if ((operationBuffer.periodNum / MEMAT25_VALPERSEGMENT_MONTH) != (counterValue.periodNumMonth / MEMAT25_VALPERSEGMENT_MONTH))
+??processMemOperation_17:
+        RCALL   ?Subroutine16
+//  538                     {
+//  539                       validationResult = false;
+//  540                     }
+//  541                     break;
+//  542                 }
+//  543               }
+??CrossCallReturnLabel_35:
+        LDD     R20, Z+22
+        LDD     R21, Z+23
+        LSR     R21
+        ROR     R20
+        CP      R16, R20
+        CPC     R17, R21
+        SBCI    R18, 0
+        SBCI    R19, 0
+        BREQ    ??processMemOperation_18
+//  544 
+//  545               if (!validationResult)
+//  546               {
+//  547                 memset(&operationBuffer, 0x00, sizeof(TMem25DataSegmentStd));
+??processMemOperation_14:
+        LDI     R20, 16
+        LDI     R21, 0
+        LDI     R18, 0
+        LDI     R19, 0
+        ADIW    R27:R26, 32
+        MOVW    R17:R16, R27:R26
+        CALL    memset
+//  548               }
+//  549 
+//  550               if (operation == MemAT25Operation_ReadValue)
+??processMemOperation_18:
+        LDS     R16, (??counterValue + 48)
+        TST     R16
+        BRNE    ??processMemOperation_20
+//  551               {
+//  552                 populateValueBuffer();
+        RCALL   ?Subroutine19
+??CrossCallReturnLabel_42:
+        BREQ    ??processMemOperation_21
+        DEC     R16
+        BREQ    ??processMemOperation_22
+        DEC     R16
+        BRNE    ??processMemOperation_23
+        RCALL   ??populateValueBufferMonth
+        RJMP    ??processMemOperation_23
+??processMemOperation_22:
+        RCALL   ??populateValueBufferDay
+        RJMP    ??processMemOperation_23
+??processMemOperation_21:
+        RCALL   ??populateValueBufferHour
+//  553                 operationResult = MemAT25COperationResult_OK;
+??processMemOperation_23:
+        LDI     R16, 1
+        STS     (??counterValue + 50), R16
+//  554                 finish();
+        RJMP    ??processMemOperation_24
+//  555               }
+//  556               else
+//  557               {
+//  558                 protocolStatus = MemAT25ProtocolStatus_WriteStatusRegWREN;
+??processMemOperation_20:
+        LDI     R16, 0
+        STS     (??counterValue + 52), R16
+        RJMP    ??CrossCallReturnLabel_13
+//  559               }
+//  560               break;
+//  561 
+//  562             case MemAT25ProtocolStatus_ValidateData:
+//  563               operationResult = (memcmp(&operationBuffer, CommProtocol_SPI_Master::bufferSPI.buffer + 3, sizeof(TMem25DataSegmentStd)) == 0) ? MemAT25COperationResult_OK : MemAT25COperationResult_Error;
+??processMemOperation_12:
+        RCALL   ?Subroutine21
+??CrossCallReturnLabel_45:
+        ADIW    R27:R26, 32
+        MOVW    R17:R16, R27:R26
+        CALL    memcmp
+        OR      R16, R17
+        BRNE    ??processMemOperation_4
+        LDI     R16, 1
+        RJMP    ??processMemOperation_25
+//  564               finish();
+//  565               break;
+//  566           }
+//  567         }
+//  568         else
+//  569         {
+//  570           operationResult = MemAT25COperationResult_Error;
+??processMemOperation_4:
+        LDI     R16, 2
+??processMemOperation_25:
+        STS     (??counterValue + 50), R16
+//  571           finish();
+        LDI     R16, 1
+??processMemOperation_24:
+        RCALL   ?Subroutine6
+//  572         }
+//  573       }
+//  574     }
+??CrossCallReturnLabel_13:
+        RCALL   ?Subroutine20
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI CFA_Y Y+2
+??CrossCallReturnLabel_43:
+        LD      R6, Y+
+          CFI R6 SameValue
+          CFI CFA_Y Y+1
+        LD      R7, Y+
+          CFI R7 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock110
+//  575   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine21:
+          CFI Block cfiCond111 Using cfiCommon0
+          CFI Function ??processMemOperation
+          CFI Conditional ??CrossCallReturnLabel_44
+          CFI R26 Frame(CFA_Y, -6)
+          CFI R27 Frame(CFA_Y, -5)
+          CFI R4 Frame(CFA_Y, -4)
+          CFI R5 Frame(CFA_Y, -3)
+          CFI R6 Frame(CFA_Y, -2)
+          CFI R7 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+6
+          CFI Block cfiCond112 Using cfiCommon0
+          CFI (cfiCond112) Function ??processMemOperation
+          CFI (cfiCond112) Conditional ??CrossCallReturnLabel_45
+          CFI (cfiCond112) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond112) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond112) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond112) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond112) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond112) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond112) CFA_SP SP+4
+          CFI (cfiCond112) CFA_Y Y+6
+          CFI Block cfiPicker113 Using cfiCommon1
+          CFI (cfiPicker113) NoFunction
+          CFI (cfiPicker113) Picker
+        LDI     R20, 16
+        LDI     R21, 0
+        LDI     R18, ((??bufferSPI + 6) & 0xff) & 0xFF
+        LDI     R19, (((??bufferSPI + 6) >> 8) & 0xff) & 0xFF
+        RET
+          CFI EndBlock cfiCond111
+          CFI EndBlock cfiCond112
+          CFI EndBlock cfiPicker113
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine18:
+          CFI Block cfiCond114 Using cfiCommon0
+          CFI Function ??scheduleCmdWrite
+          CFI Conditional ??CrossCallReturnLabel_39
+          CFI R26 Frame(CFA_Y, -2)
+          CFI R27 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+2
+          CFI Block cfiCond115 Using cfiCommon0
+          CFI (cfiCond115) Function ??processMemOperation
+          CFI (cfiCond115) Conditional ??CrossCallReturnLabel_38
+          CFI (cfiCond115) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond115) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond115) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond115) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond115) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond115) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond115) CFA_SP SP+4
+          CFI (cfiCond115) CFA_Y Y+6
+          CFI Block cfiPicker116 Using cfiCommon1
+          CFI (cfiPicker116) NoFunction
+          CFI (cfiPicker116) Picker
+        LDI     R18, 15
+        LDI     R16, LOW((??counterValue + 32))
+        LDI     R17, HIGH((??counterValue + 32))
+        JMP     ??calcCRC8
+          CFI EndBlock cfiCond114
+          CFI EndBlock cfiCond115
+          CFI EndBlock cfiPicker116
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine17:
+          CFI Block cfiCond117 Using cfiCommon0
+          CFI Function ??scheduleCmdWriteHour
+          CFI Conditional ??CrossCallReturnLabel_36
+          CFI CFA_SP SP+4
+          CFI Block cfiCond118 Using cfiCommon0
+          CFI (cfiCond118) Function ??processMemOperation
+          CFI (cfiCond118) Conditional ??CrossCallReturnLabel_37
+          CFI (cfiCond118) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond118) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond118) CFA_SP SP+4
+          CFI (cfiCond118) CFA_Y Y+2
+          CFI Block cfiPicker119 Using cfiCommon1
+          CFI (cfiPicker119) NoFunction
+          CFI (cfiPicker119) Picker
+        ST      -Y, R5
+          CFI (cfiCond117) R5 Frame(CFA_Y, -1)
+          CFI (cfiCond117) CFA_Y Y+1
+          CFI (cfiCond118) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond118) CFA_Y Y+3
+          CFI (cfiPicker119) R5 Frame(CFA_Y, -1)
+        ST      -Y, R4
+          CFI (cfiCond117) R4 Frame(CFA_Y, -2)
+          CFI (cfiCond117) CFA_Y Y+2
+          CFI (cfiCond118) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond118) CFA_Y Y+4
+          CFI (cfiPicker119) R4 Frame(CFA_Y, -2)
+        ST      -Y, R27
+          CFI (cfiCond117) R27 Frame(CFA_Y, -3)
+          CFI (cfiCond117) CFA_Y Y+3
+          CFI (cfiCond118) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond118) CFA_Y Y+5
+          CFI (cfiPicker119) R27 Frame(CFA_Y, -3)
+        ST      -Y, R26
+          CFI (cfiCond117) R26 Frame(CFA_Y, -4)
+          CFI (cfiCond117) CFA_Y Y+4
+          CFI (cfiCond118) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond118) CFA_Y Y+6
+          CFI (cfiPicker119) R26 Frame(CFA_Y, -4)
+        RET
+          CFI EndBlock cfiCond117
+          CFI EndBlock cfiCond118
+          CFI EndBlock cfiPicker119
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine16:
+          CFI Block cfiCond120 Using cfiCommon0
+          CFI Function ??processMemOperation
+          CFI Conditional ??CrossCallReturnLabel_34
+          CFI R26 Frame(CFA_Y, -6)
+          CFI R27 Frame(CFA_Y, -5)
+          CFI R4 Frame(CFA_Y, -4)
+          CFI R5 Frame(CFA_Y, -3)
+          CFI R6 Frame(CFA_Y, -2)
+          CFI R7 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+6
+          CFI Block cfiCond121 Using cfiCommon0
+          CFI (cfiCond121) Function ??processMemOperation
+          CFI (cfiCond121) Conditional ??CrossCallReturnLabel_35
+          CFI (cfiCond121) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond121) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond121) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond121) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond121) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond121) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond121) CFA_SP SP+4
+          CFI (cfiCond121) CFA_Y Y+6
+          CFI Block cfiPicker122 Using cfiCommon1
+          CFI (cfiPicker122) NoFunction
+          CFI (cfiPicker122) Picker
+        RCALL   ?Subroutine30
+??CrossCallReturnLabel_62:
+        ANDI    R18, 0x7F
+        LDI     R19, 0
+        RET
+          CFI EndBlock cfiCond120
+          CFI EndBlock cfiCond121
+          CFI EndBlock cfiPicker122
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine30:
+          CFI Block cfiCond123 Using cfiCommon0
+          CFI Function ??setMemAddr
+          CFI Conditional ??CrossCallReturnLabel_61
+          CFI CFA_SP SP+4
+          CFI Block cfiCond124 Using cfiCommon0
+          CFI (cfiCond124) Function ??processMemOperation
+          CFI (cfiCond124) Conditional ??CrossCallReturnLabel_62, ??CrossCallReturnLabel_34
+          CFI (cfiCond124) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond124) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond124) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond124) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond124) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond124) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond124) CFA_SP SP+6
+          CFI (cfiCond124) CFA_Y Y+6
+          CFI Block cfiCond125 Using cfiCommon0
+          CFI (cfiCond125) Function ??processMemOperation
+          CFI (cfiCond125) Conditional ??CrossCallReturnLabel_62, ??CrossCallReturnLabel_35
+          CFI (cfiCond125) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond125) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond125) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond125) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond125) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond125) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond125) CFA_SP SP+6
+          CFI (cfiCond125) CFA_Y Y+6
+          CFI Block cfiPicker126 Using cfiCommon1
+          CFI (cfiPicker126) NoFunction
+          CFI (cfiPicker126) Picker
+        LSR     R19
+        ROR     R18
+        ROR     R17
+        ROR     R16
+        RET
+          CFI EndBlock cfiCond123
+          CFI EndBlock cfiCond124
+          CFI EndBlock cfiCond125
+          CFI EndBlock cfiPicker126
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine13:
+          CFI Block cfiCond127 Using cfiCommon0
+          CFI Function ??scheduleCmdWrite
+          CFI Conditional ??CrossCallReturnLabel_31
+          CFI R26 Frame(CFA_Y, -2)
+          CFI R27 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+2
+          CFI Block cfiCond128 Using cfiCommon0
+          CFI (cfiCond128) Function ??processMemOperation
+          CFI (cfiCond128) Conditional ??CrossCallReturnLabel_30
+          CFI (cfiCond128) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond128) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond128) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond128) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond128) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond128) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond128) CFA_SP SP+4
+          CFI (cfiCond128) CFA_Y Y+6
+          CFI Block cfiPicker129 Using cfiCommon1
+          CFI (cfiPicker129) NoFunction
+          CFI (cfiPicker129) Picker
+        RCALL   ?Subroutine28
+??CrossCallReturnLabel_57:
+        RJMP    ??setMemAddr
+          CFI EndBlock cfiCond127
+          CFI EndBlock cfiCond128
+          CFI EndBlock cfiPicker129
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine12:
+          CFI Block cfiCond130 Using cfiCommon0
+          CFI Function ??setMemAddr
+          CFI Conditional ??CrossCallReturnLabel_28
+          CFI CFA_SP SP+4
+          CFI Block cfiCond131 Using cfiCommon0
+          CFI (cfiCond131) Function ??processMemOperation
+          CFI (cfiCond131) Conditional ??CrossCallReturnLabel_29
+          CFI (cfiCond131) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond131) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond131) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond131) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond131) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond131) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond131) CFA_SP SP+4
+          CFI (cfiCond131) CFA_Y Y+6
+          CFI Block cfiPicker132 Using cfiCommon1
+          CFI (cfiPicker132) NoFunction
+          CFI (cfiPicker132) Picker
+        RCALL   ??Subroutine33_0
+??CrossCallReturnLabel_73:
+        RJMP    ?Subroutine29
+          CFI EndBlock cfiCond130
+          CFI EndBlock cfiCond131
+          CFI EndBlock cfiPicker132
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine1:
+          CFI Block cfiCond133 Using cfiCommon0
+          CFI Function ??processMemOperation
+          CFI Conditional ??CrossCallReturnLabel_55
+          CFI R26 Frame(CFA_Y, -6)
+          CFI R27 Frame(CFA_Y, -5)
+          CFI R4 Frame(CFA_Y, -4)
+          CFI R5 Frame(CFA_Y, -3)
+          CFI R6 Frame(CFA_Y, -2)
+          CFI R7 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+6
+          CFI Block cfiCond134 Using cfiCommon0
+          CFI (cfiCond134) Function ??processMemOperation
+          CFI (cfiCond134) Conditional ??CrossCallReturnLabel_56
+          CFI (cfiCond134) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond134) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond134) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond134) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond134) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond134) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond134) CFA_SP SP+4
+          CFI (cfiCond134) CFA_Y Y+6
+          CFI Block cfiPicker135 Using cfiCommon1
+          CFI (cfiPicker135) NoFunction
+          CFI (cfiPicker135) Picker
+        RCALL   ?Subroutine24
+          CFI EndBlock cfiCond133
+          CFI EndBlock cfiCond134
+          CFI EndBlock cfiPicker135
+??CrossCallReturnLabel_50:
+        REQUIRE ?Subroutine28
+        ;               // Fall through to label ?Subroutine28
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine28:
+          CFI Block cfiCond136 Using cfiCommon0
+          CFI Function ??scheduleCmdWRSR
+          CFI Conditional ??CrossCallReturnLabel_60
+          CFI CFA_SP SP+4
+          CFI Block cfiCond137 Using cfiCommon0
+          CFI (cfiCond137) Function ??processMemOperation
+          CFI (cfiCond137) Conditional ??CrossCallReturnLabel_60, ??CrossCallReturnLabel_0
+          CFI (cfiCond137) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond137) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond137) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond137) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond137) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond137) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond137) CFA_SP SP+6
+          CFI (cfiCond137) CFA_Y Y+6
+          CFI Block cfiCond138 Using cfiCommon0
+          CFI (cfiCond138) Function ??scheduleCmdRead
+          CFI (cfiCond138) Conditional ??CrossCallReturnLabel_59
+          CFI (cfiCond138) CFA_SP SP+4
+          CFI Block cfiCond139 Using cfiCommon0
+          CFI (cfiCond139) Function ??processMemOperation
+          CFI (cfiCond139) Conditional ??CrossCallReturnLabel_58
+          CFI (cfiCond139) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond139) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond139) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond139) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond139) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond139) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond139) CFA_SP SP+4
+          CFI (cfiCond139) CFA_Y Y+6
+          CFI Block cfiCond140 Using cfiCommon0
+          CFI (cfiCond140) Function ??scheduleCmdWrite
+          CFI (cfiCond140) Conditional ??CrossCallReturnLabel_57, ??CrossCallReturnLabel_31
+          CFI (cfiCond140) R26 Frame(CFA_Y, -2)
+          CFI (cfiCond140) R27 Frame(CFA_Y, -1)
+          CFI (cfiCond140) CFA_SP SP+6
+          CFI (cfiCond140) CFA_Y Y+2
+          CFI Block cfiCond141 Using cfiCommon0
+          CFI (cfiCond141) Function ??processMemOperation
+          CFI (cfiCond141) Conditional ??CrossCallReturnLabel_57, ??CrossCallReturnLabel_30
+          CFI (cfiCond141) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond141) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond141) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond141) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond141) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond141) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond141) CFA_SP SP+6
+          CFI (cfiCond141) CFA_Y Y+6
+          CFI Block cfiCond142 Using cfiCommon0
+          CFI (cfiCond142) Function ??processMemOperation
+          CFI (cfiCond142) Conditional ??CrossCallReturnLabel_55
+          CFI (cfiCond142) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond142) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond142) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond142) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond142) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond142) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond142) CFA_SP SP+4
+          CFI (cfiCond142) CFA_Y Y+6
+          CFI Block cfiCond143 Using cfiCommon0
+          CFI (cfiCond143) Function ??processMemOperation
+          CFI (cfiCond143) Conditional ??CrossCallReturnLabel_56
+          CFI (cfiCond143) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond143) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond143) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond143) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond143) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond143) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond143) CFA_SP SP+4
+          CFI (cfiCond143) CFA_Y Y+6
+          CFI Block cfiPicker144 Using cfiCommon1
+          CFI (cfiPicker144) NoFunction
+          CFI (cfiPicker144) Picker
+        RJMP    ??scheduleCmd
+          CFI EndBlock cfiCond136
+          CFI EndBlock cfiCond137
+          CFI EndBlock cfiCond138
+          CFI EndBlock cfiCond139
+          CFI EndBlock cfiCond140
+          CFI EndBlock cfiCond141
+          CFI EndBlock cfiCond142
+          CFI EndBlock cfiCond143
+          CFI EndBlock cfiPicker144
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine24:
+          CFI Block cfiCond145 Using cfiCommon0
+          CFI Function ??scheduleCmdRDSR
+          CFI Conditional ??CrossCallReturnLabel_49
+          CFI CFA_SP SP+4
+          CFI Block cfiCond146 Using cfiCommon0
+          CFI (cfiCond146) Function ??processMemOperation
+          CFI (cfiCond146) Conditional ??CrossCallReturnLabel_50, ??CrossCallReturnLabel_55
+          CFI (cfiCond146) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond146) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond146) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond146) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond146) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond146) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond146) CFA_SP SP+6
+          CFI (cfiCond146) CFA_Y Y+6
+          CFI Block cfiCond147 Using cfiCommon0
+          CFI (cfiCond147) Function ??processMemOperation
+          CFI (cfiCond147) Conditional ??CrossCallReturnLabel_50, ??CrossCallReturnLabel_56
+          CFI (cfiCond147) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond147) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond147) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond147) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond147) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond147) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond147) CFA_SP SP+6
+          CFI (cfiCond147) CFA_Y Y+6
+          CFI Block cfiPicker148 Using cfiCommon1
+          CFI (cfiPicker148) NoFunction
+          CFI (cfiPicker148) Picker
+        RCALL   ?Subroutine32
+??CrossCallReturnLabel_67:
+        LDI     R16, 5
+        RET
+          CFI EndBlock cfiCond145
+          CFI EndBlock cfiCond146
+          CFI EndBlock cfiCond147
+          CFI EndBlock cfiPicker148
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine32:
+          CFI Block cfiCond149 Using cfiCommon0
+          CFI Function ??scheduleCmdWRSR
+          CFI Conditional ??CrossCallReturnLabel_66
+          CFI CFA_SP SP+4
+          CFI Block cfiCond150 Using cfiCommon0
+          CFI (cfiCond150) Function ??processMemOperation
+          CFI (cfiCond150) Conditional ??CrossCallReturnLabel_66, ??CrossCallReturnLabel_0
+          CFI (cfiCond150) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond150) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond150) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond150) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond150) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond150) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond150) CFA_SP SP+6
+          CFI (cfiCond150) CFA_Y Y+6
+          CFI Block cfiCond151 Using cfiCommon0
+          CFI (cfiCond151) Function ??scheduleCmdRDSR
+          CFI (cfiCond151) Conditional ??CrossCallReturnLabel_67, ??CrossCallReturnLabel_49
+          CFI (cfiCond151) CFA_SP SP+6
+          CFI Block cfiCond152 Using cfiCommon0
+          CFI (cfiCond152) Function ??processMemOperation
+          CFI (cfiCond152) Conditional ??CrossCallReturnLabel_67, ??CrossCallReturnLabel_50, ??CrossCallReturnLabel_55
+          CFI (cfiCond152) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond152) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond152) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond152) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond152) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond152) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond152) CFA_SP SP+8
+          CFI (cfiCond152) CFA_Y Y+6
+          CFI Block cfiCond153 Using cfiCommon0
+          CFI (cfiCond153) Function ??processMemOperation
+          CFI (cfiCond153) Conditional ??CrossCallReturnLabel_67, ??CrossCallReturnLabel_50, ??CrossCallReturnLabel_56
+          CFI (cfiCond153) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond153) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond153) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond153) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond153) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond153) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond153) CFA_SP SP+8
+          CFI (cfiCond153) CFA_Y Y+6
+          CFI Block cfiPicker154 Using cfiCommon1
+          CFI (cfiPicker154) NoFunction
+          CFI (cfiPicker154) Picker
+        LDI     R16, 2
+        STS     (??counterValue + 53), R16
+        LDI     R17, 1
+        RET
+          CFI EndBlock cfiCond149
+          CFI EndBlock cfiCond150
+          CFI EndBlock cfiCond151
+          CFI EndBlock cfiCond152
+          CFI EndBlock cfiCond153
+          CFI EndBlock cfiPicker154
+//  576 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  577   bool blocked()
+??blocked:
+          CFI Block cfiBlock155 Using cfiCommon0
+          CFI Function ??blocked
+//  578   {
+//  579     return resourceStatus == MemAT25ResourceStatus_Blocked;
+        RCALL   ?Subroutine3
+??CrossCallReturnLabel_5:
+        CPI     R16, 4
+        BRNE    ??blocked_1
+        LDI     R16, 1
+        RET
+??blocked_1:
+        LDI     R16, 0
+        RET
+          CFI EndBlock cfiBlock155
+//  580   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine3:
+          CFI Block cfiCond156 Using cfiCommon0
+          CFI Function ??enabled
+          CFI Conditional ??CrossCallReturnLabel_2
+          CFI CFA_SP SP+4
+          CFI Block cfiCond157 Using cfiCommon0
+          CFI (cfiCond157) Function ??ready
+          CFI (cfiCond157) Conditional ??CrossCallReturnLabel_3
+          CFI (cfiCond157) CFA_SP SP+4
+          CFI Block cfiCond158 Using cfiCommon0
+          CFI (cfiCond158) Function ??processMemOperation
+          CFI (cfiCond158) Conditional ??CrossCallReturnLabel_4
+          CFI (cfiCond158) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond158) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond158) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond158) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond158) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond158) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond158) CFA_SP SP+4
+          CFI (cfiCond158) CFA_Y Y+6
+          CFI Block cfiCond159 Using cfiCommon0
+          CFI (cfiCond159) Function ??blocked
+          CFI (cfiCond159) Conditional ??CrossCallReturnLabel_5
+          CFI (cfiCond159) CFA_SP SP+4
+          CFI Block cfiCond160 Using cfiCommon0
+          CFI (cfiCond160) Function ??blockMemOperations
+          CFI (cfiCond160) Conditional ??CrossCallReturnLabel_6
+          CFI (cfiCond160) CFA_SP SP+4
+          CFI Block cfiCond161 Using cfiCommon0
+          CFI (cfiCond161) Function ??run
+          CFI (cfiCond161) Conditional ??CrossCallReturnLabel_7
+          CFI (cfiCond161) CFA_SP SP+4
+          CFI Block cfiPicker162 Using cfiCommon1
+          CFI (cfiPicker162) NoFunction
+          CFI (cfiPicker162) Picker
+        LDS     R16, (??counterValue + 51)
+        RET
+          CFI EndBlock cfiCond156
+          CFI EndBlock cfiCond157
+          CFI EndBlock cfiCond158
+          CFI EndBlock cfiCond159
+          CFI EndBlock cfiCond160
+          CFI EndBlock cfiCond161
+          CFI EndBlock cfiPicker162
+//  581 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  582   bool blockMemOperations()
+??blockMemOperations:
+          CFI Block cfiBlock163 Using cfiCommon0
+          CFI Function ??blockMemOperations
+//  583   {
+//  584     if (enabled() && (!ready()))
+        FUNCALL ??blockMemOperations, ??disable
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??blockMemOperations, ??setTimer
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine3
+??CrossCallReturnLabel_6:
+        TST     R16
+        BREQ    ??blockMemOperations_1
+        CPI     R16, 1
+        BREQ    ??blockMemOperations_1
+//  585     {
+//  586       return false;
+        LDI     R16, 0
+        RET
+//  587     }
+//  588 
+//  589     disable();
+??blockMemOperations_1:
+        RCALL   ?Subroutine7
+//  590 
+//  591     resourceStatus = MemAT25ResourceStatus_Blocked;
+??CrossCallReturnLabel_16:
+        LDI     R16, 4
+        RCALL   ?Subroutine6
+//  592 
+//  593     GLOBAL::MultyThreading::setTimer(GLOBALTIMERS_MEMAT25_ERRORTIMER, MEMAT25_BLOCKTIME);
+??CrossCallReturnLabel_14:
+        LDI     R18, 48
+        LDI     R19, 117
+        RCALL   ?Subroutine27
+//  594 
+//  595     return true;
+??CrossCallReturnLabel_53:
+        LDI     R16, 1
+        RET
+          CFI EndBlock cfiBlock163
+//  596 
+//  597   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine27:
+          CFI Block cfiCond164 Using cfiCommon0
+          CFI Function ??inProcess
+          CFI Conditional ??CrossCallReturnLabel_54
+          CFI CFA_SP SP+4
+          CFI Block cfiCond165 Using cfiCommon0
+          CFI (cfiCond165) Function ??processMemOperation
+          CFI (cfiCond165) Conditional ??CrossCallReturnLabel_54, ??CrossCallReturnLabel_1
+          CFI (cfiCond165) R26 Frame(CFA_Y, -6)
+          CFI (cfiCond165) R27 Frame(CFA_Y, -5)
+          CFI (cfiCond165) R4 Frame(CFA_Y, -4)
+          CFI (cfiCond165) R5 Frame(CFA_Y, -3)
+          CFI (cfiCond165) R6 Frame(CFA_Y, -2)
+          CFI (cfiCond165) R7 Frame(CFA_Y, -1)
+          CFI (cfiCond165) CFA_SP SP+6
+          CFI (cfiCond165) CFA_Y Y+6
+          CFI Block cfiCond166 Using cfiCommon0
+          CFI (cfiCond166) Function ??blockMemOperations
+          CFI (cfiCond166) Conditional ??CrossCallReturnLabel_53
+          CFI (cfiCond166) CFA_SP SP+4
+          CFI Block cfiPicker167 Using cfiCommon1
+          CFI (cfiPicker167) NoFunction
+          CFI (cfiPicker167) Picker
+        LDI     R16, 3
+        JMP     ??setTimer
+          CFI EndBlock cfiCond164
+          CFI EndBlock cfiCond165
+          CFI EndBlock cfiCond166
+          CFI EndBlock cfiPicker167
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine7:
+          CFI Block cfiCond168 Using cfiCommon0
+          CFI Function ??init
+          CFI Conditional ??CrossCallReturnLabel_17
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+1
+          CFI Block cfiCond169 Using cfiCommon0
+          CFI (cfiCond169) Function ??blockMemOperations
+          CFI (cfiCond169) Conditional ??CrossCallReturnLabel_16
+          CFI (cfiCond169) CFA_SP SP+4
+          CFI Block cfiCond170 Using cfiCommon0
+          CFI (cfiCond170) Function ??run
+          CFI (cfiCond170) Conditional ??CrossCallReturnLabel_15
+          CFI (cfiCond170) CFA_SP SP+4
+          CFI Block cfiPicker171 Using cfiCommon1
+          CFI (cfiPicker171) NoFunction
+          CFI (cfiPicker171) Picker
+        RJMP    ??disable
+          CFI EndBlock cfiCond168
+          CFI EndBlock cfiCond169
+          CFI EndBlock cfiCond170
+          CFI EndBlock cfiPicker171
+//  598 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  599   void run()
+??run:
+          CFI Block cfiBlock172 Using cfiCommon0
+          CFI Function ??run
+//  600   {
+        FUNCALL ??run, ??getTimer
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??processMemOperation
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??getTimer
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??disable
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine3
+??CrossCallReturnLabel_7:
+        SUBI    R16, 2
+        BREQ    ??run_1
+        DEC     R16
+        BREQ    ??run_2
+        DEC     R16
+        BREQ    ??run_3
+        RET
+//  601     switch (resourceStatus)
+//  602     {
+//  603       case MemAT25ResourceStatus_Disabled:
+//  604       case MemAT25ResourceStatus_Ready:
+//  605         return;
+//  606 
+//  607       case MemAT25ResourceStatus_InProcess:
+//  608         if (!GLOBAL::MultyThreading::getTimer(GLOBALTIMERS_MEMAT25_ERRORTIMER))
+??run_2:
+        RCALL   ?Subroutine14
+??CrossCallReturnLabel_32:
+        BRNE    ??run_1
+//  609         {
+//  610           operationResult = MemAT25COperationResult_Error;
+        LDI     R16, 2
+        STS     (??counterValue + 50), R16
+//  611           finish();
+        RJMP    ?Subroutine5
+//  612         }
+//  613         else
+//  614         {
+//  615           processMemOperation();
+//  616         }
+//  617         break;
+//  618 
+//  619       case MemAT25ResourceStatus_Scheduled:
+//  620         processMemOperation();
+??run_1:
+        RJMP    ??processMemOperation
+//  621         break;
+//  622 
+//  623       case MemAT25ResourceStatus_Blocked:
+//  624         if (!GLOBAL::MultyThreading::getTimer(GLOBALTIMERS_MEMAT25_ERRORTIMER))
+??run_3:
+        RCALL   ?Subroutine14
+??CrossCallReturnLabel_33:
+        BRNE    ??CrossCallReturnLabel_15
+//  625         {
+//  626           disable();
+        RCALL   ?Subroutine7
+//  627         }
+//  628         break;
+//  629     }
+??CrossCallReturnLabel_15:
+        RET
+          CFI EndBlock cfiBlock172
+//  630   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine14:
+          CFI Block cfiCond173 Using cfiCommon0
+          CFI Function ??run
+          CFI Conditional ??CrossCallReturnLabel_32
+          CFI CFA_SP SP+4
+          CFI Block cfiCond174 Using cfiCommon0
+          CFI (cfiCond174) Function ??run
+          CFI (cfiCond174) Conditional ??CrossCallReturnLabel_33
+          CFI (cfiCond174) CFA_SP SP+4
+          CFI Block cfiPicker175 Using cfiCommon1
+          CFI (cfiPicker175) NoFunction
+          CFI (cfiPicker175) Picker
+        LDI     R16, 3
+        CALL    ??getTimer
+        OR      R16, R17
+        RET
+          CFI EndBlock cfiCond173
+          CFI EndBlock cfiCond174
+          CFI EndBlock cfiPicker175
+
+        ASEGN ABSOLUTE:DATA:NOROOT,01fH
+__?EECR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,020H
+__?EEDR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,021H
+__?EEARL:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,022H
+__?EEARH:
+
+        RSEG INITTAB:CODE:NOROOT(0)
+`?<Segment init: NEAR_Z>`:
+        DC16    SFE(NEAR_Z) - SFB(NEAR_Z)
+        DC16    SFB(NEAR_Z)
+        DC16    0
+        REQUIRE ?need_segment_init
+
+        END
+//  631 }
+//  632 
+//  633 #endif
+//  634 
+// 
+//     2 bytes in segment ABSOLUTE
+// 1 740 bytes in segment CODE
+//     6 bytes in segment INITTAB
+//    54 bytes in segment NEAR_Z
+// 
+// 1 724 bytes of CODE memory (+ 22 bytes shared)
+//    54 bytes of DATA memory (+  2 bytes shared)
+//
+//Errors: none
+//Warnings: none

@@ -1,0 +1,14 @@
+Component   : 8S1_N
+PCB Library : Footprints.PcbLib
+Date        : 13.03.2011
+Time        : 15:00:17
+
+
+
+Dimension : 7.62 x 5.7912 mm
+
+ Layer(s)              Pads(s)  Tracks(s)  Fill(s)  Arc(s)  Text(s)
+--------------------------------------------------------------------
+ Top Overlay                 0          4        0       1        0
+--------------------------------------------------------------------
+ Total                       0          4        0       1        0

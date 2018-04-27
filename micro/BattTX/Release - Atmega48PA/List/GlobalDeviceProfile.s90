@@ -1,0 +1,105 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V6.12.1.50500 for Atmel AVR       27/Jul/2014  21:44:35 /
+// Copyright 1996-2012 IAR Systems AB.                                        /
+//                                                                            /
+//    Source file  =  D:\Projects\BatteryCounter\_micro\BattTX\GlobalDevicePr /
+//                    ofile.cpp                                               /
+//    Command line =  D:\Projects\BatteryCounter\_micro\BattTX\GlobalDevicePr /
+//                    ofile.cpp --cpu=m48pa -ms -o                            /
+//                    "D:\Projects\BatteryCounter\_micro\BattTX\Release -     /
+//                    Atmega48PA\Obj\" -D NDEBUG -lA                          /
+//                    "D:\Projects\BatteryCounter\_micro\BattTX\Release -     /
+//                    Atmega48PA\List\" --initializers_in_flash               /
+//                    -DENABLE_BIT_DEFINITIONS --do_cross_call -e             /
+//                    --eeprom_size 256 --dlib --dlib_config "C:\Program      /
+//                    Files (x86)\IAR Systems\Embedded Workbench              /
+//                    6.0\avr\LIB\DLIB\dlAVR-1s-ec_mul-n.h" --eec++ -Ohs      /
+//    List file    =  D:\Projects\BatteryCounter\_micro\BattTX\Release -      /
+//                    Atmega48PA\List\GlobalDeviceProfile.s90                 /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME GlobalDeviceProfile
+
+        RTMODEL "__64bit_doubles", "disabled"
+        RTMODEL "__SystemLibrary", "DLib"
+        RTMODEL "__cpu", "1"
+        RTMODEL "__cpu_name", "ATmega48PA"
+        RTMODEL "__dlib_file_descriptor", "0"
+        RTMODEL "__enhanced_core", "enabled"
+        RTMODEL "__has_elpm", "false"
+        RTMODEL "__memory_model", "2"
+        RTMODEL "__rt_version", "3"
+
+        RSEG CSTACK:DATA:NOROOT(0)
+        RSEG RSTACK:DATA:NOROOT(0)
+
+        EXTERN ?need_segment_init
+
+        PUBWEAK `?<Segment init: NEAR_Z>`
+        PUBLIC ??ApplicationVersion
+        PUBLIC ??DeviceTransmitterConfig
+        PUBWEAK __?EEARL
+        PUBWEAK __?EECR
+        PUBWEAK __?EEDR
+`?<Name GLOBAL 0>`  SYMBOL "GLOBAL"
+`?<Name DeviceProfile 1>` SYMBOL "DeviceProfile", `?<Name GLOBAL 0>`
+??ApplicationVersion SYMBOL "ApplicationVersion", `?<Name DeviceProfile 1>`
+??DeviceTransmitterConfig SYMBOL "DeviceTransmitterConfig", `?<Name DeviceProfile 1>`
+
+// D:\Projects\BatteryCounter\_micro\BattTX\GlobalDeviceProfile.cpp
+//    1 #ifndef __GLOBALDEVICEPROFILE_CPP_
+//    2 #define __GLOBALDEVICEPROFILE_CPP_
+//    3 
+//    4 #include "GlobalDeviceProfile.h"
+//    5 
+//    6 namespace GLOBAL
+//    7 {
+//    8   namespace DeviceProfile
+//    9   {
+
+        RSEG NEAR_Z:DATA:NOROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   10     TApplicationVersion ApplicationVersion;
+??ApplicationVersion:
+        DS8 5
+
+        RSEG NEAR_Z:DATA:NOROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   11     TDeviceTransmitterConfig DeviceTransmitterConfig;
+??DeviceTransmitterConfig:
+        DS8 3
+
+        ASEGN ABSOLUTE:DATA:NOROOT,01fH
+__?EECR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,020H
+__?EEDR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,021H
+__?EEARL:
+
+        RSEG INITTAB:CODE:NOROOT(0)
+`?<Segment init: NEAR_Z>`:
+        DC16    SFE(NEAR_Z) - SFB(NEAR_Z)
+        DC16    SFB(NEAR_Z)
+        DC16    0
+        REQUIRE ?need_segment_init
+
+        END
+//   12   }
+//   13 }
+//   14 
+//   15 #endif
+//   16 
+// 
+// 6 bytes in segment INITTAB
+// 8 bytes in segment NEAR_Z
+// 
+// 0 bytes of CODE memory (+ 6 bytes shared)
+// 8 bytes of DATA memory
+//
+//Errors: none
+//Warnings: none

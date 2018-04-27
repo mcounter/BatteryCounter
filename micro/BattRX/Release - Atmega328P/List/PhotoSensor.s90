@@ -1,0 +1,1554 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V6.12.1.50500 for Atmel AVR       02/Aug/2014  01:50:50 /
+// Copyright 1996-2012 IAR Systems AB.                                        /
+//                                                                            /
+//    Source file  =  D:\Projects\BatteryCounter\_micro\BattRX\PhotoSensor.cp /
+//                    p                                                       /
+//    Command line =  D:\Projects\BatteryCounter\_micro\BattRX\PhotoSensor.cp /
+//                    p --cpu=m328p -ms -o "D:\Projects\BatteryCounter\_micro /
+//                    \BattRX\Release - Atmega328P\Obj\" -D NDEBUG -lA        /
+//                    "D:\Projects\BatteryCounter\_micro\BattRX\Release -     /
+//                    Atmega328P\List\" --initializers_in_flash               /
+//                    -DENABLE_BIT_DEFINITIONS --do_cross_call -e             /
+//                    --eeprom_size 1024 --dlib --dlib_config "C:\Program     /
+//                    Files (x86)\IAR Systems\Embedded Workbench              /
+//                    6.0\avr\LIB\DLIB\dlAVR-3s-ec_mul-sf-n.h" --eec++ -Ohs   /
+//    List file    =  D:\Projects\BatteryCounter\_micro\BattRX\Release -      /
+//                    Atmega328P\List\PhotoSensor.s90                         /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME PhotoSensor
+
+        RTMODEL "__64bit_doubles", "disabled"
+        RTMODEL "__SystemLibrary", "DLib"
+        RTMODEL "__cpu", "3"
+        RTMODEL "__cpu_name", "ATmega328P"
+        RTMODEL "__dlib_file_descriptor", "0"
+        RTMODEL "__enhanced_core", "enabled"
+        RTMODEL "__has_elpm", "false"
+        RTMODEL "__memory_model", "2"
+        RTMODEL "__rt_version", "3"
+
+        RSEG CSTACK:DATA:NOROOT(0)
+        RSEG RSTACK:DATA:NOROOT(0)
+
+        ERROR
+//NOTE: This module defines or uses C++ features that are not
+//      accessible from assembler code. Assembling this file will
+//      not produce an equivalent object file to the one produced
+//      by the C++ compiler.
+
+        EXTERN ?Register_R4_is_cg_reg
+        EXTERN ?SS_DIVMOD_L02
+        EXTERN ?US_DIVMOD_L02
+        EXTERN ?need_segment_init
+
+        PUBWEAK `?<Segment init: NEAR_Z>`
+        PUBLIC ??addCounterValueSoftDetection
+        FUNCTION ??addCounterValueSoftDetection,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??addCounterValueStrongDetection
+        FUNCTION ??addCounterValueStrongDetection,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??counterCnt
+        PUBLIC ??counterDetectorMatrix
+        PUBLIC ??counterDetectorPos
+        PUBLIC ??counterDirection
+        PUBLIC ??counterNoSensor
+        PUBLIC ??counterNoSensorDetected
+        PUBLIC ??counterPrescaler
+        PUBLIC ??counterQualityCnt1
+        PUBLIC ??counterQualityCnt2
+        PUBLIC ??counterQualityPct1
+        PUBLIC ??counterQualityPct2
+        PUBLIC ??disable
+        FUNCTION ??disable,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??enable
+        FUNCTION ??enable,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??enabled
+        FUNCTION ??enabled,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??getCounterQualityPct1
+        FUNCTION ??getCounterQualityPct1,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??getCounterQualityPct2
+        FUNCTION ??getCounterQualityPct2,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??idleTimeCnt
+        PUBLIC ??init
+        FUNCTION ??init,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??isBodyDetected
+        PUBLIC ??isEnabled
+        PUBLIC ??processIdleTime
+        FUNCTION ??processIdleTime,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 5, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??switchOnTime
+        PUBWEAK _A_DDRC
+        PUBWEAK _A_DDRD
+        PUBWEAK _A_EICRA
+        PUBWEAK _A_EIFR
+        PUBWEAK _A_EIMSK
+        PUBWEAK _A_PORTC
+        PUBWEAK _A_PORTD
+        PUBWEAK __?EEARH
+        PUBWEAK __?EEARL
+        PUBWEAK __?EECR
+        PUBWEAK __?EEDR
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_Y Y DATA
+          CFI StackFrame CFA_SP SP DATA
+          CFI VirtualResource ?RetPad:1, ?RetHigh:8, ?RetLow:8, ?Ret:17
+          CFI Resource R0:8, R1:8, R2:8, R3:8, R4:8, R5:8, R6:8, R7:8, R8:8, R9:8
+          CFI Resource R10:8, R11:8, R12:8, R13:8, R14:8, R15:8, R16:8, R17:8
+          CFI Resource R18:8, R19:8, R20:8, R21:8, R22:8, R23:8, R24:8, R25:8
+          CFI Resource R26:8, R27:8, R28:8, R29:8, R30:8, R31:8
+          CFI Resource ?RetHighByteMask:8, SP:16, SPH:8, SPL:8, Y:16
+          CFI ResourceParts ?Ret ?RetHigh, ?RetLow, ?RetPad
+          CFI ResourceParts SP SPH, SPL
+          CFI ResourceParts Y R29, R28
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Y+0
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 Undefined
+          CFI R17 Undefined
+          CFI R18 Undefined
+          CFI R19 Undefined
+          CFI R20 Undefined
+          CFI R21 Undefined
+          CFI R22 Undefined
+          CFI R23 Undefined
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 Undefined
+          CFI R31 Undefined
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Notused
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 SameValue
+          CFI R1 SameValue
+          CFI R2 SameValue
+          CFI R3 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 SameValue
+          CFI R17 SameValue
+          CFI R18 SameValue
+          CFI R19 SameValue
+          CFI R20 SameValue
+          CFI R21 SameValue
+          CFI R22 SameValue
+          CFI R23 SameValue
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 SameValue
+          CFI R31 SameValue
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI Y SameValue
+          CFI EndCommon cfiCommon1
+        
+`?<Name GLOBAL 0>`  SYMBOL "GLOBAL"
+`?<Name DeviceProfile 1>` SYMBOL "DeviceProfile", `?<Name GLOBAL 0>`
+??DeviceCounterConfig SYMBOL "DeviceCounterConfig", `?<Name DeviceProfile 1>`
+`?<Name PhotoSensor 9>` SYMBOL "PhotoSensor"
+??counterCnt        SYMBOL "counterCnt", `?<Name PhotoSensor 9>`
+??counterDetectorMatrix SYMBOL "counterDetectorMatrix", `?<Name PhotoSensor 9>`
+??counterDetectorPos SYMBOL "counterDetectorPos", `?<Name PhotoSensor 9>`
+??counterDirection  SYMBOL "counterDirection", `?<Name PhotoSensor 9>`
+??counterNoSensor   SYMBOL "counterNoSensor", `?<Name PhotoSensor 9>`
+??counterNoSensorDetected SYMBOL "counterNoSensorDetected", `?<Name PhotoSensor 9>`
+??counterPrescaler  SYMBOL "counterPrescaler", `?<Name PhotoSensor 9>`
+??counterQualityCnt1 SYMBOL "counterQualityCnt1", `?<Name PhotoSensor 9>`
+??counterQualityCnt2 SYMBOL "counterQualityCnt2", `?<Name PhotoSensor 9>`
+??counterQualityPct1 SYMBOL "counterQualityPct1", `?<Name PhotoSensor 9>`
+??counterQualityPct2 SYMBOL "counterQualityPct2", `?<Name PhotoSensor 9>`
+??idleTimeCnt       SYMBOL "idleTimeCnt", `?<Name PhotoSensor 9>`
+??isBodyDetected    SYMBOL "isBodyDetected", `?<Name PhotoSensor 9>`
+??isEnabled         SYMBOL "isEnabled", `?<Name PhotoSensor 9>`
+??switchOnTime      SYMBOL "switchOnTime", `?<Name PhotoSensor 9>`
+
+        EXTERN ??DeviceCounterConfig
+        EXTERN ??addCounter
+        FUNCTION ??addCounter,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??enable_1
+        FUNCTION ??enable_1,0202H
+        ARGFRAME RSTACK, 0, STACK
+
+// D:\Projects\BatteryCounter\_micro\BattRX\PhotoSensor.cpp
+//    1 #ifndef __PHOTOSENSOR_CPP_
+//    2 #define __PHOTOSENSOR_CPP_
+//    3 
+//    4 #include "PhotoSensor.h"
+
+        ASEGN ABSOLUTE:DATA:NOROOT,069H
+// union <unnamed> volatile __io _A_EICRA
+_A_EICRA:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,03dH
+// union <unnamed> volatile __io _A_EIMSK
+_A_EIMSK:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,03cH
+// union <unnamed> volatile __io _A_EIFR
+_A_EIFR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,02bH
+// union <unnamed> volatile __io _A_PORTD
+_A_PORTD:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,02aH
+// union <unnamed> volatile __io _A_DDRD
+_A_DDRD:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,028H
+// union <unnamed> volatile __io _A_PORTC
+_A_PORTC:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,027H
+// union <unnamed> volatile __io _A_DDRC
+_A_DDRC:
+        DS8 1
+//    5 #include "GlobalCounter.h"
+//    6 #include "Timer0Handler.h"
+//    7 
+//    8 #define COUNTER_PHOTO_SWITCHON_TIME       (1000 / timerDiscreteness)
+//    9 #define COUNTER_PHOTO_QUALITY_BASE        (1000 / timerDiscreteness)
+//   10 #define COUNTER_PRESCALER_LEVEL           (3)
+//   11 #define COUNTER_LIGHT_THRESHOLD           (30 / timerDiscreteness)
+//   12 #define COUNTER_NOSENSOR_DET_THRESHOLD    (15000 / timerDiscreteness)
+//   13 #define COUNTER_NOSENSOR_INC_DISCRET_SEC  (5)
+//   14 
+//   15 namespace PhotoSensor
+//   16 {
+
+        RSEG NEAR_Z:DATA:NOROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   17   bool isEnabled = false;
+//   18   unsigned short switchOnTime = 0;
+??switchOnTime:
+        DS8 2
+//   19 
+//   20   unsigned short idleTimeCnt = 0;
+??idleTimeCnt:
+        DS8 2
+//   21   bool isBodyDetected = false;
+//   22   bool counterDirection = false;
+//   23 
+//   24   unsigned short counterCnt = 0;
+??counterCnt:
+        DS8 2
+//   25   unsigned char counterPrescaler = 0;
+//   26   unsigned short counterQualityCnt1 = 0;
+??counterQualityCnt1:
+        DS8 2
+//   27   unsigned char counterQualityPct1 = 0;
+//   28   unsigned short counterQualityCnt2 = 0;
+??counterQualityCnt2:
+        DS8 2
+//   29   unsigned char counterQualityPct2 = 0;
+//   30 
+//   31   unsigned char counterDetectorMatrix[2] = {0, 0};
+??counterDetectorMatrix:
+        DS8 2
+//   32   unsigned char counterDetectorPos = 0;
+//   33 
+//   34   unsigned short counterNoSensor = 0;
+??counterNoSensor:
+        DS8 2
+??isEnabled:
+        DS8 1
+??isBodyDetected:
+        DS8 1
+??counterPrescaler:
+        DS8 1
+??counterQualityPct1:
+        DS8 1
+??counterQualityPct2:
+        DS8 1
+??counterDetectorPos:
+        DS8 1
+//   35   bool counterNoSensorDetected = false;
+??counterNoSensorDetected:
+        DS8 1
+
+        RSEG NEAR_Z:DATA:NOROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+??counterDirection:
+        DS8 1
+//   36 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   37   __monitor void disable()
+??disable:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function ??disable
+//   38   {
+        RCALL   ?Subroutine0
+//   39     EIMSK &= 0xFF ^ ((1<<INT0) | (1<<INT1)); // Disable interrupts
+??CrossCallReturnLabel_0:
+        IN      R16, 0x1D
+        ANDI    R16, 0xFC
+        OUT     0x1D, R16
+//   40 
+//   41     PHOTO1_VDD_DIR = 1;
+        SBI     0x07, 0x00
+//   42     PHOTO1_VDD_PORT = 0;
+        CBI     0x08, 0x00
+//   43 
+//   44     PHOTO1_IN_DIR = 1;
+        SBI     0x0A, 0x02
+//   45     PHOTO1_IN_PORT = 0;
+        CBI     0x0B, 0x02
+//   46 
+//   47     PHOTO2_VDD_DIR = 1;
+        SBI     0x07, 0x01
+//   48     PHOTO2_VDD_PORT = 0;
+        CBI     0x08, 0x01
+//   49 
+//   50     PHOTO2_IN_DIR = 1;
+        SBI     0x0A, 0x03
+//   51     PHOTO2_IN_PORT = 0;
+        CBI     0x0B, 0x03
+//   52 
+//   53     isEnabled = false;
+        LDI     R16, 0
+        STS     (??switchOnTime + 14), R16
+//   54   }
+        OUT     0x3F, R17
+        RET
+          CFI EndBlock cfiBlock0
+        REQUIRE _A_EIMSK
+        REQUIRE _A_DDRC
+        REQUIRE _A_PORTC
+        REQUIRE _A_DDRD
+        REQUIRE _A_PORTD
+//   55 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   56   __monitor void enable()
+??enable:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function ??enable
+//   57   {
+        FUNCALL ??enable, ??enable_1
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R24
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        IN      R24, 0x3F
+        CLI
+//   58     Timer0Handler::enable();
+        CALL    ??enable_1
+//   59 
+//   60     PHOTO1_VDD_DIR = 1;
+        SBI     0x07, 0x00
+//   61     PHOTO1_VDD_PORT = 1;
+        SBI     0x08, 0x00
+//   62 
+//   63     PHOTO1_IN_DIR = 0;
+        CBI     0x0A, 0x02
+//   64     PHOTO1_IN_PORT = 0;
+        CBI     0x0B, 0x02
+//   65 
+//   66     EICRA &= 0xFF ^ ((1<<ISC00) | (1<<ISC01));  //
+        LDS     R16, _A_EICRA
+        ANDI    R16, 0xFC
+        RCALL   ?Subroutine3
+//   67     EICRA |= (1<<ISC01);                        // The falling edge generates an interrupt request
+??CrossCallReturnLabel_8:
+        ORI     R16, 0x02
+        STS     105, R16
+//   68 
+//   69     if (GLOBAL::DeviceProfile::DeviceCounterConfig.detectDirection >= GLOBAL::DeviceProfile::CounterDetectDirectionType_StrongDetection)
+        LDS     R16, ??DeviceCounterConfig
+        CPI     R16, 3
+        BRCS    ??enable_2
+//   70     {
+//   71       PHOTO2_VDD_DIR = 1;
+        SBI     0x07, 0x01
+//   72       PHOTO2_VDD_PORT = 1;
+        SBI     0x08, 0x01
+//   73 
+//   74       PHOTO2_IN_DIR = 0;
+        CBI     0x0A, 0x03
+//   75       PHOTO2_IN_PORT = 0;
+        CBI     0x0B, 0x03
+//   76 
+//   77       EICRA &= 0xFF ^ ((1<<ISC10) | (1<<ISC11));  //
+        LDS     R16, _A_EICRA
+        ANDI    R16, 0xF3
+        RCALL   ?Subroutine3
+//   78       EICRA |= (1<<ISC11);                        // The falling edge generates an interrupt request
+//   79     }
+??CrossCallReturnLabel_9:
+        ORI     R16, 0x08
+        STS     105, R16
+//   80 
+//   81     idleTimeCnt = 0;
+??enable_2:
+        LDI     R30, LOW(??switchOnTime)
+        LDI     R31, (??switchOnTime) >> 8
+        LDI     R16, 0
+        LDI     R17, 0
+        STD     Z+2, R16
+        STD     Z+3, R16
+//   82     isBodyDetected = false;
+        STD     Z+15, R16
+//   83     counterCnt = 0;
+        STD     Z+4, R16
+        STD     Z+5, R16
+//   84     counterPrescaler = 0;
+        STD     Z+16, R16
+//   85 
+//   86     counterDetectorMatrix[0] = 0x03;
+        LDI     R16, 3
+        STD     Z+10, R16
+//   87     counterDetectorMatrix[1] = 0x03;
+        STD     Z+11, R16
+//   88     counterDetectorPos = 0;
+        STD     Z+19, R17
+//   89 
+//   90     counterQualityCnt1 = 0;
+        STD     Z+6, R17
+        STD     Z+7, R17
+//   91     counterQualityPct1 = 0;
+        STD     Z+17, R17
+//   92     counterQualityCnt2 = 0;
+        STD     Z+8, R17
+        STD     Z+9, R17
+//   93     counterQualityPct2 = 0;
+        STD     Z+18, R17
+//   94 
+//   95     counterNoSensor = 0;
+        STD     Z+12, R17
+        STD     Z+13, R17
+//   96     counterNoSensorDetected = false;
+        STD     Z+20, R17
+//   97 
+//   98     switchOnTime = COUNTER_PHOTO_SWITCHON_TIME;
+        LDI     R16, 200
+        ST      Z, R16
+        STD     Z+1, R17
+//   99 
+//  100     isEnabled = true;
+        LDI     R16, 1
+        STD     Z+14, R16
+//  101   }
+        OUT     0x3F, R24
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock1
+        REQUIRE _A_DDRC
+        REQUIRE _A_PORTC
+        REQUIRE _A_DDRD
+        REQUIRE _A_PORTD
+        REQUIRE _A_EICRA
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine3:
+          CFI Block cfiCond2 Using cfiCommon0
+          CFI Function ??enable
+          CFI Conditional ??CrossCallReturnLabel_8
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+1
+          CFI Block cfiCond3 Using cfiCommon0
+          CFI (cfiCond3) Function ??enable
+          CFI (cfiCond3) Conditional ??CrossCallReturnLabel_9
+          CFI (cfiCond3) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond3) CFA_SP SP+4
+          CFI (cfiCond3) CFA_Y Y+1
+          CFI Block cfiPicker4 Using cfiCommon1
+          CFI (cfiPicker4) NoFunction
+          CFI (cfiPicker4) Picker
+        STS     _A_EICRA, R16
+        LDS     R16, 105
+        RET
+          CFI EndBlock cfiCond2
+          CFI EndBlock cfiCond3
+          CFI EndBlock cfiPicker4
+//  102 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  103   __monitor bool enabled()
+??enabled:
+          CFI Block cfiBlock5 Using cfiCommon0
+          CFI Function ??enabled
+//  104   {
+        RCALL   ?Subroutine0
+//  105     return isEnabled;
+??CrossCallReturnLabel_1:
+        LDS     R16, (??switchOnTime + 14)
+        OUT     0x3F, R17
+        RET
+          CFI EndBlock cfiBlock5
+//  106   }
+//  107 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  108   void addCounterValueSoftDetection()
+??addCounterValueSoftDetection:
+          CFI Block cfiBlock6 Using cfiCommon0
+          CFI Function ??addCounterValueSoftDetection
+//  109   {
+//  110     counterDirection = !counterDirection;
+        FUNCALL ??addCounterValueSoftDetection, ??addCounter
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??addCounterValueSoftDetection, ??addCounter
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDS     R17, ??counterDirection
+        LDI     R16, 1
+        EOR     R17, R16
+        STS     ??counterDirection, R17
+//  111 
+//  112     switch (GLOBAL::DeviceProfile::DeviceCounterConfig.detectDirection)
+        LDS     R16, ??DeviceCounterConfig
+        TST     R16
+        BREQ    ??addCounterValueSoftDetection_1
+        DEC     R16
+        BREQ    ??addCounterValueSoftDetection_2
+        DEC     R16
+        BREQ    ??addCounterValueSoftDetection_3
+        SUBI    R16, 2
+        BREQ    ??addCounterValueSoftDetection_3
+        RET
+//  113     {
+//  114       case GLOBAL::DeviceProfile::CounterDetectDirectionType_NoDetection:
+//  115         GLOBAL::Counter::addCounter(1, 0, 0);
+//  116         break;
+//  117 
+//  118       case GLOBAL::DeviceProfile::CounterDetectDirectionType_NoDetectionDiv2:
+//  119         if (counterDirection)
+??addCounterValueSoftDetection_2:
+        LDS     R16, ??counterDirection
+        TST     R16
+        BRNE    ??addCounterValueSoftDetection_1
+        RET
+//  120         {
+//  121           GLOBAL::Counter::addCounter(1, 0, 0);
+//  122         }
+//  123         break;
+//  124 
+//  125       case GLOBAL::DeviceProfile::CounterDetectDirectionType_Simulation:
+//  126       case GLOBAL::DeviceProfile::CounterDetectDirectionType_SoftDetection:
+//  127         if (counterDirection ^ GLOBAL::DeviceProfile::DeviceCounterConfig.invertCounting)
+??addCounterValueSoftDetection_3:
+        LDS     R16, ??counterDirection
+        LDS     R17, (??DeviceCounterConfig + 1)
+        EOR     R16, R17
+        BREQ    ??addCounterValueSoftDetection_4
+//  128         {
+//  129           GLOBAL::Counter::addCounter(1, 0, 0);
+??addCounterValueSoftDetection_1:
+        LDI     R20, 0
+        LDI     R21, 0
+        LDI     R18, 0
+        LDI     R19, 0
+        LDI     R16, 1
+        RJMP    ??addCounterValueSoftDetection_5
+//  130         }
+//  131         else
+//  132         {
+//  133           GLOBAL::Counter::addCounter(0, 1, 0);
+??addCounterValueSoftDetection_4:
+        LDI     R20, 0
+        LDI     R21, 0
+        LDI     R18, 1
+        LDI     R19, 0
+        LDI     R16, 0
+??addCounterValueSoftDetection_5:
+        LDI     R17, 0
+        JMP     ??addCounter
+          CFI EndBlock cfiBlock6
+//  134         }
+//  135         break;
+//  136     }
+//  137   }
+//  138 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  139   void addCounterValueStrongDetection(bool _isOutCnt)
+??addCounterValueStrongDetection:
+          CFI Block cfiBlock7 Using cfiCommon0
+          CFI Function ??addCounterValueStrongDetection
+//  140   {
+//  141     if (_isOutCnt ^ GLOBAL::DeviceProfile::DeviceCounterConfig.invertCounting)
+        FUNCALL ??addCounterValueStrongDetection, ??addCounter
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??addCounterValueStrongDetection, ??addCounter
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDS     R17, (??DeviceCounterConfig + 1)
+        EOR     R16, R17
+        LDI     R20, 0
+        LDI     R21, 0
+        BREQ    ??addCounterValueStrongDetection_1
+//  142     {
+//  143       GLOBAL::Counter::addCounter(0, 1, 0);
+        LDI     R18, 1
+        LDI     R19, 0
+        LDI     R16, 0
+        RJMP    ??addCounterValueStrongDetection_2
+//  144     }
+//  145     else
+//  146     {
+//  147       GLOBAL::Counter::addCounter(1, 0, 0);
+??addCounterValueStrongDetection_1:
+        LDI     R18, 0
+        LDI     R19, 0
+        LDI     R16, 1
+??addCounterValueStrongDetection_2:
+        LDI     R17, 0
+        JMP     ??addCounter
+          CFI EndBlock cfiBlock7
+//  148     }
+//  149   }
+//  150 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  151   __monitor void processIdleTime()
+??processIdleTime:
+          CFI Block cfiBlock8 Using cfiCommon0
+          CFI Function ??processIdleTime
+//  152   {
+        FUNCALL ??processIdleTime, ??addCounterValueSoftDetection
+        LOCFRAME CSTACK, 5, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processIdleTime, ??addCounterValueStrongDetection
+        LOCFRAME CSTACK, 5, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processIdleTime, ??addCounterValueStrongDetection
+        LOCFRAME CSTACK, 5, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processIdleTime, ??addCounterValueSoftDetection
+        LOCFRAME CSTACK, 5, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processIdleTime, ??addCounter
+        LOCFRAME CSTACK, 5, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R4
+          CFI R4 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        ST      -Y, R27
+          CFI R27 Frame(CFA_Y, -2)
+          CFI CFA_Y Y+2
+        ST      -Y, R26
+          CFI R26 Frame(CFA_Y, -3)
+          CFI CFA_Y Y+3
+        ST      -Y, R25
+          CFI R25 Frame(CFA_Y, -4)
+          CFI CFA_Y Y+4
+        ST      -Y, R24
+          CFI R24 Frame(CFA_Y, -5)
+          CFI CFA_Y Y+5
+        IN      R4, 0x3F
+        REQUIRE ?Register_R4_is_cg_reg
+        CLI
+//  153     if (!isEnabled)
+        LDI     R26, LOW(??switchOnTime)
+        LDI     R27, (??switchOnTime) >> 8
+        LDS     R16, (??switchOnTime + 14)
+        TST     R16
+        BRNE    $+2+2
+        RJMP    ??processIdleTime_1
+//  154     {
+//  155       return;
+//  156     }
+//  157 
+//  158     if (switchOnTime)
+        LD      R16, X+
+        LD      R17, X
+        SBIW    R27:R26, 1
+        OR      R16, R17
+        BREQ    ??processIdleTime_2
+//  159     {
+//  160       switchOnTime--;
+        LD      R16, X+
+        SUBI    R16, 1
+        SBCI    R17, 0
+        ST      X, R17
+        ST      -X, R16
+//  161       return;
+        RJMP    ??processIdleTime_1
+//  162     }
+??processIdleTime_2:
+        LDS     R16, ??DeviceCounterConfig
+        CPI     R16, 3
+        BRCC    $+2+2
+        RJMP    ??processIdleTime_3
+//  163 
+//  164     if (GLOBAL::DeviceProfile::DeviceCounterConfig.detectDirection >= GLOBAL::DeviceProfile::CounterDetectDirectionType_StrongDetection)
+//  165     {
+//  166       counterCnt++;
+        MOVW    R31:R30, R27:R26
+        LDD     R16, Z+4
+        LDD     R17, Z+5
+        SUBI    R16, 255
+        SBCI    R17, 255
+        STD     Z+4, R16
+        STD     Z+5, R17
+//  167 
+//  168       unsigned char detectedValue = 0x00;
+        LDI     R16, 0
+//  169 
+//  170       if (EIFR & (1<<INTF0))
+        SBIS    0x1C, 0x00
+        RJMP    ??processIdleTime_4
+//  171       {
+//  172         detectedValue |= 0x01;
+        LDI     R16, 1
+//  173 
+//  174         EIFR |= (1<<INTF0);
+        SBI     0x1C, 0x00
+//  175 
+//  176         counterQualityCnt1++;
+        LDD     R18, Z+6
+        LDD     R19, Z+7
+        SUBI    R18, 255
+        SBCI    R19, 255
+        STD     Z+6, R18
+        STD     Z+7, R19
+//  177       }
+//  178 
+//  179       if (EIFR & (1<<INTF1))
+??processIdleTime_4:
+        SBIS    0x1C, 0x01
+        RJMP    ??processIdleTime_5
+//  180       {
+//  181         detectedValue |= 0x02;
+        ORI     R16, 0x02
+//  182 
+//  183         EIFR |= (1<<INTF1);
+        SBI     0x1C, 0x01
+//  184 
+//  185         counterQualityCnt2++;
+        LDD     R18, Z+8
+        LDD     R19, Z+9
+        SUBI    R18, 255
+        SBCI    R19, 255
+        STD     Z+8, R18
+        STD     Z+9, R19
+//  186       }
+//  187 
+//  188       if (detectedValue == 0x03)
+        CPI     R16, 3
+        BRNE    ??processIdleTime_5
+//  189       {
+//  190         counterNoSensor = 0;
+        RCALL   ?Subroutine1
+//  191         counterNoSensorDetected = false;
+//  192 
+//  193         if (counterDetectorPos >= 1)
+??CrossCallReturnLabel_4:
+        LDS     R16, (??switchOnTime + 19)
+        TST     R16
+        BREQ    ??processIdleTime_6
+//  194         {
+//  195           if ((counterDetectorMatrix[0] == 0x03) || (counterDetectorMatrix[1] == 0x03))
+        LDS     R16, (??switchOnTime + 10)
+        CPI     R16, 3
+        BREQ    ??processIdleTime_7
+        LDS     R17, (??switchOnTime + 11)
+        CPI     R17, 3
+        BRNE    ??processIdleTime_8
+//  196           {
+//  197             if (GLOBAL::DeviceProfile::DeviceCounterConfig.detectDirection == GLOBAL::DeviceProfile::CounterDetectDirectionType_SoftDetection)
+??processIdleTime_7:
+        LDS     R17, ??DeviceCounterConfig
+        CPI     R17, 4
+        BRNE    ??processIdleTime_6
+//  198             {
+//  199               if (counterDetectorMatrix[0] == counterDetectorMatrix[1])
+        LDS     R17, (??switchOnTime + 11)
+        CP      R16, R17
+        BRNE    ??processIdleTime_9
+//  200               {
+//  201                 addCounterValueSoftDetection();
+        RCALL   ??addCounterValueSoftDetection
+        RJMP    ??processIdleTime_6
+//  202               }
+//  203               else if ((counterDetectorMatrix[0] == 0x01) || (counterDetectorMatrix[1] == 0x02))
+??processIdleTime_9:
+        CPI     R16, 1
+        BREQ    ??processIdleTime_10
+        CPI     R17, 2
+        BREQ    ??processIdleTime_10
+//  204               {
+//  205                 addCounterValueStrongDetection(false);
+//  206               }
+//  207               else
+//  208               {
+//  209                 addCounterValueStrongDetection(true);
+//  210               }
+//  211             }
+//  212           }
+//  213           else if (counterDetectorMatrix[0] != counterDetectorMatrix[1])
+//  214           {
+//  215             if (counterDetectorMatrix[0] == 0x01)
+//  216             {
+//  217               addCounterValueStrongDetection(false);
+//  218             }
+//  219             else
+//  220             {
+//  221               addCounterValueStrongDetection(true);
+??processIdleTime_11:
+        LDI     R16, 1
+??processIdleTime_12:
+        RCALL   ??addCounterValueStrongDetection
+//  222             }
+//  223           }
+//  224         }
+//  225 
+//  226         idleTimeCnt = 0;
+??processIdleTime_6:
+        RCALL   ?Subroutine2
+//  227         counterDetectorPos = 0;
+??CrossCallReturnLabel_6:
+        STD     Z+19, R16
+//  228         counterDetectorMatrix[0] = 0x03;
+        LDI     R16, 3
+        STD     Z+10, R16
+//  229         counterDetectorMatrix[1] = 0x03;
+        RJMP    ??processIdleTime_13
+??processIdleTime_8:
+        CP      R16, R17
+        BREQ    ??processIdleTime_6
+        CPI     R16, 1
+        BRNE    ??processIdleTime_11
+??processIdleTime_10:
+        LDI     R16, 0
+        RJMP    ??processIdleTime_12
+//  230       }
+//  231       else
+//  232       {
+//  233         counterNoSensor++;
+??processIdleTime_5:
+        LDD     R18, Z+12
+        LDD     R19, Z+13
+        SUBI    R18, 255
+        SBCI    R19, 255
+        STD     Z+12, R18
+        STD     Z+13, R19
+//  234 
+//  235         if (detectedValue == 0x00)
+        LDD     R17, Z+19
+        TST     R16
+        BRNE    ??processIdleTime_14
+//  236         {
+//  237           if (counterDetectorPos <= 0)
+        TST     R17
+        BREQ    $+2+2
+        RJMP    ??processIdleTime_15
+//  238           {
+//  239             idleTimeCnt++;
+        LDD     R16, Z+2
+        LDD     R17, Z+3
+        SUBI    R16, 255
+        SBCI    R17, 255
+        STD     Z+2, R16
+        STD     Z+3, R17
+//  240 
+//  241             if (idleTimeCnt >= GLOBAL::DeviceProfile::DeviceCounterConfig.bodyDetectionLevel)
+        MOVW    R19:R18, R17:R16
+        LDS     R16, (??DeviceCounterConfig + 2)
+        CP      R18, R16
+        SBCI    R19, 0
+        BRCC    $+2+2
+        RJMP    ??processIdleTime_15
+//  242             {
+//  243               counterDetectorPos = 1;
+        LDI     R16, 1
+        STD     Z+19, R16
+//  244               counterDetectorMatrix[1] = 0x03;
+        LDI     R16, 3
+??processIdleTime_13:
+        STD     Z+11, R16
+        RJMP    ??processIdleTime_15
+//  245             }
+//  246           }
+//  247         }
+//  248         else
+//  249         {
+//  250           idleTimeCnt = 0;
+??processIdleTime_14:
+        LDI     R18, 0
+        STD     Z+2, R18
+        STD     Z+3, R18
+//  251           counterDetectorMatrix[counterDetectorPos] = detectedValue;
+        ADD     R30, R17
+        ADC     R31, R18
+        STD     Z+10, R16
+        RJMP    ??processIdleTime_15
+//  252         }
+//  253       }
+//  254     }
+//  255     else
+//  256     {
+//  257       counterPrescaler = (counterPrescaler + 1) % COUNTER_PRESCALER_LEVEL;
+??processIdleTime_3:
+        LDS     R24, (??switchOnTime + 16)
+        LDI     R25, 0
+        ADIW    R25:R24, 1
+        MOVW    R17:R16, R25:R24
+        LDI     R20, 3
+        LDI     R21, 0
+        CALL    ?SS_DIVMOD_L02
+        STS     (??switchOnTime + 16), R20
+//  258 
+//  259       if (counterPrescaler != 0)
+        LDS     R16, (??switchOnTime + 16)
+        TST     R16
+        BREQ    $+2+2
+        RJMP    ??processIdleTime_1
+//  260       {
+//  261         return;
+//  262       }
+//  263 
+//  264       counterCnt += COUNTER_PRESCALER_LEVEL;
+        MOVW    R31:R30, R27:R26
+        LDD     R16, Z+4
+        LDD     R17, Z+5
+        RCALL   ?Subroutine7
+??CrossCallReturnLabel_16:
+        STD     Z+4, R16
+        STD     Z+5, R17
+//  265 
+//  266       if (EIFR & (1<<INTF0))
+        LDD     R18, Z+2
+        LDD     R19, Z+3
+        SBIS    0x1C, 0x00
+        RJMP    ??processIdleTime_16
+//  267       {
+//  268         EIFR |= (1<<INTF0);
+        SBI     0x1C, 0x00
+//  269 
+//  270         counterQualityCnt1 += COUNTER_PRESCALER_LEVEL;
+        LDD     R16, Z+6
+        LDD     R17, Z+7
+        RCALL   ?Subroutine7
+??CrossCallReturnLabel_17:
+        STD     Z+6, R16
+        STD     Z+7, R17
+//  271         counterNoSensor = 0;
+        RCALL   ?Subroutine1
+//  272         counterNoSensorDetected = false;
+//  273 
+//  274         if (idleTimeCnt >= ((unsigned short)(GLOBAL::DeviceProfile::DeviceCounterConfig.bodyDetectionLevel) + (COUNTER_BODY_DETECTION_ADD_MS / timerDiscreteness)))
+??CrossCallReturnLabel_5:
+        RCALL   ?Subroutine6
+??CrossCallReturnLabel_14:
+        BRCS    ??processIdleTime_17
+//  275         {
+//  276           isBodyDetected = true;
+        LDI     R16, 1
+        STD     Z+15, R16
+        RJMP    ??processIdleTime_18
+//  277         }
+//  278         else if (isBodyDetected && (idleTimeCnt <= COUNTER_LIGHT_THRESHOLD))
+??processIdleTime_17:
+        LDS     R16, (??switchOnTime + 15)
+        TST     R16
+        BREQ    ??processIdleTime_18
+        CPI     R18, 7
+        SBCI    R19, 0
+        BRCC    ??processIdleTime_18
+//  279         {
+//  280             addCounterValueSoftDetection();
+        RCALL   ??addCounterValueSoftDetection
+//  281             isBodyDetected = false;
+        LDI     R16, 0
+        STS     (??switchOnTime + 15), R16
+//  282         }
+//  283 
+//  284         idleTimeCnt = 0;
+??processIdleTime_18:
+        RCALL   ?Subroutine2
+//  285       }
+??CrossCallReturnLabel_7:
+        RJMP    ??processIdleTime_15
+//  286       else
+//  287       {
+//  288         counterNoSensor += COUNTER_PRESCALER_LEVEL;
+??processIdleTime_16:
+        LDD     R16, Z+12
+        LDD     R17, Z+13
+        RCALL   ?Subroutine7
+??CrossCallReturnLabel_18:
+        STD     Z+12, R16
+        STD     Z+13, R17
+//  289 
+//  290         if (idleTimeCnt < ((unsigned short)(GLOBAL::DeviceProfile::DeviceCounterConfig.bodyDetectionLevel) + (COUNTER_BODY_DETECTION_ADD_MS / timerDiscreteness)))
+        RCALL   ?Subroutine6
+??CrossCallReturnLabel_15:
+        BRCC    ??processIdleTime_15
+//  291         {
+//  292           idleTimeCnt += COUNTER_PRESCALER_LEVEL;
+        MOVW    R17:R16, R19:R18
+        RCALL   ?Subroutine7
+//  293         }
+//  294       }
+//  295     }
+??CrossCallReturnLabel_19:
+        STD     Z+2, R16
+        STD     Z+3, R17
+//  296 
+//  297     if (counterCnt >= COUNTER_PHOTO_QUALITY_BASE)
+??processIdleTime_15:
+        MOVW    R31:R30, R27:R26
+        LDD     R24, Z+4
+        LDD     R25, Z+5
+        CPI     R24, 200
+        LDI     R16, 0
+        CPC     R25, R16
+        BRCS    ??processIdleTime_19
+//  298     {
+//  299       counterQualityPct1 = (counterQualityCnt1 * 100) / counterCnt;
+        LDD     R18, Z+6
+        LDD     R19, Z+7
+        RCALL   ?Subroutine5
+??CrossCallReturnLabel_12:
+        STS     (??switchOnTime + 17), R16
+//  300       counterQualityCnt1 = 0;
+        LDI     R16, 0
+        MOV     R30, R26
+        STD     Z+6, R16
+        STD     Z+7, R16
+//  301       counterQualityPct2 = (counterQualityCnt2 * 100) / counterCnt;
+        LDD     R18, Z+8
+        LDD     R19, Z+9
+        RCALL   ?Subroutine5
+??CrossCallReturnLabel_13:
+        STS     (??switchOnTime + 18), R16
+//  302       counterQualityCnt2 = 0;
+        LDI     R16, 0
+        MOV     R30, R26
+        STD     Z+8, R16
+        STD     Z+9, R16
+//  303       counterCnt = 0;
+        STD     Z+4, R16
+        STD     Z+5, R16
+//  304     }
+//  305 
+//  306     if (counterNoSensor >= COUNTER_NOSENSOR_DET_THRESHOLD)
+??processIdleTime_19:
+        LDD     R16, Z+12
+        LDD     R17, Z+13
+        CPI     R16, 184
+        LDI     R18, 11
+        CPC     R17, R18
+        BRCS    ??processIdleTime_20
+//  307     {
+//  308       counterNoSensorDetected = true;
+        LDI     R18, 1
+        STD     Z+20, R18
+        RJMP    ??processIdleTime_21
+//  309     }
+//  310 
+//  311     if (counterNoSensorDetected)
+??processIdleTime_20:
+        LDS     R18, (??switchOnTime + 20)
+        TST     R18
+        BREQ    ??processIdleTime_1
+//  312     {
+//  313       unsigned char curCounterDelta = counterNoSensor / (1000 / timerDiscreteness);
+??processIdleTime_21:
+        RCALL   ?Subroutine4
+//  314 
+//  315       if (curCounterDelta > COUNTER_NOSENSOR_INC_DISCRET_SEC)
+??CrossCallReturnLabel_10:
+        CPI     R16, 6
+        BRCS    ??processIdleTime_1
+//  316       {
+//  317         GLOBAL::Counter::addCounter(0, 0, curCounterDelta);
+        MOV     R20, R16
+        LDI     R21, 0
+        LDI     R18, 0
+        LDI     R19, 0
+        LDI     R16, 0
+        LDI     R17, 0
+        CALL    ??addCounter
+//  318         counterNoSensor = counterNoSensor % (1000 / timerDiscreteness);
+        MOVW    R31:R30, R27:R26
+        LDD     R16, Z+12
+        LDD     R17, Z+13
+        RCALL   ?Subroutine4
+//  319       }
+//  320     }
+??CrossCallReturnLabel_11:
+        MOV     R30, R26
+        STD     Z+12, R0
+        STD     Z+13, R1
+??processIdleTime_1:
+        OUT     0x3F, R4
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+4
+        LD      R25, Y+
+          CFI R25 SameValue
+          CFI CFA_Y Y+3
+        LD      R26, Y+
+          CFI R26 SameValue
+          CFI CFA_Y Y+2
+        LD      R27, Y+
+          CFI R27 SameValue
+          CFI CFA_Y Y+1
+        LD      R4, Y+
+          CFI R4 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock8
+        REQUIRE _A_EIFR
+//  321   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine7:
+          CFI Block cfiCond9 Using cfiCommon0
+          CFI Function ??processIdleTime
+          CFI Conditional ??CrossCallReturnLabel_16
+          CFI R24 Frame(CFA_Y, -5)
+          CFI R25 Frame(CFA_Y, -4)
+          CFI R26 Frame(CFA_Y, -3)
+          CFI R27 Frame(CFA_Y, -2)
+          CFI R4 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+5
+          CFI Block cfiCond10 Using cfiCommon0
+          CFI (cfiCond10) Function ??processIdleTime
+          CFI (cfiCond10) Conditional ??CrossCallReturnLabel_17
+          CFI (cfiCond10) R24 Frame(CFA_Y, -5)
+          CFI (cfiCond10) R25 Frame(CFA_Y, -4)
+          CFI (cfiCond10) R26 Frame(CFA_Y, -3)
+          CFI (cfiCond10) R27 Frame(CFA_Y, -2)
+          CFI (cfiCond10) R4 Frame(CFA_Y, -1)
+          CFI (cfiCond10) CFA_SP SP+4
+          CFI (cfiCond10) CFA_Y Y+5
+          CFI Block cfiCond11 Using cfiCommon0
+          CFI (cfiCond11) Function ??processIdleTime
+          CFI (cfiCond11) Conditional ??CrossCallReturnLabel_18
+          CFI (cfiCond11) R24 Frame(CFA_Y, -5)
+          CFI (cfiCond11) R25 Frame(CFA_Y, -4)
+          CFI (cfiCond11) R26 Frame(CFA_Y, -3)
+          CFI (cfiCond11) R27 Frame(CFA_Y, -2)
+          CFI (cfiCond11) R4 Frame(CFA_Y, -1)
+          CFI (cfiCond11) CFA_SP SP+4
+          CFI (cfiCond11) CFA_Y Y+5
+          CFI Block cfiCond12 Using cfiCommon0
+          CFI (cfiCond12) Function ??processIdleTime
+          CFI (cfiCond12) Conditional ??CrossCallReturnLabel_19
+          CFI (cfiCond12) R24 Frame(CFA_Y, -5)
+          CFI (cfiCond12) R25 Frame(CFA_Y, -4)
+          CFI (cfiCond12) R26 Frame(CFA_Y, -3)
+          CFI (cfiCond12) R27 Frame(CFA_Y, -2)
+          CFI (cfiCond12) R4 Frame(CFA_Y, -1)
+          CFI (cfiCond12) CFA_SP SP+4
+          CFI (cfiCond12) CFA_Y Y+5
+          CFI Block cfiPicker13 Using cfiCommon1
+          CFI (cfiPicker13) NoFunction
+          CFI (cfiPicker13) Picker
+        SUBI    R16, 253
+        SBCI    R17, 255
+        RET
+          CFI EndBlock cfiCond9
+          CFI EndBlock cfiCond10
+          CFI EndBlock cfiCond11
+          CFI EndBlock cfiCond12
+          CFI EndBlock cfiPicker13
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine6:
+          CFI Block cfiCond14 Using cfiCommon0
+          CFI Function ??processIdleTime
+          CFI Conditional ??CrossCallReturnLabel_14
+          CFI R24 Frame(CFA_Y, -5)
+          CFI R25 Frame(CFA_Y, -4)
+          CFI R26 Frame(CFA_Y, -3)
+          CFI R27 Frame(CFA_Y, -2)
+          CFI R4 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+5
+          CFI Block cfiCond15 Using cfiCommon0
+          CFI (cfiCond15) Function ??processIdleTime
+          CFI (cfiCond15) Conditional ??CrossCallReturnLabel_15
+          CFI (cfiCond15) R24 Frame(CFA_Y, -5)
+          CFI (cfiCond15) R25 Frame(CFA_Y, -4)
+          CFI (cfiCond15) R26 Frame(CFA_Y, -3)
+          CFI (cfiCond15) R27 Frame(CFA_Y, -2)
+          CFI (cfiCond15) R4 Frame(CFA_Y, -1)
+          CFI (cfiCond15) CFA_SP SP+4
+          CFI (cfiCond15) CFA_Y Y+5
+          CFI Block cfiPicker16 Using cfiCommon1
+          CFI (cfiPicker16) NoFunction
+          CFI (cfiPicker16) Picker
+        LDS     R24, (??DeviceCounterConfig + 2)
+        LDI     R25, 0
+        ADIW    R25:R24, 6
+        CP      R18, R24
+        CPC     R19, R25
+        RET
+          CFI EndBlock cfiCond14
+          CFI EndBlock cfiCond15
+          CFI EndBlock cfiPicker16
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine5:
+          CFI Block cfiCond17 Using cfiCommon0
+          CFI Function ??processIdleTime
+          CFI Conditional ??CrossCallReturnLabel_12
+          CFI R24 Frame(CFA_Y, -5)
+          CFI R25 Frame(CFA_Y, -4)
+          CFI R26 Frame(CFA_Y, -3)
+          CFI R27 Frame(CFA_Y, -2)
+          CFI R4 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+5
+          CFI Block cfiCond18 Using cfiCommon0
+          CFI (cfiCond18) Function ??processIdleTime
+          CFI (cfiCond18) Conditional ??CrossCallReturnLabel_13
+          CFI (cfiCond18) R24 Frame(CFA_Y, -5)
+          CFI (cfiCond18) R25 Frame(CFA_Y, -4)
+          CFI (cfiCond18) R26 Frame(CFA_Y, -3)
+          CFI (cfiCond18) R27 Frame(CFA_Y, -2)
+          CFI (cfiCond18) R4 Frame(CFA_Y, -1)
+          CFI (cfiCond18) CFA_SP SP+4
+          CFI (cfiCond18) CFA_Y Y+5
+          CFI Block cfiPicker19 Using cfiCommon1
+          CFI (cfiPicker19) NoFunction
+          CFI (cfiPicker19) Picker
+        LDI     R16, 100
+        MUL     R16, R19
+        MOV     R17, R0
+        MUL     R16, R18
+        MOV     R16, R0
+        ADD     R17, R1
+        MOVW    R21:R20, R25:R24
+        JMP     ?US_DIVMOD_L02
+          CFI EndBlock cfiCond17
+          CFI EndBlock cfiCond18
+          CFI EndBlock cfiPicker19
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine4:
+          CFI Block cfiCond20 Using cfiCommon0
+          CFI Function ??processIdleTime
+          CFI Conditional ??CrossCallReturnLabel_10
+          CFI R24 Frame(CFA_Y, -5)
+          CFI R25 Frame(CFA_Y, -4)
+          CFI R26 Frame(CFA_Y, -3)
+          CFI R27 Frame(CFA_Y, -2)
+          CFI R4 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+5
+          CFI Block cfiCond21 Using cfiCommon0
+          CFI (cfiCond21) Function ??processIdleTime
+          CFI (cfiCond21) Conditional ??CrossCallReturnLabel_11
+          CFI (cfiCond21) R24 Frame(CFA_Y, -5)
+          CFI (cfiCond21) R25 Frame(CFA_Y, -4)
+          CFI (cfiCond21) R26 Frame(CFA_Y, -3)
+          CFI (cfiCond21) R27 Frame(CFA_Y, -2)
+          CFI (cfiCond21) R4 Frame(CFA_Y, -1)
+          CFI (cfiCond21) CFA_SP SP+4
+          CFI (cfiCond21) CFA_Y Y+5
+          CFI Block cfiPicker22 Using cfiCommon1
+          CFI (cfiPicker22) NoFunction
+          CFI (cfiPicker22) Picker
+        LDI     R20, 200
+        LDI     R21, 0
+        JMP     ?US_DIVMOD_L02
+          CFI EndBlock cfiCond20
+          CFI EndBlock cfiCond21
+          CFI EndBlock cfiPicker22
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine2:
+          CFI Block cfiCond23 Using cfiCommon0
+          CFI Function ??processIdleTime
+          CFI Conditional ??CrossCallReturnLabel_6
+          CFI R24 Frame(CFA_Y, -5)
+          CFI R25 Frame(CFA_Y, -4)
+          CFI R26 Frame(CFA_Y, -3)
+          CFI R27 Frame(CFA_Y, -2)
+          CFI R4 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+5
+          CFI Block cfiCond24 Using cfiCommon0
+          CFI (cfiCond24) Function ??processIdleTime
+          CFI (cfiCond24) Conditional ??CrossCallReturnLabel_7
+          CFI (cfiCond24) R24 Frame(CFA_Y, -5)
+          CFI (cfiCond24) R25 Frame(CFA_Y, -4)
+          CFI (cfiCond24) R26 Frame(CFA_Y, -3)
+          CFI (cfiCond24) R27 Frame(CFA_Y, -2)
+          CFI (cfiCond24) R4 Frame(CFA_Y, -1)
+          CFI (cfiCond24) CFA_SP SP+4
+          CFI (cfiCond24) CFA_Y Y+5
+          CFI Block cfiPicker25 Using cfiCommon1
+          CFI (cfiPicker25) NoFunction
+          CFI (cfiPicker25) Picker
+        LDI     R16, 0
+        MOVW    R31:R30, R27:R26
+        STD     Z+2, R16
+        STD     Z+3, R16
+        RET
+          CFI EndBlock cfiCond23
+          CFI EndBlock cfiCond24
+          CFI EndBlock cfiPicker25
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine1:
+          CFI Block cfiCond26 Using cfiCommon0
+          CFI Function ??processIdleTime
+          CFI Conditional ??CrossCallReturnLabel_4
+          CFI R24 Frame(CFA_Y, -5)
+          CFI R25 Frame(CFA_Y, -4)
+          CFI R26 Frame(CFA_Y, -3)
+          CFI R27 Frame(CFA_Y, -2)
+          CFI R4 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+5
+          CFI Block cfiCond27 Using cfiCommon0
+          CFI (cfiCond27) Function ??processIdleTime
+          CFI (cfiCond27) Conditional ??CrossCallReturnLabel_5
+          CFI (cfiCond27) R24 Frame(CFA_Y, -5)
+          CFI (cfiCond27) R25 Frame(CFA_Y, -4)
+          CFI (cfiCond27) R26 Frame(CFA_Y, -3)
+          CFI (cfiCond27) R27 Frame(CFA_Y, -2)
+          CFI (cfiCond27) R4 Frame(CFA_Y, -1)
+          CFI (cfiCond27) CFA_SP SP+4
+          CFI (cfiCond27) CFA_Y Y+5
+          CFI Block cfiPicker28 Using cfiCommon1
+          CFI (cfiPicker28) NoFunction
+          CFI (cfiPicker28) Picker
+        LDI     R16, 0
+        STD     Z+12, R16
+        STD     Z+13, R16
+        STD     Z+20, R16
+        RET
+          CFI EndBlock cfiCond26
+          CFI EndBlock cfiCond27
+          CFI EndBlock cfiPicker28
+//  322 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  323   __monitor unsigned char getCounterQualityPct1()
+??getCounterQualityPct1:
+          CFI Block cfiBlock29 Using cfiCommon0
+          CFI Function ??getCounterQualityPct1
+//  324   {
+        RCALL   ?Subroutine0
+//  325     return counterQualityPct1;
+??CrossCallReturnLabel_2:
+        LDS     R16, (??switchOnTime + 17)
+        OUT     0x3F, R17
+        RET
+          CFI EndBlock cfiBlock29
+//  326   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine0:
+          CFI Block cfiCond30 Using cfiCommon0
+          CFI Function ??disable
+          CFI Conditional ??CrossCallReturnLabel_0
+          CFI CFA_SP SP+4
+          CFI Block cfiCond31 Using cfiCommon0
+          CFI (cfiCond31) Function ??enabled
+          CFI (cfiCond31) Conditional ??CrossCallReturnLabel_1
+          CFI (cfiCond31) CFA_SP SP+4
+          CFI Block cfiCond32 Using cfiCommon0
+          CFI (cfiCond32) Function ??getCounterQualityPct1
+          CFI (cfiCond32) Conditional ??CrossCallReturnLabel_2
+          CFI (cfiCond32) CFA_SP SP+4
+          CFI Block cfiCond33 Using cfiCommon0
+          CFI (cfiCond33) Function ??getCounterQualityPct2
+          CFI (cfiCond33) Conditional ??CrossCallReturnLabel_3
+          CFI (cfiCond33) CFA_SP SP+4
+          CFI Block cfiPicker34 Using cfiCommon1
+          CFI (cfiPicker34) NoFunction
+          CFI (cfiPicker34) Picker
+        IN      R17, 0x3F
+        CLI
+        RET
+          CFI EndBlock cfiCond30
+          CFI EndBlock cfiCond31
+          CFI EndBlock cfiCond32
+          CFI EndBlock cfiCond33
+          CFI EndBlock cfiPicker34
+//  327 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  328   __monitor unsigned char getCounterQualityPct2()
+??getCounterQualityPct2:
+          CFI Block cfiBlock35 Using cfiCommon0
+          CFI Function ??getCounterQualityPct2
+//  329   {
+        RCALL   ?Subroutine0
+//  330     return counterQualityPct2;
+??CrossCallReturnLabel_3:
+        LDS     R16, (??switchOnTime + 18)
+        OUT     0x3F, R17
+        RET
+          CFI EndBlock cfiBlock35
+//  331   }
+//  332 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  333   __monitor void init()
+??init:
+          CFI Block cfiBlock36 Using cfiCommon0
+          CFI Function ??init
+//  334   {
+        FUNCALL ??init, ??disable
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R24
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        IN      R24, 0x3F
+        CLI
+//  335     counterDirection = false;
+        LDI     R16, 0
+        STS     ??counterDirection, R16
+//  336 
+//  337     disable();
+        RCALL   ??disable
+//  338   }
+        OUT     0x3F, R24
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock36
+
+        ASEGN ABSOLUTE:DATA:NOROOT,01fH
+__?EECR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,020H
+__?EEDR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,021H
+__?EEARL:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,022H
+__?EEARH:
+
+        RSEG INITTAB:CODE:NOROOT(0)
+`?<Segment init: NEAR_Z>`:
+        DC16    SFE(NEAR_Z) - SFB(NEAR_Z)
+        DC16    SFB(NEAR_Z)
+        DC16    0
+        REQUIRE ?need_segment_init
+
+        END
+//  339 }
+//  340 
+//  341 #endif
+//  342 
+// 
+//   7 bytes in segment ABSOLUTE
+// 934 bytes in segment CODE
+//   6 bytes in segment INITTAB
+//  22 bytes in segment NEAR_Z
+// 
+// 934 bytes of CODE memory (+ 6 bytes shared)
+//  22 bytes of DATA memory (+ 7 bytes shared)
+//
+//Errors: none
+//Warnings: none

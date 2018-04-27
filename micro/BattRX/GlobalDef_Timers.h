@@ -1,0 +1,28 @@
+#ifndef __GLOBALTIMERS_H_
+#define __GLOBALTIMERS_H_
+
+#define GLOBALHOLDTIMERS_COUNT                  (0)
+#define GLOBALCOMMONTIMERS_COUNT                (9)
+#define GLOBALTIMERS_COUNT                      (GLOBALHOLDTIMERS_COUNT + GLOBALCOMMONTIMERS_COUNT)
+#define GLOBALCLOCKS_COUNT                      (0)
+
+//Hold timers
+//#define GLOBALTIMERS_NAME_HOLDTIMER             (0)
+
+//Other timers
+//#define GLOBALTIMERS_NAME_ERRORTIMER            (0)
+#define GLOBALTIMERS_TWIMASTER_ERRORTIMER       (0)
+#define GLOBALTIMERS_SPIMASTER_ERRORTIMER       (1)
+#define GLOBALTIMERS_LCDDRIVER_WAITINGTIMER     (2)
+#define GLOBALTIMERS_MEMAT25_ERRORTIMER         (3)
+#define GLOBALTIMERS_ADC_ERRORTIMER             (4)
+#define GLOBALTIMERS_INDICATOR_WAITINGTIMER     (5)
+#define GLOBALTIMERS_USERINTERFACE_TIMEOUT      (6)
+#define GLOBALTIMERS_USERINTERFACE_REFRESHTIME  (7)
+#define GLOBALTIMERS_KEYBOARD_KEYREP            (8)
+
+//Clocks
+//#define GLOBALCLOCK_NAME                        (0)
+
+#endif
+

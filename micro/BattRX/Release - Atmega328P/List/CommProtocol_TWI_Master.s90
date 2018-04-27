@@ -1,0 +1,1688 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V6.12.1.50500 for Atmel AVR       02/Aug/2014  01:50:52 /
+// Copyright 1996-2012 IAR Systems AB.                                        /
+//                                                                            /
+//    Source file  =  D:\Projects\BatteryCounter\_micro\BattRX\CommProtocol_T /
+//                    WI_Master.cpp                                           /
+//    Command line =  D:\Projects\BatteryCounter\_micro\BattRX\CommProtocol_T /
+//                    WI_Master.cpp --cpu=m328p -ms -o                        /
+//                    "D:\Projects\BatteryCounter\_micro\BattRX\Release -     /
+//                    Atmega328P\Obj\" -D NDEBUG -lA                          /
+//                    "D:\Projects\BatteryCounter\_micro\BattRX\Release -     /
+//                    Atmega328P\List\" --initializers_in_flash               /
+//                    -DENABLE_BIT_DEFINITIONS --do_cross_call -e             /
+//                    --eeprom_size 1024 --dlib --dlib_config "C:\Program     /
+//                    Files (x86)\IAR Systems\Embedded Workbench              /
+//                    6.0\avr\LIB\DLIB\dlAVR-3s-ec_mul-sf-n.h" --eec++ -Ohs   /
+//    List file    =  D:\Projects\BatteryCounter\_micro\BattRX\Release -      /
+//                    Atmega328P\List\CommProtocol_TWI_Master.s90             /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME CommProtocol_TWI_Master
+
+        RTMODEL "__64bit_doubles", "disabled"
+        RTMODEL "__SystemLibrary", "DLib"
+        RTMODEL "__cpu", "3"
+        RTMODEL "__cpu_name", "ATmega328P"
+        RTMODEL "__dlib_file_descriptor", "0"
+        RTMODEL "__enhanced_core", "enabled"
+        RTMODEL "__has_elpm", "false"
+        RTMODEL "__memory_model", "2"
+        RTMODEL "__rt_version", "3"
+
+        RSEG CSTACK:DATA:NOROOT(0)
+        RSEG RSTACK:DATA:NOROOT(0)
+
+        ERROR
+//NOTE: This module defines or uses C++ features that are not
+//      accessible from assembler code. Assembling this file will
+//      not produce an equivalent object file to the one produced
+//      by the C++ compiler.
+
+        EXTERN ?need_segment_init
+
+        PUBWEAK `?<Segment init: NEAR_Z>`
+        PUBLIC ??TWIEventIRQ
+        FUNCTION ??TWIEventIRQ,021233H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 17, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBWEAK `??TWIEventIRQ??INTVEC 96`
+        PUBLIC ??bufferPos
+        PUBLIC ??bufferTWI
+        PUBLIC ??cancel
+        FUNCTION ??cancel,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??cancelWithError
+        FUNCTION ??cancelWithError,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??disable
+        FUNCTION ??disable,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??enable
+        FUNCTION ??enable,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??enabled
+        FUNCTION ??enabled,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??init
+        FUNCTION ??init,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??isEnabled
+        PUBLIC ??ready
+        FUNCTION ??ready,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??receiveByte
+        FUNCTION ??receiveByte,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??run
+        FUNCTION ??run,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??send
+        FUNCTION ??send,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??sendByte
+        FUNCTION ??sendByte,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??start
+        FUNCTION ??start,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??startReceiveNextByte
+        FUNCTION ??startReceiveNextByte,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??stop
+        FUNCTION ??stop,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??txBusy
+        FUNCTION ??txBusy,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBWEAK _A_DDRC
+        PUBWEAK _A_PORTC
+        PUBWEAK _A_PRR
+        PUBWEAK _A_TWBR
+        PUBWEAK _A_TWCR
+        PUBWEAK _A_TWDR
+        PUBWEAK _A_TWSR
+        PUBWEAK __?EEARH
+        PUBWEAK __?EEARL
+        PUBWEAK __?EECR
+        PUBWEAK __?EEDR
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_Y Y DATA
+          CFI StackFrame CFA_SP SP DATA
+          CFI VirtualResource ?RetPad:1, ?RetHigh:8, ?RetLow:8, ?Ret:17
+          CFI Resource R0:8, R1:8, R2:8, R3:8, R4:8, R5:8, R6:8, R7:8, R8:8, R9:8
+          CFI Resource R10:8, R11:8, R12:8, R13:8, R14:8, R15:8, R16:8, R17:8
+          CFI Resource R18:8, R19:8, R20:8, R21:8, R22:8, R23:8, R24:8, R25:8
+          CFI Resource R26:8, R27:8, R28:8, R29:8, R30:8, R31:8
+          CFI Resource ?RetHighByteMask:8, SP:16, SPH:8, SPL:8, Y:16
+          CFI ResourceParts ?Ret ?RetHigh, ?RetLow, ?RetPad
+          CFI ResourceParts SP SPH, SPL
+          CFI ResourceParts Y R29, R28
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Y+0
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 Undefined
+          CFI R17 Undefined
+          CFI R18 Undefined
+          CFI R19 Undefined
+          CFI R20 Undefined
+          CFI R21 Undefined
+          CFI R22 Undefined
+          CFI R23 Undefined
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 Undefined
+          CFI R31 Undefined
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Notused
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 SameValue
+          CFI R1 SameValue
+          CFI R2 SameValue
+          CFI R3 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 SameValue
+          CFI R17 SameValue
+          CFI R18 SameValue
+          CFI R19 SameValue
+          CFI R20 SameValue
+          CFI R21 SameValue
+          CFI R22 SameValue
+          CFI R23 SameValue
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 SameValue
+          CFI R31 SameValue
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI Y SameValue
+          CFI EndCommon cfiCommon1
+        
+        
+          CFI Common cfiCommon2 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Y+0
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 SameValue
+          CFI R1 SameValue
+          CFI R2 SameValue
+          CFI R3 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 SameValue
+          CFI R17 SameValue
+          CFI R18 SameValue
+          CFI R19 SameValue
+          CFI R20 SameValue
+          CFI R21 SameValue
+          CFI R22 SameValue
+          CFI R23 SameValue
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 SameValue
+          CFI R31 SameValue
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI EndCommon cfiCommon2
+        
+`?<Name CommProtocol_TWI_Mas 6>` SYMBOL "CommProtocol_TWI_Master"
+
+`??TWIEventIRQ??INTVEC 96` SYMBOL "??INTVEC 96", ??TWIEventIRQ
+??bufferPos         SYMBOL "bufferPos", `?<Name CommProtocol_TWI_Mas 6>`
+??bufferTWI         SYMBOL "bufferTWI", `?<Name CommProtocol_TWI_Mas 6>`
+??isEnabled         SYMBOL "isEnabled", `?<Name CommProtocol_TWI_Mas 6>`
+
+        EXTERN ??getTimer
+        FUNCTION ??getTimer,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??setTimer
+        FUNCTION ??setTimer,0202H
+        ARGFRAME RSTACK, 0, STACK
+
+// D:\Projects\BatteryCounter\_micro\BattRX\CommProtocol_TWI_Master.cpp
+//    1 #ifndef __COMMPROTOCOL_TWI_MASTER_CPP_
+//    2 #define __COMMPROTOCOL_TWI_MASTER_CPP_
+//    3 
+//    4 #include "CommProtocol_TWI_Master.h"
+
+        ASEGN ABSOLUTE:DATA:NOROOT,0bcH
+// union <unnamed> volatile __io _A_TWCR
+_A_TWCR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,0bbH
+// union <unnamed> volatile __io _A_TWDR
+_A_TWDR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,0b9H
+// union <unnamed> volatile __io _A_TWSR
+_A_TWSR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,0b8H
+// union <unnamed> volatile __io _A_TWBR
+_A_TWBR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,064H
+// union <unnamed> volatile __io _A_PRR
+_A_PRR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,028H
+// union <unnamed> volatile __io _A_PORTC
+_A_PORTC:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,027H
+// union <unnamed> volatile __io _A_DDRC
+_A_DDRC:
+        DS8 1
+//    5 #include "MultyThreading.h"
+//    6 
+//    7 #define TWI_BUFFER_TRANS_TIMEOUT        (1000)
+//    8 
+//    9 namespace CommProtocol_TWI_Master
+//   10 {
+//   11   typedef enum
+//   12   {
+//   13     TWIStatusCode_Start = 0x08,
+//   14     TWIStatusCode_RepStart = 0x10,
+//   15     TWIStatusCode_AbrLost = 0x38,
+//   16 
+//   17     TWIStatusCode_MTX_AdrAck = 0x18,
+//   18     TWIStatusCode_MTX_AdrNack = 0x20,
+//   19     TWIStatusCode_MTX_DataAck = 0x28,
+//   20     TWIStatusCode_MTX_DataNack = 0x30,
+//   21 
+//   22     TWIStatusCode_MRX_AdrAck = 0x40,
+//   23     TWIStatusCode_MRX_AdrNack = 0x48,
+//   24     TWIStatusCode_MRX_DataAck = 0x50,
+//   25     TWIStatusCode_MRX_DataNack = 0x58,
+//   26 
+//   27     TWIStatusCode_STX_AdrAck = 0xA8,
+//   28     TWIStatusCode_STX_AdrAck_MasterArbLost = 0xB0,
+//   29     TWIStatusCode_STX_DataAck = 0xB8,
+//   30     TWIStatusCode_STX_DataNack = 0xC0,
+//   31     TWIStatusCode_STX_DataAck_LastByte = 0xC8,
+//   32 
+//   33     TWIStatusCode_SRX_AdrAck = 0x60,
+//   34     TWIStatusCode_SRX_AdrAck_MasterArbLost = 0x68,
+//   35     TWIStatusCode_SRX_GenAck = 0x70,
+//   36     TWIStatusCode_SRX_GenAck_MasterArbLost = 0x78,
+//   37     TWIStatusCode_SRX_AdrDataAck = 0x80,
+//   38     TWIStatusCode_SRX_AdrDataNack = 0x88,
+//   39     TWIStatusCode_SRX_GenDataAck = 0x90,
+//   40     TWIStatusCode_SRX_GenDataNack = 0x98,
+//   41     TWIStatusCode_SRX_StopRestart = 0xA0,
+//   42 
+//   43     TWIStatusCode_NoState = 0xF8,
+//   44     TWIStatusCode_BusError = 0x00,
+//   45   } TTWIStatusCode;
+//   46 
+
+        RSEG NEAR_Z:DATA:NOROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   47   TTWIBuffer bufferTWI =
+??bufferTWI:
+        DS8 67
+//   48   {
+//   49     .length = 0,
+//   50     .status = TWIBufferStatus_None,
+//   51     .result = TWIResultCodeType_OK,
+//   52   };
+//   53 
+
+        RSEG NEAR_Z:DATA:NOROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   54   bool isEnabled = false;
+??isEnabled:
+        DS8 1
+
+        RSEG NEAR_Z:DATA:NOROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   55   unsigned short bufferPos = 0;
+??bufferPos:
+        DS8 2
+//   56 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   57   __monitor void enable()
+??enable:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function ??enable
+//   58   {
+        IN      R17, 0x3F
+        CLI
+//   59     bufferTWI.status = TWIBufferStatus_None;
+        LDI     R16, 0
+        RCALL   ??Subroutine9_0
+//   60 
+//   61     PRR &= ~(1<<PRTWI);
+??CrossCallReturnLabel_22:
+        LDS     R16, 100
+        ANDI    R16, 0x7F
+        STS     100, R16
+//   62 
+//   63     LCD_SDA_DIR = 0;
+        CBI     0x07, 0x04
+//   64     LCD_SDA_PORT = 1;
+        SBI     0x08, 0x04
+//   65 
+//   66     LCD_SCL_DIR = 0;
+        CBI     0x07, 0x05
+//   67     LCD_SCL_PORT = 1;
+        SBI     0x08, 0x05
+//   68 
+//   69     TWBR = (clockFrequency/TWIClockFrequency/2) - 8;
+        LDI     R16, 17
+        STS     _A_TWBR, R16
+//   70 
+//   71     TWSR = TWIStatusCode_NoState & 0xF8;              // Prescaler = 1, Status = No_State
+        LDI     R16, 248
+        STS     _A_TWSR, R16
+//   72     TWDR = 0xFF;                                      // Default content = SDA released.
+        LDI     R16, 255
+        STS     _A_TWDR, R16
+//   73     TWCR = (1<<TWEN)|                                 // Enable TWI-interface and release TWI pins.
+//   74            (0<<TWIE)|(0<<TWINT)|                      // Disable Interupt.
+//   75            (0<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|           // No Signal requests.
+//   76            (0<<TWWC);                                 //
+        RCALL   ?Subroutine1
+//   77 
+//   78     isEnabled = true;
+??CrossCallReturnLabel_19:
+        LDI     R16, 1
+        STS     ??isEnabled, R16
+//   79   }
+        OUT     0x3F, R17
+        RET
+          CFI EndBlock cfiBlock0
+        REQUIRE _A_PRR
+        REQUIRE _A_DDRC
+        REQUIRE _A_PORTC
+        REQUIRE _A_TWBR
+        REQUIRE _A_TWSR
+        REQUIRE _A_TWDR
+        REQUIRE _A_TWCR
+//   80 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   81   __monitor void disable()
+??disable:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function ??disable
+//   82   {
+        IN      R17, 0x3F
+        CLI
+//   83     isEnabled = false;
+        LDI     R16, 0
+        STS     ??isEnabled, R16
+//   84 
+//   85     TWCR = 0x00;
+        RCALL   ??Subroutine8_0
+//   86     PRR |= (1<<PRTWI);
+??CrossCallReturnLabel_14:
+        LDS     R16, 100
+        ORI     R16, 0x80
+        STS     100, R16
+//   87 
+//   88     LCD_SDA_DIR = 1;
+        SBI     0x07, 0x04
+//   89     LCD_SDA_PORT = 0;
+        CBI     0x08, 0x04
+//   90 
+//   91     LCD_SCL_DIR = 1;
+        SBI     0x07, 0x05
+//   92     LCD_SCL_PORT = 0;
+        CBI     0x08, 0x05
+//   93   }
+        OUT     0x3F, R17
+        RET
+          CFI EndBlock cfiBlock1
+        REQUIRE _A_TWCR
+        REQUIRE _A_PRR
+        REQUIRE _A_DDRC
+        REQUIRE _A_PORTC
+//   94 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   95   bool enabled()
+??enabled:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function ??enabled
+//   96   {
+//   97     return isEnabled;
+        LDS     R16, ??isEnabled
+        RET
+          CFI EndBlock cfiBlock2
+//   98   }
+//   99 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  100   bool ready()
+??ready:
+          CFI Block cfiBlock3 Using cfiCommon0
+          CFI Function ??ready
+//  101   {
+//  102     return isEnabled &&
+//  103            ((bufferTWI.status == TWIBufferStatus_None) ||
+//  104             (bufferTWI.status == TWIBufferStatus_Processed));
+        LDS     R16, ??isEnabled
+        TST     R16
+        BREQ    ??ready_1
+        RCALL   ?Subroutine3
+??CrossCallReturnLabel_2:
+        TST     R16
+        BREQ    ??ready_2
+        CPI     R16, 3
+        BRNE    ??ready_1
+??ready_2:
+        LDI     R16, 1
+        RET
+??ready_1:
+        LDI     R16, 0
+        RET
+          CFI EndBlock cfiBlock3
+//  105   }
+//  106 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  107   __monitor void init()
+??init:
+          CFI Block cfiBlock4 Using cfiCommon0
+          CFI Function ??init
+//  108   {
+        FUNCALL ??init, ??disable
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R24
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        IN      R24, 0x3F
+        CLI
+//  109     disable();
+        RCALL   ??disable
+//  110   }
+        OUT     0x3F, R24
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock4
+//  111 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  112   bool txBusy()
+??txBusy:
+          CFI Block cfiBlock5 Using cfiCommon0
+          CFI Function ??txBusy
+//  113   {
+//  114     return (TWCR & (1<<TWIE));
+        LDS     R17, _A_TWCR
+        MOV     R16, R17
+        ANDI    R16, 0x01
+        RET
+          CFI EndBlock cfiBlock5
+        REQUIRE _A_TWCR
+//  115   }
+//  116 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  117   void cancel()
+??cancel:
+//  118   {
+//  119     TWCR = (1<<TWEN)|                                     // TWI Interface enabled
+//  120            (0<<TWIE)|(0<<TWINT)|                          // Disable TWI Interrupt
+//  121            (0<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|               //
+//  122            (0<<TWWC);                                     //
+        REQUIRE ?Subroutine1
+        REQUIRE _A_TWCR
+        ;               // Fall through to label ?Subroutine1
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine1:
+          CFI Block cfiCond6 Using cfiCommon0
+          CFI Function ??enable
+          CFI Conditional ??CrossCallReturnLabel_19
+          CFI CFA_SP SP+4
+          CFI Block cfiCond7 Using cfiCommon0
+          CFI (cfiCond7) Function ??cancelWithError
+          CFI (cfiCond7) Conditional ??CrossCallReturnLabel_20
+          CFI (cfiCond7) CFA_SP SP+4
+          CFI Block cfiCond8 Using cfiCommon0
+          CFI (cfiCond8) Function ??start
+          CFI (cfiCond8) Conditional ??CrossCallReturnLabel_21
+          CFI (cfiCond8) CFA_SP SP+4
+          CFI Block cfiBlock9 Using cfiCommon0
+          CFI (cfiBlock9) NoFunction
+          CFI Block cfiPicker10 Using cfiCommon1
+          CFI (cfiPicker10) NoFunction
+          CFI (cfiPicker10) Picker
+        LDI     R16, 4
+          CFI EndBlock cfiCond6
+          CFI EndBlock cfiCond7
+          CFI EndBlock cfiCond8
+          CFI EndBlock cfiBlock9
+          CFI EndBlock cfiPicker10
+        REQUIRE ??Subroutine8_0
+        ;               // Fall through to label ??Subroutine8_0
+
+        RSEG CODE:CODE:NOROOT(1)
+??Subroutine8_0:
+          CFI Block cfiCond11 Using cfiCommon0
+          CFI Function ??disable
+          CFI Conditional ??CrossCallReturnLabel_14
+          CFI CFA_SP SP+4
+          CFI Block cfiCond12 Using cfiCommon0
+          CFI (cfiCond12) Function ??sendByte
+          CFI (cfiCond12) Conditional ??CrossCallReturnLabel_15
+          CFI (cfiCond12) CFA_SP SP+4
+          CFI Block cfiCond13 Using cfiCommon0
+          CFI (cfiCond13) Function ??startReceiveNextByte
+          CFI (cfiCond13) Conditional ??CrossCallReturnLabel_16
+          CFI (cfiCond13) CFA_SP SP+4
+          CFI Block cfiCond14 Using cfiCommon0
+          CFI (cfiCond14) Function ??receiveByte
+          CFI (cfiCond14) Conditional ??CrossCallReturnLabel_17
+          CFI (cfiCond14) CFA_SP SP+4
+          CFI Block cfiCond15 Using cfiCommon2
+          CFI (cfiCond15) Function ??TWIEventIRQ
+          CFI (cfiCond15) Conditional ??CrossCallReturnLabel_18
+          CFI (cfiCond15) R16 Frame(CFA_Y, -17)
+          CFI (cfiCond15) R17 Frame(CFA_Y, -16)
+          CFI (cfiCond15) R18 Frame(CFA_Y, -15)
+          CFI (cfiCond15) R19 Frame(CFA_Y, -14)
+          CFI (cfiCond15) R20 Frame(CFA_Y, -13)
+          CFI (cfiCond15) R21 Frame(CFA_Y, -12)
+          CFI (cfiCond15) R22 Frame(CFA_Y, -11)
+          CFI (cfiCond15) R23 Frame(CFA_Y, -10)
+          CFI (cfiCond15) R0 Frame(CFA_Y, -9)
+          CFI (cfiCond15) R1 Frame(CFA_Y, -8)
+          CFI (cfiCond15) R2 Frame(CFA_Y, -7)
+          CFI (cfiCond15) R3 Frame(CFA_Y, -6)
+          CFI (cfiCond15) R30 Frame(CFA_Y, -5)
+          CFI (cfiCond15) R31 Frame(CFA_Y, -4)
+          CFI (cfiCond15) R24 Frame(CFA_Y, -3)
+          CFI (cfiCond15) R25 Frame(CFA_Y, -2)
+          CFI (cfiCond15) R26 Frame(CFA_Y, -1)
+          CFI (cfiCond15) CFA_SP SP+4
+          CFI (cfiCond15) CFA_Y Y+17
+          CFI Block cfiCond16 Using cfiCommon0
+          CFI (cfiCond16) Function ??enable
+          CFI (cfiCond16) Conditional ??CrossCallReturnLabel_19
+          CFI (cfiCond16) CFA_SP SP+4
+          CFI Block cfiCond17 Using cfiCommon0
+          CFI (cfiCond17) Function ??cancelWithError
+          CFI (cfiCond17) Conditional ??CrossCallReturnLabel_20
+          CFI (cfiCond17) CFA_SP SP+4
+          CFI Block cfiCond18 Using cfiCommon0
+          CFI (cfiCond18) Function ??start
+          CFI (cfiCond18) Conditional ??CrossCallReturnLabel_21
+          CFI (cfiCond18) CFA_SP SP+4
+          CFI Block cfiBlock19 Using cfiCommon0
+          CFI (cfiBlock19) NoFunction
+          CFI Block cfiPicker20 Using cfiCommon1
+          CFI (cfiPicker20) NoFunction
+          CFI (cfiPicker20) Picker
+        STS     _A_TWCR, R16
+        RET
+          CFI EndBlock cfiCond11
+          CFI EndBlock cfiCond12
+          CFI EndBlock cfiCond13
+          CFI EndBlock cfiCond14
+          CFI EndBlock cfiCond15
+          CFI EndBlock cfiCond16
+          CFI EndBlock cfiCond17
+          CFI EndBlock cfiCond18
+          CFI EndBlock cfiBlock19
+          CFI EndBlock cfiPicker20
+//  123   }
+//  124 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  125   void cancelWithError()
+??cancelWithError:
+          CFI Block cfiBlock21 Using cfiCommon0
+          CFI Function ??cancelWithError
+//  126   {
+//  127     cancel();
+        RCALL   ?Subroutine1
+//  128 
+//  129     bufferTWI.result = TWIResultCodeType_Error;
+??CrossCallReturnLabel_20:
+        LDI     R30, LOW(??bufferTWI)
+        LDI     R31, (??bufferTWI) >> 8
+          CFI EndBlock cfiBlock21
+        REQUIRE ?Subroutine2
+        REQUIRE _A_TWCR
+        ;               // Fall through to label ?Subroutine2
+//  130     bufferTWI.length = 0;
+//  131     bufferTWI.status = TWIBufferStatus_Processed;
+//  132   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine2:
+          CFI Block cfiBlock22 Using cfiCommon0
+          CFI NoFunction
+          CFI Block cfiPicker23 Using cfiCommon1
+          CFI (cfiPicker23) NoFunction
+          CFI (cfiPicker23) Picker
+        LDI     R16, 255
+        STD     Z+2, R16
+        LDI     R16, 0
+        ST      Z, R16
+        LDI     R16, 3
+        STD     Z+1, R16
+        RET
+          CFI EndBlock cfiBlock22
+          CFI EndBlock cfiPicker23
+//  133 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  134   void start()
+??start:
+          CFI Block cfiBlock24 Using cfiCommon0
+          CFI Function ??start
+//  135   {
+//  136     if (bufferTWI.length <= 0)
+        LDI     R30, LOW(??bufferTWI)
+        LDI     R31, (??bufferTWI) >> 8
+        LD      R16, Z
+        TST     R16
+        BRNE    ??start_1
+//  137     {
+//  138       cancelWithError();
+        RCALL   ?Subroutine1
+??CrossCallReturnLabel_21:
+        RJMP    ?Subroutine2
+//  139       return;
+//  140     }
+//  141 
+//  142     bufferPos = 0;
+??start_1:
+        LDI     R16, 0
+        LDI     R30, LOW(??bufferPos)
+        LDI     R31, (??bufferPos) >> 8
+        ST      Z, R16
+        STD     Z+1, R16
+//  143     TWCR = (1<<TWEN)|                                       // TWI Interface enabled.
+//  144            (1<<TWIE)|(1<<TWINT)|                            // Enable TWI Interupt and clear the flag.
+//  145            (0<<TWEA)|(1<<TWSTA)|(0<<TWSTO)|                 // Initiate a START condition.
+//  146            (0<<TWWC);                                       //
+        LDI     R16, 165
+        RJMP    ??Subroutine8_0
+          CFI EndBlock cfiBlock24
+        REQUIRE _A_TWCR
+//  147   }
+//  148 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  149   void stop()
+??stop:
+          CFI Block cfiBlock25 Using cfiCommon0
+          CFI Function ??stop
+//  150   {
+//  151     bufferTWI.result = TWIResultCodeType_OK;
+        LDI     R16, 0
+        STS     (??bufferTWI + 2), R16
+//  152     bufferTWI.status = TWIBufferStatus_Processed;
+        RCALL   ?Subroutine7
+//  153     TWCR = (1<<TWEN)|                                       // TWI Interface enabled
+//  154            (0<<TWIE)|(1<<TWINT)|                            // Disable TWI Interrupt and clear the flag
+//  155            (0<<TWEA)|(0<<TWSTA)|(1<<TWSTO)|                 // Initiate a STOP condition.
+//  156            (0<<TWWC);                                       //
+??CrossCallReturnLabel_24:
+        LDI     R16, 148
+        RJMP    ??Subroutine8_0
+          CFI EndBlock cfiBlock25
+        REQUIRE _A_TWCR
+//  157   }
+//  158 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  159   bool send()
+??send:
+          CFI Block cfiBlock26 Using cfiCommon0
+          CFI Function ??send
+//  160   {
+//  161     if (txBusy() || (bufferTWI.status != TWIBufferStatus_Ready))
+        FUNCALL ??send, ??start
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDS     R16, _A_TWCR
+        SBRC    R16, 0
+        RJMP    ??send_1
+        RCALL   ?Subroutine3
+??CrossCallReturnLabel_3:
+        CPI     R16, 1
+        BREQ    ??send_2
+//  162     {
+//  163       return false;
+??send_1:
+        LDI     R16, 0
+        RET
+//  164     }
+//  165 
+//  166     start();
+??send_2:
+        RCALL   ??start
+//  167 
+//  168     return true;
+        LDI     R16, 1
+        RET
+          CFI EndBlock cfiBlock26
+        REQUIRE _A_TWCR
+//  169   }
+//  170 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  171   void sendByte()
+??sendByte:
+          CFI Block cfiBlock27 Using cfiCommon0
+          CFI Function ??sendByte
+//  172   {
+        MOVW    R21:R20, R27:R26
+//  173     if (bufferPos < bufferTWI.length)
+        RCALL   ?Subroutine4
+??CrossCallReturnLabel_7:
+        LD      R18, X+
+        LD      R19, X
+        LD      R16, Z
+        LDI     R17, 0
+        CP      R18, R16
+        CPC     R19, R17
+        BRCC    ??sendByte_1
+//  174     {
+//  175       TWDR = bufferTWI.buffer[bufferPos];
+        ADD     R30, R18
+        ADC     R31, R19
+        LDD     R16, Z+3
+        STS     _A_TWDR, R16
+//  176       bufferPos++;
+        RCALL   ?Subroutine6
+??CrossCallReturnLabel_12:
+        SUBI    R16, 255
+        SBCI    R17, 255
+        ST      Z, R16
+        STD     Z+1, R17
+//  177 
+//  178       TWCR = (1<<TWEN)|                                     // TWI Interface enabled
+//  179              (1<<TWIE)|(1<<TWINT)|                          // Enable TWI Interupt and clear the flag to send byte
+//  180              (0<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|               //
+//  181              (0<<TWWC);                                     //
+        LDI     R16, 133
+        RJMP    ??sendByte_2
+//  182     }
+//  183     else
+//  184     {
+//  185       stop();
+??sendByte_1:
+        STD     Z+2, R17
+        LDI     R16, 3
+        STD     Z+1, R16
+        LDI     R16, 148
+??sendByte_2:
+        RCALL   ??Subroutine8_0
+//  186     }
+//  187   }
+??CrossCallReturnLabel_15:
+        MOVW    R27:R26, R21:R20
+        RET
+          CFI EndBlock cfiBlock27
+        REQUIRE _A_TWDR
+        REQUIRE _A_TWCR
+//  188 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  189   void startReceiveNextByte()
+??startReceiveNextByte:
+          CFI Block cfiBlock28 Using cfiCommon0
+          CFI Function ??startReceiveNextByte
+//  190   {
+        MOVW    R19:R18, R25:R24
+//  191     if (bufferPos < (bufferTWI.length - 1))                 // Detect the last byte to NACK it.
+        RCALL   ?Subroutine6
+??CrossCallReturnLabel_13:
+        RCALL   ?Subroutine5
+//  192     {
+//  193       TWCR = (1<<TWEN)|                                     // TWI Interface enabled
+//  194              (1<<TWIE)|(1<<TWINT)|                          // Enable TWI Interupt and clear the flag to read next byte
+//  195              (1<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|               // Send ACK after reception
+//  196              (0<<TWWC);                                     //
+//  197     }
+//  198     else
+//  199     {
+//  200       TWCR = (1<<TWEN)|                                     // TWI Interface enabled
+//  201              (1<<TWIE)|(1<<TWINT)|                          // Enable TWI Interupt and clear the flag to read next byte
+//  202              (0<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|               // Send NACK after reception
+//  203              (0<<TWWC);                                     //
+??CrossCallReturnLabel_9:
+        RCALL   ??Subroutine8_0
+//  204     }
+//  205   }
+??CrossCallReturnLabel_16:
+        MOVW    R25:R24, R19:R18
+        RET
+          CFI EndBlock cfiBlock28
+        REQUIRE _A_TWCR
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine6:
+          CFI Block cfiCond29 Using cfiCommon0
+          CFI Function ??sendByte
+          CFI Conditional ??CrossCallReturnLabel_12
+          CFI CFA_SP SP+4
+          CFI Block cfiCond30 Using cfiCommon0
+          CFI (cfiCond30) Function ??startReceiveNextByte
+          CFI (cfiCond30) Conditional ??CrossCallReturnLabel_13
+          CFI (cfiCond30) CFA_SP SP+4
+          CFI Block cfiPicker31 Using cfiCommon1
+          CFI (cfiPicker31) NoFunction
+          CFI (cfiPicker31) Picker
+        LDI     R30, LOW(??bufferPos)
+        LDI     R31, (??bufferPos) >> 8
+        LD      R16, Z
+        LDD     R17, Z+1
+        RET
+          CFI EndBlock cfiCond29
+          CFI EndBlock cfiCond30
+          CFI EndBlock cfiPicker31
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine5:
+          CFI Block cfiCond32 Using cfiCommon0
+          CFI Function ??startReceiveNextByte
+          CFI Conditional ??CrossCallReturnLabel_9
+          CFI CFA_SP SP+4
+          CFI Block cfiCond33 Using cfiCommon2
+          CFI (cfiCond33) Function ??TWIEventIRQ
+          CFI (cfiCond33) Conditional ??CrossCallReturnLabel_11
+          CFI (cfiCond33) R16 Frame(CFA_Y, -17)
+          CFI (cfiCond33) R17 Frame(CFA_Y, -16)
+          CFI (cfiCond33) R18 Frame(CFA_Y, -15)
+          CFI (cfiCond33) R19 Frame(CFA_Y, -14)
+          CFI (cfiCond33) R20 Frame(CFA_Y, -13)
+          CFI (cfiCond33) R21 Frame(CFA_Y, -12)
+          CFI (cfiCond33) R22 Frame(CFA_Y, -11)
+          CFI (cfiCond33) R23 Frame(CFA_Y, -10)
+          CFI (cfiCond33) R0 Frame(CFA_Y, -9)
+          CFI (cfiCond33) R1 Frame(CFA_Y, -8)
+          CFI (cfiCond33) R2 Frame(CFA_Y, -7)
+          CFI (cfiCond33) R3 Frame(CFA_Y, -6)
+          CFI (cfiCond33) R30 Frame(CFA_Y, -5)
+          CFI (cfiCond33) R31 Frame(CFA_Y, -4)
+          CFI (cfiCond33) R24 Frame(CFA_Y, -3)
+          CFI (cfiCond33) R25 Frame(CFA_Y, -2)
+          CFI (cfiCond33) R26 Frame(CFA_Y, -1)
+          CFI (cfiCond33) CFA_SP SP+4
+          CFI (cfiCond33) CFA_Y Y+17
+          CFI Block cfiPicker34 Using cfiCommon1
+          CFI (cfiPicker34) NoFunction
+          CFI (cfiPicker34) Picker
+        LDS     R24, ??bufferTWI
+          CFI Block cfiCond35 Using cfiCommon0
+          CFI (cfiCond35) Function ??receiveByte
+          CFI (cfiCond35) Conditional ??CrossCallReturnLabel_10
+          CFI (cfiCond35) CFA_SP SP+4
+??Subroutine5_0:
+        LDI     R25, 0
+        SBIW    R25:R24, 1
+        CP      R16, R24
+        CPC     R17, R25
+        BRCC    ??Subroutine5_1
+        LDI     R16, 197
+        RET
+??Subroutine5_1:
+        LDI     R16, 133
+        RET
+          CFI EndBlock cfiCond32
+          CFI EndBlock cfiCond33
+          CFI EndBlock cfiPicker34
+          CFI EndBlock cfiCond35
+//  206 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  207   void receiveByte(bool _last)
+??receiveByte:
+          CFI Block cfiBlock36 Using cfiCommon0
+          CFI Function ??receiveByte
+//  208   {
+        MOVW    R1:R0, R27:R26
+        MOVW    R23:R22, R25:R24
+//  209     if (bufferPos < bufferTWI.length)
+        RCALL   ?Subroutine4
+??CrossCallReturnLabel_8:
+        LD      R20, X+
+        LD      R21, X
+        LD      R18, Z
+        LDI     R19, 0
+        CP      R20, R18
+        CPC     R21, R19
+        BRCC    ??receiveByte_1
+//  210     {
+//  211       bufferTWI.buffer[bufferPos] = TWDR;
+        LDS     R17, _A_TWDR
+        MOVW    R27:R26, R31:R30
+        ADD     R26, R20
+        ADC     R27, R21
+        ADIW    R27:R26, 3
+        ST      X, R17
+//  212       bufferPos++;
+        LDI     R26, LOW(??bufferPos)
+        LDI     R27, (??bufferPos) >> 8
+        LD      R18, X+
+        LD      R19, X
+        SUBI    R18, 255
+        SBCI    R19, 255
+        ST      X, R19
+        ST      -X, R18
+//  213     }
+//  214 
+//  215     if (_last)
+??receiveByte_1:
+        TST     R16
+        BREQ    ??receiveByte_2
+//  216     {
+//  217       stop();
+        LDI     R16, 0
+        STD     Z+2, R16
+        LDI     R16, 3
+        STD     Z+1, R16
+        LDI     R16, 148
+        RJMP    ??CrossCallReturnLabel_10
+//  218     }
+//  219     else
+//  220     {
+//  221       startReceiveNextByte();
+??receiveByte_2:
+        LDI     R26, LOW(??bufferPos)
+        LDI     R27, (??bufferPos) >> 8
+        LD      R16, X+
+        LD      R17, X
+        LD      R24, Z
+        RCALL   ??Subroutine5_0
+//  222     }
+??CrossCallReturnLabel_10:
+        RCALL   ??Subroutine8_0
+//  223   }
+??CrossCallReturnLabel_17:
+        MOVW    R25:R24, R23:R22
+        MOVW    R27:R26, R1:R0
+        RET
+          CFI EndBlock cfiBlock36
+        REQUIRE _A_TWDR
+        REQUIRE _A_TWCR
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine4:
+          CFI Block cfiCond37 Using cfiCommon0
+          CFI Function ??sendByte
+          CFI Conditional ??CrossCallReturnLabel_7
+          CFI CFA_SP SP+4
+          CFI Block cfiCond38 Using cfiCommon0
+          CFI (cfiCond38) Function ??receiveByte
+          CFI (cfiCond38) Conditional ??CrossCallReturnLabel_8
+          CFI (cfiCond38) CFA_SP SP+4
+          CFI Block cfiPicker39 Using cfiCommon1
+          CFI (cfiPicker39) NoFunction
+          CFI (cfiPicker39) Picker
+        LDI     R30, LOW(??bufferTWI)
+        LDI     R31, (??bufferTWI) >> 8
+        LDI     R26, LOW(??bufferPos)
+        LDI     R27, (??bufferPos) >> 8
+        RET
+          CFI EndBlock cfiCond37
+          CFI EndBlock cfiCond38
+          CFI EndBlock cfiPicker39
+//  224 
+//  225   #pragma vector=TWI_vect
+
+        RSEG CODE:CODE:NOROOT(1)
+//  226   __interrupt void TWIEventIRQ()
+??TWIEventIRQ:
+          CFI Block cfiBlock40 Using cfiCommon2
+          CFI Function ??TWIEventIRQ
+//  227   {
+        FUNCALL ??TWIEventIRQ, ??setTimer
+        LOCFRAME CSTACK, 17, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??TWIEventIRQ, ??sendByte
+        LOCFRAME CSTACK, 17, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??TWIEventIRQ, ??sendByte
+        LOCFRAME CSTACK, 17, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??TWIEventIRQ, ??receiveByte
+        LOCFRAME CSTACK, 17, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??TWIEventIRQ, ??receiveByte
+        LOCFRAME CSTACK, 17, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??TWIEventIRQ, ??start
+        LOCFRAME CSTACK, 17, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R26
+          CFI R26 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        ST      -Y, R25
+          CFI R25 Frame(CFA_Y, -2)
+          CFI CFA_Y Y+2
+        ST      -Y, R24
+          CFI R24 Frame(CFA_Y, -3)
+          CFI CFA_Y Y+3
+        ST      -Y, R31
+          CFI R31 Frame(CFA_Y, -4)
+          CFI CFA_Y Y+4
+        ST      -Y, R30
+          CFI R30 Frame(CFA_Y, -5)
+          CFI CFA_Y Y+5
+        ST      -Y, R3
+          CFI R3 Frame(CFA_Y, -6)
+          CFI CFA_Y Y+6
+        ST      -Y, R2
+          CFI R2 Frame(CFA_Y, -7)
+          CFI CFA_Y Y+7
+        ST      -Y, R1
+          CFI R1 Frame(CFA_Y, -8)
+          CFI CFA_Y Y+8
+        ST      -Y, R0
+          CFI R0 Frame(CFA_Y, -9)
+          CFI CFA_Y Y+9
+        ST      -Y, R23
+          CFI R23 Frame(CFA_Y, -10)
+          CFI CFA_Y Y+10
+        ST      -Y, R22
+          CFI R22 Frame(CFA_Y, -11)
+          CFI CFA_Y Y+11
+        ST      -Y, R21
+          CFI R21 Frame(CFA_Y, -12)
+          CFI CFA_Y Y+12
+        ST      -Y, R20
+          CFI R20 Frame(CFA_Y, -13)
+          CFI CFA_Y Y+13
+        ST      -Y, R19
+          CFI R19 Frame(CFA_Y, -14)
+          CFI CFA_Y Y+14
+        ST      -Y, R18
+          CFI R18 Frame(CFA_Y, -15)
+          CFI CFA_Y Y+15
+        ST      -Y, R17
+          CFI R17 Frame(CFA_Y, -16)
+          CFI CFA_Y Y+16
+        ST      -Y, R16
+          CFI R16 Frame(CFA_Y, -17)
+          CFI CFA_Y Y+17
+        IN      R26, 0x3F
+//  228     TTWIStatusCode curStatus = (TTWIStatusCode)(TWSR & 0xF8);
+        LDS     R24, _A_TWSR
+        ANDI    R24, 0xF8
+        RCALL   ?Subroutine3
+??CrossCallReturnLabel_4:
+        CPI     R16, 1
+        BRNE    ??TWIEventIRQ_1
+//  229 
+//  230     if (bufferTWI.status == TWIBufferStatus_Ready)
+//  231     {
+//  232       bufferTWI.status = TWIBufferStatus_InProcess;
+        LDI     R16, 2
+        RCALL   ??Subroutine9_0
+//  233       GLOBAL::MultyThreading::setTimer(GLOBALTIMERS_TWIMASTER_ERRORTIMER, TWI_BUFFER_TRANS_TIMEOUT);
+??CrossCallReturnLabel_23:
+        LDI     R18, 232
+        LDI     R19, 3
+        LDI     R16, 0
+        CALL    ??setTimer
+//  234     }
+//  235 
+//  236     if (bufferTWI.status != TWIBufferStatus_InProcess)
+??TWIEventIRQ_1:
+        RCALL   ?Subroutine3
+??CrossCallReturnLabel_5:
+        CPI     R16, 2
+        BREQ    ??TWIEventIRQ_2
+//  237     {
+//  238       cancel();
+        LDI     R16, 4
+        RJMP    ??CrossCallReturnLabel_11
+//  239       return;
+//  240     }
+//  241 
+//  242     switch (curStatus)
+??TWIEventIRQ_2:
+        SUBI    R24, 8
+        BREQ    ??TWIEventIRQ_3
+        SUBI    R24, 8
+        BREQ    ??TWIEventIRQ_3
+        SUBI    R24, 8
+        BREQ    ??TWIEventIRQ_4
+        SUBI    R24, 16
+        BREQ    ??TWIEventIRQ_4
+        SUBI    R24, 16
+        BREQ    ??TWIEventIRQ_5
+        SUBI    R24, 8
+        BREQ    ??TWIEventIRQ_6
+        SUBI    R24, 16
+        BREQ    ??TWIEventIRQ_7
+        SUBI    R24, 8
+        BREQ    ??TWIEventIRQ_8
+        RJMP    ??TWIEventIRQ_9
+//  243     {
+//  244       case TWIStatusCode_Start:                             // START has been transmitted
+//  245       case TWIStatusCode_RepStart:                          // Repeated START has been transmitted
+//  246         bufferPos = 0;
+??TWIEventIRQ_3:
+        LDI     R16, 0
+        STS     ??bufferPos, R16
+        STS     (??bufferPos + 1), R16
+//  247         sendByte();
+//  248         break;
+//  249 
+//  250       case TWIStatusCode_MTX_AdrAck:                        // SLA+W has been tramsmitted and ACK received
+//  251       case TWIStatusCode_MTX_DataAck:                       // Data byte has been tramsmitted and ACK received
+//  252         sendByte();
+??TWIEventIRQ_4:
+        RCALL   ??sendByte
+//  253         break;
+        RJMP    ??CrossCallReturnLabel_1
+//  254 
+//  255       case TWIStatusCode_MRX_DataAck:                       // Data byte has been received and ACK tramsmitted
+//  256         receiveByte(false);
+??TWIEventIRQ_7:
+        LDI     R16, 0
+        RJMP    ??TWIEventIRQ_10
+//  257         break;
+//  258 
+//  259       case TWIStatusCode_MRX_AdrAck:                        // SLA+R has been tramsmitted and ACK received
+//  260         startReceiveNextByte();
+??TWIEventIRQ_6:
+        LDS     R16, ??bufferPos
+        LDS     R17, (??bufferPos + 1)
+        RCALL   ?Subroutine5
+??CrossCallReturnLabel_11:
+        RCALL   ??Subroutine8_0
+??CrossCallReturnLabel_18:
+        RJMP    ??CrossCallReturnLabel_1
+//  261         break;
+//  262 
+//  263       case TWIStatusCode_MRX_DataNack:                      // Data byte has been received and NACK tramsmitted
+//  264         receiveByte(true);
+??TWIEventIRQ_8:
+        LDI     R16, 1
+??TWIEventIRQ_10:
+        RCALL   ??receiveByte
+//  265         break;
+        RJMP    ??CrossCallReturnLabel_1
+//  266 
+//  267       case TWIStatusCode_AbrLost:                           // Arbitration lost
+//  268         start();
+??TWIEventIRQ_5:
+        RCALL   ??start
+//  269         break;
+        RJMP    ??CrossCallReturnLabel_1
+//  270 
+//  271       case TWIStatusCode_MTX_AdrNack:                       // SLA+W has been tramsmitted and NACK received
+//  272       case TWIStatusCode_MRX_AdrNack:                       // SLA+R has been tramsmitted and NACK received
+//  273       case TWIStatusCode_MTX_DataNack:                      // Data byte has been tramsmitted and NACK received
+//  274       case TWIStatusCode_BusError:                          // Bus error due to an illegal START or STOP condition
+//  275       default:                                              // Incorrect status
+//  276         cancelWithError();
+??TWIEventIRQ_9:
+        RCALL   ?Subroutine0
+//  277         break;
+??CrossCallReturnLabel_1:
+        OUT     0x3F, R26
+        LD      R16, Y+
+          CFI R16 SameValue
+          CFI CFA_Y Y+16
+        LD      R17, Y+
+          CFI R17 SameValue
+          CFI CFA_Y Y+15
+        LD      R18, Y+
+          CFI R18 SameValue
+          CFI CFA_Y Y+14
+        LD      R19, Y+
+          CFI R19 SameValue
+          CFI CFA_Y Y+13
+        LD      R20, Y+
+          CFI R20 SameValue
+          CFI CFA_Y Y+12
+        LD      R21, Y+
+          CFI R21 SameValue
+          CFI CFA_Y Y+11
+        LD      R22, Y+
+          CFI R22 SameValue
+          CFI CFA_Y Y+10
+        LD      R23, Y+
+          CFI R23 SameValue
+          CFI CFA_Y Y+9
+        LD      R0, Y+
+          CFI R0 SameValue
+          CFI CFA_Y Y+8
+        LD      R1, Y+
+          CFI R1 SameValue
+          CFI CFA_Y Y+7
+        LD      R2, Y+
+          CFI R2 SameValue
+          CFI CFA_Y Y+6
+        LD      R3, Y+
+          CFI R3 SameValue
+          CFI CFA_Y Y+5
+        LD      R30, Y+
+          CFI R30 SameValue
+          CFI CFA_Y Y+4
+        LD      R31, Y+
+          CFI R31 SameValue
+          CFI CFA_Y Y+3
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+2
+        LD      R25, Y+
+          CFI R25 SameValue
+          CFI CFA_Y Y+1
+        LD      R26, Y+
+          CFI R26 SameValue
+          CFI CFA_Y Y+0
+        RETI
+          CFI EndBlock cfiBlock40
+        REQUIRE _A_TWSR
+        REQUIRE _A_TWCR
+//  278     }
+//  279   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine3:
+          CFI Block cfiCond41 Using cfiCommon0
+          CFI Function ??ready
+          CFI Conditional ??CrossCallReturnLabel_2
+          CFI CFA_SP SP+4
+          CFI Block cfiCond42 Using cfiCommon0
+          CFI (cfiCond42) Function ??send
+          CFI (cfiCond42) Conditional ??CrossCallReturnLabel_3
+          CFI (cfiCond42) CFA_SP SP+4
+          CFI Block cfiCond43 Using cfiCommon2
+          CFI (cfiCond43) Function ??TWIEventIRQ
+          CFI (cfiCond43) Conditional ??CrossCallReturnLabel_4
+          CFI (cfiCond43) R16 Frame(CFA_Y, -17)
+          CFI (cfiCond43) R17 Frame(CFA_Y, -16)
+          CFI (cfiCond43) R18 Frame(CFA_Y, -15)
+          CFI (cfiCond43) R19 Frame(CFA_Y, -14)
+          CFI (cfiCond43) R20 Frame(CFA_Y, -13)
+          CFI (cfiCond43) R21 Frame(CFA_Y, -12)
+          CFI (cfiCond43) R22 Frame(CFA_Y, -11)
+          CFI (cfiCond43) R23 Frame(CFA_Y, -10)
+          CFI (cfiCond43) R0 Frame(CFA_Y, -9)
+          CFI (cfiCond43) R1 Frame(CFA_Y, -8)
+          CFI (cfiCond43) R2 Frame(CFA_Y, -7)
+          CFI (cfiCond43) R3 Frame(CFA_Y, -6)
+          CFI (cfiCond43) R30 Frame(CFA_Y, -5)
+          CFI (cfiCond43) R31 Frame(CFA_Y, -4)
+          CFI (cfiCond43) R24 Frame(CFA_Y, -3)
+          CFI (cfiCond43) R25 Frame(CFA_Y, -2)
+          CFI (cfiCond43) R26 Frame(CFA_Y, -1)
+          CFI (cfiCond43) CFA_SP SP+4
+          CFI (cfiCond43) CFA_Y Y+17
+          CFI Block cfiCond44 Using cfiCommon2
+          CFI (cfiCond44) Function ??TWIEventIRQ
+          CFI (cfiCond44) Conditional ??CrossCallReturnLabel_5
+          CFI (cfiCond44) R16 Frame(CFA_Y, -17)
+          CFI (cfiCond44) R17 Frame(CFA_Y, -16)
+          CFI (cfiCond44) R18 Frame(CFA_Y, -15)
+          CFI (cfiCond44) R19 Frame(CFA_Y, -14)
+          CFI (cfiCond44) R20 Frame(CFA_Y, -13)
+          CFI (cfiCond44) R21 Frame(CFA_Y, -12)
+          CFI (cfiCond44) R22 Frame(CFA_Y, -11)
+          CFI (cfiCond44) R23 Frame(CFA_Y, -10)
+          CFI (cfiCond44) R0 Frame(CFA_Y, -9)
+          CFI (cfiCond44) R1 Frame(CFA_Y, -8)
+          CFI (cfiCond44) R2 Frame(CFA_Y, -7)
+          CFI (cfiCond44) R3 Frame(CFA_Y, -6)
+          CFI (cfiCond44) R30 Frame(CFA_Y, -5)
+          CFI (cfiCond44) R31 Frame(CFA_Y, -4)
+          CFI (cfiCond44) R24 Frame(CFA_Y, -3)
+          CFI (cfiCond44) R25 Frame(CFA_Y, -2)
+          CFI (cfiCond44) R26 Frame(CFA_Y, -1)
+          CFI (cfiCond44) CFA_SP SP+4
+          CFI (cfiCond44) CFA_Y Y+17
+          CFI Block cfiCond45 Using cfiCommon0
+          CFI (cfiCond45) Function ??run
+          CFI (cfiCond45) Conditional ??CrossCallReturnLabel_6
+          CFI (cfiCond45) CFA_SP SP+4
+          CFI Block cfiPicker46 Using cfiCommon1
+          CFI (cfiPicker46) NoFunction
+          CFI (cfiPicker46) Picker
+        LDS     R16, (??bufferTWI + 1)
+        RET
+          CFI EndBlock cfiCond41
+          CFI EndBlock cfiCond42
+          CFI EndBlock cfiCond43
+          CFI EndBlock cfiCond44
+          CFI EndBlock cfiCond45
+          CFI EndBlock cfiPicker46
+//  280 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  281   void run()
+??run:
+          CFI Block cfiBlock47 Using cfiCommon0
+          CFI Function ??run
+//  282   {
+//  283     if (!isEnabled)
+        FUNCALL ??run, ??start
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??getTimer
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDS     R16, ??isEnabled
+        TST     R16
+        BREQ    ??CrossCallReturnLabel_0
+        RCALL   ?Subroutine3
+??CrossCallReturnLabel_6:
+        DEC     R16
+        BREQ    ??run_1
+        DEC     R16
+        BREQ    ??run_2
+        RET
+//  284     {
+//  285       return;
+//  286     }
+//  287 
+//  288     switch (bufferTWI.status)
+//  289     {
+//  290       case TWIBufferStatus_Ready:
+//  291         send();
+??run_1:
+        LDS     R16, _A_TWCR
+        SBRC    R16, 0
+        RJMP    ??CrossCallReturnLabel_0
+        RJMP    ??start
+//  292         break;
+//  293 
+//  294       case TWIBufferStatus_InProcess:
+//  295         if (!GLOBAL::MultyThreading::getTimer(GLOBALTIMERS_TWIMASTER_ERRORTIMER))
+??run_2:
+        LDI     R16, 0
+        CALL    ??getTimer
+        OR      R16, R17
+        BRNE    ??CrossCallReturnLabel_0
+//  296         {
+//  297           cancelWithError();
+        RCALL   ?Subroutine0
+//  298         }
+//  299         break;
+//  300     }
+??CrossCallReturnLabel_0:
+        RET
+          CFI EndBlock cfiBlock47
+        REQUIRE _A_TWCR
+//  301   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine0:
+          CFI Block cfiCond48 Using cfiCommon2
+          CFI Function ??TWIEventIRQ
+          CFI Conditional ??CrossCallReturnLabel_1
+          CFI R16 Frame(CFA_Y, -17)
+          CFI R17 Frame(CFA_Y, -16)
+          CFI R18 Frame(CFA_Y, -15)
+          CFI R19 Frame(CFA_Y, -14)
+          CFI R20 Frame(CFA_Y, -13)
+          CFI R21 Frame(CFA_Y, -12)
+          CFI R22 Frame(CFA_Y, -11)
+          CFI R23 Frame(CFA_Y, -10)
+          CFI R0 Frame(CFA_Y, -9)
+          CFI R1 Frame(CFA_Y, -8)
+          CFI R2 Frame(CFA_Y, -7)
+          CFI R3 Frame(CFA_Y, -6)
+          CFI R30 Frame(CFA_Y, -5)
+          CFI R31 Frame(CFA_Y, -4)
+          CFI R24 Frame(CFA_Y, -3)
+          CFI R25 Frame(CFA_Y, -2)
+          CFI R26 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+17
+          CFI Block cfiCond49 Using cfiCommon0
+          CFI (cfiCond49) Function ??run
+          CFI (cfiCond49) Conditional ??CrossCallReturnLabel_0
+          CFI (cfiCond49) CFA_SP SP+4
+          CFI Block cfiPicker50 Using cfiCommon1
+          CFI (cfiPicker50) NoFunction
+          CFI (cfiPicker50) Picker
+        LDI     R16, 4
+        STS     _A_TWCR, R16
+        LDI     R16, 255
+        STS     (??bufferTWI + 2), R16
+        LDI     R16, 0
+        STS     ??bufferTWI, R16
+          CFI EndBlock cfiCond48
+          CFI EndBlock cfiCond49
+          CFI EndBlock cfiPicker50
+        REQUIRE ?Subroutine7
+        ;               // Fall through to label ?Subroutine7
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine7:
+          CFI Block cfiCond51 Using cfiCommon0
+          CFI Function ??stop
+          CFI Conditional ??CrossCallReturnLabel_24
+          CFI CFA_SP SP+4
+          CFI Block cfiCond52 Using cfiCommon2
+          CFI (cfiCond52) Function ??TWIEventIRQ
+          CFI (cfiCond52) Conditional ??CrossCallReturnLabel_1
+          CFI (cfiCond52) R16 Frame(CFA_Y, -17)
+          CFI (cfiCond52) R17 Frame(CFA_Y, -16)
+          CFI (cfiCond52) R18 Frame(CFA_Y, -15)
+          CFI (cfiCond52) R19 Frame(CFA_Y, -14)
+          CFI (cfiCond52) R20 Frame(CFA_Y, -13)
+          CFI (cfiCond52) R21 Frame(CFA_Y, -12)
+          CFI (cfiCond52) R22 Frame(CFA_Y, -11)
+          CFI (cfiCond52) R23 Frame(CFA_Y, -10)
+          CFI (cfiCond52) R0 Frame(CFA_Y, -9)
+          CFI (cfiCond52) R1 Frame(CFA_Y, -8)
+          CFI (cfiCond52) R2 Frame(CFA_Y, -7)
+          CFI (cfiCond52) R3 Frame(CFA_Y, -6)
+          CFI (cfiCond52) R30 Frame(CFA_Y, -5)
+          CFI (cfiCond52) R31 Frame(CFA_Y, -4)
+          CFI (cfiCond52) R24 Frame(CFA_Y, -3)
+          CFI (cfiCond52) R25 Frame(CFA_Y, -2)
+          CFI (cfiCond52) R26 Frame(CFA_Y, -1)
+          CFI (cfiCond52) CFA_SP SP+4
+          CFI (cfiCond52) CFA_Y Y+17
+          CFI Block cfiCond53 Using cfiCommon0
+          CFI (cfiCond53) Function ??run
+          CFI (cfiCond53) Conditional ??CrossCallReturnLabel_0
+          CFI (cfiCond53) CFA_SP SP+4
+          CFI Block cfiPicker54 Using cfiCommon1
+          CFI (cfiPicker54) NoFunction
+          CFI (cfiPicker54) Picker
+        LDI     R16, 3
+          CFI EndBlock cfiCond51
+          CFI EndBlock cfiCond52
+          CFI EndBlock cfiCond53
+          CFI EndBlock cfiPicker54
+        REQUIRE ??Subroutine9_0
+        ;               // Fall through to label ??Subroutine9_0
+
+        RSEG CODE:CODE:NOROOT(1)
+??Subroutine9_0:
+          CFI Block cfiCond55 Using cfiCommon0
+          CFI Function ??enable
+          CFI Conditional ??CrossCallReturnLabel_22
+          CFI CFA_SP SP+4
+          CFI Block cfiCond56 Using cfiCommon2
+          CFI (cfiCond56) Function ??TWIEventIRQ
+          CFI (cfiCond56) Conditional ??CrossCallReturnLabel_23
+          CFI (cfiCond56) R16 Frame(CFA_Y, -17)
+          CFI (cfiCond56) R17 Frame(CFA_Y, -16)
+          CFI (cfiCond56) R18 Frame(CFA_Y, -15)
+          CFI (cfiCond56) R19 Frame(CFA_Y, -14)
+          CFI (cfiCond56) R20 Frame(CFA_Y, -13)
+          CFI (cfiCond56) R21 Frame(CFA_Y, -12)
+          CFI (cfiCond56) R22 Frame(CFA_Y, -11)
+          CFI (cfiCond56) R23 Frame(CFA_Y, -10)
+          CFI (cfiCond56) R0 Frame(CFA_Y, -9)
+          CFI (cfiCond56) R1 Frame(CFA_Y, -8)
+          CFI (cfiCond56) R2 Frame(CFA_Y, -7)
+          CFI (cfiCond56) R3 Frame(CFA_Y, -6)
+          CFI (cfiCond56) R30 Frame(CFA_Y, -5)
+          CFI (cfiCond56) R31 Frame(CFA_Y, -4)
+          CFI (cfiCond56) R24 Frame(CFA_Y, -3)
+          CFI (cfiCond56) R25 Frame(CFA_Y, -2)
+          CFI (cfiCond56) R26 Frame(CFA_Y, -1)
+          CFI (cfiCond56) CFA_SP SP+4
+          CFI (cfiCond56) CFA_Y Y+17
+          CFI Block cfiCond57 Using cfiCommon0
+          CFI (cfiCond57) Function ??stop
+          CFI (cfiCond57) Conditional ??CrossCallReturnLabel_24
+          CFI (cfiCond57) CFA_SP SP+4
+          CFI Block cfiCond58 Using cfiCommon2
+          CFI (cfiCond58) Function ??TWIEventIRQ
+          CFI (cfiCond58) Conditional ??CrossCallReturnLabel_1
+          CFI (cfiCond58) R16 Frame(CFA_Y, -17)
+          CFI (cfiCond58) R17 Frame(CFA_Y, -16)
+          CFI (cfiCond58) R18 Frame(CFA_Y, -15)
+          CFI (cfiCond58) R19 Frame(CFA_Y, -14)
+          CFI (cfiCond58) R20 Frame(CFA_Y, -13)
+          CFI (cfiCond58) R21 Frame(CFA_Y, -12)
+          CFI (cfiCond58) R22 Frame(CFA_Y, -11)
+          CFI (cfiCond58) R23 Frame(CFA_Y, -10)
+          CFI (cfiCond58) R0 Frame(CFA_Y, -9)
+          CFI (cfiCond58) R1 Frame(CFA_Y, -8)
+          CFI (cfiCond58) R2 Frame(CFA_Y, -7)
+          CFI (cfiCond58) R3 Frame(CFA_Y, -6)
+          CFI (cfiCond58) R30 Frame(CFA_Y, -5)
+          CFI (cfiCond58) R31 Frame(CFA_Y, -4)
+          CFI (cfiCond58) R24 Frame(CFA_Y, -3)
+          CFI (cfiCond58) R25 Frame(CFA_Y, -2)
+          CFI (cfiCond58) R26 Frame(CFA_Y, -1)
+          CFI (cfiCond58) CFA_SP SP+4
+          CFI (cfiCond58) CFA_Y Y+17
+          CFI Block cfiCond59 Using cfiCommon0
+          CFI (cfiCond59) Function ??run
+          CFI (cfiCond59) Conditional ??CrossCallReturnLabel_0
+          CFI (cfiCond59) CFA_SP SP+4
+          CFI Block cfiPicker60 Using cfiCommon1
+          CFI (cfiPicker60) NoFunction
+          CFI (cfiPicker60) Picker
+        STS     (??bufferTWI + 1), R16
+        RET
+          CFI EndBlock cfiCond55
+          CFI EndBlock cfiCond56
+          CFI EndBlock cfiCond57
+          CFI EndBlock cfiCond58
+          CFI EndBlock cfiCond59
+          CFI EndBlock cfiPicker60
+
+        ASEGN ABSOLUTE:DATA:NOROOT,01fH
+__?EECR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,020H
+__?EEDR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,021H
+__?EEARL:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,022H
+__?EEARH:
+
+        COMMON INTVEC:CODE:ROOT(1)
+        ORG 96
+`??TWIEventIRQ??INTVEC 96`:
+        JMP     ??TWIEventIRQ
+
+        RSEG INITTAB:CODE:NOROOT(0)
+`?<Segment init: NEAR_Z>`:
+        DC16    SFE(NEAR_Z) - SFB(NEAR_Z)
+        DC16    SFB(NEAR_Z)
+        DC16    0
+        REQUIRE ?need_segment_init
+
+        END
+//  302 }
+//  303 
+//  304 #endif
+//  305 
+// 
+//   7 bytes in segment ABSOLUTE
+// 698 bytes in segment CODE
+//   6 bytes in segment INITTAB
+//   4 bytes in segment INTVEC
+//  70 bytes in segment NEAR_Z
+// 
+// 698 bytes of CODE memory (+ 10 bytes shared)
+//  70 bytes of DATA memory (+  7 bytes shared)
+//
+//Errors: none
+//Warnings: none

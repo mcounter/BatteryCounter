@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Workspace>
+  <ConfigDictionary>
+    
+  <CurrentConfigs><Project>BattRX/Release - Atmega328P</Project></CurrentConfigs></ConfigDictionary>
+  <Desktop>
+    <Static>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>319</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+      </Workspace>
+      <Build>
+        
+        
+        
+        
+      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>1107</ColumnWidth1><ColumnWidth2>295</ColumnWidth2><ColumnWidth3>73</ColumnWidth3></Build>
+    <TerminalIO/></Static>
+    <Windows>
+      
+      
+    <Wnd2>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-5715-7395</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>BattRX</ExpandedNode><ExpandedNode>BattRX/Communication</ExpandedNode><ExpandedNode>BattRX/Communication/SPI</ExpandedNode><ExpandedNode>BattRX/Drivers</ExpandedNode><ExpandedNode>BattRX/Drivers/Backlight</ExpandedNode><ExpandedNode>BattRX/Drivers/Indicator</ExpandedNode><ExpandedNode>BattRX/Drivers/KeyBoard</ExpandedNode><ExpandedNode>BattRX/Drivers/LCD</ExpandedNode><ExpandedNode>BattRX/Drivers/Memory</ExpandedNode><ExpandedNode>BattRX/Drivers/PhotoSensor</ExpandedNode><ExpandedNode>BattRX/MainThread</ExpandedNode><ExpandedNode>BattRX/Timers</ExpandedNode><ExpandedNode>BattRX/UserInterface</ExpandedNode><ExpandedNode>BattRX/_Functions</ExpandedNode><ExpandedNode>BattRX/_GLOBAL</ExpandedNode><ExpandedNode>BattRX/_GLOBAL/ADC</ExpandedNode><ExpandedNode>BattRX/_GLOBAL/Counter</ExpandedNode><ExpandedNode>BattRX/_GLOBAL/Definitions</ExpandedNode><ExpandedNode>BattRX/_GLOBAL/DeviceManager</ExpandedNode><ExpandedNode>BattRX/_GLOBAL/MultyThreading</ExpandedNode><ExpandedNode>BattRX/_GLOBAL/RTC</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd2><Wnd3>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-31436-11006</Identity>
+            <TabName>Build</TabName>
+            <Factory>Build</Factory>
+            <Session/>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd3></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\UserInterface_Widget.cpp</Filename><XPos>0</XPos><YPos>396</YPos><SelStart>15129</SelStart><SelEnd>15129</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\DeviceManager.cpp</Filename><XPos>0</XPos><YPos>383</YPos><SelStart>11505</SelStart><SelEnd>11505</SelEnd></Tab><ActiveTab>1</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-03dc5fc0><key>iaridepm.enu1</key></Toolbar-03dc5fc0></Sizes></Row0></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>586</Bottom><Right>410</Right><x>-2</x><y>-2</y><xscreen>270</xscreen><yscreen>293</yscreen><sizeHorzCX>175781</sizeHorzCX><sizeHorzCY>374202</sizeHorzCY><sizeVertCX>268229</sizeVertCX><sizeVertCY>750958</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>152</Bottom><Right>1538</Right><x>-2</x><y>-2</y><xscreen>1540</xscreen><yscreen>154</yscreen><sizeHorzCX>1002604</sizeHorzCX><sizeHorzCY>196679</sizeHorzCY><sizeVertCX>175781</sizeVertCX><sizeVertCY>374202</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Workspace>
+
+

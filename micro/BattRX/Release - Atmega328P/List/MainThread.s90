@@ -1,0 +1,1311 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V6.12.1.50500 for Atmel AVR       02/Aug/2014  01:50:55 /
+// Copyright 1996-2012 IAR Systems AB.                                        /
+//                                                                            /
+//    Source file  =  D:\Projects\BatteryCounter\_micro\BattRX\MainThread.cpp /
+//    Command line =  D:\Projects\BatteryCounter\_micro\BattRX\MainThread.cpp /
+//                     --cpu=m328p -ms -o "D:\Projects\BatteryCounter\_micro\ /
+//                    BattRX\Release - Atmega328P\Obj\" -D NDEBUG -lA         /
+//                    "D:\Projects\BatteryCounter\_micro\BattRX\Release -     /
+//                    Atmega328P\List\" --initializers_in_flash               /
+//                    -DENABLE_BIT_DEFINITIONS --do_cross_call -e             /
+//                    --eeprom_size 1024 --dlib --dlib_config "C:\Program     /
+//                    Files (x86)\IAR Systems\Embedded Workbench              /
+//                    6.0\avr\LIB\DLIB\dlAVR-3s-ec_mul-sf-n.h" --eec++ -Ohs   /
+//    List file    =  D:\Projects\BatteryCounter\_micro\BattRX\Release -      /
+//                    Atmega328P\List\MainThread.s90                          /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME MainThread
+
+        RTMODEL "__64bit_doubles", "disabled"
+        RTMODEL "__SystemLibrary", "DLib"
+        RTMODEL "__cpu", "3"
+        RTMODEL "__cpu_name", "ATmega328P"
+        RTMODEL "__dlib_file_descriptor", "0"
+        RTMODEL "__enhanced_core", "enabled"
+        RTMODEL "__has_elpm", "false"
+        RTMODEL "__memory_model", "2"
+        RTMODEL "__rt_version", "3"
+
+        RSEG CSTACK:DATA:NOROOT(0)
+        RSEG RSTACK:DATA:NOROOT(0)
+
+        ERROR
+//NOTE: This module defines or uses C++ features that are not
+//      accessible from assembler code. Assembling this file will
+//      not produce an equivalent object file to the one produced
+//      by the C++ compiler.
+
+        EXTERN ?Register_R4_is_cg_reg
+        EXTERN ?Register_R5_is_cg_reg
+        EXTERN ?need_segment_init
+
+        PUBWEAK `?<Segment init: NEAR_Z>`
+        PUBLIC ??calcIsDeviceActiveBySchedule
+        FUNCTION ??calcIsDeviceActiveBySchedule,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??checkBacklight
+        FUNCTION ??checkBacklight,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??checkPhotoSensor
+        FUNCTION ??checkPhotoSensor,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??disablePhoto
+        FUNCTION ??disablePhoto,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??enablePhoto
+        FUNCTION ??enablePhoto,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??enablePhotoBySchedule
+        FUNCTION ??enablePhotoBySchedule,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??init
+        FUNCTION ??init,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??isDeviceActiveBySchedule
+        FUNCTION ??isDeviceActiveBySchedule,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??isDeviceActiveByScheduleCalc
+        PUBLIC ??isShiftActive
+        FUNCTION ??isShiftActive,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??run
+        FUNCTION ??run,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??updateDeviceMode
+        FUNCTION ??updateDeviceMode,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??weekDayMask
+        PUBWEAK _A_MCUCR
+        PUBWEAK __?EEARH
+        PUBWEAK __?EEARL
+        PUBWEAK __?EECR
+        PUBWEAK __?EEDR
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_Y Y DATA
+          CFI StackFrame CFA_SP SP DATA
+          CFI VirtualResource ?RetPad:1, ?RetHigh:8, ?RetLow:8, ?Ret:17
+          CFI Resource R0:8, R1:8, R2:8, R3:8, R4:8, R5:8, R6:8, R7:8, R8:8, R9:8
+          CFI Resource R10:8, R11:8, R12:8, R13:8, R14:8, R15:8, R16:8, R17:8
+          CFI Resource R18:8, R19:8, R20:8, R21:8, R22:8, R23:8, R24:8, R25:8
+          CFI Resource R26:8, R27:8, R28:8, R29:8, R30:8, R31:8
+          CFI Resource ?RetHighByteMask:8, SP:16, SPH:8, SPL:8, Y:16
+          CFI ResourceParts ?Ret ?RetHigh, ?RetLow, ?RetPad
+          CFI ResourceParts SP SPH, SPL
+          CFI ResourceParts Y R29, R28
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Y+0
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 Undefined
+          CFI R17 Undefined
+          CFI R18 Undefined
+          CFI R19 Undefined
+          CFI R20 Undefined
+          CFI R21 Undefined
+          CFI R22 Undefined
+          CFI R23 Undefined
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 Undefined
+          CFI R31 Undefined
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Notused
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 SameValue
+          CFI R1 SameValue
+          CFI R2 SameValue
+          CFI R3 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 SameValue
+          CFI R17 SameValue
+          CFI R18 SameValue
+          CFI R19 SameValue
+          CFI R20 SameValue
+          CFI R21 SameValue
+          CFI R22 SameValue
+          CFI R23 SameValue
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 SameValue
+          CFI R31 SameValue
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI Y SameValue
+          CFI EndCommon cfiCommon1
+        
+`?<Name GLOBAL 0>`  SYMBOL "GLOBAL"
+`?<Name DeviceProfile 1>` SYMBOL "DeviceProfile", `?<Name GLOBAL 0>`
+??DeviceAdvancedSetup SYMBOL "DeviceAdvancedSetup", `?<Name DeviceProfile 1>`
+??DeviceStatusCode  SYMBOL "DeviceStatusCode", `?<Name DeviceProfile 1>`
+`?<Name RTC 4>`     SYMBOL "RTC", `?<Name GLOBAL 0>`
+??RTCDateTime       SYMBOL "RTCDateTime", `?<Name RTC 4>`
+`?<Name MainThread 50>` SYMBOL "MainThread"
+??isDeviceActiveByScheduleCalc SYMBOL "isDeviceActiveByScheduleCalc", `?<Name MainThread 50>`
+??weekDayMask       SYMBOL "weekDayMask", `?<Name MainThread 50>`
+
+        EXTERN ??DeviceAdvancedSetup
+        EXTERN ??DeviceStatusCode
+        EXTERN ??RTCDateTime
+        EXTERN ??canBeDisabled
+        FUNCTION ??canBeDisabled,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??disable
+        FUNCTION ??disable,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??disable_1
+        FUNCTION ??disable_1,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??enable
+        FUNCTION ??enable,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??enable_1
+        FUNCTION ??enable_1,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??enabled
+        FUNCTION ??enabled,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??enabled_1
+        FUNCTION ??enabled_1,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??enabled_2
+        FUNCTION ??enabled_2,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??enabled_3
+        FUNCTION ??enabled_3,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??getUIRequest
+        FUNCTION ??getUIRequest,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??isBacklightOn
+        FUNCTION ??isBacklightOn,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??leaveInterface
+        FUNCTION ??leaveInterface,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??menuActive
+        FUNCTION ??menuActive,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??photoActive
+        FUNCTION ??photoActive,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??ready
+        FUNCTION ??ready,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??ready_1
+        FUNCTION ??ready_1,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??schedule
+        FUNCTION ??schedule,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??setBacklight
+        FUNCTION ??setBacklight,0202H
+        ARGFRAME RSTACK, 0, STACK
+
+// D:\Projects\BatteryCounter\_micro\BattRX\MainThread.cpp
+//    1 #ifndef __MAINTHREAD_CPP_
+//    2 #define __MAINTHREAD_CPP_
+//    3 
+//    4 #include "MainThread.h"
+
+        ASEGN ABSOLUTE:DATA:NOROOT,055H
+// union <unnamed> volatile __io _A_MCUCR
+_A_MCUCR:
+        DS8 1
+//    5 #include "GlobalSpace.h"
+//    6 #include "KeyBoardDriver.h"
+//    7 #include "IndicatorDriver.h"
+//    8 #include "BacklightDriver.h"
+//    9 #include "UserInterface.h"
+//   10 #include "PhotoSensor.h"
+//   11 #include "GlobalRTC.h"
+//   12 #include "MemAT25Driver.h"
+//   13 #include "MultyThreading.h"
+//   14 #include "Timer0Handler.h"
+//   15 #include "LCDDriver.h"
+//   16 
+//   17 using namespace GLOBAL::DeviceProfile;
+//   18 
+//   19 namespace MainThread
+//   20 {
+
+        RSEG NEAR_Z:DATA:NOROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   21   bool isDeviceActiveByScheduleCalc = false;
+??isDeviceActiveByScheduleCalc:
+        DS8 1
+//   22 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   23   __monitor void init()
+??init:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function ??init
+//   24   {
+        IN      R16, 0x3F
+        CLI
+//   25   }
+        OUT     0x3F, R16
+        RET
+          CFI EndBlock cfiBlock0
+//   26 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   27   bool isShiftActive(
+??isShiftActive:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function ??isShiftActive
+//   28     unsigned short _curTime,
+//   29     unsigned short _shiftStart,
+//   30     unsigned short _shiftEnd,
+//   31     bool _allowEqual)
+//   32   {
+//   33     if (_allowEqual && (_shiftStart == _shiftEnd))
+        TST     R22
+        BREQ    ??isShiftActive_1
+        CP      R18, R20
+        CPC     R19, R21
+        BREQ    ??isShiftActive_2
+//   34     {
+//   35       return true;
+//   36     }
+//   37 
+//   38     return ((_shiftStart < _shiftEnd) &&
+//   39             (_curTime >= _shiftStart) &&
+//   40             (_curTime < _shiftEnd)) ||
+//   41            ((_shiftStart > _shiftEnd) &&
+//   42             ((_curTime >= _shiftStart) ||
+//   43              (_curTime < _shiftEnd)));
+??isShiftActive_1:
+        CP      R18, R20
+        CPC     R19, R21
+        BRCC    ??isShiftActive_3
+        CP      R16, R18
+        CPC     R17, R19
+        BRCS    ??isShiftActive_4
+        CP      R16, R20
+        CPC     R17, R21
+        BRCS    ??isShiftActive_2
+??isShiftActive_4:
+        LDI     R16, 0
+        RET
+??isShiftActive_3:
+        CP      R20, R18
+        CPC     R21, R19
+        BRCC    ??isShiftActive_4
+        CP      R16, R18
+        CPC     R17, R19
+        BRCC    ??isShiftActive_2
+        CP      R16, R20
+        CPC     R17, R21
+        BRCC    ??isShiftActive_4
+??isShiftActive_2:
+        LDI     R16, 1
+        RET
+          CFI EndBlock cfiBlock1
+//   44   }
+//   45 
+
+        RSEG NEAR_F:CODE:NOROOT(0)
+//   46   __flash unsigned char weekDayMask[7] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40};
+??weekDayMask:
+        DC8 1, 2, 4, 8, 16, 32, 64
+
+        RSEG CODE:CODE:NOROOT(1)
+//   47   void calcIsDeviceActiveBySchedule()
+??calcIsDeviceActiveBySchedule:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function ??calcIsDeviceActiveBySchedule
+//   48   {
+        FUNCALL ??calcIsDeviceActiveBySchedule, ??isShiftActive
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??calcIsDeviceActiveBySchedule, ??isShiftActive
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R5
+          CFI R5 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        ST      -Y, R4
+          CFI R4 Frame(CFA_Y, -2)
+          CFI CFA_Y Y+2
+        ST      -Y, R27
+          CFI R27 Frame(CFA_Y, -3)
+          CFI CFA_Y Y+3
+        ST      -Y, R26
+          CFI R26 Frame(CFA_Y, -4)
+          CFI CFA_Y Y+4
+        ST      -Y, R25
+          CFI R25 Frame(CFA_Y, -5)
+          CFI CFA_Y Y+5
+        ST      -Y, R24
+          CFI R24 Frame(CFA_Y, -6)
+          CFI CFA_Y Y+6
+        REQUIRE ?Register_R4_is_cg_reg
+        REQUIRE ?Register_R5_is_cg_reg
+//   49     if (!((GLOBAL::DeviceProfile::DeviceAdvancedSetup.workWeekMask & 0x80) ||
+//   50           (GLOBAL::DeviceProfile::DeviceAdvancedSetup.workWeekMask & weekDayMask[GLOBAL::RTC::RTCDateTime.weekDay])))
+        LDI     R26, LOW(??DeviceAdvancedSetup)
+        LDI     R27, (??DeviceAdvancedSetup) >> 8
+        MOVW    R31:R30, R27:R26
+        LDD     R16, Z+3
+        SBRC    R16, 7
+        RJMP    ??calcIsDeviceActiveBySchedule_1
+        LDS     R18, (??DeviceAdvancedSetup + 3)
+        LDS     R30, (??RTCDateTime + 7)
+        LDI     R31, 0
+        SUBI    R30, LOW((-(??weekDayMask) & 0xFFFF))
+        SBCI    R31, (-(??weekDayMask) & 0xFFFF) >> 8
+        LPM     R16, Z
+        AND     R18, R16
+        BREQ    ??calcIsDeviceActiveBySchedule_2
+//   51     {
+//   52       isDeviceActiveByScheduleCalc = false;
+//   53       return;
+//   54     }
+//   55 
+//   56     if (GLOBAL::DeviceProfile::DeviceAdvancedSetup.workDayStruct == WorkDayShiftStructure_WholeDay)
+??calcIsDeviceActiveBySchedule_1:
+        LDS     R25, (??DeviceAdvancedSetup + 4)
+        TST     R25
+        BREQ    ??calcIsDeviceActiveBySchedule_3
+//   57     {
+//   58       isDeviceActiveByScheduleCalc = true;
+//   59       return;
+//   60     }
+//   61 
+//   62     unsigned short curTime = (GLOBAL::RTC::RTCDateTime.hour * 60) + GLOBAL::RTC::RTCDateTime.minute;
+        LDI     R30, LOW(??RTCDateTime)
+        LDI     R31, (??RTCDateTime) >> 8
+        LDD     R18, Z+4
+        LDI     R19, 0
+        LDI     R16, 60
+        MUL     R16, R18
+        LDD     R18, Z+5
+        MOVW    R5:R4, R1:R0
+        ADD     R4, R18
+        ADC     R5, R19
+//   63     bool isShift1 = isShiftActive(curTime,
+//   64                                   GLOBAL::DeviceProfile::DeviceAdvancedSetup.shiftStart1,
+//   65                                   GLOBAL::DeviceProfile::DeviceAdvancedSetup.shiftEnd1,
+//   66                                   true);
+        LDI     R22, 1
+        MOVW    R31:R30, R27:R26
+        LDD     R20, Z+7
+        LDD     R21, Z+8
+        LDD     R18, Z+5
+        LDD     R19, Z+6
+        RCALL   ?Subroutine4
+??CrossCallReturnLabel_19:
+        MOV     R24, R16
+//   67 
+//   68     if (isShift1)
+        TST     R16
+        MOV     R16, R25
+        BREQ    ??calcIsDeviceActiveBySchedule_4
+//   69     {
+//   70       switch (GLOBAL::DeviceProfile::DeviceAdvancedSetup.workDayStruct)
+        DEC     R16
+        BREQ    ??calcIsDeviceActiveBySchedule_3
+        DEC     R16
+        BRNE    ??calcIsDeviceActiveBySchedule_5
+//   71       {
+//   72         case WorkDayShiftStructure_Shift1:
+//   73         case WorkDayShiftStructure_Shift2:
+//   74           isDeviceActiveByScheduleCalc = true;
+??calcIsDeviceActiveBySchedule_3:
+        LDI     R16, 1
+        RJMP    ??calcIsDeviceActiveBySchedule_6
+//   75           return;
+//   76       }
+//   77     }
+//   78     else
+//   79     {
+//   80       switch (GLOBAL::DeviceProfile::DeviceAdvancedSetup.workDayStruct)
+??calcIsDeviceActiveBySchedule_4:
+        DEC     R16
+        BREQ    ??calcIsDeviceActiveBySchedule_2
+        SUBI    R16, 2
+        BRNE    ??calcIsDeviceActiveBySchedule_5
+//   81       {
+//   82         case WorkDayShiftStructure_Shift1:
+//   83         case WorkDayShiftStructure_Shift1Lunch:
+//   84           isDeviceActiveByScheduleCalc = false;
+??calcIsDeviceActiveBySchedule_2:
+        LDI     R16, 0
+??calcIsDeviceActiveBySchedule_6:
+        STS     ??isDeviceActiveByScheduleCalc, R16
+//   85           return;
+        RJMP    ??calcIsDeviceActiveBySchedule_7
+//   86       }
+//   87     }
+//   88 
+//   89     bool isShift2 = isShiftActive(curTime,
+//   90                                   GLOBAL::DeviceProfile::DeviceAdvancedSetup.shiftStart2,
+//   91                                   GLOBAL::DeviceProfile::DeviceAdvancedSetup.shiftEnd2,
+//   92                                   GLOBAL::DeviceProfile::DeviceAdvancedSetup.workDayStruct == WorkDayShiftStructure_Shift2);
+??calcIsDeviceActiveBySchedule_5:
+        CPI     R25, 2
+        BRNE    ??calcIsDeviceActiveBySchedule_8
+        LDI     R22, 1
+        RJMP    ??calcIsDeviceActiveBySchedule_9
+??calcIsDeviceActiveBySchedule_8:
+        LDI     R22, 0
+??calcIsDeviceActiveBySchedule_9:
+        MOVW    R31:R30, R27:R26
+        LDD     R20, Z+11
+        LDD     R21, Z+12
+        LDD     R18, Z+9
+        LDD     R19, Z+10
+        RCALL   ?Subroutine4
+//   93 
+//   94     if (GLOBAL::DeviceProfile::DeviceAdvancedSetup.workDayStruct == WorkDayShiftStructure_Shift1Lunch)
+??CrossCallReturnLabel_18:
+        CPI     R25, 3
+        BRNE    ??calcIsDeviceActiveBySchedule_10
+//   95     {
+//   96       isDeviceActiveByScheduleCalc = isShift1 && (!isShift2);
+        LDI     R17, 1
+        EOR     R16, R17
+        AND     R24, R16
+        RJMP    ??calcIsDeviceActiveBySchedule_11
+//   97     }
+//   98     else
+//   99     {
+//  100       isDeviceActiveByScheduleCalc = isShift1 || isShift2;
+??calcIsDeviceActiveBySchedule_10:
+        OR      R24, R16
+??calcIsDeviceActiveBySchedule_11:
+        STS     ??isDeviceActiveByScheduleCalc, R24
+??calcIsDeviceActiveBySchedule_7:
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+5
+        LD      R25, Y+
+          CFI R25 SameValue
+          CFI CFA_Y Y+4
+        LD      R26, Y+
+          CFI R26 SameValue
+          CFI CFA_Y Y+3
+        LD      R27, Y+
+          CFI R27 SameValue
+          CFI CFA_Y Y+2
+        LD      R4, Y+
+          CFI R4 SameValue
+          CFI CFA_Y Y+1
+        LD      R5, Y+
+          CFI R5 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock2
+//  101     }
+//  102   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine4:
+          CFI Block cfiCond3 Using cfiCommon0
+          CFI Function ??calcIsDeviceActiveBySchedule
+          CFI Conditional ??CrossCallReturnLabel_19
+          CFI R24 Frame(CFA_Y, -6)
+          CFI R25 Frame(CFA_Y, -5)
+          CFI R26 Frame(CFA_Y, -4)
+          CFI R27 Frame(CFA_Y, -3)
+          CFI R4 Frame(CFA_Y, -2)
+          CFI R5 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+6
+          CFI Block cfiCond4 Using cfiCommon0
+          CFI (cfiCond4) Function ??calcIsDeviceActiveBySchedule
+          CFI (cfiCond4) Conditional ??CrossCallReturnLabel_18
+          CFI (cfiCond4) R24 Frame(CFA_Y, -6)
+          CFI (cfiCond4) R25 Frame(CFA_Y, -5)
+          CFI (cfiCond4) R26 Frame(CFA_Y, -4)
+          CFI (cfiCond4) R27 Frame(CFA_Y, -3)
+          CFI (cfiCond4) R4 Frame(CFA_Y, -2)
+          CFI (cfiCond4) R5 Frame(CFA_Y, -1)
+          CFI (cfiCond4) CFA_SP SP+4
+          CFI (cfiCond4) CFA_Y Y+6
+          CFI Block cfiPicker5 Using cfiCommon1
+          CFI (cfiPicker5) NoFunction
+          CFI (cfiPicker5) Picker
+        MOVW    R17:R16, R5:R4
+        RJMP    ??isShiftActive
+          CFI EndBlock cfiCond3
+          CFI EndBlock cfiCond4
+          CFI EndBlock cfiPicker5
+//  103 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  104   bool isDeviceActiveBySchedule()
+??isDeviceActiveBySchedule:
+          CFI Block cfiBlock6 Using cfiCommon0
+          CFI Function ??isDeviceActiveBySchedule
+//  105   {
+//  106     return isDeviceActiveByScheduleCalc;
+        LDS     R16, ??isDeviceActiveByScheduleCalc
+        RET
+          CFI EndBlock cfiBlock6
+//  107   }
+//  108 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  109   void enablePhoto()
+??enablePhoto:
+          CFI Block cfiBlock7 Using cfiCommon0
+          CFI Function ??enablePhoto
+//  110   {
+//  111     if (!PhotoSensor::enabled())
+        FUNCALL ??enablePhoto, ??enabled
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??enablePhoto, ??enable
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine3
+??CrossCallReturnLabel_10:
+        BRNE    ??enablePhoto_1
+//  112     {
+//  113       PhotoSensor::enable();
+        CALL    ??enable
+//  114     }
+//  115   }
+??enablePhoto_1:
+        RET
+          CFI EndBlock cfiBlock7
+//  116 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  117   void disablePhoto()
+??disablePhoto:
+          CFI Block cfiBlock8 Using cfiCommon0
+          CFI Function ??disablePhoto
+//  118   {
+//  119     if (PhotoSensor::enabled())
+        FUNCALL ??disablePhoto, ??enabled
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??disablePhoto, ??disable
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RJMP    ?Subroutine2
+          CFI EndBlock cfiBlock8
+//  120     {
+//  121       PhotoSensor::disable();
+//  122     }
+//  123   }
+//  124 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  125   void enablePhotoBySchedule()
+??enablePhotoBySchedule:
+          CFI Block cfiBlock9 Using cfiCommon0
+          CFI Function ??enablePhotoBySchedule
+//  126   {
+//  127     if (isDeviceActiveByScheduleCalc)
+        FUNCALL ??enablePhotoBySchedule, ??enabled
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??enablePhotoBySchedule, ??enable
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??enablePhotoBySchedule, ??enabled
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??enablePhotoBySchedule, ??disable
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine1
+??CrossCallReturnLabel_5:
+        BREQ    ??enablePhotoBySchedule_1
+//  128     {
+//  129       enablePhoto();
+        RCALL   ?Subroutine3
+//  130     }
+??CrossCallReturnLabel_12:
+        BRNE    ??CrossCallReturnLabel_9
+        JMP     ??enable
+//  131     else
+//  132     {
+//  133       disablePhoto();
+??enablePhotoBySchedule_1:
+        RCALL   ?Subroutine2
+//  134     }
+//  135   }
+??CrossCallReturnLabel_9:
+        RET
+          CFI EndBlock cfiBlock9
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine2:
+          CFI Block cfiCond10 Using cfiCommon0
+          CFI Function ??enablePhotoBySchedule
+          CFI Conditional ??CrossCallReturnLabel_9
+          CFI CFA_SP SP+4
+          CFI Block cfiBlock11 Using cfiCommon0
+          CFI (cfiBlock11) NoFunction
+          CFI Block cfiPicker12 Using cfiCommon1
+          CFI (cfiPicker12) NoFunction
+          CFI (cfiPicker12) Picker
+        CALL    ??enabled
+        TST     R16
+        BREQ    ??Subroutine2_0
+        CALL    ??disable
+??Subroutine2_0:
+        RET
+          CFI EndBlock cfiCond10
+          CFI EndBlock cfiBlock11
+          CFI EndBlock cfiPicker12
+//  136 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  137   void checkBacklight()
+??checkBacklight:
+          CFI Block cfiBlock13 Using cfiCommon0
+          CFI Function ??checkBacklight
+//  138   {
+//  139     if (GLOBAL::DeviceProfile::DeviceAdvancedSetup.backlight &&
+//  140         UserInterface::enabled() &&
+//  141         UserInterface::menuActive())
+        FUNCALL ??checkBacklight, ??enabled_1
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??checkBacklight, ??menuActive
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??checkBacklight, ??isBacklightOn
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??checkBacklight, ??setBacklight
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??checkBacklight, ??isBacklightOn
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??checkBacklight, ??setBacklight
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDS     R16, (??DeviceAdvancedSetup + 1)
+        TST     R16
+        BREQ    ??checkBacklight_1
+        RCALL   ?Subroutine0
+??CrossCallReturnLabel_0:
+        BREQ    ??checkBacklight_1
+        CALL    ??menuActive
+        TST     R16
+        BREQ    ??checkBacklight_1
+//  142     {
+//  143       if (!BacklightDriver::isBacklightOn())
+        CALL    ??isBacklightOn
+        TST     R16
+        BRNE    ??checkBacklight_2
+//  144       {
+//  145         BacklightDriver::setBacklight(true);
+        LDI     R16, 1
+        JMP     ??setBacklight
+//  146       }
+//  147     }
+//  148     else
+//  149     {
+//  150       if (BacklightDriver::isBacklightOn())
+??checkBacklight_1:
+        CALL    ??isBacklightOn
+        TST     R16
+        BREQ    ??checkBacklight_2
+//  151       {
+//  152         BacklightDriver::setBacklight(false);
+        LDI     R16, 0
+        CALL    ??setBacklight
+//  153       }
+//  154     }
+//  155   }
+??checkBacklight_2:
+        RET
+          CFI EndBlock cfiBlock13
+//  156 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  157   void checkPhotoSensor()
+??checkPhotoSensor:
+          CFI Block cfiBlock14 Using cfiCommon0
+          CFI Function ??checkPhotoSensor
+//  158   {
+//  159     if (UserInterface::enabled() && UserInterface::menuActive())
+        FUNCALL ??checkPhotoSensor, ??enabled_1
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??checkPhotoSensor, ??menuActive
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??checkPhotoSensor, ??photoActive
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??checkPhotoSensor, ??enabled
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??checkPhotoSensor, ??enabled
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??checkPhotoSensor, ??enabled
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??checkPhotoSensor, ??enable
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??checkPhotoSensor, ??enabled
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??checkPhotoSensor, ??disable
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??checkPhotoSensor, ??enabled
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??checkPhotoSensor, ??enabled
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine0
+??CrossCallReturnLabel_1:
+        BREQ    ??checkPhotoSensor_1
+        CALL    ??menuActive
+        TST     R16
+        BREQ    ??checkPhotoSensor_1
+//  160     {
+//  161       if (UserInterface::photoActive())
+        CALL    ??photoActive
+        TST     R16
+        BREQ    ??checkPhotoSensor_2
+//  162       {
+//  163         enablePhoto();
+??checkPhotoSensor_3:
+        RCALL   ?Subroutine3
+??CrossCallReturnLabel_13:
+        BRNE    ??checkPhotoSensor_4
+        RJMP    ??checkPhotoSensor_5
+//  164       }
+//  165       else if (GLOBAL::DeviceProfile::DeviceAdvancedSetup.batterySaveMode & DeviceBatterySaveMode_NoCount)
+??checkPhotoSensor_2:
+        LDS     R16, ??DeviceAdvancedSetup
+        SBRS    R16, 0
+        RJMP    ??checkPhotoSensor_6
+//  166       {
+//  167         disablePhoto();
+        RCALL   ?Subroutine3
+//  168       }
+??CrossCallReturnLabel_14:
+        BRNE    ??checkPhotoSensor_7
+        RET
+//  169       else
+//  170       {
+//  171         enablePhotoBySchedule();
+??checkPhotoSensor_6:
+        RCALL   ?Subroutine1
+//  172       }
+//  173     }
+??CrossCallReturnLabel_6:
+        BREQ    ??checkPhotoSensor_8
+        RCALL   ?Subroutine3
+??CrossCallReturnLabel_15:
+        BRNE    ??checkPhotoSensor_4
+??checkPhotoSensor_5:
+        JMP     ??enable
+??checkPhotoSensor_8:
+        RCALL   ?Subroutine3
+??CrossCallReturnLabel_16:
+        BREQ    ??checkPhotoSensor_4
+??checkPhotoSensor_7:
+        JMP     ??disable
+//  174     else
+//  175     {
+//  176       enablePhotoBySchedule();
+??checkPhotoSensor_1:
+        RCALL   ?Subroutine1
+//  177     }
+??CrossCallReturnLabel_7:
+        BRNE    ??checkPhotoSensor_3
+        RCALL   ?Subroutine3
+??CrossCallReturnLabel_17:
+        BRNE    ??checkPhotoSensor_7
+//  178   }
+??checkPhotoSensor_4:
+        RET
+          CFI EndBlock cfiBlock14
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine3:
+          CFI Block cfiCond15 Using cfiCommon0
+          CFI Function ??enablePhoto
+          CFI Conditional ??CrossCallReturnLabel_10
+          CFI CFA_SP SP+4
+          CFI Block cfiCond16 Using cfiCommon0
+          CFI (cfiCond16) Function ??enablePhotoBySchedule
+          CFI (cfiCond16) Conditional ??CrossCallReturnLabel_12
+          CFI (cfiCond16) CFA_SP SP+4
+          CFI Block cfiCond17 Using cfiCommon0
+          CFI (cfiCond17) Function ??checkPhotoSensor
+          CFI (cfiCond17) Conditional ??CrossCallReturnLabel_13
+          CFI (cfiCond17) CFA_SP SP+4
+          CFI Block cfiCond18 Using cfiCommon0
+          CFI (cfiCond18) Function ??checkPhotoSensor
+          CFI (cfiCond18) Conditional ??CrossCallReturnLabel_14
+          CFI (cfiCond18) CFA_SP SP+4
+          CFI Block cfiCond19 Using cfiCommon0
+          CFI (cfiCond19) Function ??checkPhotoSensor
+          CFI (cfiCond19) Conditional ??CrossCallReturnLabel_15
+          CFI (cfiCond19) CFA_SP SP+4
+          CFI Block cfiCond20 Using cfiCommon0
+          CFI (cfiCond20) Function ??checkPhotoSensor
+          CFI (cfiCond20) Conditional ??CrossCallReturnLabel_16
+          CFI (cfiCond20) CFA_SP SP+4
+          CFI Block cfiCond21 Using cfiCommon0
+          CFI (cfiCond21) Function ??checkPhotoSensor
+          CFI (cfiCond21) Conditional ??CrossCallReturnLabel_17
+          CFI (cfiCond21) CFA_SP SP+4
+          CFI Block cfiCond22 Using cfiCommon0
+          CFI (cfiCond22) Function ??run
+          CFI (cfiCond22) Conditional ??CrossCallReturnLabel_11
+          CFI (cfiCond22) CFA_SP SP+4
+          CFI Block cfiPicker23 Using cfiCommon1
+          CFI (cfiPicker23) NoFunction
+          CFI (cfiPicker23) Picker
+        CALL    ??enabled
+        TST     R16
+        RET
+          CFI EndBlock cfiCond15
+          CFI EndBlock cfiCond16
+          CFI EndBlock cfiCond17
+          CFI EndBlock cfiCond18
+          CFI EndBlock cfiCond19
+          CFI EndBlock cfiCond20
+          CFI EndBlock cfiCond21
+          CFI EndBlock cfiCond22
+          CFI EndBlock cfiPicker23
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine1:
+          CFI Block cfiCond24 Using cfiCommon0
+          CFI Function ??enablePhotoBySchedule
+          CFI Conditional ??CrossCallReturnLabel_5
+          CFI CFA_SP SP+4
+          CFI Block cfiCond25 Using cfiCommon0
+          CFI (cfiCond25) Function ??checkPhotoSensor
+          CFI (cfiCond25) Conditional ??CrossCallReturnLabel_6
+          CFI (cfiCond25) CFA_SP SP+4
+          CFI Block cfiCond26 Using cfiCommon0
+          CFI (cfiCond26) Function ??checkPhotoSensor
+          CFI (cfiCond26) Conditional ??CrossCallReturnLabel_7
+          CFI (cfiCond26) CFA_SP SP+4
+          CFI Block cfiCond27 Using cfiCommon0
+          CFI (cfiCond27) Function ??run
+          CFI (cfiCond27) Conditional ??CrossCallReturnLabel_8
+          CFI (cfiCond27) CFA_SP SP+4
+          CFI Block cfiPicker28 Using cfiCommon1
+          CFI (cfiPicker28) NoFunction
+          CFI (cfiPicker28) Picker
+        LDS     R16, ??isDeviceActiveByScheduleCalc
+        TST     R16
+        RET
+          CFI EndBlock cfiCond24
+          CFI EndBlock cfiCond25
+          CFI EndBlock cfiCond26
+          CFI EndBlock cfiCond27
+          CFI EndBlock cfiPicker28
+//  179 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  180   void updateDeviceMode()
+??updateDeviceMode:
+          CFI Block cfiBlock29 Using cfiCommon0
+          CFI Function ??updateDeviceMode
+//  181   {
+        FUNCALL ??updateDeviceMode, ??getUIRequest
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??updateDeviceMode, ??enabled_1
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??updateDeviceMode, ??leaveInterface
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??updateDeviceMode, ??enabled_1
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??updateDeviceMode, ??enable_1
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??updateDeviceMode, ??checkPhotoSensor
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??updateDeviceMode, ??checkBacklight
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R24
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+//  182     bool uiRequest = KeyBoardDriver::getUIRequest();
+        CALL    ??getUIRequest
+        MOV     R24, R16
+//  183 
+//  184     if (!UserInterface::enabled())
+        RCALL   ?Subroutine0
+??CrossCallReturnLabel_2:
+        BRNE    ??updateDeviceMode_1
+//  185     {
+//  186       UserInterface::leaveInterface();
+        CALL    ??leaveInterface
+//  187     }
+//  188 
+//  189     if (uiRequest && (!UserInterface::enabled()))
+??updateDeviceMode_1:
+        TST     R24
+        BREQ    ??updateDeviceMode_2
+        RCALL   ?Subroutine0
+??CrossCallReturnLabel_3:
+        BRNE    ??updateDeviceMode_2
+//  190     {
+//  191       UserInterface::enable(true);
+        LDI     R16, 1
+        CALL    ??enable_1
+//  192     }
+//  193 
+//  194     checkPhotoSensor();
+??updateDeviceMode_2:
+        RCALL   ??checkPhotoSensor
+//  195     checkBacklight();
+        RCALL   ??checkBacklight
+//  196   }
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock29
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine0:
+          CFI Block cfiCond30 Using cfiCommon0
+          CFI Function ??checkBacklight
+          CFI Conditional ??CrossCallReturnLabel_0
+          CFI CFA_SP SP+4
+          CFI Block cfiCond31 Using cfiCommon0
+          CFI (cfiCond31) Function ??checkPhotoSensor
+          CFI (cfiCond31) Conditional ??CrossCallReturnLabel_1
+          CFI (cfiCond31) CFA_SP SP+4
+          CFI Block cfiCond32 Using cfiCommon0
+          CFI (cfiCond32) Function ??updateDeviceMode
+          CFI (cfiCond32) Conditional ??CrossCallReturnLabel_2
+          CFI (cfiCond32) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond32) CFA_SP SP+4
+          CFI (cfiCond32) CFA_Y Y+1
+          CFI Block cfiCond33 Using cfiCommon0
+          CFI (cfiCond33) Function ??updateDeviceMode
+          CFI (cfiCond33) Conditional ??CrossCallReturnLabel_3
+          CFI (cfiCond33) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond33) CFA_SP SP+4
+          CFI (cfiCond33) CFA_Y Y+1
+          CFI Block cfiCond34 Using cfiCommon0
+          CFI (cfiCond34) Function ??run
+          CFI (cfiCond34) Conditional ??CrossCallReturnLabel_4
+          CFI (cfiCond34) CFA_SP SP+4
+          CFI Block cfiPicker35 Using cfiCommon1
+          CFI (cfiPicker35) NoFunction
+          CFI (cfiPicker35) Picker
+        CALL    ??enabled_1
+        TST     R16
+        RET
+          CFI EndBlock cfiCond30
+          CFI EndBlock cfiCond31
+          CFI EndBlock cfiCond32
+          CFI EndBlock cfiCond33
+          CFI EndBlock cfiCond34
+          CFI EndBlock cfiPicker35
+//  197 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  198   void run()
+??run:
+          CFI Block cfiBlock36 Using cfiCommon0
+          CFI Function ??run
+//  199   {
+//  200     if (DeviceStatusCode == DeviceStatusCode_Initialization)
+        FUNCALL ??run, ??schedule
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??calcIsDeviceActiveBySchedule
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??updateDeviceMode
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??enabled_1
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??enabled
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??enabled_2
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??ready
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??ready_1
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??enabled_3
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??canBeDisabled
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??disable_1
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??enabled_3
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDS     R16, ??DeviceStatusCode
+        TST     R16
+        BRNE    ??run_1
+//  201     {
+//  202       IndicatorDriver::schedule(2, 250, 500);
+        LDI     R20, 244
+        LDI     R21, 1
+        LDI     R18, 250
+        LDI     R19, 0
+        LDI     R16, 2
+        CALL    ??schedule
+//  203 
+//  204       DeviceStatusCode = DeviceStatusCode_NormalMode;
+        LDI     R16, 1
+        STS     ??DeviceStatusCode, R16
+//  205       calcIsDeviceActiveBySchedule();
+        RCALL   ??calcIsDeviceActiveBySchedule
+//  206     }
+//  207 
+//  208     updateDeviceMode();
+??run_1:
+        RCALL   ??updateDeviceMode
+//  209 
+//  210     if ((!isDeviceActiveByScheduleCalc) &&
+//  211         (!UserInterface::enabled()) &&
+//  212         (!PhotoSensor::enabled()) &&
+//  213         (!(MemAT25Driver::enabled() && (!MemAT25Driver::ready()))) &&
+//  214         (IndicatorDriver::ready()))
+        RCALL   ?Subroutine1
+??CrossCallReturnLabel_8:
+        BRNE    ??run_2
+        RCALL   ?Subroutine0
+??CrossCallReturnLabel_4:
+        BRNE    ??run_2
+        RCALL   ?Subroutine3
+??CrossCallReturnLabel_11:
+        BRNE    ??run_2
+        CALL    ??enabled_2
+        TST     R16
+        BREQ    ??run_3
+        CALL    ??ready
+        TST     R16
+        BREQ    ??run_2
+??run_3:
+        CALL    ??ready_1
+        TST     R16
+        BREQ    ??run_2
+//  215     {
+//  216       if (Timer0Handler::enabled() && GLOBAL::MultyThreading::canBeDisabled())
+        CALL    ??enabled_3
+        TST     R16
+        BREQ    ??run_4
+        CALL    ??canBeDisabled
+        TST     R16
+        BREQ    ??run_4
+//  217       {
+//  218         Timer0Handler::disable();
+        CALL    ??disable_1
+//  219       }
+//  220 
+//  221       if (!Timer0Handler::enabled())
+??run_4:
+        CALL    ??enabled_3
+        TST     R16
+        BRNE    ??run_2
+//  222       {
+//  223         MCUCR |= (1<<SE); //Enable go to sleep mode
+        IN      R16, 0x35
+        ORI     R16, 0x01
+        OUT     0x35, R16
+//  224         __sleep();        //Go to sleep mode
+        SLEEP
+//  225 
+//  226         __no_operation();
+        NOP
+//  227         __no_operation();
+        NOP
+//  228         __no_operation();
+        NOP
+//  229         __no_operation();
+        NOP
+//  230         __no_operation();
+        NOP
+//  231       }
+//  232     }
+//  233   }
+??run_2:
+        RET
+          CFI EndBlock cfiBlock36
+        REQUIRE _A_MCUCR
+
+        ASEGN ABSOLUTE:DATA:NOROOT,01fH
+__?EECR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,020H
+__?EEDR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,021H
+__?EEARL:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,022H
+__?EEARH:
+
+        RSEG INITTAB:CODE:NOROOT(0)
+`?<Segment init: NEAR_Z>`:
+        DC16    SFE(NEAR_Z) - SFB(NEAR_Z)
+        DC16    SFB(NEAR_Z)
+        DC16    0
+        REQUIRE ?need_segment_init
+
+        END
+//  234 }
+//  235 
+//  236 #endif
+// 
+//   1 byte  in segment ABSOLUTE
+// 588 bytes in segment CODE
+//   6 bytes in segment INITTAB
+//   7 bytes in segment NEAR_F
+//   1 byte  in segment NEAR_Z
+// 
+// 595 bytes of CODE memory (+ 6 bytes shared)
+//   1 byte  of DATA memory (+ 1 byte  shared)
+//
+//Errors: none
+//Warnings: none

@@ -1,0 +1,2645 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V6.12.1.50500 for Atmel AVR       02/Aug/2014  01:50:51 /
+// Copyright 1996-2012 IAR Systems AB.                                        /
+//                                                                            /
+//    Source file  =  D:\Projects\BatteryCounter\_micro\BattRX\LCDDriver.cpp  /
+//    Command line =  D:\Projects\BatteryCounter\_micro\BattRX\LCDDriver.cpp  /
+//                    --cpu=m328p -ms -o "D:\Projects\BatteryCounter\_micro\B /
+//                    attRX\Release - Atmega328P\Obj\" -D NDEBUG -lA          /
+//                    "D:\Projects\BatteryCounter\_micro\BattRX\Release -     /
+//                    Atmega328P\List\" --initializers_in_flash               /
+//                    -DENABLE_BIT_DEFINITIONS --do_cross_call -e             /
+//                    --eeprom_size 1024 --dlib --dlib_config "C:\Program     /
+//                    Files (x86)\IAR Systems\Embedded Workbench              /
+//                    6.0\avr\LIB\DLIB\dlAVR-3s-ec_mul-sf-n.h" --eec++ -Ohs   /
+//    List file    =  D:\Projects\BatteryCounter\_micro\BattRX\Release -      /
+//                    Atmega328P\List\LCDDriver.s90                           /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME LCDDriver
+
+        RTMODEL "__64bit_doubles", "disabled"
+        RTMODEL "__SystemLibrary", "DLib"
+        RTMODEL "__cpu", "3"
+        RTMODEL "__cpu_name", "ATmega328P"
+        RTMODEL "__dlib_file_descriptor", "0"
+        RTMODEL "__enhanced_core", "enabled"
+        RTMODEL "__has_elpm", "false"
+        RTMODEL "__memory_model", "2"
+        RTMODEL "__rt_version", "3"
+
+        RSEG CSTACK:DATA:NOROOT(0)
+        RSEG RSTACK:DATA:NOROOT(0)
+
+        ERROR
+//NOTE: This module defines or uses C++ features that are not
+//      accessible from assembler code. Assembling this file will
+//      not produce an equivalent object file to the one produced
+//      by the C++ compiler.
+
+        EXTERN ?Register_R4_is_cg_reg
+        EXTERN ?Register_R5_is_cg_reg
+        EXTERN ?Register_R6_is_cg_reg
+        EXTERN ?Register_R7_is_cg_reg
+        EXTERN ?Register_R8_is_cg_reg
+        EXTERN ?Register_R9_is_cg_reg
+        EXTERN ?SS_DIVMOD_L02
+        EXTERN ?UC_DIVMOD_L01
+        EXTERN ?UL_DIVMOD_L03
+        EXTERN ?need_segment_init
+
+        PUBWEAK `?<Segment init: NEAR_Z>`
+        PUBLIC ??LCDDRIVER_EXT_SYMBOLS
+        PUBLIC ??clearBuffer
+        FUNCTION ??clearBuffer,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??disable
+        FUNCTION ??disable,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??displayState
+        PUBLIC ??enable
+        FUNCTION ??enable,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??enabled
+        FUNCTION ??enabled,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??init
+        FUNCTION ??init,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??initCGRAM
+        FUNCTION ??initCGRAM,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??lcdStatus
+        PUBLIC ??lcdSubStatus
+        PUBWEAK ??minof
+        FUNCTION ??minof,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??num2Buf
+        FUNCTION ??num2Buf,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 10, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??processInitialize
+        FUNCTION ??processInitialize,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??processRefresh
+        FUNCTION ??processRefresh,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??processReset
+        FUNCTION ??processReset,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??processSetDisplayMode
+        FUNCTION ??processSetDisplayMode,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??processSetEntryState
+        FUNCTION ??processSetEntryState,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??ready
+        FUNCTION ??ready,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??refreshDisplay
+        FUNCTION ??refreshDisplay,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??resetDisplay
+        FUNCTION ??resetDisplay,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??run
+        FUNCTION ??run,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??sendSingleCommand
+        FUNCTION ??sendSingleCommand,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??setCursorPos
+        FUNCTION ??setCursorPos,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??setDDRAM
+        FUNCTION ??setDDRAM,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??setDisplayMode
+        FUNCTION ??setDisplayMode,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??setEntryState
+        FUNCTION ??setEntryState,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??str2Buf
+        FUNCTION ??str2Buf,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBWEAK _A_DDRC
+        PUBWEAK _A_PORTC
+        PUBWEAK __?EEARH
+        PUBWEAK __?EEARL
+        PUBWEAK __?EECR
+        PUBWEAK __?EEDR
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_Y Y DATA
+          CFI StackFrame CFA_SP SP DATA
+          CFI VirtualResource ?RetPad:1, ?RetHigh:8, ?RetLow:8, ?Ret:17
+          CFI Resource R0:8, R1:8, R2:8, R3:8, R4:8, R5:8, R6:8, R7:8, R8:8, R9:8
+          CFI Resource R10:8, R11:8, R12:8, R13:8, R14:8, R15:8, R16:8, R17:8
+          CFI Resource R18:8, R19:8, R20:8, R21:8, R22:8, R23:8, R24:8, R25:8
+          CFI Resource R26:8, R27:8, R28:8, R29:8, R30:8, R31:8
+          CFI Resource ?RetHighByteMask:8, SP:16, SPH:8, SPL:8, Y:16
+          CFI ResourceParts ?Ret ?RetHigh, ?RetLow, ?RetPad
+          CFI ResourceParts SP SPH, SPL
+          CFI ResourceParts Y R29, R28
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Y+0
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 Undefined
+          CFI R17 Undefined
+          CFI R18 Undefined
+          CFI R19 Undefined
+          CFI R20 Undefined
+          CFI R21 Undefined
+          CFI R22 Undefined
+          CFI R23 Undefined
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 Undefined
+          CFI R31 Undefined
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Notused
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 SameValue
+          CFI R1 SameValue
+          CFI R2 SameValue
+          CFI R3 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 SameValue
+          CFI R17 SameValue
+          CFI R18 SameValue
+          CFI R19 SameValue
+          CFI R20 SameValue
+          CFI R21 SameValue
+          CFI R22 SameValue
+          CFI R23 SameValue
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 SameValue
+          CFI R31 SameValue
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI Y SameValue
+          CFI EndCommon cfiCommon1
+        
+`?<Name CommProtocol_TWI_Mas 0>` SYMBOL "CommProtocol_TWI_Master"
+??bufferTWI         SYMBOL "bufferTWI", `?<Name CommProtocol_TWI_Mas 0>`
+`?<Name LCDDriver 18>` SYMBOL "LCDDriver"
+??LCDDRIVER_EXT_SYMBOLS SYMBOL "LCDDRIVER_EXT_SYMBOLS", `?<Name LCDDriver 18>`
+??displayState      SYMBOL "displayState", `?<Name LCDDriver 18>`
+??lcdStatus         SYMBOL "lcdStatus", `?<Name LCDDriver 18>`
+??lcdSubStatus      SYMBOL "lcdSubStatus", `?<Name LCDDriver 18>`
+
+        EXTERN ??bufferTWI
+        EXTERN ??disable_1
+        FUNCTION ??disable_1,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??enable_1
+        FUNCTION ??enable_1,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??getTimer
+        FUNCTION ??getTimer,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??isLowBatteryVoltage
+        FUNCTION ??isLowBatteryVoltage,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??ready_2
+        FUNCTION ??ready_2,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??setTimer
+        FUNCTION ??setTimer,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN memcpy_G
+        FUNCTION memcpy_G,010202H
+        ARGFRAME RSTACK, 0, STACK
+
+// D:\Projects\BatteryCounter\_micro\BattRX\LCDDriver.cpp
+//    1 #ifndef __LCDDRIVER_CPP_
+//    2 #define __LCDDRIVER_CPP_
+//    3 
+//    4 #include "LCDDriver.h"
+
+        ASEGN ABSOLUTE:DATA:NOROOT,028H
+// union <unnamed> volatile __io _A_PORTC
+_A_PORTC:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,027H
+// union <unnamed> volatile __io _A_DDRC
+_A_DDRC:
+        DS8 1
+
+        RSEG CODE:CODE:NOROOT(1)
+// __version_3 unsigned char Functions::Common::minof<unsigned char>(unsigned char, unsigned char)
+??minof:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function ??minof
+        CP      R17, R16
+        BRCS    ??minof_1
+        MOV     R18, R16
+        RJMP    ??minof_2
+??minof_1:
+        MOV     R18, R17
+??minof_2:
+        MOV     R16, R18
+        RET
+          CFI EndBlock cfiBlock0
+//    5 #include "CommProtocol_TWI_Master.h"
+//    6 #include "MultyThreading.h"
+//    7 #include "GlobalADC.h"
+//    8 
+//    9 #define LCDDRIVER_SWITCHON_WAITING_TIME       (100)
+//   10 #define LCDDRIVER_FOLLOWERSET_WAITING_TIME    (400)
+//   11 #define LCDDRIVER_SLA_W                       (0x7C)
+//   12 #define LCDDRIVER_CONTROL_CO_POS              (7)
+//   13 #define LCDDRIVER_CONTROL_RS_POS              (6)
+//   14 
+//   15 namespace LCDDriver
+//   16 {
+//   17   typedef enum
+//   18   {
+//   19     LCDDriverStatus_Disabled = 0x00,
+//   20     LCDDriverStatus_Initializing = 0x01,
+//   21     LCDDriverStatus_Ready = 0x02,
+//   22     LCDDriverStatus_Reset = 0x03,
+//   23     LCDDriverStatus_Refresh = 0x04,
+//   24     LCDDriverStatus_SetDisplayMode = 0x05,
+//   25     LCDDriverStatus_SetEntryState = 0x06,
+//   26   } TLCDDriverStatus;
+//   27 
+//   28   typedef enum
+//   29   {
+//   30     LCDDriverInitSubStatus_SwitchOn = 0,
+//   31     LCDDriverInitSubStatus_WaitSwitchOn = 1,
+//   32     LCDDriverInitSubStatus_FunctionSetNormMode = 2,
+//   33     LCDDriverInitSubStatus_InitCGRAM = 3,
+//   34     LCDDriverInitSubStatus_FunctionSetInitExtMode = 4,
+//   35     LCDDriverInitSubStatus_FunctionSetExtMode = 5,
+//   36     LCDDriverInitSubStatus_IntOSCFreqSet = 6,
+//   37     LCDDriverInitSubStatus_ContrastSet = 7,
+//   38     LCDDriverInitSubStatus_PowerIconConSet = 8,
+//   39     LCDDriverInitSubStatus_FollowerSet = 9,
+//   40     LCDDriverInitSubStatus_WaitFollower = 10,
+//   41     LCDDriverInitSubStatus_DisplayOn = 11,
+//   42   } TLCDDriverInitSubStatus;
+//   43 
+//   44   typedef enum
+//   45   {
+//   46     LCDDriverResetSubStatus_ClearDisplay = 0,
+//   47     LCDDriverResetSubStatus_ReturnHome = 1,
+//   48     LCDDriverResetSubStatus_SetDisplayMode = 2,
+//   49     LCDDriverResetSubStatus_SetEntryState = 3,
+//   50   } TLCDDriverResetSubStatus;
+//   51 
+//   52   typedef enum
+//   53   {
+//   54     LCDDriverRefreshSubStatus_SetDDRAMLine0 = 0,
+//   55     LCDDriverRefreshSubStatus_SetDDRAMLine1 = 1,
+//   56     LCDDriverRefreshSubStatus_SetDisplayMode = 2,
+//   57     LCDDriverRefreshSubStatus_SetCursorPos = 3,
+//   58   } TLCDDriverRefreshSubStatus;
+//   59 
+//   60   typedef enum
+//   61   {
+//   62     LCDMemoryPosition_CGRAM = 0x40,
+//   63     LCDMemoryPosition_Line0 = 0x80,
+//   64     LCDMemoryPosition_Line1 = 0xC0,
+//   65   } TLCDMemoryPosition;
+//   66 
+
+        RSEG NEAR_F:CODE:NOROOT(0)
+//   67   __flash unsigned char LCDDRIVER_EXT_SYMBOLS[] = {0x0E, 0x11, 0x10, 0x1C, 0x10, 0x11, 0x0E, 0x00,
+??LCDDRIVER_EXT_SYMBOLS:
+        DC8 14, 17, 16, 28, 16, 17, 14, 0, 0, 0, 14, 17, 28, 17, 14, 0, 10, 0
+        DC8 14, 4, 4, 4, 14, 0, 0, 10, 0, 12, 4, 4, 14, 0, 4, 14, 17, 17, 19
+        DC8 23, 31, 31
+//   68                                                    0x00, 0x00, 0x0E, 0x11, 0x1C, 0x11, 0x0E, 0x00,
+//   69                                                    0x0A, 0x00, 0x0E, 0x04, 0x04, 0x04, 0x0E, 0x00,
+//   70                                                    0x00, 0x0A, 0x00, 0x0C, 0x04, 0x04, 0x0E, 0x00,
+//   71                                                    0x04, 0x0E, 0x11, 0x11, 0x13, 0x17, 0x1F, 0x1F};
+//   72 
+
+        RSEG NEAR_Z:DATA:NOROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   73   TLCDDriverStatus lcdStatus = LCDDriverStatus_Disabled;
+??lcdStatus:
+        DS8 1
+//   74   unsigned char lcdSubStatus;
+??lcdSubStatus:
+        DS8 1
+//   75 
+
+        RSEG NEAR_Z:DATA:NOROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   76   TLCDDisplayState displayState;
+??displayState:
+        DS8 36
+//   77 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   78   __monitor void enable()
+??enable:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function ??enable
+//   79   {
+        FUNCALL ??enable, ??enable_1
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine4
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+//   80     CommProtocol_TWI_Master::enable();
+??CrossCallReturnLabel_5:
+        CALL    ??enable_1
+//   81 
+//   82     lcdStatus = LCDDriverStatus_Initializing;
+        LDI     R16, 1
+        RCALL   ?Subroutine1
+//   83     lcdSubStatus = LCDDriverInitSubStatus_SwitchOn;
+//   84   }
+??CrossCallReturnLabel_1:
+        OUT     0x3F, R24
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock1
+//   85 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   86   __monitor void disable()
+??disable:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function ??disable
+//   87   {
+        FUNCALL ??disable, ??disable_1
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine4
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+//   88     LCD_VDD_DIR = 1;
+??CrossCallReturnLabel_6:
+        SBI     0x07, 0x03
+//   89     LCD_VDD_PORT = 0;
+        CBI     0x08, 0x03
+//   90 
+//   91     CommProtocol_TWI_Master::disable();
+        CALL    ??disable_1
+//   92 
+//   93     lcdStatus = LCDDriverStatus_Disabled;
+        LDI     R16, 0
+        RCALL   ??Subroutine17_0
+//   94   }
+??CrossCallReturnLabel_35:
+        OUT     0x3F, R24
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock2
+        REQUIRE _A_DDRC
+        REQUIRE _A_PORTC
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine4:
+          CFI Block cfiCond3 Using cfiCommon0
+          CFI Function ??enable
+          CFI Conditional ??CrossCallReturnLabel_5
+          CFI CFA_SP SP+4
+          CFI Block cfiCond4 Using cfiCommon0
+          CFI (cfiCond4) Function ??disable
+          CFI (cfiCond4) Conditional ??CrossCallReturnLabel_6
+          CFI (cfiCond4) CFA_SP SP+4
+          CFI Block cfiCond5 Using cfiCommon0
+          CFI (cfiCond5) Function ??init
+          CFI (cfiCond5) Conditional ??CrossCallReturnLabel_7
+          CFI (cfiCond5) CFA_SP SP+4
+          CFI Block cfiPicker6 Using cfiCommon1
+          CFI (cfiPicker6) NoFunction
+          CFI (cfiPicker6) Picker
+        ST      -Y, R24
+          CFI (cfiCond3) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond3) CFA_Y Y+1
+          CFI (cfiCond4) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond4) CFA_Y Y+1
+          CFI (cfiCond5) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond5) CFA_Y Y+1
+          CFI (cfiPicker6) R24 Frame(CFA_Y, -1)
+        IN      R24, 0x3F
+        CLI
+        RET
+          CFI EndBlock cfiCond3
+          CFI EndBlock cfiCond4
+          CFI EndBlock cfiCond5
+          CFI EndBlock cfiPicker6
+//   95 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   96   bool enabled()
+??enabled:
+          CFI Block cfiBlock7 Using cfiCommon0
+          CFI Function ??enabled
+//   97   {
+//   98     return lcdStatus != LCDDriverStatus_Disabled;
+        RCALL   ?Subroutine7
+??CrossCallReturnLabel_12:
+        TST     R16
+        BREQ    ??enabled_1
+        LDI     R16, 1
+        RET
+??enabled_1:
+        LDI     R16, 0
+        RET
+          CFI EndBlock cfiBlock7
+//   99   }
+//  100 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  101   bool ready()
+??ready:
+          CFI Block cfiBlock8 Using cfiCommon0
+          CFI Function ??ready
+//  102   {
+//  103     return lcdStatus == LCDDriverStatus_Ready;
+        RCALL   ?Subroutine7
+??CrossCallReturnLabel_13:
+        CPI     R16, 2
+        BRNE    ??ready_1
+        LDI     R16, 1
+        RET
+??ready_1:
+        LDI     R16, 0
+        RET
+          CFI EndBlock cfiBlock8
+//  104   }
+//  105 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  106   void clearBuffer()
+??clearBuffer:
+          CFI Block cfiBlock9 Using cfiCommon0
+          CFI Function ??clearBuffer
+//  107   {
+        MOV     R19, R25
+        MOV     R20, R24
+//  108     for (unsigned char i = 0; i < LCD_DISPLAY_WIDTH; i++)
+        LDI     R24, LOW(??displayState)
+        LDI     R25, (??displayState) >> 8
+        LDI     R17, 16
+//  109     {
+//  110       for (unsigned char j = 0; j < LCD_DISPLAY_HEIGHT; j++)
+??clearBuffer_1:
+        MOVW    R31:R30, R25:R24
+        LDI     R16, 2
+        LDI     R18, 32
+//  111       {
+//  112         displayState.line[j][i] = LCD_DISPLAY_SYMBOL_SPACE;
+??clearBuffer_2:
+        STD     Z+4, R18
+//  113       }
+        ADIW    R31:R30, 16
+        DEC     R16
+        BRNE    ??clearBuffer_2
+//  114     }
+        ADIW    R25:R24, 1
+        DEC     R17
+        BRNE    ??clearBuffer_1
+//  115   }
+        MOV     R24, R20
+        MOV     R25, R19
+        RET
+          CFI EndBlock cfiBlock9
+//  116 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  117   void str2Buf(
+??str2Buf:
+          CFI Block cfiBlock10 Using cfiCommon0
+          CFI Function ??str2Buf
+//  118     unsigned char _lineNum,
+//  119     unsigned char __generic* _str,
+//  120     TLCDTextIdentation _identation,
+//  121     unsigned char _pos)
+//  122   {
+        FUNCALL ??str2Buf, memcpy_G
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine8
+          CFI R24 Frame(CFA_Y, -6)
+          CFI R25 Frame(CFA_Y, -5)
+          CFI R26 Frame(CFA_Y, -4)
+          CFI R27 Frame(CFA_Y, -3)
+          CFI R4 Frame(CFA_Y, -2)
+          CFI R5 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+6
+??CrossCallReturnLabel_16:
+        REQUIRE ?Register_R4_is_cg_reg
+        REQUIRE ?Register_R5_is_cg_reg
+        MOV     R23, R16
+        MOVW    R27:R26, R21:R20
+        MOV     R25, R22
+        MOV     R20, R17
+//  123     if (!_str)
+        MOV     R16, R26
+        OR      R16, R21
+        OR      R16, R22
+        BRNE    $+2+2
+        RJMP    ??str2Buf_1
+//  124     {
+//  125       return;
+//  126     }
+//  127 
+//  128     unsigned char curStrLng = Functions::Common::minof<unsigned char>(_str[0], LCD_DISPLAY_WIDTH);
+        MOV     R30, R26
+        MOV     R31, R21
+        SBRS    R22, 7
+        LD      R16, Z
+??str2Buf_2:
+        SBRC    R22, 7
+        LPM     R16, Z
+??str2Buf_3:
+        CPI     R16, 17
+        BRCC    ??str2Buf_4
+        MOV     R24, R16
+//  129     if (curStrLng <= 0)
+        TST     R16
+        BRNE    ??str2Buf_5
+        RJMP    ??str2Buf_1
+??str2Buf_4:
+        LDI     R24, 16
+//  130     {
+//  131       return;
+//  132     }
+//  133 
+//  134     unsigned char curPos = Functions::Common::minof<unsigned char>(_pos, LCD_DISPLAY_WIDTH - 1);
+??str2Buf_5:
+        CPI     R18, 16
+        BRCC    ??str2Buf_6
+        MOV     R30, R18
+        RJMP    ??str2Buf_7
+??str2Buf_6:
+        LDI     R30, 15
+//  135     unsigned char* curDestPos = displayState.line[_lineNum];
+??str2Buf_7:
+        LDI     R16, LOW((??displayState + 4))
+        LDI     R17, HIGH((??displayState + 4))
+        LDI     R18, 16
+        MUL     R23, R18
+        MOVW    R5:R4, R17:R16
+        ADD     R4, R0
+        ADC     R5, R1
+//  136 
+//  137     switch (_identation)
+        TST     R20
+        BREQ    ??str2Buf_8
+        DEC     R20
+        BREQ    ??str2Buf_9
+        DEC     R20
+        BREQ    ??str2Buf_10
+        RJMP    ??str2Buf_11
+//  138     {
+//  139       case LCDTextIdentation_Center:
+//  140         curDestPos += ((LCD_DISPLAY_WIDTH - curStrLng) / 2);
+??str2Buf_8:
+        LDI     R16, 16
+        LDI     R17, 0
+        SUB     R16, R24
+        SBCI    R17, 0
+        LDI     R20, 2
+        LDI     R21, 0
+        CALL    ?SS_DIVMOD_L02
+        ADD     R4, R16
+        ADC     R5, R17
+//  141         break;
+        RJMP    ??str2Buf_11
+//  142 
+//  143       case LCDTextIdentation_Left:
+//  144         curStrLng = Functions::Common::minof<unsigned char>(curStrLng, LCD_DISPLAY_WIDTH - curPos);
+??str2Buf_9:
+        LDI     R16, 16
+        SUB     R16, R30
+        RCALL   ?Subroutine10
+//  145         curDestPos += curPos;
+??CrossCallReturnLabel_21:
+        RJMP    ??str2Buf_12
+//  146         break;
+//  147 
+//  148       case LCDTextIdentation_Right:
+//  149         curStrLng = Functions::Common::minof<unsigned char>(curStrLng, curPos + 1);
+??str2Buf_10:
+        MOV     R16, R30
+        INC     R16
+        RCALL   ?Subroutine10
+//  150         curDestPos += (curPos + 1 - curStrLng);
+??CrossCallReturnLabel_22:
+        ADIW    R31:R30, 1
+        SUB     R30, R24
+        SBCI    R31, 0
+??str2Buf_12:
+        ADD     R4, R30
+        ADC     R5, R31
+//  151         break;
+//  152     }
+//  153 
+//  154     memcpy_G(curDestPos, _str + 1, curStrLng);
+??str2Buf_11:
+        MOV     R16, R24
+        LDI     R17, 0
+        SUBI    R26, 255
+        SBCI    R27, 255
+        SBCI    R25, 255
+        MOVW    R31:R30, R27:R26
+        MOV     R19, R25
+        MOVW    R27:R26, R5:R4
+        CALL    memcpy_G
+//  155   }
+??str2Buf_1:
+        RJMP    ?Subroutine0
+          CFI EndBlock cfiBlock10
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine10:
+          CFI Block cfiCond11 Using cfiCommon0
+          CFI Function ??str2Buf
+          CFI Conditional ??CrossCallReturnLabel_21
+          CFI R24 Frame(CFA_Y, -6)
+          CFI R25 Frame(CFA_Y, -5)
+          CFI R26 Frame(CFA_Y, -4)
+          CFI R27 Frame(CFA_Y, -3)
+          CFI R4 Frame(CFA_Y, -2)
+          CFI R5 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+6
+          CFI Block cfiCond12 Using cfiCommon0
+          CFI (cfiCond12) Function ??str2Buf
+          CFI (cfiCond12) Conditional ??CrossCallReturnLabel_22
+          CFI (cfiCond12) R24 Frame(CFA_Y, -6)
+          CFI (cfiCond12) R25 Frame(CFA_Y, -5)
+          CFI (cfiCond12) R26 Frame(CFA_Y, -4)
+          CFI (cfiCond12) R27 Frame(CFA_Y, -3)
+          CFI (cfiCond12) R4 Frame(CFA_Y, -2)
+          CFI (cfiCond12) R5 Frame(CFA_Y, -1)
+          CFI (cfiCond12) CFA_SP SP+4
+          CFI (cfiCond12) CFA_Y Y+6
+          CFI Block cfiPicker13 Using cfiCommon1
+          CFI (cfiPicker13) NoFunction
+          CFI (cfiPicker13) Picker
+        CP      R16, R24
+        BRCC    ??Subroutine10_0
+        MOV     R24, R16
+??Subroutine10_0:
+        LDI     R31, 0
+        RET
+          CFI EndBlock cfiCond11
+          CFI EndBlock cfiCond12
+          CFI EndBlock cfiPicker13
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine0:
+          CFI Block cfiCond14 Using cfiCommon0
+          CFI Function ??num2Buf
+          CFI Conditional ??CrossCallReturnLabel_0
+          CFI R24 Frame(CFA_Y, -10)
+          CFI R25 Frame(CFA_Y, -9)
+          CFI R26 Frame(CFA_Y, -8)
+          CFI R27 Frame(CFA_Y, -7)
+          CFI R4 Frame(CFA_Y, -6)
+          CFI R5 Frame(CFA_Y, -5)
+          CFI R6 Frame(CFA_Y, -4)
+          CFI R7 Frame(CFA_Y, -3)
+          CFI R8 Frame(CFA_Y, -2)
+          CFI R9 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+10
+          CFI Block cfiBlock15 Using cfiCommon0
+          CFI (cfiBlock15) NoFunction
+          CFI (cfiBlock15) CFA_Y Y+6
+          CFI (cfiBlock15) R4 Frame(CFA_Y, -2)
+          CFI (cfiBlock15) R5 Frame(CFA_Y, -1)
+          CFI (cfiBlock15) R24 Frame(CFA_Y, -6)
+          CFI (cfiBlock15) R25 Frame(CFA_Y, -5)
+          CFI (cfiBlock15) R26 Frame(CFA_Y, -4)
+          CFI (cfiBlock15) R27 Frame(CFA_Y, -3)
+          CFI Block cfiPicker16 Using cfiCommon1
+          CFI (cfiPicker16) NoFunction
+          CFI (cfiPicker16) Picker
+        RCALL   ?Subroutine15
+          CFI (cfiCond14) R24 SameValue
+          CFI (cfiCond14) R25 SameValue
+          CFI (cfiCond14) R26 SameValue
+          CFI (cfiCond14) R27 SameValue
+          CFI (cfiCond14) CFA_Y Y+6
+          CFI (cfiBlock15) CFA_Y Y+2
+          CFI (cfiBlock15) R24 SameValue
+          CFI (cfiBlock15) R25 SameValue
+          CFI (cfiBlock15) R26 SameValue
+          CFI (cfiBlock15) R27 SameValue
+??CrossCallReturnLabel_32:
+        LD      R4, Y+
+          CFI (cfiCond14) R4 SameValue
+          CFI (cfiCond14) CFA_Y Y+5
+          CFI (cfiBlock15) CFA_Y Y+1
+          CFI (cfiBlock15) R4 SameValue
+        LD      R5, Y+
+          CFI (cfiCond14) R5 SameValue
+          CFI (cfiCond14) CFA_Y Y+4
+          CFI (cfiBlock15) CFA_Y Y+0
+          CFI (cfiBlock15) R5 SameValue
+        RET
+          CFI EndBlock cfiCond14
+          CFI EndBlock cfiBlock15
+          CFI EndBlock cfiPicker16
+//  156 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  157   void num2Buf(
+??num2Buf:
+          CFI Block cfiBlock17 Using cfiCommon0
+          CFI Function ??num2Buf
+//  158     unsigned char _lineNum,
+//  159     unsigned char _linePos,
+//  160     unsigned long _value,
+//  161     unsigned char _maxSize,
+//  162     unsigned char _fillChar)
+//  163   {
+        ST      -Y, R9
+          CFI R9 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        ST      -Y, R8
+          CFI R8 Frame(CFA_Y, -2)
+          CFI CFA_Y Y+2
+        ST      -Y, R7
+          CFI R7 Frame(CFA_Y, -3)
+          CFI CFA_Y Y+3
+        ST      -Y, R6
+          CFI R6 Frame(CFA_Y, -4)
+          CFI CFA_Y Y+4
+        RCALL   ?Subroutine8
+          CFI R24 Frame(CFA_Y, -10)
+          CFI R25 Frame(CFA_Y, -9)
+          CFI R26 Frame(CFA_Y, -8)
+          CFI R27 Frame(CFA_Y, -7)
+          CFI R4 Frame(CFA_Y, -6)
+          CFI R5 Frame(CFA_Y, -5)
+          CFI CFA_Y Y+10
+??CrossCallReturnLabel_17:
+        REQUIRE ?Register_R4_is_cg_reg
+        REQUIRE ?Register_R5_is_cg_reg
+        REQUIRE ?Register_R6_is_cg_reg
+        REQUIRE ?Register_R7_is_cg_reg
+        REQUIRE ?Register_R8_is_cg_reg
+        REQUIRE ?Register_R9_is_cg_reg
+        MOV     R2, R16
+        MOV     R30, R17
+        MOV     R3, R18
+        MOV     R9, R19
+//  164     unsigned char* curDest = displayState.line[_lineNum];
+        LDI     R16, LOW((??displayState + 4))
+        LDI     R17, HIGH((??displayState + 4))
+        LDI     R18, 16
+        MUL     R2, R18
+        ADD     R16, R0
+        ADC     R17, R1
+//  165 
+//  166     unsigned char linePos = Functions::Common::minof<unsigned char>(_linePos, LCD_DISPLAY_WIDTH - 1);
+        CPI     R30, 16
+        BRCC    ??num2Buf_1
+        MOV     R18, R30
+        RJMP    ??num2Buf_2
+??num2Buf_1:
+        LDI     R18, 15
+//  167     unsigned char maxSize = Functions::Common::minof<unsigned char>(_maxSize, linePos + 1);
+??num2Buf_2:
+        MOV     R19, R18
+        INC     R19
+        CP      R19, R3
+        BRCS    ??num2Buf_3
+        MOV     R5, R3
+        RJMP    ??num2Buf_4
+??num2Buf_3:
+        MOV     R5, R19
+//  168     unsigned long curValue = _value;
+??num2Buf_4:
+        MOVW    R25:R24, R21:R20
+        MOVW    R27:R26, R23:R22
+//  169 
+//  170     for (unsigned char i = 0; i < maxSize; i++)
+        CLR     R4
+        TST     R5
+        BREQ    ??num2Buf_5
+        ADD     R16, R18
+        ADC     R17, R4
+        MOVW    R7:R6, R17:R16
+//  171     {
+//  172       unsigned char curDigit = curValue % 10;
+??num2Buf_6:
+        RCALL   ?Subroutine9
+??CrossCallReturnLabel_19:
+        MOV     R8, R20
+//  173       curValue /= 10;
+        RCALL   ?Subroutine9
+??CrossCallReturnLabel_20:
+        MOVW    R25:R24, R17:R16
+        MOVW    R27:R26, R19:R18
+//  174 
+//  175       if ((i == 0) || curDigit || curValue)
+        TST     R4
+        BREQ    ??num2Buf_7
+        TST     R8
+        BRNE    ??num2Buf_7
+        OR      R16, R17
+        OR      R16, R18
+        OR      R16, R19
+        BREQ    ??num2Buf_8
+//  176       {
+//  177         curDest[linePos - i] = '0' + curDigit;
+??num2Buf_7:
+        LDI     R16, 48
+        ADD     R8, R16
+        MOVW    R31:R30, R7:R6
+        ST      Z, R8
+        RJMP    ??num2Buf_9
+//  178       }
+//  179       else if (_fillChar)
+??num2Buf_8:
+        TST     R9
+        BREQ    ??num2Buf_5
+//  180       {
+//  181         curDest[linePos - i] = _fillChar;
+        MOVW    R31:R30, R7:R6
+        ST      Z, R9
+//  182       }
+//  183       else
+//  184       {
+//  185         break;
+//  186       }
+//  187     }
+??num2Buf_9:
+        INC     R4
+        LDI     R16, 255
+        ADD     R6, R16
+        ADC     R7, R16
+        CP      R4, R5
+        BRCS    ??num2Buf_6
+//  188   }
+??num2Buf_5:
+        RCALL   ?Subroutine0
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI CFA_Y Y+4
+??CrossCallReturnLabel_0:
+        LD      R6, Y+
+          CFI R6 SameValue
+          CFI CFA_Y Y+3
+        LD      R7, Y+
+          CFI R7 SameValue
+          CFI CFA_Y Y+2
+        LD      R8, Y+
+          CFI R8 SameValue
+          CFI CFA_Y Y+1
+        LD      R9, Y+
+          CFI R9 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock17
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine9:
+          CFI Block cfiCond18 Using cfiCommon0
+          CFI Function ??num2Buf
+          CFI Conditional ??CrossCallReturnLabel_19
+          CFI R24 Frame(CFA_Y, -10)
+          CFI R25 Frame(CFA_Y, -9)
+          CFI R26 Frame(CFA_Y, -8)
+          CFI R27 Frame(CFA_Y, -7)
+          CFI R4 Frame(CFA_Y, -6)
+          CFI R5 Frame(CFA_Y, -5)
+          CFI R6 Frame(CFA_Y, -4)
+          CFI R7 Frame(CFA_Y, -3)
+          CFI R8 Frame(CFA_Y, -2)
+          CFI R9 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+10
+          CFI Block cfiCond19 Using cfiCommon0
+          CFI (cfiCond19) Function ??num2Buf
+          CFI (cfiCond19) Conditional ??CrossCallReturnLabel_20
+          CFI (cfiCond19) R24 Frame(CFA_Y, -10)
+          CFI (cfiCond19) R25 Frame(CFA_Y, -9)
+          CFI (cfiCond19) R26 Frame(CFA_Y, -8)
+          CFI (cfiCond19) R27 Frame(CFA_Y, -7)
+          CFI (cfiCond19) R4 Frame(CFA_Y, -6)
+          CFI (cfiCond19) R5 Frame(CFA_Y, -5)
+          CFI (cfiCond19) R6 Frame(CFA_Y, -4)
+          CFI (cfiCond19) R7 Frame(CFA_Y, -3)
+          CFI (cfiCond19) R8 Frame(CFA_Y, -2)
+          CFI (cfiCond19) R9 Frame(CFA_Y, -1)
+          CFI (cfiCond19) CFA_SP SP+4
+          CFI (cfiCond19) CFA_Y Y+10
+          CFI Block cfiPicker20 Using cfiCommon1
+          CFI (cfiPicker20) NoFunction
+          CFI (cfiPicker20) Picker
+        LDI     R20, 10
+        LDI     R21, 0
+        LDI     R22, 0
+        LDI     R23, 0
+        MOVW    R17:R16, R25:R24
+        MOVW    R19:R18, R27:R26
+        JMP     ?UL_DIVMOD_L03
+          CFI EndBlock cfiCond18
+          CFI EndBlock cfiCond19
+          CFI EndBlock cfiPicker20
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine8:
+          CFI Block cfiCond21 Using cfiCommon0
+          CFI Function ??str2Buf
+          CFI Conditional ??CrossCallReturnLabel_16
+          CFI CFA_SP SP+4
+          CFI Block cfiCond22 Using cfiCommon0
+          CFI (cfiCond22) Function ??num2Buf
+          CFI (cfiCond22) Conditional ??CrossCallReturnLabel_17
+          CFI (cfiCond22) R6 Frame(CFA_Y, -4)
+          CFI (cfiCond22) R7 Frame(CFA_Y, -3)
+          CFI (cfiCond22) R8 Frame(CFA_Y, -2)
+          CFI (cfiCond22) R9 Frame(CFA_Y, -1)
+          CFI (cfiCond22) CFA_SP SP+4
+          CFI (cfiCond22) CFA_Y Y+4
+          CFI Block cfiCond23 Using cfiCommon0
+          CFI (cfiCond23) Function ??refreshDisplay
+          CFI (cfiCond23) Conditional ??CrossCallReturnLabel_18
+          CFI (cfiCond23) CFA_SP SP+4
+          CFI Block cfiPicker24 Using cfiCommon1
+          CFI (cfiPicker24) NoFunction
+          CFI (cfiPicker24) Picker
+        ST      -Y, R5
+          CFI (cfiCond21) R5 Frame(CFA_Y, -1)
+          CFI (cfiCond21) CFA_Y Y+1
+          CFI (cfiCond22) R5 Frame(CFA_Y, -5)
+          CFI (cfiCond22) CFA_Y Y+5
+          CFI (cfiCond23) R5 Frame(CFA_Y, -1)
+          CFI (cfiCond23) CFA_Y Y+1
+          CFI (cfiPicker24) R5 Frame(CFA_Y, -1)
+        ST      -Y, R4
+          CFI (cfiCond21) R4 Frame(CFA_Y, -2)
+          CFI (cfiCond21) CFA_Y Y+2
+          CFI (cfiCond22) R4 Frame(CFA_Y, -6)
+          CFI (cfiCond22) CFA_Y Y+6
+          CFI (cfiCond23) R4 Frame(CFA_Y, -2)
+          CFI (cfiCond23) CFA_Y Y+2
+          CFI (cfiPicker24) R4 Frame(CFA_Y, -2)
+        ST      -Y, R27
+          CFI (cfiCond21) R27 Frame(CFA_Y, -3)
+          CFI (cfiCond21) CFA_Y Y+3
+          CFI (cfiCond22) R27 Frame(CFA_Y, -7)
+          CFI (cfiCond22) CFA_Y Y+7
+          CFI (cfiCond23) R27 Frame(CFA_Y, -3)
+          CFI (cfiCond23) CFA_Y Y+3
+          CFI (cfiPicker24) R27 Frame(CFA_Y, -3)
+        ST      -Y, R26
+          CFI (cfiCond21) R26 Frame(CFA_Y, -4)
+          CFI (cfiCond21) CFA_Y Y+4
+          CFI (cfiCond22) R26 Frame(CFA_Y, -8)
+          CFI (cfiCond22) CFA_Y Y+8
+          CFI (cfiCond23) R26 Frame(CFA_Y, -4)
+          CFI (cfiCond23) CFA_Y Y+4
+          CFI (cfiPicker24) R26 Frame(CFA_Y, -4)
+        ST      -Y, R25
+          CFI (cfiCond21) R25 Frame(CFA_Y, -5)
+          CFI (cfiCond21) CFA_Y Y+5
+          CFI (cfiCond22) R25 Frame(CFA_Y, -9)
+          CFI (cfiCond22) CFA_Y Y+9
+          CFI (cfiCond23) R25 Frame(CFA_Y, -5)
+          CFI (cfiCond23) CFA_Y Y+5
+          CFI (cfiPicker24) R25 Frame(CFA_Y, -5)
+        ST      -Y, R24
+          CFI (cfiCond21) R24 Frame(CFA_Y, -6)
+          CFI (cfiCond21) CFA_Y Y+6
+          CFI (cfiCond22) R24 Frame(CFA_Y, -10)
+          CFI (cfiCond22) CFA_Y Y+10
+          CFI (cfiCond23) R24 Frame(CFA_Y, -6)
+          CFI (cfiCond23) CFA_Y Y+6
+          CFI (cfiPicker24) R24 Frame(CFA_Y, -6)
+        RET
+          CFI EndBlock cfiCond21
+          CFI EndBlock cfiCond22
+          CFI EndBlock cfiCond23
+          CFI EndBlock cfiPicker24
+//  189 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  190   __monitor void init()
+??init:
+          CFI Block cfiBlock25 Using cfiCommon0
+          CFI Function ??init
+//  191   {
+        FUNCALL ??init, ??disable
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??init, ??clearBuffer
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine4
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+//  192     disable();
+??CrossCallReturnLabel_7:
+        RCALL   ??disable
+//  193 
+//  194     clearBuffer();
+        RCALL   ??clearBuffer
+//  195   }
+        OUT     0x3F, R24
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock25
+//  196 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  197   bool sendSingleCommand(unsigned char _command)
+??sendSingleCommand:
+          CFI Block cfiBlock26 Using cfiCommon0
+          CFI Function ??sendSingleCommand
+//  198   {
+        FUNCALL ??sendSingleCommand, ??ready_2
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine5
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+//  199     if (!CommProtocol_TWI_Master::ready())
+??CrossCallReturnLabel_8:
+        BRNE    ??sendSingleCommand_1
+//  200     {
+//  201       return false;
+        LDI     R16, 0
+        RJMP    ??sendSingleCommand_2
+//  202     }
+//  203 
+//  204     CommProtocol_TWI_Master::bufferTWI.length = 3;
+??sendSingleCommand_1:
+        LDI     R30, LOW(??bufferTWI)
+        LDI     R31, (??bufferTWI) >> 8
+        LDI     R16, 3
+        ST      Z, R16
+//  205     CommProtocol_TWI_Master::bufferTWI.buffer[0] = LCDDRIVER_SLA_W;
+        LDI     R16, 124
+        STD     Z+3, R16
+//  206     CommProtocol_TWI_Master::bufferTWI.buffer[1] = (0<<LCDDRIVER_CONTROL_CO_POS) | (0<<LCDDRIVER_CONTROL_RS_POS);
+        LDI     R16, 0
+        STD     Z+4, R16
+//  207     CommProtocol_TWI_Master::bufferTWI.buffer[2] = _command;
+        STD     Z+5, R24
+//  208     CommProtocol_TWI_Master::bufferTWI.status = CommProtocol_TWI_Master::TWIBufferStatus_Ready;
+        LDI     R16, 1
+        STD     Z+1, R16
+//  209 
+//  210     return true;
+??sendSingleCommand_2:
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock26
+//  211   }
+//  212 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  213   bool initCGRAM()
+??initCGRAM:
+          CFI Block cfiBlock27 Using cfiCommon0
+          CFI Function ??initCGRAM
+//  214   {
+        FUNCALL ??initCGRAM, ??ready_2
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R27
+          CFI R27 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        ST      -Y, R26
+          CFI R26 Frame(CFA_Y, -2)
+          CFI CFA_Y Y+2
+//  215     if (!CommProtocol_TWI_Master::ready())
+        CALL    ??ready_2
+        TST     R16
+        BRNE    ??initCGRAM_1
+//  216     {
+//  217       return false;
+        LDI     R16, 0
+        RJMP    ??initCGRAM_2
+//  218     }
+??initCGRAM_1:
+        LDI     R16, 44
+        STS     ??bufferTWI, R16
+//  219 
+//  220     CommProtocol_TWI_Master::bufferTWI.length = 4 + sizeof(LCDDRIVER_EXT_SYMBOLS);
+//  221     CommProtocol_TWI_Master::bufferTWI.buffer[0] = LCDDRIVER_SLA_W;
+        LDI     R16, 124
+        STS     (??bufferTWI + 3), R16
+//  222     CommProtocol_TWI_Master::bufferTWI.buffer[1] = (1<<LCDDRIVER_CONTROL_CO_POS) | (0<<LCDDRIVER_CONTROL_RS_POS);
+        LDI     R16, 128
+        STS     (??bufferTWI + 4), R16
+//  223     CommProtocol_TWI_Master::bufferTWI.buffer[2] = LCDMemoryPosition_CGRAM;
+        LDI     R16, 64
+        STS     (??bufferTWI + 5), R16
+//  224     CommProtocol_TWI_Master::bufferTWI.buffer[3] = (0<<LCDDRIVER_CONTROL_CO_POS) | (1<<LCDDRIVER_CONTROL_RS_POS);
+        STS     (??bufferTWI + 6), R16
+//  225 
+//  226     for (unsigned char i = 0; i < sizeof(LCDDRIVER_EXT_SYMBOLS); i++)
+        LDI     R26, LOW(??bufferTWI)
+        LDI     R27, (??bufferTWI) >> 8
+        LDI     R30, LOW(??LCDDRIVER_EXT_SYMBOLS)
+        LDI     R31, (??LCDDRIVER_EXT_SYMBOLS) >> 8
+        LDI     R16, 40
+//  227     {
+//  228       CommProtocol_TWI_Master::bufferTWI.buffer[i + 4] = LCDDRIVER_EXT_SYMBOLS[i];
+??initCGRAM_3:
+        LPM     R17, Z+
+        ADIW    R27:R26, 7
+        ST      X, R17
+        SBIW    R27:R26, 6
+//  229     }
+        DEC     R16
+        BRNE    ??initCGRAM_3
+//  230 
+//  231     CommProtocol_TWI_Master::bufferTWI.status = CommProtocol_TWI_Master::TWIBufferStatus_Ready;
+        LDI     R16, 1
+        STS     (??bufferTWI + 1), R16
+//  232 
+//  233     return true;
+??initCGRAM_2:
+        LD      R26, Y+
+          CFI R26 SameValue
+          CFI CFA_Y Y+1
+        LD      R27, Y+
+          CFI R27 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock27
+//  234   }
+//  235 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  236   bool setDDRAM(unsigned char _lineNum)
+??setDDRAM:
+          CFI Block cfiBlock28 Using cfiCommon0
+          CFI Function ??setDDRAM
+//  237   {
+        FUNCALL ??setDDRAM, ??ready_2
+        LOCFRAME CSTACK, 4, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R27
+          CFI R27 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        ST      -Y, R26
+          CFI R26 Frame(CFA_Y, -2)
+          CFI CFA_Y Y+2
+        ST      -Y, R25
+          CFI R25 Frame(CFA_Y, -3)
+          CFI CFA_Y Y+3
+        RCALL   ?Subroutine5
+          CFI R24 Frame(CFA_Y, -4)
+          CFI CFA_Y Y+4
+//  238     if (!CommProtocol_TWI_Master::ready())
+??CrossCallReturnLabel_9:
+        BRNE    ??setDDRAM_1
+//  239     {
+//  240       return false;
+        LDI     R16, 0
+        RJMP    ??setDDRAM_2
+//  241     }
+//  242 
+//  243     CommProtocol_TWI_Master::bufferTWI.length = 4 + LCD_DISPLAY_WIDTH;
+??setDDRAM_1:
+        LDI     R30, LOW(??bufferTWI)
+        LDI     R31, (??bufferTWI) >> 8
+        LDI     R16, 20
+        ST      Z, R16
+//  244     CommProtocol_TWI_Master::bufferTWI.buffer[0] = LCDDRIVER_SLA_W;
+        LDI     R16, 124
+        STD     Z+3, R16
+//  245     CommProtocol_TWI_Master::bufferTWI.buffer[1] = (1<<LCDDRIVER_CONTROL_CO_POS) | (0 << LCDDRIVER_CONTROL_RS_POS);
+        LDI     R16, 128
+        STD     Z+4, R16
+//  246 
+//  247     switch (_lineNum)
+        MOV     R16, R24
+        TST     R24
+        BREQ    ??setDDRAM_3
+        DEC     R16
+        BREQ    ??setDDRAM_4
+        RJMP    ??setDDRAM_5
+//  248     {
+//  249       case 0:
+//  250         CommProtocol_TWI_Master::bufferTWI.buffer[2] = LCDMemoryPosition_Line0;
+??setDDRAM_3:
+        LDI     R16, 128
+        RJMP    ??setDDRAM_6
+//  251         break;
+//  252 
+//  253       case 1:
+//  254         CommProtocol_TWI_Master::bufferTWI.buffer[2] = LCDMemoryPosition_Line1;
+??setDDRAM_4:
+        LDI     R16, 192
+??setDDRAM_6:
+        STD     Z+5, R16
+//  255         break;
+//  256     }
+//  257 
+//  258     CommProtocol_TWI_Master::bufferTWI.buffer[3] = (0<<LCDDRIVER_CONTROL_CO_POS) | (1 << LCDDRIVER_CONTROL_RS_POS);
+??setDDRAM_5:
+        LDI     R16, 64
+        STD     Z+6, R16
+//  259 
+//  260     for (unsigned char i = 0; i < LCD_DISPLAY_WIDTH; i++)
+        MOVW    R17:R16, R31:R30
+        LDI     R18, 16
+        MUL     R24, R18
+        LDI     R24, LOW(??displayState)
+        LDI     R25, (??displayState) >> 8
+        ADD     R24, R0
+        ADC     R25, R1
+//  261     {
+//  262       CommProtocol_TWI_Master::bufferTWI.buffer[i + 4] = displayState.line[_lineNum][i];
+??setDDRAM_7:
+        MOVW    R27:R26, R25:R24
+        ADIW    R27:R26, 4
+        LD      R19, X
+        MOVW    R27:R26, R17:R16
+        ADIW    R27:R26, 7
+        ST      X, R19
+//  263     }
+        ADIW    R25:R24, 1
+        SUBI    R16, 255
+        SBCI    R17, 255
+        DEC     R18
+        BRNE    ??setDDRAM_7
+//  264 
+//  265     CommProtocol_TWI_Master::bufferTWI.status = CommProtocol_TWI_Master::TWIBufferStatus_Ready;
+        LDI     R16, 1
+        STD     Z+1, R16
+          CFI EndBlock cfiBlock28
+//  266 
+//  267     return true;
+??setDDRAM_2:
+        REQUIRE ?Subroutine15
+        ;               // Fall through to label ?Subroutine15
+//  268   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine15:
+          CFI Block cfiCond29 Using cfiCommon0
+          CFI Function ??str2Buf
+          CFI Conditional ??CrossCallReturnLabel_32
+          CFI R24 Frame(CFA_Y, -6)
+          CFI R25 Frame(CFA_Y, -5)
+          CFI R26 Frame(CFA_Y, -4)
+          CFI R27 Frame(CFA_Y, -3)
+          CFI R4 Frame(CFA_Y, -2)
+          CFI R5 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+6
+          CFI Block cfiCond30 Using cfiCommon0
+          CFI (cfiCond30) Function ??num2Buf
+          CFI (cfiCond30) Conditional ??CrossCallReturnLabel_32, ??CrossCallReturnLabel_0
+          CFI (cfiCond30) R24 Frame(CFA_Y, -10)
+          CFI (cfiCond30) R25 Frame(CFA_Y, -9)
+          CFI (cfiCond30) R26 Frame(CFA_Y, -8)
+          CFI (cfiCond30) R27 Frame(CFA_Y, -7)
+          CFI (cfiCond30) R4 Frame(CFA_Y, -6)
+          CFI (cfiCond30) R5 Frame(CFA_Y, -5)
+          CFI (cfiCond30) R6 Frame(CFA_Y, -4)
+          CFI (cfiCond30) R7 Frame(CFA_Y, -3)
+          CFI (cfiCond30) R8 Frame(CFA_Y, -2)
+          CFI (cfiCond30) R9 Frame(CFA_Y, -1)
+          CFI (cfiCond30) CFA_SP SP+6
+          CFI (cfiCond30) CFA_Y Y+10
+          CFI Block cfiCond31 Using cfiCommon0
+          CFI (cfiCond31) Function ??refreshDisplay
+          CFI (cfiCond31) Conditional ??CrossCallReturnLabel_32
+          CFI (cfiCond31) R24 Frame(CFA_Y, -6)
+          CFI (cfiCond31) R25 Frame(CFA_Y, -5)
+          CFI (cfiCond31) R26 Frame(CFA_Y, -4)
+          CFI (cfiCond31) R27 Frame(CFA_Y, -3)
+          CFI (cfiCond31) R4 Frame(CFA_Y, -2)
+          CFI (cfiCond31) R5 Frame(CFA_Y, -1)
+          CFI (cfiCond31) CFA_SP SP+4
+          CFI (cfiCond31) CFA_Y Y+6
+          CFI Block cfiBlock32 Using cfiCommon0
+          CFI (cfiBlock32) NoFunction
+          CFI (cfiBlock32) CFA_Y Y+4
+          CFI (cfiBlock32) R24 Frame(CFA_Y, -4)
+          CFI (cfiBlock32) R25 Frame(CFA_Y, -3)
+          CFI (cfiBlock32) R26 Frame(CFA_Y, -2)
+          CFI (cfiBlock32) R27 Frame(CFA_Y, -1)
+          CFI Block cfiPicker33 Using cfiCommon1
+          CFI (cfiPicker33) NoFunction
+          CFI (cfiPicker33) Picker
+        LD      R24, Y+
+          CFI (cfiCond29) R24 SameValue
+          CFI (cfiCond29) CFA_Y Y+5
+          CFI (cfiCond30) R24 SameValue
+          CFI (cfiCond30) CFA_Y Y+9
+          CFI (cfiCond31) R24 SameValue
+          CFI (cfiCond31) CFA_Y Y+5
+          CFI (cfiBlock32) CFA_Y Y+3
+          CFI (cfiBlock32) R24 SameValue
+        LD      R25, Y+
+          CFI (cfiCond29) R25 SameValue
+          CFI (cfiCond29) CFA_Y Y+4
+          CFI (cfiCond30) R25 SameValue
+          CFI (cfiCond30) CFA_Y Y+8
+          CFI (cfiCond31) R25 SameValue
+          CFI (cfiCond31) CFA_Y Y+4
+          CFI (cfiBlock32) CFA_Y Y+2
+          CFI (cfiBlock32) R25 SameValue
+        LD      R26, Y+
+          CFI (cfiCond29) R26 SameValue
+          CFI (cfiCond29) CFA_Y Y+3
+          CFI (cfiCond30) R26 SameValue
+          CFI (cfiCond30) CFA_Y Y+7
+          CFI (cfiCond31) R26 SameValue
+          CFI (cfiCond31) CFA_Y Y+3
+          CFI (cfiBlock32) CFA_Y Y+1
+          CFI (cfiBlock32) R26 SameValue
+        LD      R27, Y+
+          CFI (cfiCond29) R27 SameValue
+          CFI (cfiCond29) CFA_Y Y+2
+          CFI (cfiCond30) R27 SameValue
+          CFI (cfiCond30) CFA_Y Y+6
+          CFI (cfiCond31) R27 SameValue
+          CFI (cfiCond31) CFA_Y Y+2
+          CFI (cfiBlock32) CFA_Y Y+0
+          CFI (cfiBlock32) R27 SameValue
+        RET
+          CFI EndBlock cfiCond29
+          CFI EndBlock cfiCond30
+          CFI EndBlock cfiCond31
+          CFI EndBlock cfiBlock32
+          CFI EndBlock cfiPicker33
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine5:
+          CFI Block cfiCond34 Using cfiCommon0
+          CFI Function ??sendSingleCommand
+          CFI Conditional ??CrossCallReturnLabel_8
+          CFI CFA_SP SP+4
+          CFI Block cfiCond35 Using cfiCommon0
+          CFI (cfiCond35) Function ??setDDRAM
+          CFI (cfiCond35) Conditional ??CrossCallReturnLabel_9
+          CFI (cfiCond35) R25 Frame(CFA_Y, -3)
+          CFI (cfiCond35) R26 Frame(CFA_Y, -2)
+          CFI (cfiCond35) R27 Frame(CFA_Y, -1)
+          CFI (cfiCond35) CFA_SP SP+4
+          CFI (cfiCond35) CFA_Y Y+3
+          CFI Block cfiPicker36 Using cfiCommon1
+          CFI (cfiPicker36) NoFunction
+          CFI (cfiPicker36) Picker
+        ST      -Y, R24
+          CFI (cfiCond34) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond34) CFA_Y Y+1
+          CFI (cfiCond35) R24 Frame(CFA_Y, -4)
+          CFI (cfiCond35) CFA_Y Y+4
+          CFI (cfiPicker36) R24 Frame(CFA_Y, -1)
+        MOV     R24, R16
+        CALL    ??ready_2
+        TST     R16
+        RET
+          CFI EndBlock cfiCond34
+          CFI EndBlock cfiCond35
+          CFI EndBlock cfiPicker36
+//  269 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  270   bool setCursorPos()
+??setCursorPos:
+          CFI Block cfiBlock37 Using cfiCommon0
+          CFI Function ??setCursorPos
+//  271   {
+//  272     if (displayState.displayMode != LCDDisplayMode_NoCursor)
+        FUNCALL ??setCursorPos, ??sendSingleCommand
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??setCursorPos, ??sendSingleCommand
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDI     R30, LOW(??displayState)
+        LDI     R31, (??displayState) >> 8
+        LD      R16, Z
+        CPI     R16, 12
+        BREQ    ??setCursorPos_1
+//  273     {
+//  274       switch(displayState.cursorPosY)
+        LDD     R16, Z+2
+        TST     R16
+        BREQ    ??setCursorPos_2
+        DEC     R16
+        BREQ    ??setCursorPos_3
+        RJMP    ??setCursorPos_1
+//  275       {
+//  276         case 0:
+//  277           return sendSingleCommand(LCDMemoryPosition_Line0 + (displayState.cursorPosX % 0x28));
+??setCursorPos_2:
+        RCALL   ?Subroutine12
+??CrossCallReturnLabel_23:
+        SUBI    R16, 128
+        RJMP    ??setCursorPos_4
+//  278 
+//  279         case 1:
+//  280           return sendSingleCommand(LCDMemoryPosition_Line1 + (displayState.cursorPosX % 0x28));
+??setCursorPos_3:
+        RCALL   ?Subroutine12
+//  281           break;
+//  282       }
+//  283     }
+??CrossCallReturnLabel_24:
+        SUBI    R16, 64
+??setCursorPos_4:
+        RJMP    ??sendSingleCommand
+//  284 
+//  285     return true;
+??setCursorPos_1:
+        LDI     R16, 1
+        RET
+          CFI EndBlock cfiBlock37
+//  286   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine12:
+          CFI Block cfiCond38 Using cfiCommon0
+          CFI Function ??setCursorPos
+          CFI Conditional ??CrossCallReturnLabel_23
+          CFI CFA_SP SP+4
+          CFI Block cfiCond39 Using cfiCommon0
+          CFI (cfiCond39) Function ??setCursorPos
+          CFI (cfiCond39) Conditional ??CrossCallReturnLabel_24
+          CFI (cfiCond39) CFA_SP SP+4
+          CFI Block cfiPicker40 Using cfiCommon1
+          CFI (cfiPicker40) NoFunction
+          CFI (cfiPicker40) Picker
+        LDD     R16, Z+3
+        LDI     R20, 40
+        CALL    ?UC_DIVMOD_L01
+        MOV     R16, R20
+        RET
+          CFI EndBlock cfiCond38
+          CFI EndBlock cfiCond39
+          CFI EndBlock cfiPicker40
+//  287 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  288   void processInitialize()
+??processInitialize:
+          CFI Block cfiBlock41 Using cfiCommon0
+          CFI Function ??processInitialize
+//  289   {
+//  290     bool isProcessed = true;
+        FUNCALL ??processInitialize, ??setTimer
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processInitialize, ??getTimer
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processInitialize, ??sendSingleCommand
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processInitialize, ??initCGRAM
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processInitialize, ??sendSingleCommand
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processInitialize, ??sendSingleCommand
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processInitialize, ??sendSingleCommand
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processInitialize, ??sendSingleCommand
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processInitialize, ??sendSingleCommand
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processInitialize, ??setTimer
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDI     R16, 1
+        LDS     R17, (??lcdStatus + 1)
+        CPI     R17, 12
+        BRCC    ??CrossCallReturnLabel_27
+        LDI     R31, 2
+        MUL     R17, R31
+        MOVW    R31:R30, R1:R0
+        SUBI    R30, LOW((-(`?<Jumptable for processInitialize>_0`) & 0xFFFF))
+        SBCI    R31, (-(`?<Jumptable for processInitialize>_0`) & 0xFFFF) >> 8
+        LPM     R0, Z+
+        LPM     R1, Z
+        MOVW    R31:R30, R1:R0
+        IJMP
+//  291 
+//  292     switch (lcdSubStatus)
+//  293     {
+//  294       case LCDDriverInitSubStatus_SwitchOn:
+//  295         LCD_VDD_DIR = 1;
+??processInitialize_1:
+        SBI     0x07, 0x03
+//  296         LCD_VDD_PORT = 1;
+        SBI     0x08, 0x03
+//  297 
+//  298         GLOBAL::MultyThreading::setTimer(GLOBALTIMERS_LCDDRIVER_WAITINGTIMER, LCDDRIVER_SWITCHON_WAITING_TIME);
+??processInitialize_2:
+        LDI     R18, 100
+        LDI     R19, 0
+        LDI     R16, 2
+        CALL    ??setTimer
+//  299         break;
+        RJMP    ??processInitialize_3
+//  300 
+//  301       case LCDDriverInitSubStatus_WaitSwitchOn:
+//  302       case LCDDriverInitSubStatus_WaitFollower:
+//  303         isProcessed = GLOBAL::MultyThreading::getTimer(GLOBALTIMERS_LCDDRIVER_WAITINGTIMER) == 0;
+??processInitialize_4:
+        LDI     R16, 2
+        CALL    ??getTimer
+        OR      R16, R17
+        BRNE    ??CrossCallReturnLabel_33
+        RJMP    ??processInitialize_3
+//  304         break;
+//  305 
+//  306       case LCDDriverInitSubStatus_FunctionSetNormMode:
+//  307         isProcessed = sendSingleCommand(0x38);
+??processInitialize_5:
+        LDI     R16, 56
+??processInitialize_6:
+        RCALL   ?Subroutine13
+//  308         break;
+//  309 
+//  310       case LCDDriverInitSubStatus_InitCGRAM:
+//  311         isProcessed = initCGRAM();
+//  312         break;
+//  313 
+//  314       case LCDDriverInitSubStatus_FunctionSetInitExtMode:
+//  315       case LCDDriverInitSubStatus_FunctionSetExtMode:
+//  316         isProcessed = sendSingleCommand(0x39);
+//  317         break;
+//  318 
+//  319       case LCDDriverInitSubStatus_IntOSCFreqSet:
+//  320         isProcessed = sendSingleCommand(0x10); // Bias = 1/5, Freq = min
+//  321         break;
+//  322 
+//  323       case LCDDriverInitSubStatus_ContrastSet:
+//  324         isProcessed = sendSingleCommand(0x70); //Contrast = middle
+//  325         break;
+//  326 
+//  327       case LCDDriverInitSubStatus_PowerIconConSet:
+//  328         isProcessed = sendSingleCommand(0x56); //Icon = off, Buster = on, Contrast = middle
+//  329         break;
+//  330 
+//  331       case LCDDriverInitSubStatus_FollowerSet:
+//  332         isProcessed = sendSingleCommand(0x6D); //Follower = on, Rab = 2.5
+//  333         if (isProcessed)
+//  334         {
+//  335           GLOBAL::MultyThreading::setTimer(GLOBALTIMERS_LCDDRIVER_WAITINGTIMER, LCDDRIVER_SWITCHON_WAITING_TIME);
+//  336         }
+//  337         break;
+//  338 
+//  339       case LCDDriverInitSubStatus_DisplayOn:
+//  340         displayState.displayMode = LCDDisplayMode_NoCursor;
+//  341         displayState.entryState = LCDDisplayEntryState_ShiftCursorRight;
+//  342         lcdStatus = LCDDriverStatus_Reset;
+//  343         lcdSubStatus = LCDDriverResetSubStatus_ClearDisplay;
+//  344         return;
+//  345     }
+//  346 
+//  347     if (isProcessed)
+??CrossCallReturnLabel_27:
+        TST     R16
+        BREQ    ??CrossCallReturnLabel_33
+//  348     {
+//  349       lcdSubStatus++;
+??processInitialize_3:
+        RCALL   ?Subroutine16
+//  350     }
+??CrossCallReturnLabel_33:
+        RET
+??processInitialize_7:
+        RCALL   ??initCGRAM
+        RJMP    ??CrossCallReturnLabel_27
+??processInitialize_8:
+        LDI     R16, 57
+        RJMP    ??processInitialize_6
+??processInitialize_9:
+        LDI     R16, 16
+        RJMP    ??processInitialize_6
+??processInitialize_10:
+        LDI     R16, 112
+        RJMP    ??processInitialize_6
+??processInitialize_11:
+        LDI     R16, 86
+        RJMP    ??processInitialize_6
+??processInitialize_12:
+        LDI     R16, 109
+        RCALL   ??Subroutine18_0
+??CrossCallReturnLabel_42:
+        BREQ    ??CrossCallReturnLabel_33
+        RJMP    ??processInitialize_2
+??processInitialize_13:
+        LDI     R16, 12
+        STS     ??displayState, R16
+        LDI     R16, 6
+        STS     (??displayState + 1), R16
+        LDI     R16, 3
+          CFI EndBlock cfiBlock41
+        REQUIRE ?Subroutine1
+        REQUIRE _A_DDRC
+        REQUIRE _A_PORTC
+        ;               // Fall through to label ?Subroutine1
+//  351   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine1:
+          CFI Block cfiCond42 Using cfiCommon0
+          CFI Function ??enable
+          CFI Conditional ??CrossCallReturnLabel_1
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+1
+          CFI Block cfiCond43 Using cfiCommon0
+          CFI (cfiCond43) Function ??refreshDisplay
+          CFI (cfiCond43) Conditional ??CrossCallReturnLabel_2
+          CFI (cfiCond43) R24 Frame(CFA_Y, -6)
+          CFI (cfiCond43) R25 Frame(CFA_Y, -5)
+          CFI (cfiCond43) R26 Frame(CFA_Y, -4)
+          CFI (cfiCond43) R27 Frame(CFA_Y, -3)
+          CFI (cfiCond43) R4 Frame(CFA_Y, -2)
+          CFI (cfiCond43) R5 Frame(CFA_Y, -1)
+          CFI (cfiCond43) CFA_SP SP+4
+          CFI (cfiCond43) CFA_Y Y+6
+          CFI Block cfiBlock44 Using cfiCommon0
+          CFI (cfiBlock44) NoFunction
+          CFI Block cfiPicker45 Using cfiCommon1
+          CFI (cfiPicker45) NoFunction
+          CFI (cfiPicker45) Picker
+        STS     ??lcdStatus, R16
+        LDI     R16, 0
+        STS     (??lcdStatus + 1), R16
+        RET
+          CFI EndBlock cfiCond42
+          CFI EndBlock cfiCond43
+          CFI EndBlock cfiBlock44
+          CFI EndBlock cfiPicker45
+//  352 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  353   void processReset()
+??processReset:
+          CFI Block cfiBlock46 Using cfiCommon0
+          CFI Function ??processReset
+//  354   {
+//  355     bool isProcessed = true;
+        FUNCALL ??processReset, ??sendSingleCommand
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processReset, ??sendSingleCommand
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processReset, ??sendSingleCommand
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processReset, ??sendSingleCommand
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine6
+//  356 
+//  357     switch (lcdSubStatus)
+??CrossCallReturnLabel_10:
+        BREQ    ??processReset_1
+        DEC     R17
+        BREQ    ??processReset_2
+        DEC     R17
+        BREQ    ??processReset_3
+        DEC     R17
+        BREQ    ??processReset_4
+        RJMP    ??CrossCallReturnLabel_26
+//  358     {
+//  359       case LCDDriverResetSubStatus_ClearDisplay:
+//  360         isProcessed = sendSingleCommand(0x01);
+??processReset_1:
+        RCALL   ?Subroutine13
+//  361         break;
+//  362 
+//  363       case LCDDriverResetSubStatus_ReturnHome:
+//  364         isProcessed = sendSingleCommand(0x02);
+//  365         break;
+//  366 
+//  367       case LCDDriverResetSubStatus_SetDisplayMode:
+//  368         isProcessed = sendSingleCommand(displayState.displayMode);
+//  369         break;
+//  370 
+//  371       case LCDDriverResetSubStatus_SetEntryState:
+//  372         isProcessed = sendSingleCommand(displayState.entryState);
+//  373 
+//  374         if (isProcessed)
+//  375         {
+//  376           lcdStatus = LCDDriverStatus_Ready;
+//  377           return;
+//  378         }
+//  379         break;
+//  380     }
+//  381 
+//  382     if (isProcessed)
+??CrossCallReturnLabel_26:
+        RCALL   ?Subroutine3
+//  383     {
+//  384       lcdSubStatus++;
+??CrossCallReturnLabel_3:
+        RET
+??processReset_2:
+        LDI     R16, 2
+        RJMP    ??processReset_1
+??processReset_3:
+        RCALL   ?Subroutine14
+??CrossCallReturnLabel_28:
+        RJMP    ??processReset_1
+??processReset_4:
+        RCALL   ?Subroutine11
+??CrossCallReturnLabel_40:
+        BREQ    ??CrossCallReturnLabel_3
+        RJMP    ?Subroutine2
+          CFI EndBlock cfiBlock46
+//  385     }
+//  386   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine13:
+          CFI Block cfiCond47 Using cfiCommon0
+          CFI Function ??processInitialize
+          CFI Conditional ??CrossCallReturnLabel_27
+          CFI CFA_SP SP+4
+          CFI Block cfiCond48 Using cfiCommon0
+          CFI (cfiCond48) Function ??processReset
+          CFI (cfiCond48) Conditional ??CrossCallReturnLabel_26
+          CFI (cfiCond48) CFA_SP SP+4
+          CFI Block cfiCond49 Using cfiCommon0
+          CFI (cfiCond49) Function ??processRefresh
+          CFI (cfiCond49) Conditional ??CrossCallReturnLabel_25
+          CFI (cfiCond49) CFA_SP SP+4
+          CFI Block cfiPicker50 Using cfiCommon1
+          CFI (cfiPicker50) NoFunction
+          CFI (cfiPicker50) Picker
+        RJMP    ??sendSingleCommand
+          CFI EndBlock cfiCond47
+          CFI EndBlock cfiCond48
+          CFI EndBlock cfiCond49
+          CFI EndBlock cfiPicker50
+//  387 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  388   void processRefresh()
+??processRefresh:
+          CFI Block cfiBlock51 Using cfiCommon0
+          CFI Function ??processRefresh
+//  389   {
+//  390     bool isProcessed = true;
+        FUNCALL ??processRefresh, ??setDDRAM
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processRefresh, ??setDDRAM
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processRefresh, ??sendSingleCommand
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??processRefresh, ??setCursorPos
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine6
+//  391 
+//  392     switch (lcdSubStatus)
+??CrossCallReturnLabel_11:
+        BREQ    ??processRefresh_1
+        DEC     R17
+        BREQ    ??processRefresh_2
+        DEC     R17
+        BREQ    ??processRefresh_3
+        DEC     R17
+        BREQ    ??processRefresh_4
+        RJMP    ??processRefresh_5
+//  393     {
+//  394       case LCDDriverRefreshSubStatus_SetDDRAMLine0:
+//  395         isProcessed = setDDRAM(0);
+??processRefresh_1:
+        LDI     R16, 0
+??processRefresh_2:
+        RCALL   ??setDDRAM
+//  396         break;
+//  397 
+//  398       case LCDDriverRefreshSubStatus_SetDDRAMLine1:
+//  399         isProcessed = setDDRAM(1);
+//  400         break;
+//  401 
+//  402       case LCDDriverRefreshSubStatus_SetDisplayMode:
+//  403         isProcessed = sendSingleCommand(displayState.displayMode);
+//  404         break;
+//  405 
+//  406       case LCDDriverRefreshSubStatus_SetCursorPos:
+//  407         isProcessed = setCursorPos();
+//  408 
+//  409         if (isProcessed)
+//  410         {
+//  411           lcdStatus = LCDDriverStatus_Ready;
+//  412           return;
+//  413         }
+//  414         break;
+//  415     }
+//  416 
+//  417     if (isProcessed)
+??processRefresh_5:
+        RCALL   ?Subroutine3
+//  418     {
+//  419       lcdSubStatus++;
+??CrossCallReturnLabel_4:
+        RET
+??processRefresh_3:
+        RCALL   ?Subroutine14
+??CrossCallReturnLabel_29:
+        RCALL   ?Subroutine13
+??CrossCallReturnLabel_25:
+        RJMP    ??processRefresh_5
+??processRefresh_4:
+        RCALL   ??setCursorPos
+        TST     R16
+        BREQ    ??CrossCallReturnLabel_4
+        RJMP    ?Subroutine2
+          CFI EndBlock cfiBlock51
+//  420     }
+//  421   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine6:
+          CFI Block cfiCond52 Using cfiCommon0
+          CFI Function ??processReset
+          CFI Conditional ??CrossCallReturnLabel_10
+          CFI CFA_SP SP+4
+          CFI Block cfiCond53 Using cfiCommon0
+          CFI (cfiCond53) Function ??processRefresh
+          CFI (cfiCond53) Conditional ??CrossCallReturnLabel_11
+          CFI (cfiCond53) CFA_SP SP+4
+          CFI Block cfiPicker54 Using cfiCommon1
+          CFI (cfiPicker54) NoFunction
+          CFI (cfiPicker54) Picker
+        LDI     R16, 1
+        LDS     R17, (??lcdStatus + 1)
+        TST     R17
+        RET
+          CFI EndBlock cfiCond52
+          CFI EndBlock cfiCond53
+          CFI EndBlock cfiPicker54
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine3:
+          CFI Block cfiCond55 Using cfiCommon0
+          CFI Function ??processReset
+          CFI Conditional ??CrossCallReturnLabel_3
+          CFI CFA_SP SP+4
+          CFI Block cfiCond56 Using cfiCommon0
+          CFI (cfiCond56) Function ??processRefresh
+          CFI (cfiCond56) Conditional ??CrossCallReturnLabel_4
+          CFI (cfiCond56) CFA_SP SP+4
+          CFI Block cfiPicker57 Using cfiCommon1
+          CFI (cfiPicker57) NoFunction
+          CFI (cfiPicker57) Picker
+        TST     R16
+        BREQ    ??CrossCallReturnLabel_34
+        RCALL   ?Subroutine16
+??CrossCallReturnLabel_34:
+        RET
+          CFI EndBlock cfiCond55
+          CFI EndBlock cfiCond56
+          CFI EndBlock cfiPicker57
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine16:
+          CFI Block cfiCond58 Using cfiCommon0
+          CFI Function ??processInitialize
+          CFI Conditional ??CrossCallReturnLabel_33
+          CFI CFA_SP SP+4
+          CFI Block cfiCond59 Using cfiCommon0
+          CFI (cfiCond59) Function ??processReset
+          CFI (cfiCond59) Conditional ??CrossCallReturnLabel_34, ??CrossCallReturnLabel_3
+          CFI (cfiCond59) CFA_SP SP+6
+          CFI Block cfiCond60 Using cfiCommon0
+          CFI (cfiCond60) Function ??processRefresh
+          CFI (cfiCond60) Conditional ??CrossCallReturnLabel_34, ??CrossCallReturnLabel_4
+          CFI (cfiCond60) CFA_SP SP+6
+          CFI Block cfiPicker61 Using cfiCommon1
+          CFI (cfiPicker61) NoFunction
+          CFI (cfiPicker61) Picker
+        LDI     R30, LOW(??lcdStatus)
+        LDI     R31, (??lcdStatus) >> 8
+        LDD     R16, Z+1
+        INC     R16
+        STD     Z+1, R16
+        RET
+          CFI EndBlock cfiCond58
+          CFI EndBlock cfiCond59
+          CFI EndBlock cfiCond60
+          CFI EndBlock cfiPicker61
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine2:
+          CFI Block cfiCond62 Using cfiCommon0
+          CFI Function ??processSetDisplayMode
+          CFI Conditional ??CrossCallReturnLabel_38
+          CFI CFA_SP SP+4
+          CFI Block cfiCond63 Using cfiCommon0
+          CFI (cfiCond63) Function ??processSetEntryState
+          CFI (cfiCond63) Conditional ??CrossCallReturnLabel_39
+          CFI (cfiCond63) CFA_SP SP+4
+          CFI Block cfiBlock64 Using cfiCommon0
+          CFI (cfiBlock64) NoFunction
+          CFI Block cfiPicker65 Using cfiCommon1
+          CFI (cfiPicker65) NoFunction
+          CFI (cfiPicker65) Picker
+        LDI     R16, 2
+          CFI EndBlock cfiCond62
+          CFI EndBlock cfiCond63
+          CFI EndBlock cfiBlock64
+          CFI EndBlock cfiPicker65
+        REQUIRE ??Subroutine17_0
+        ;               // Fall through to label ??Subroutine17_0
+
+        RSEG CODE:CODE:NOROOT(1)
+??Subroutine17_0:
+          CFI Block cfiCond66 Using cfiCommon0
+          CFI Function ??disable
+          CFI Conditional ??CrossCallReturnLabel_35
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+1
+          CFI Block cfiCond67 Using cfiCommon0
+          CFI (cfiCond67) Function ??setDisplayMode
+          CFI (cfiCond67) Conditional ??CrossCallReturnLabel_36
+          CFI (cfiCond67) CFA_SP SP+4
+          CFI Block cfiCond68 Using cfiCommon0
+          CFI (cfiCond68) Function ??setEntryState
+          CFI (cfiCond68) Conditional ??CrossCallReturnLabel_37
+          CFI (cfiCond68) CFA_SP SP+4
+          CFI Block cfiCond69 Using cfiCommon0
+          CFI (cfiCond69) Function ??processSetDisplayMode
+          CFI (cfiCond69) Conditional ??CrossCallReturnLabel_38
+          CFI (cfiCond69) CFA_SP SP+4
+          CFI Block cfiCond70 Using cfiCommon0
+          CFI (cfiCond70) Function ??processSetEntryState
+          CFI (cfiCond70) Conditional ??CrossCallReturnLabel_39
+          CFI (cfiCond70) CFA_SP SP+4
+          CFI Block cfiBlock71 Using cfiCommon0
+          CFI (cfiBlock71) NoFunction
+          CFI Block cfiPicker72 Using cfiCommon1
+          CFI (cfiPicker72) NoFunction
+          CFI (cfiPicker72) Picker
+        STS     ??lcdStatus, R16
+        RET
+          CFI EndBlock cfiCond66
+          CFI EndBlock cfiCond67
+          CFI EndBlock cfiCond68
+          CFI EndBlock cfiCond69
+          CFI EndBlock cfiCond70
+          CFI EndBlock cfiBlock71
+          CFI EndBlock cfiPicker72
+//  422 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  423   void processSetDisplayMode()
+??processSetDisplayMode:
+          CFI Block cfiBlock73 Using cfiCommon0
+          CFI Function ??processSetDisplayMode
+//  424   {
+//  425     if (sendSingleCommand(displayState.displayMode))
+        FUNCALL ??processSetDisplayMode, ??sendSingleCommand
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine14
+??CrossCallReturnLabel_30:
+        RCALL   ??Subroutine18_0
+??CrossCallReturnLabel_43:
+        BREQ    ??CrossCallReturnLabel_38
+//  426     {
+//  427       lcdStatus = LCDDriverStatus_Ready;
+        RCALL   ?Subroutine2
+//  428     }
+//  429   }
+??CrossCallReturnLabel_38:
+        RET
+          CFI EndBlock cfiBlock73
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine14:
+          CFI Block cfiCond74 Using cfiCommon0
+          CFI Function ??processReset
+          CFI Conditional ??CrossCallReturnLabel_28
+          CFI CFA_SP SP+4
+          CFI Block cfiCond75 Using cfiCommon0
+          CFI (cfiCond75) Function ??processRefresh
+          CFI (cfiCond75) Conditional ??CrossCallReturnLabel_29
+          CFI (cfiCond75) CFA_SP SP+4
+          CFI Block cfiCond76 Using cfiCommon0
+          CFI (cfiCond76) Function ??processSetDisplayMode
+          CFI (cfiCond76) Conditional ??CrossCallReturnLabel_30
+          CFI (cfiCond76) CFA_SP SP+4
+          CFI Block cfiCond77 Using cfiCommon0
+          CFI (cfiCond77) Function ??run
+          CFI (cfiCond77) Conditional ??CrossCallReturnLabel_31
+          CFI (cfiCond77) CFA_SP SP+4
+          CFI Block cfiPicker78 Using cfiCommon1
+          CFI (cfiPicker78) NoFunction
+          CFI (cfiPicker78) Picker
+        LDS     R16, ??displayState
+        RET
+          CFI EndBlock cfiCond74
+          CFI EndBlock cfiCond75
+          CFI EndBlock cfiCond76
+          CFI EndBlock cfiCond77
+          CFI EndBlock cfiPicker78
+//  430 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  431   void processSetEntryState()
+??processSetEntryState:
+          CFI Block cfiBlock79 Using cfiCommon0
+          CFI Function ??processSetEntryState
+//  432   {
+//  433     if (sendSingleCommand(displayState.entryState))
+        FUNCALL ??processSetEntryState, ??sendSingleCommand
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine11
+??CrossCallReturnLabel_41:
+        BREQ    ??CrossCallReturnLabel_39
+//  434     {
+//  435       lcdStatus = LCDDriverStatus_Ready;
+        RCALL   ?Subroutine2
+//  436     }
+//  437   }
+??CrossCallReturnLabel_39:
+        RET
+          CFI EndBlock cfiBlock79
+//  438 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  439   bool resetDisplay(TLCDDisplayMode _displayMode, TLCDDisplayEntryState _entryState)
+??resetDisplay:
+          CFI Block cfiBlock80 Using cfiCommon0
+          CFI Function ??resetDisplay
+//  440   {
+//  441     if (!ready())
+        LDI     R30, LOW(??lcdStatus)
+        LDI     R31, (??lcdStatus) >> 8
+        LD      R18, Z
+        CPI     R18, 2
+        BRNE    ??resetDisplay_1
+//  442     {
+//  443       return false;
+//  444     }
+//  445 
+//  446     displayState.displayMode = _displayMode;
+        STS     ??displayState, R16
+//  447     displayState.entryState = _entryState;
+        STS     (??displayState + 1), R17
+//  448     lcdStatus = LCDDriverStatus_Reset;
+        LDI     R16, 3
+        ST      Z, R16
+//  449     lcdSubStatus = LCDDriverResetSubStatus_ClearDisplay;
+        LDI     R16, 0
+        STD     Z+1, R16
+//  450 
+//  451     return true;
+        LDI     R16, 1
+        RET
+??resetDisplay_1:
+        LDI     R16, 0
+        RET
+          CFI EndBlock cfiBlock80
+//  452   }
+//  453 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  454   bool refreshDisplay(
+??refreshDisplay:
+          CFI Block cfiBlock81 Using cfiCommon0
+          CFI Function ??refreshDisplay
+//  455     TLCDDisplayMode _displayMode,
+//  456     unsigned char _cursorPosY,
+//  457     unsigned char _cursorPosX,
+//  458     bool _displayLowBatterySymbol,
+//  459     unsigned char _lowPatterySymbolPosY,
+//  460     unsigned char _lowPatterySymbolPosX)
+//  461   {
+        FUNCALL ??refreshDisplay, ??isLowBatteryVoltage
+        LOCFRAME CSTACK, 6, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine8
+          CFI R24 Frame(CFA_Y, -6)
+          CFI R25 Frame(CFA_Y, -5)
+          CFI R26 Frame(CFA_Y, -4)
+          CFI R27 Frame(CFA_Y, -3)
+          CFI R4 Frame(CFA_Y, -2)
+          CFI R5 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+6
+??CrossCallReturnLabel_18:
+        REQUIRE ?Register_R4_is_cg_reg
+        REQUIRE ?Register_R5_is_cg_reg
+        MOV     R25, R16
+        MOV     R24, R17
+        MOV     R26, R18
+        MOV     R27, R20
+        MOV     R4, R21
+        RCALL   ?Subroutine7
+??CrossCallReturnLabel_14:
+        CPI     R16, 2
+        BRNE    ??refreshDisplay_1
+//  462     if (!ready())
+//  463     {
+//  464       return false;
+//  465     }
+//  466 
+//  467     if (_displayLowBatterySymbol && GLOBAL::ADC::isLowBatteryVoltage())
+        TST     R19
+        BREQ    ??refreshDisplay_2
+        CALL    ??isLowBatteryVoltage
+        TST     R16
+        BREQ    ??refreshDisplay_2
+//  468     {
+//  469       displayState.line[_lowPatterySymbolPosY][_lowPatterySymbolPosX] = LCD_DISPLAY_SYMBOL_LOW_BATTERY;
+        LDI     R16, 4
+        LDI     R30, LOW((??displayState + 4))
+        LDI     R31, HIGH((??displayState + 4))
+        CLR     R5
+        ADD     R30, R4
+        ADC     R31, R5
+        LDI     R17, 16
+        MUL     R27, R17
+        ADD     R30, R0
+        ADC     R31, R1
+        ST      Z, R16
+//  470     }
+//  471 
+//  472     displayState.displayMode = _displayMode;
+??refreshDisplay_2:
+        LDI     R30, LOW(??displayState)
+        LDI     R31, (??displayState) >> 8
+        ST      Z, R25
+//  473     displayState.cursorPosY = _cursorPosY;
+        STD     Z+2, R24
+//  474     displayState.cursorPosX = _cursorPosX;
+        STD     Z+3, R26
+//  475 
+//  476     lcdStatus = LCDDriverStatus_Refresh;
+        LDI     R16, 4
+        RCALL   ?Subroutine1
+//  477     lcdSubStatus = LCDDriverRefreshSubStatus_SetDDRAMLine0;
+//  478 
+//  479     return true;
+??CrossCallReturnLabel_2:
+        LDI     R16, 1
+??refreshDisplay_3:
+        RJMP    ?Subroutine0
+??refreshDisplay_1:
+        LDI     R16, 0
+        RJMP    ??refreshDisplay_3
+          CFI EndBlock cfiBlock81
+//  480   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine7:
+          CFI Block cfiCond82 Using cfiCommon0
+          CFI Function ??enabled
+          CFI Conditional ??CrossCallReturnLabel_12
+          CFI CFA_SP SP+4
+          CFI Block cfiCond83 Using cfiCommon0
+          CFI (cfiCond83) Function ??ready
+          CFI (cfiCond83) Conditional ??CrossCallReturnLabel_13
+          CFI (cfiCond83) CFA_SP SP+4
+          CFI Block cfiCond84 Using cfiCommon0
+          CFI (cfiCond84) Function ??refreshDisplay
+          CFI (cfiCond84) Conditional ??CrossCallReturnLabel_14
+          CFI (cfiCond84) R24 Frame(CFA_Y, -6)
+          CFI (cfiCond84) R25 Frame(CFA_Y, -5)
+          CFI (cfiCond84) R26 Frame(CFA_Y, -4)
+          CFI (cfiCond84) R27 Frame(CFA_Y, -3)
+          CFI (cfiCond84) R4 Frame(CFA_Y, -2)
+          CFI (cfiCond84) R5 Frame(CFA_Y, -1)
+          CFI (cfiCond84) CFA_SP SP+4
+          CFI (cfiCond84) CFA_Y Y+6
+          CFI Block cfiCond85 Using cfiCommon0
+          CFI (cfiCond85) Function ??run
+          CFI (cfiCond85) Conditional ??CrossCallReturnLabel_15
+          CFI (cfiCond85) CFA_SP SP+4
+          CFI Block cfiPicker86 Using cfiCommon1
+          CFI (cfiPicker86) NoFunction
+          CFI (cfiPicker86) Picker
+        LDS     R16, ??lcdStatus
+        RET
+          CFI EndBlock cfiCond82
+          CFI EndBlock cfiCond83
+          CFI EndBlock cfiCond84
+          CFI EndBlock cfiCond85
+          CFI EndBlock cfiPicker86
+//  481 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  482   bool setDisplayMode(TLCDDisplayMode _displayMode)
+??setDisplayMode:
+          CFI Block cfiBlock87 Using cfiCommon0
+          CFI Function ??setDisplayMode
+//  483   {
+//  484     if (!ready())
+        LDS     R17, ??lcdStatus
+        CPI     R17, 2
+        BRNE    ??setDisplayMode_1
+//  485     {
+//  486       return false;
+//  487     }
+//  488 
+//  489     displayState.displayMode = _displayMode;
+        STS     ??displayState, R16
+//  490     lcdStatus = LCDDriverStatus_SetDisplayMode;
+        LDI     R16, 5
+        RCALL   ??Subroutine17_0
+//  491 
+//  492     return true;
+??CrossCallReturnLabel_36:
+        LDI     R16, 1
+        RET
+??setDisplayMode_1:
+        LDI     R16, 0
+        RET
+          CFI EndBlock cfiBlock87
+//  493   }
+//  494 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  495   bool setEntryState(TLCDDisplayEntryState _entryState)
+??setEntryState:
+          CFI Block cfiBlock88 Using cfiCommon0
+          CFI Function ??setEntryState
+//  496   {
+//  497     if (!ready())
+        LDS     R17, ??lcdStatus
+        CPI     R17, 2
+        BRNE    ??setEntryState_1
+//  498     {
+//  499       return false;
+//  500     }
+//  501 
+//  502     displayState.entryState = _entryState;
+        STS     (??displayState + 1), R16
+//  503     lcdStatus = LCDDriverStatus_SetEntryState;
+        LDI     R16, 6
+        RCALL   ??Subroutine17_0
+//  504 
+//  505     return true;
+??CrossCallReturnLabel_37:
+        LDI     R16, 1
+        RET
+??setEntryState_1:
+        LDI     R16, 0
+        RET
+          CFI EndBlock cfiBlock88
+//  506   }
+//  507 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  508   void run()
+??run:
+          CFI Block cfiBlock89 Using cfiCommon0
+          CFI Function ??run
+//  509   {
+//  510     switch (lcdStatus)
+        FUNCALL ??run, ??processInitialize
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??processReset
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??processRefresh
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??sendSingleCommand
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??sendSingleCommand
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine7
+??CrossCallReturnLabel_15:
+        DEC     R16
+        BREQ    ??run_1
+        SUBI    R16, 2
+        BREQ    ??run_2
+        DEC     R16
+        BREQ    ??run_3
+        DEC     R16
+        BREQ    ??run_4
+        DEC     R16
+        BREQ    ??run_5
+        RET
+//  511     {
+//  512       case LCDDriverStatus_Disabled:
+//  513       case LCDDriverStatus_Ready:
+//  514         return;
+//  515 
+//  516       case LCDDriverStatus_Initializing:
+//  517         processInitialize();
+??run_1:
+        RJMP    ??processInitialize
+//  518         break;
+//  519 
+//  520       case LCDDriverStatus_Reset:
+//  521         processReset();
+??run_2:
+        RJMP    ??processReset
+//  522         break;
+//  523 
+//  524       case LCDDriverStatus_Refresh:
+//  525         processRefresh();
+??run_3:
+        RJMP    ??processRefresh
+//  526         break;
+//  527 
+//  528       case LCDDriverStatus_SetDisplayMode:
+//  529         processSetDisplayMode();
+??run_4:
+        RCALL   ?Subroutine14
+??CrossCallReturnLabel_31:
+        RCALL   ??Subroutine18_0
+??CrossCallReturnLabel_44:
+        BREQ    ??run_6
+??run_7:
+        RJMP    ?Subroutine2
+//  530         break;
+//  531 
+//  532       case LCDDriverStatus_SetEntryState:
+//  533         processSetEntryState();
+??run_5:
+        RCALL   ?Subroutine11
+//  534         break;
+//  535     }
+??CrossCallReturnLabel_45:
+        BRNE    ??run_7
+??run_6:
+        RET
+          CFI EndBlock cfiBlock89
+//  536   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine11:
+          CFI Block cfiCond90 Using cfiCommon0
+          CFI Function ??processReset
+          CFI Conditional ??CrossCallReturnLabel_40
+          CFI CFA_SP SP+4
+          CFI Block cfiCond91 Using cfiCommon0
+          CFI (cfiCond91) Function ??processSetEntryState
+          CFI (cfiCond91) Conditional ??CrossCallReturnLabel_41
+          CFI (cfiCond91) CFA_SP SP+4
+          CFI Block cfiCond92 Using cfiCommon0
+          CFI (cfiCond92) Function ??run
+          CFI (cfiCond92) Conditional ??CrossCallReturnLabel_45
+          CFI (cfiCond92) CFA_SP SP+4
+          CFI Block cfiPicker93 Using cfiCommon1
+          CFI (cfiPicker93) NoFunction
+          CFI (cfiPicker93) Picker
+        LDS     R16, (??displayState + 1)
+          CFI EndBlock cfiCond90
+          CFI EndBlock cfiCond91
+          CFI EndBlock cfiCond92
+          CFI EndBlock cfiPicker93
+        REQUIRE ??Subroutine18_0
+        ;               // Fall through to label ??Subroutine18_0
+
+        RSEG CODE:CODE:NOROOT(1)
+??Subroutine18_0:
+          CFI Block cfiCond94 Using cfiCommon0
+          CFI Function ??processInitialize
+          CFI Conditional ??CrossCallReturnLabel_42
+          CFI CFA_SP SP+4
+          CFI Block cfiCond95 Using cfiCommon0
+          CFI (cfiCond95) Function ??processSetDisplayMode
+          CFI (cfiCond95) Conditional ??CrossCallReturnLabel_43
+          CFI (cfiCond95) CFA_SP SP+4
+          CFI Block cfiCond96 Using cfiCommon0
+          CFI (cfiCond96) Function ??run
+          CFI (cfiCond96) Conditional ??CrossCallReturnLabel_44
+          CFI (cfiCond96) CFA_SP SP+4
+          CFI Block cfiCond97 Using cfiCommon0
+          CFI (cfiCond97) Function ??processReset
+          CFI (cfiCond97) Conditional ??CrossCallReturnLabel_40
+          CFI (cfiCond97) CFA_SP SP+4
+          CFI Block cfiCond98 Using cfiCommon0
+          CFI (cfiCond98) Function ??processSetEntryState
+          CFI (cfiCond98) Conditional ??CrossCallReturnLabel_41
+          CFI (cfiCond98) CFA_SP SP+4
+          CFI Block cfiCond99 Using cfiCommon0
+          CFI (cfiCond99) Function ??run
+          CFI (cfiCond99) Conditional ??CrossCallReturnLabel_45
+          CFI (cfiCond99) CFA_SP SP+4
+          CFI Block cfiPicker100 Using cfiCommon1
+          CFI (cfiPicker100) NoFunction
+          CFI (cfiPicker100) Picker
+        RCALL   ??sendSingleCommand
+        TST     R16
+        RET
+          CFI EndBlock cfiCond94
+          CFI EndBlock cfiCond95
+          CFI EndBlock cfiCond96
+          CFI EndBlock cfiCond97
+          CFI EndBlock cfiCond98
+          CFI EndBlock cfiCond99
+          CFI EndBlock cfiPicker100
+
+        ASEGN ABSOLUTE:DATA:NOROOT,01fH
+__?EECR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,020H
+__?EEDR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,021H
+__?EEARL:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,022H
+__?EEARH:
+
+        RSEG INITTAB:CODE:NOROOT(0)
+`?<Segment init: NEAR_Z>`:
+        DC16    SFE(NEAR_Z) - SFB(NEAR_Z)
+        DC16    SFB(NEAR_Z)
+        DC16    0
+        REQUIRE ?need_segment_init
+
+        RSEG SWITCH:CODE:NOROOT(1)
+`?<Jumptable for processInitialize>_0`:
+        DW      (??processInitialize_1) /2
+        DW      (??processInitialize_4) /2
+        DW      (??processInitialize_5) /2
+        DW      (??processInitialize_7) /2
+        DW      (??processInitialize_8) /2
+        DW      (??processInitialize_8) /2
+        DW      (??processInitialize_9) /2
+        DW      (??processInitialize_10) /2
+        DW      (??processInitialize_11) /2
+        DW      (??processInitialize_12) /2
+        DW      (??processInitialize_4) /2
+        DW      (??processInitialize_13) /2
+
+        END
+//  537 }
+//  538 
+//  539 #endif
+// 
+//     2 bytes in segment ABSOLUTE
+// 1 230 bytes in segment CODE
+//     6 bytes in segment INITTAB
+//    40 bytes in segment NEAR_F
+//    38 bytes in segment NEAR_Z
+//    24 bytes in segment SWITCH
+// 
+// 1 280 bytes of CODE memory (+ 20 bytes shared)
+//    38 bytes of DATA memory (+  2 bytes shared)
+//
+//Errors: none
+//Warnings: none

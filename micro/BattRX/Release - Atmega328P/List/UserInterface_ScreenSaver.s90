@@ -1,0 +1,396 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V6.12.1.50500 for Atmel AVR       02/Aug/2014  01:50:57 /
+// Copyright 1996-2012 IAR Systems AB.                                        /
+//                                                                            /
+//    Source file  =  D:\Projects\BatteryCounter\_micro\BattRX\UserInterface_ /
+//                    ScreenSaver.cpp                                         /
+//    Command line =  D:\Projects\BatteryCounter\_micro\BattRX\UserInterface_ /
+//                    ScreenSaver.cpp --cpu=m328p -ms -o                      /
+//                    "D:\Projects\BatteryCounter\_micro\BattRX\Release -     /
+//                    Atmega328P\Obj\" -D NDEBUG -lA                          /
+//                    "D:\Projects\BatteryCounter\_micro\BattRX\Release -     /
+//                    Atmega328P\List\" --initializers_in_flash               /
+//                    -DENABLE_BIT_DEFINITIONS --do_cross_call -e             /
+//                    --eeprom_size 1024 --dlib --dlib_config "C:\Program     /
+//                    Files (x86)\IAR Systems\Embedded Workbench              /
+//                    6.0\avr\LIB\DLIB\dlAVR-3s-ec_mul-sf-n.h" --eec++ -Ohs   /
+//    List file    =  D:\Projects\BatteryCounter\_micro\BattRX\Release -      /
+//                    Atmega328P\List\UserInterface_ScreenSaver.s90           /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME UserInterface_ScreenSaver
+
+        RTMODEL "__64bit_doubles", "disabled"
+        RTMODEL "__SystemLibrary", "DLib"
+        RTMODEL "__cpu", "3"
+        RTMODEL "__cpu_name", "ATmega328P"
+        RTMODEL "__dlib_file_descriptor", "0"
+        RTMODEL "__enhanced_core", "enabled"
+        RTMODEL "__has_elpm", "false"
+        RTMODEL "__memory_model", "2"
+        RTMODEL "__rt_version", "3"
+
+        RSEG CSTACK:DATA:NOROOT(0)
+        RSEG RSTACK:DATA:NOROOT(0)
+
+        ERROR
+//NOTE: This module defines or uses C++ features that are not
+//      accessible from assembler code. Assembling this file will
+//      not produce an equivalent object file to the one produced
+//      by the C++ compiler.
+
+        PUBLIC ??functionScreenSaver
+        FUNCTION ??functionScreenSaver,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??functionScreenSaverMenu
+        FUNCTION ??functionScreenSaverMenu,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??functionScreenSaverSetup
+        FUNCTION ??functionScreenSaverSetup,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBWEAK __?EEARH
+        PUBWEAK __?EEARL
+        PUBWEAK __?EECR
+        PUBWEAK __?EEDR
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_Y Y DATA
+          CFI StackFrame CFA_SP SP DATA
+          CFI VirtualResource ?RetPad:1, ?RetHigh:8, ?RetLow:8, ?Ret:17
+          CFI Resource R0:8, R1:8, R2:8, R3:8, R4:8, R5:8, R6:8, R7:8, R8:8, R9:8
+          CFI Resource R10:8, R11:8, R12:8, R13:8, R14:8, R15:8, R16:8, R17:8
+          CFI Resource R18:8, R19:8, R20:8, R21:8, R22:8, R23:8, R24:8, R25:8
+          CFI Resource R26:8, R27:8, R28:8, R29:8, R30:8, R31:8
+          CFI Resource ?RetHighByteMask:8, SP:16, SPH:8, SPL:8, Y:16
+          CFI ResourceParts ?Ret ?RetHigh, ?RetLow, ?RetPad
+          CFI ResourceParts SP SPH, SPL
+          CFI ResourceParts Y R29, R28
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Y+0
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 Undefined
+          CFI R17 Undefined
+          CFI R18 Undefined
+          CFI R19 Undefined
+          CFI R20 Undefined
+          CFI R21 Undefined
+          CFI R22 Undefined
+          CFI R23 Undefined
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 Undefined
+          CFI R31 Undefined
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI EndCommon cfiCommon0
+        
+`?<Name GLOBAL 0>`  SYMBOL "GLOBAL"
+`?<Name DeviceProfile 1>` SYMBOL "DeviceProfile", `?<Name GLOBAL 0>`
+??UserInterfaceSetup SYMBOL "UserInterfaceSetup", `?<Name DeviceProfile 1>`
+`?<Name UserInterface 3>` SYMBOL "UserInterface"
+??activeFunctionChanged SYMBOL "activeFunctionChanged", `?<Name UserInterface 3>`
+`?<Name LCDDriver 5>` SYMBOL "LCDDriver"
+??displayState      SYMBOL "displayState", `?<Name LCDDriver 5>`
+??isTransition      SYMBOL "isTransition", `?<Name UserInterface 3>`
+??menuStack         SYMBOL "menuStack", `?<Name UserInterface 3>`
+??menuStackPos      SYMBOL "menuStackPos", `?<Name UserInterface 3>`
+??transitionKey     SYMBOL "transitionKey", `?<Name UserInterface 3>`
+
+        EXTERN ??UserInterfaceSetup
+        EXTERN ??activeFunctionChanged
+        EXTERN ??displayState
+        EXTERN ??functionMenu
+        FUNCTION ??functionMenu,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??getNextTransitionKey
+        FUNCTION ??getNextTransitionKey,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??isTransition
+        EXTERN ??menuStack
+        EXTERN ??menuStackPos
+        EXTERN ??processMenuOptionChanged
+        FUNCTION ??processMenuOptionChanged,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??refreshDisplay
+        FUNCTION ??refreshDisplay,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??saveUserInterfaceSetup
+        FUNCTION ??saveUserInterfaceSetup,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??transitionKey
+        EXTERN ??transitionUp
+        FUNCTION ??transitionUp,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??updateMenuStack
+        FUNCTION ??updateMenuStack,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN memcpy_G
+        FUNCTION memcpy_G,010202H
+        ARGFRAME RSTACK, 0, STACK
+
+// D:\Projects\BatteryCounter\_micro\BattRX\UserInterface_ScreenSaver.cpp
+//    1 #ifndef __USERINTERFACE_SCREENSAVER_CPP_
+//    2 #define __USERINTERFACE_SCREENSAVER_CPP_
+//    3 
+//    4 #include "UserInterface_Ref.h"
+//    5 
+//    6 namespace UserInterface
+//    7 {
+
+        RSEG CODE:CODE:NOROOT(1)
+//    8   void functionScreenSaver()
+??functionScreenSaver:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function ??functionScreenSaver
+//    9   {
+        FUNCALL ??functionScreenSaver, ??updateMenuStack
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??functionScreenSaver, ??getNextTransitionKey
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??functionScreenSaver, ??transitionUp
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??functionScreenSaver, memcpy_G
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??functionScreenSaver, memcpy_G
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??functionScreenSaver, ??refreshDisplay
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R27
+          CFI R27 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        ST      -Y, R26
+          CFI R26 Frame(CFA_Y, -2)
+          CFI CFA_Y Y+2
+//   10     if (UserInterfaceSetup.screenSaverSetup.screenSaverType == UserMenuScreenSaverType_None)
+        LDS     R16, (??UserInterfaceSetup + 1)
+        TST     R16
+        BRNE    ??functionScreenSaver_1
+//   11     {
+//   12       updateMenuStack(menuStackPos, USER_FUNCTION_WIDGET);
+        LDI     R17, 2
+        LDS     R16, ??menuStackPos
+        CALL    ??updateMenuStack
+//   13       isTransition = true;
+        LDI     R16, 1
+        RJMP    ??functionScreenSaver_2
+//   14       return;
+//   15     }
+//   16 
+//   17     while (transitionKey)
+//   18     {
+//   19       switch (transitionKey)
+//   20       {
+//   21         case 1:
+//   22           return;
+//   23 
+//   24         case 4:
+//   25           transitionUp(USER_FUNCTION_WIDGET);
+//   26           return;
+//   27       }
+//   28 
+//   29       getNextTransitionKey();
+??functionScreenSaver_3:
+        CALL    ??getNextTransitionKey
+??functionScreenSaver_1:
+        LDS     R16, ??transitionKey
+        TST     R16
+        BREQ    ??functionScreenSaver_4
+        DEC     R16
+        BREQ    ??functionScreenSaver_5
+        SUBI    R16, 3
+        BRNE    ??functionScreenSaver_3
+        LDI     R16, 2
+        CALL    ??transitionUp
+        RJMP    ??functionScreenSaver_5
+//   30     }
+//   31 
+//   32     switch (UserInterfaceSetup.screenSaverSetup.screenSaverType)
+??functionScreenSaver_4:
+        LDS     R16, (??UserInterfaceSetup + 1)
+        CPI     R16, 1
+        BRNE    ??functionScreenSaver_6
+//   33     {
+//   34       case UserMenuScreenSaverType_Default:
+//   35         memcpy_G(LCDDriver::displayState.line[0], UserInterfaceSetup.screenSaverSetup.defaultLine0, LCD_DISPLAY_WIDTH);
+        LDI     R16, 16
+        LDI     R17, 0
+        LDI     R30, LOW((??UserInterfaceSetup + 2))
+        LDI     R31, HIGH((??UserInterfaceSetup + 2))
+        LDI     R19, 0
+        LDI     R26, LOW((??displayState + 4))
+        LDI     R27, HIGH((??displayState + 4))
+        CALL    memcpy_G
+//   36         memcpy_G(LCDDriver::displayState.line[1], UserInterfaceSetup.screenSaverSetup.defaultLine1, LCD_DISPLAY_WIDTH);
+        LDI     R16, 16
+        LDI     R17, 0
+        LDI     R30, LOW((??UserInterfaceSetup + 18))
+        LDI     R31, HIGH((??UserInterfaceSetup + 18))
+        LDI     R19, 0
+        LDI     R26, LOW((??displayState + 20))
+        LDI     R27, HIGH((??displayState + 20))
+        CALL    memcpy_G
+//   37         break;
+//   38     }
+//   39 
+//   40     LCDDriver::refreshDisplay();
+??functionScreenSaver_6:
+        LDI     R21, 0
+        LDI     R20, 0
+        LDI     R19, 1
+        LDI     R18, 0
+        LDI     R17, 0
+        LDI     R16, 12
+        CALL    ??refreshDisplay
+//   41 
+//   42     isTransition = false;
+        LDI     R16, 0
+??functionScreenSaver_2:
+        STS     ??isTransition, R16
+//   43   }
+??functionScreenSaver_5:
+        LD      R26, Y+
+          CFI R26 SameValue
+          CFI CFA_Y Y+1
+        LD      R27, Y+
+          CFI R27 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock0
+//   44 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   45   void functionScreenSaverMenu()
+??functionScreenSaverMenu:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function ??functionScreenSaverMenu
+//   46   {
+//   47     if (activeFunctionChanged)
+        FUNCALL ??functionScreenSaverMenu, ??functionMenu
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDS     R16, ??activeFunctionChanged
+        TST     R16
+        BREQ    ??functionScreenSaverMenu_1
+//   48     {
+//   49       menuStack[menuStackPos].funcState = USER_MENU_SETUP_SCREENSAVER + UserInterfaceSetup.screenSaverSetup.screenSaverType;
+        LDS     R16, (??UserInterfaceSetup + 1)
+        SUBI    R16, 170
+        LDS     R18, ??menuStackPos
+        LDI     R17, 5
+        MUL     R18, R17
+        MOVW    R31:R30, R1:R0
+        SUBI    R30, LOW((-(??menuStack) & 0xFFFF))
+        SBCI    R31, (-(??menuStack) & 0xFFFF) >> 8
+        STD     Z+4, R16
+//   50     }
+//   51 
+//   52     functionMenu();
+??functionScreenSaverMenu_1:
+        JMP     ??functionMenu
+          CFI EndBlock cfiBlock1
+//   53   }
+//   54 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   55   void functionScreenSaverSetup()
+??functionScreenSaverSetup:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function ??functionScreenSaverSetup
+//   56   {
+//   57     UserInterfaceSetup.screenSaverSetup.screenSaverType = (TUserMenuScreenSaverType)menuStack[menuStackPos].funcState;
+        FUNCALL ??functionScreenSaverSetup, ??saveUserInterfaceSetup
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??functionScreenSaverSetup, ??processMenuOptionChanged
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDS     R17, ??menuStackPos
+        LDI     R16, 5
+        MUL     R17, R16
+        MOVW    R31:R30, R1:R0
+        SUBI    R30, LOW((-(??menuStack) & 0xFFFF))
+        SBCI    R31, (-(??menuStack) & 0xFFFF) >> 8
+        LDD     R16, Z+4
+        STS     (??UserInterfaceSetup + 1), R16
+//   58     DeviceManager::saveUserInterfaceSetup();
+        CALL    ??saveUserInterfaceSetup
+//   59     processMenuOptionChanged();
+        JMP     ??processMenuOptionChanged
+          CFI EndBlock cfiBlock2
+//   60   }
+
+        ASEGN ABSOLUTE:DATA:NOROOT,01fH
+__?EECR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,020H
+__?EEDR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,021H
+__?EEARL:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,022H
+__?EEARH:
+
+        END
+//   61 }
+//   62 
+//   63 #endif
+// 
+// 188 bytes in segment CODE
+// 
+// 188 bytes of CODE memory
+//
+//Errors: none
+//Warnings: none

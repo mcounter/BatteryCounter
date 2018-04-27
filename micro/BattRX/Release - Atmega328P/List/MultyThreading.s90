@@ -1,0 +1,572 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V6.12.1.50500 for Atmel AVR       02/Aug/2014  01:50:55 /
+// Copyright 1996-2012 IAR Systems AB.                                        /
+//                                                                            /
+//    Source file  =  D:\Projects\BatteryCounter\_micro\BattRX\MultyThreading /
+//                    .cpp                                                    /
+//    Command line =  D:\Projects\BatteryCounter\_micro\BattRX\MultyThreading /
+//                    .cpp --cpu=m328p -ms -o "D:\Projects\BatteryCounter\_mi /
+//                    cro\BattRX\Release - Atmega328P\Obj\" -D NDEBUG -lA     /
+//                    "D:\Projects\BatteryCounter\_micro\BattRX\Release -     /
+//                    Atmega328P\List\" --initializers_in_flash               /
+//                    -DENABLE_BIT_DEFINITIONS --do_cross_call -e             /
+//                    --eeprom_size 1024 --dlib --dlib_config "C:\Program     /
+//                    Files (x86)\IAR Systems\Embedded Workbench              /
+//                    6.0\avr\LIB\DLIB\dlAVR-3s-ec_mul-sf-n.h" --eec++ -Ohs   /
+//    List file    =  D:\Projects\BatteryCounter\_micro\BattRX\Release -      /
+//                    Atmega328P\List\MultyThreading.s90                      /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME MultyThreading
+
+        RTMODEL "__64bit_doubles", "disabled"
+        RTMODEL "__SystemLibrary", "DLib"
+        RTMODEL "__cpu", "3"
+        RTMODEL "__cpu_name", "ATmega328P"
+        RTMODEL "__dlib_file_descriptor", "0"
+        RTMODEL "__enhanced_core", "enabled"
+        RTMODEL "__has_elpm", "false"
+        RTMODEL "__memory_model", "2"
+        RTMODEL "__rt_version", "3"
+
+        RSEG CSTACK:DATA:NOROOT(0)
+        RSEG RSTACK:DATA:NOROOT(0)
+
+        ERROR
+//NOTE: This module defines or uses C++ features that are not
+//      accessible from assembler code. Assembling this file will
+//      not produce an equivalent object file to the one produced
+//      by the C++ compiler.
+
+        EXTERN ?need_segment_init
+
+        PUBWEAK `?<Segment init: NEAR_Z>`
+        PUBLIC ??Timers
+        PUBLIC ??canBeDisabled
+        FUNCTION ??canBeDisabled,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??clearTicks
+        FUNCTION ??clearTicks,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??counterValue
+        PUBLIC ??getIdleTime
+        FUNCTION ??getIdleTime,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??getTimer
+        FUNCTION ??getTimer,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??init
+        FUNCTION ??init,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??processIdleTime
+        FUNCTION ??processIdleTime,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??setTimer
+        FUNCTION ??setTimer,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??tick
+        FUNCTION ??tick,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBWEAK __?EEARH
+        PUBWEAK __?EEARL
+        PUBWEAK __?EECR
+        PUBWEAK __?EEDR
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_Y Y DATA
+          CFI StackFrame CFA_SP SP DATA
+          CFI VirtualResource ?RetPad:1, ?RetHigh:8, ?RetLow:8, ?Ret:17
+          CFI Resource R0:8, R1:8, R2:8, R3:8, R4:8, R5:8, R6:8, R7:8, R8:8, R9:8
+          CFI Resource R10:8, R11:8, R12:8, R13:8, R14:8, R15:8, R16:8, R17:8
+          CFI Resource R18:8, R19:8, R20:8, R21:8, R22:8, R23:8, R24:8, R25:8
+          CFI Resource R26:8, R27:8, R28:8, R29:8, R30:8, R31:8
+          CFI Resource ?RetHighByteMask:8, SP:16, SPH:8, SPL:8, Y:16
+          CFI ResourceParts ?Ret ?RetHigh, ?RetLow, ?RetPad
+          CFI ResourceParts SP SPH, SPL
+          CFI ResourceParts Y R29, R28
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Y+0
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 Undefined
+          CFI R17 Undefined
+          CFI R18 Undefined
+          CFI R19 Undefined
+          CFI R20 Undefined
+          CFI R21 Undefined
+          CFI R22 Undefined
+          CFI R23 Undefined
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 Undefined
+          CFI R31 Undefined
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Notused
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 SameValue
+          CFI R1 SameValue
+          CFI R2 SameValue
+          CFI R3 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 SameValue
+          CFI R17 SameValue
+          CFI R18 SameValue
+          CFI R19 SameValue
+          CFI R20 SameValue
+          CFI R21 SameValue
+          CFI R22 SameValue
+          CFI R23 SameValue
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 SameValue
+          CFI R31 SameValue
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI Y SameValue
+          CFI EndCommon cfiCommon1
+        
+`?<Name GLOBAL 3>`  SYMBOL "GLOBAL"
+`?<Name MultyThreading 4>` SYMBOL "MultyThreading", `?<Name GLOBAL 3>`
+??Timers            SYMBOL "Timers", `?<Name MultyThreading 4>`
+??counterValue      SYMBOL "counterValue", `?<Name MultyThreading 4>`
+
+        EXTERN ??enable
+        FUNCTION ??enable,0202H
+        ARGFRAME RSTACK, 0, STACK
+
+// D:\Projects\BatteryCounter\_micro\BattRX\MultyThreading.cpp
+//    1 #ifndef __MULTYTHREADING_CPP_
+//    2 #define __MULTYTHREADING_CPP_
+//    3 
+//    4 #include "MultyThreading.h"
+//    5 #include "Timer0Handler.h"
+//    6 #include "PhotoSensor.h"
+//    7 
+//    8 namespace GLOBAL
+//    9 {
+//   10   namespace MultyThreading
+//   11   {
+
+        RSEG NEAR_Z:DATA:NOROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   12     volatile unsigned short counterValue = 0;
+??counterValue:
+        DS8 2
+//   13 
+//   14 #if (GLOBALTIMERS_COUNT > 0)
+
+        RSEG NEAR_Z:DATA:NOROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   15       unsigned short Timers[GLOBALTIMERS_COUNT];
+??Timers:
+        DS8 18
+//   16 #endif
+//   17 
+//   18 #if (GLOBALCLOCKS_COUNT > 0)
+//   19       unsigned short Clocks[GLOBALCLOCKS_COUNT];
+//   20 #endif
+//   21 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   22     __monitor void tick()
+??tick:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function ??tick
+//   23     {
+        IN      R18, 0x3F
+        RCALL   ?Subroutine0
+//   24       counterValue += timerDiscreteness;
+??CrossCallReturnLabel_0:
+        SUBI    R16, 251
+        SBCI    R17, 255
+        ST      Z, R16
+        STD     Z+1, R17
+//   25     }
+        OUT     0x3F, R18
+        RET
+          CFI EndBlock cfiBlock0
+//   26 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   27     __monitor unsigned short getIdleTime()
+??getIdleTime:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function ??getIdleTime
+//   28     {
+        IN      R19, 0x3F
+        RCALL   ?Subroutine0
+//   29       unsigned short curIdleTime = counterValue;
+//   30       counterValue = 0;
+??CrossCallReturnLabel_1:
+        LDI     R18, 0
+        ST      Z, R18
+        STD     Z+1, R18
+//   31 
+//   32       return curIdleTime;
+        OUT     0x3F, R19
+        RET
+          CFI EndBlock cfiBlock1
+//   33     }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine0:
+          CFI Block cfiCond2 Using cfiCommon0
+          CFI Function ??tick
+          CFI Conditional ??CrossCallReturnLabel_0
+          CFI CFA_SP SP+4
+          CFI Block cfiCond3 Using cfiCommon0
+          CFI (cfiCond3) Function ??getIdleTime
+          CFI (cfiCond3) Conditional ??CrossCallReturnLabel_1
+          CFI (cfiCond3) CFA_SP SP+4
+          CFI Block cfiPicker4 Using cfiCommon1
+          CFI (cfiPicker4) NoFunction
+          CFI (cfiPicker4) Picker
+        CLI
+        LDI     R30, LOW(??counterValue)
+        LDI     R31, (??counterValue) >> 8
+        LD      R16, Z
+        LDD     R17, Z+1
+        RET
+          CFI EndBlock cfiCond2
+          CFI EndBlock cfiCond3
+          CFI EndBlock cfiPicker4
+//   34 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   35     __monitor void clearTicks()
+??clearTicks:
+          CFI Block cfiBlock5 Using cfiCommon0
+          CFI Function ??clearTicks
+//   36     {
+        IN      R17, 0x3F
+        CLI
+//   37       counterValue = 0;
+        LDI     R16, 0
+        LDI     R30, LOW(??counterValue)
+        LDI     R31, (??counterValue) >> 8
+        ST      Z, R16
+        STD     Z+1, R16
+//   38     }
+        OUT     0x3F, R17
+        RET
+          CFI EndBlock cfiBlock5
+//   39 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   40     void processIdleTime()
+??processIdleTime:
+          CFI Block cfiBlock6 Using cfiCommon0
+          CFI Function ??processIdleTime
+//   41     {
+//   42       unsigned short curIdleTime = getIdleTime();
+        FUNCALL ??processIdleTime, ??getIdleTime
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ??getIdleTime
+//   43 
+//   44       if (!curIdleTime)
+        MOV     R18, R16
+        OR      R18, R17
+        BREQ    ??processIdleTime_1
+//   45       {
+//   46         return;
+//   47       }
+//   48 
+//   49 #if (GLOBALTIMERS_COUNT > 0)
+//   50       for (unsigned char i = 0; i < GLOBALTIMERS_COUNT; i++)
+        LDI     R30, LOW(??Timers)
+        LDI     R31, (??Timers) >> 8
+        LDI     R18, 9
+//   51       {
+//   52         Timers[i] = (Timers[i] > curIdleTime) ? Timers[i] - curIdleTime : 0;
+??processIdleTime_2:
+        LD      R20, Z
+        LDD     R21, Z+1
+        CP      R16, R20
+        CPC     R17, R21
+        BRCC    ??processIdleTime_3
+        SUB     R20, R16
+        SBC     R21, R17
+        RJMP    ??processIdleTime_4
+??processIdleTime_3:
+        LDI     R20, 0
+        LDI     R21, 0
+??processIdleTime_4:
+        ST      Z+, R20
+        ST      Z+, R21
+//   53       }
+        DEC     R18
+        BRNE    ??processIdleTime_2
+??processIdleTime_1:
+        RET
+          CFI EndBlock cfiBlock6
+//   54 #endif
+//   55 
+//   56 #if (GLOBALCLOCKS_COUNT > 0)
+//   57       for (unsigned char i = 0; i < GLOBALCLOCKS_COUNT; i++)
+//   58       {
+//   59         Clocks[i] += curIdleTime;
+//   60       }
+//   61 #endif
+//   62     }
+//   63 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   64     bool canBeDisabled()
+??canBeDisabled:
+          CFI Block cfiBlock7 Using cfiCommon0
+          CFI Function ??canBeDisabled
+//   65     {
+//   66 #if (GLOBALCLOCKS_COUNT > 0)
+//   67       return false;
+//   68 #else
+//   69       for (unsigned char i = 0; i < GLOBALTIMERS_COUNT; i++)
+        LDI     R30, LOW(??Timers)
+        LDI     R31, (??Timers) >> 8
+        LDI     R16, 9
+//   70       {
+//   71         if (Timers[i] > 0)
+??canBeDisabled_1:
+        LD      R18, Z+
+        LD      R19, Z+
+        OR      R18, R19
+        BREQ    ??canBeDisabled_2
+//   72         {
+//   73           return false;
+        LDI     R16, 0
+        RET
+//   74         }
+//   75       }
+??canBeDisabled_2:
+        DEC     R16
+        BRNE    ??canBeDisabled_1
+//   76 
+//   77       return true;
+        LDI     R16, 1
+        RET
+          CFI EndBlock cfiBlock7
+//   78 #endif
+//   79     }
+//   80 
+//   81 #if (GLOBALTIMERS_COUNT > 0)
+
+        RSEG CODE:CODE:NOROOT(1)
+//   82     unsigned short getTimer(unsigned char _timerNum)
+??getTimer:
+          CFI Block cfiBlock8 Using cfiCommon0
+          CFI Function ??getTimer
+//   83     {
+//   84       return Timers[_timerNum];
+        RCALL   ?Subroutine1
+??CrossCallReturnLabel_2:
+        LD      R16, Z
+        LDD     R17, Z+1
+        RET
+          CFI EndBlock cfiBlock8
+//   85     }
+//   86 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   87     void setTimer(unsigned char _timerNum, unsigned short _value)
+??setTimer:
+          CFI Block cfiBlock9 Using cfiCommon0
+          CFI Function ??setTimer
+//   88     {
+//   89       Timers[_timerNum] = _value;
+        FUNCALL ??setTimer, ??enable
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine1
+??CrossCallReturnLabel_3:
+        ST      Z, R18
+        STD     Z+1, R19
+//   90 
+//   91       if (_value > 0)
+        OR      R18, R19
+        BREQ    ??setTimer_1
+//   92       {
+//   93         Timer0Handler::enable();
+        CALL    ??enable
+//   94       }
+//   95     }
+??setTimer_1:
+        RET
+          CFI EndBlock cfiBlock9
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine1:
+          CFI Block cfiCond10 Using cfiCommon0
+          CFI Function ??getTimer
+          CFI Conditional ??CrossCallReturnLabel_2
+          CFI CFA_SP SP+4
+          CFI Block cfiCond11 Using cfiCommon0
+          CFI (cfiCond11) Function ??setTimer
+          CFI (cfiCond11) Conditional ??CrossCallReturnLabel_3
+          CFI (cfiCond11) CFA_SP SP+4
+          CFI Block cfiPicker12 Using cfiCommon1
+          CFI (cfiPicker12) NoFunction
+          CFI (cfiPicker12) Picker
+        LDI     R17, 2
+        MUL     R16, R17
+        MOVW    R31:R30, R1:R0
+        SUBI    R30, LOW((-(??Timers) & 0xFFFF))
+        SBCI    R31, (-(??Timers) & 0xFFFF) >> 8
+        RET
+          CFI EndBlock cfiCond10
+          CFI EndBlock cfiCond11
+          CFI EndBlock cfiPicker12
+//   96 #endif
+//   97 
+//   98 #if (GLOBALCLOCKS_COUNT > 0)
+//   99     unsigned short getClock(unsigned char _clockNum)
+//  100     {
+//  101       return Clocks[_clockNum];
+//  102     }
+//  103 
+//  104     unsigned short getClockIdleTime(unsigned char _clockNum)
+//  105     {
+//  106       unsigned short idleTime = Clocks[_clockNum];
+//  107       Clocks[_clockNum] = 0;
+//  108 
+//  109       return idleTime;
+//  110     }
+//  111 #endif
+//  112 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  113     void init()
+??init:
+          CFI Block cfiBlock13 Using cfiCommon0
+          CFI Function ??init
+//  114     {
+//  115 #if (GLOBALTIMERS_COUNT > 0)
+//  116       for (unsigned char i = 0; i < GLOBALTIMERS_COUNT; i++)
+        LDI     R30, LOW(??Timers)
+        LDI     R31, (??Timers) >> 8
+        LDI     R18, 9
+        LDI     R16, 0
+//  117       {
+//  118         Timers[i] = 0;
+??init_1:
+        ST      Z+, R16
+        ST      Z+, R16
+//  119       }
+        DEC     R18
+        BRNE    ??init_1
+//  120 #endif
+//  121 
+//  122 #if (GLOBALCLOCKS_COUNT > 0)
+//  123       for (unsigned char i = 0; i < GLOBALCLOCKS_COUNT; i++)
+//  124       {
+//  125         Clocks[i] = 0;
+//  126       }
+//  127 #endif
+//  128     }
+        RET
+          CFI EndBlock cfiBlock13
+
+        ASEGN ABSOLUTE:DATA:NOROOT,01fH
+__?EECR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,020H
+__?EEDR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,021H
+__?EEARL:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,022H
+__?EEARH:
+
+        RSEG INITTAB:CODE:NOROOT(0)
+`?<Segment init: NEAR_Z>`:
+        DC16    SFE(NEAR_Z) - SFB(NEAR_Z)
+        DC16    SFB(NEAR_Z)
+        DC16    0
+        REQUIRE ?need_segment_init
+
+        END
+//  129   }
+//  130 }
+//  131 
+//  132 #endif
+//  133 
+// 
+// 184 bytes in segment CODE
+//   6 bytes in segment INITTAB
+//  20 bytes in segment NEAR_Z
+// 
+// 184 bytes of CODE memory (+ 6 bytes shared)
+//  20 bytes of DATA memory
+//
+//Errors: none
+//Warnings: none

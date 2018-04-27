@@ -1,0 +1,814 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V6.12.1.50500 for Atmel AVR       02/Aug/2014  01:50:53 /
+// Copyright 1996-2012 IAR Systems AB.                                        /
+//                                                                            /
+//    Source file  =  D:\Projects\BatteryCounter\_micro\BattRX\GlobalADC.cpp  /
+//    Command line =  D:\Projects\BatteryCounter\_micro\BattRX\GlobalADC.cpp  /
+//                    --cpu=m328p -ms -o "D:\Projects\BatteryCounter\_micro\B /
+//                    attRX\Release - Atmega328P\Obj\" -D NDEBUG -lA          /
+//                    "D:\Projects\BatteryCounter\_micro\BattRX\Release -     /
+//                    Atmega328P\List\" --initializers_in_flash               /
+//                    -DENABLE_BIT_DEFINITIONS --do_cross_call -e             /
+//                    --eeprom_size 1024 --dlib --dlib_config "C:\Program     /
+//                    Files (x86)\IAR Systems\Embedded Workbench              /
+//                    6.0\avr\LIB\DLIB\dlAVR-3s-ec_mul-sf-n.h" --eec++ -Ohs   /
+//    List file    =  D:\Projects\BatteryCounter\_micro\BattRX\Release -      /
+//                    Atmega328P\List\GlobalADC.s90                           /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME GlobalADC
+
+        RTMODEL "__64bit_doubles", "disabled"
+        RTMODEL "__SystemLibrary", "DLib"
+        RTMODEL "__cpu", "3"
+        RTMODEL "__cpu_name", "ATmega328P"
+        RTMODEL "__dlib_file_descriptor", "0"
+        RTMODEL "__enhanced_core", "enabled"
+        RTMODEL "__has_elpm", "false"
+        RTMODEL "__memory_model", "2"
+        RTMODEL "__rt_version", "3"
+
+        RSEG CSTACK:DATA:NOROOT(0)
+        RSEG RSTACK:DATA:NOROOT(0)
+
+        ERROR
+//NOTE: This module defines or uses C++ features that are not
+//      accessible from assembler code. Assembling this file will
+//      not produce an equivalent object file to the one produced
+//      by the C++ compiler.
+
+        EXTERN ?UL_DIVMOD_L03
+        EXTERN ?need_segment_init
+
+        PUBWEAK `?<Segment init: NEAR_I>`
+        PUBLIC ??batteryCurrentVoltage
+        PUBLIC ??batteryCutOffVoltage
+        PUBLIC ??curBatteryVoltageDetected
+        PUBLIC ??disable
+        FUNCTION ??disable,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??getBatteryCurrentVoltage
+        FUNCTION ??getBatteryCurrentVoltage,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??init
+        FUNCTION ??init,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??irqADC
+        FUNCTION ??irqADC,021233H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 15, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBWEAK `??irqADC??INTVEC 84`
+        PUBLIC ??isBatteryVoltageDetected
+        FUNCTION ??isBatteryVoltageDetected,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??isBusy
+        PUBLIC ??isLowBatteryVoltage
+        FUNCTION ??isLowBatteryVoltage,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??ready
+        FUNCTION ??ready,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??run
+        FUNCTION ??run,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??scheduleConversion
+        FUNCTION ??scheduleConversion,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??setCutOffVoltage
+        FUNCTION ??setCutOffVoltage,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??startConversion
+        FUNCTION ??startConversion,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBWEAK _A_ADC
+        PUBWEAK _A_ADCSRA
+        PUBWEAK _A_ADMUX
+        PUBWEAK _A_PRR
+        PUBWEAK __?EEARH
+        PUBWEAK __?EEARL
+        PUBWEAK __?EECR
+        PUBWEAK __?EEDR
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_Y Y DATA
+          CFI StackFrame CFA_SP SP DATA
+          CFI VirtualResource ?RetPad:1, ?RetHigh:8, ?RetLow:8, ?Ret:17
+          CFI Resource R0:8, R1:8, R2:8, R3:8, R4:8, R5:8, R6:8, R7:8, R8:8, R9:8
+          CFI Resource R10:8, R11:8, R12:8, R13:8, R14:8, R15:8, R16:8, R17:8
+          CFI Resource R18:8, R19:8, R20:8, R21:8, R22:8, R23:8, R24:8, R25:8
+          CFI Resource R26:8, R27:8, R28:8, R29:8, R30:8, R31:8
+          CFI Resource ?RetHighByteMask:8, SP:16, SPH:8, SPL:8, Y:16
+          CFI ResourceParts ?Ret ?RetHigh, ?RetLow, ?RetPad
+          CFI ResourceParts SP SPH, SPL
+          CFI ResourceParts Y R29, R28
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Y+0
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 Undefined
+          CFI R17 Undefined
+          CFI R18 Undefined
+          CFI R19 Undefined
+          CFI R20 Undefined
+          CFI R21 Undefined
+          CFI R22 Undefined
+          CFI R23 Undefined
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 Undefined
+          CFI R31 Undefined
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Notused
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 SameValue
+          CFI R1 SameValue
+          CFI R2 SameValue
+          CFI R3 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 SameValue
+          CFI R17 SameValue
+          CFI R18 SameValue
+          CFI R19 SameValue
+          CFI R20 SameValue
+          CFI R21 SameValue
+          CFI R22 SameValue
+          CFI R23 SameValue
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 SameValue
+          CFI R31 SameValue
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI Y SameValue
+          CFI EndCommon cfiCommon1
+        
+        
+          CFI Common cfiCommon2 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Y+0
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 SameValue
+          CFI R1 SameValue
+          CFI R2 SameValue
+          CFI R3 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 SameValue
+          CFI R17 SameValue
+          CFI R18 SameValue
+          CFI R19 SameValue
+          CFI R20 SameValue
+          CFI R21 SameValue
+          CFI R22 SameValue
+          CFI R23 SameValue
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 SameValue
+          CFI R31 SameValue
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI EndCommon cfiCommon2
+        
+`?<Name GLOBAL 0>`  SYMBOL "GLOBAL"
+`?<Name ADC 6>`     SYMBOL "ADC", `?<Name GLOBAL 0>`
+??batteryCurrentVoltage SYMBOL "batteryCurrentVoltage", `?<Name ADC 6>`
+??batteryCutOffVoltage SYMBOL "batteryCutOffVoltage", `?<Name ADC 6>`
+??curBatteryVoltageDetected SYMBOL "curBatteryVoltageDetected", `?<Name ADC 6>`
+
+`??irqADC??INTVEC 84` SYMBOL "??INTVEC 84", ??irqADC
+??isBusy            SYMBOL "isBusy", `?<Name ADC 6>`
+
+        EXTERN ??getTimer
+        FUNCTION ??getTimer,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??setTimer
+        FUNCTION ??setTimer,0202H
+        ARGFRAME RSTACK, 0, STACK
+
+// D:\Projects\BatteryCounter\_micro\BattRX\GlobalADC.cpp
+//    1 #ifndef __GLOBALADC_CPP_
+//    2 #define __GLOBALADC_CPP_
+//    3 
+//    4 #include "GlobalADC.h"
+
+        ASEGN ABSOLUTE:DATA:NOROOT,07cH
+// union <unnamed> volatile __io _A_ADMUX
+_A_ADMUX:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,07aH
+// union <unnamed> volatile __io _A_ADCSRA
+_A_ADCSRA:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,078H
+// union <unnamed> volatile __io _A_ADC
+_A_ADC:
+        DS8 2
+
+        ASEGN ABSOLUTE:DATA:NOROOT,064H
+// union <unnamed> volatile __io _A_PRR
+_A_PRR:
+        DS8 1
+//    5 #include "MultyThreading.h"
+//    6 
+//    7 #define BATTERY_REFERENCE_VOLTAGE       (275)
+//    8 #define BATTERY_MEASURE_TIMEOUT         (1000)
+//    9 #define BATTERY_MEASURE_SWITCHON_TIME   (200)
+//   10 
+//   11 namespace GLOBAL
+//   12 {
+//   13   namespace ADC
+//   14   {
+
+        RSEG NEAR_I:DATA:NOROOT(0)
+        REQUIRE `?<Segment init: NEAR_I>`
+//   15     bool isBusy = false;
+??isBusy:
+        DS8 1
+        REQUIRE `?<Initializer for isBusy>`
+//   16     bool curBatteryVoltageDetected = false;
+??curBatteryVoltageDetected:
+        DS8 1
+        REQUIRE `?<Initializer for curBatteryVoltageDetected>`
+//   17 
+//   18     unsigned char batteryCutOffVoltage = 0;
+??batteryCutOffVoltage:
+        DS8 1
+        REQUIRE `?<Initializer for batteryCutOffVoltage>`
+//   19     unsigned char batteryCurrentVoltage = 0xFF;
+??batteryCurrentVoltage:
+        DS8 1
+        REQUIRE `?<Initializer for batteryCurrentVoltage>`
+//   20 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   21     void scheduleConversion()
+??scheduleConversion:
+//   22     {
+//   23       ADMUX = (0<<REFS0) | (0<<REFS1) | (1<<ADLAR) | BATTERY_ADC_CHANNEL;
+        REQUIRE ?Subroutine0
+        REQUIRE _A_ADMUX
+        REQUIRE _A_ADCSRA
+        ;               // Fall through to label ?Subroutine0
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine0:
+          CFI Block cfiCond0 Using cfiCommon0
+          CFI Function ??startConversion
+          CFI Conditional ??CrossCallReturnLabel_0
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+1
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI (cfiBlock1) NoFunction
+          CFI Block cfiPicker2 Using cfiCommon1
+          CFI (cfiPicker2) NoFunction
+          CFI (cfiPicker2) Picker
+        LDI     R16, 38
+        STS     _A_ADMUX, R16
+//   24       ADCSRA = (1<<ADEN) | (1<<ADSC) | (0<<ADATE) | (1<<ADIE) |
+//   25                (0<<ADPS0) | (0<<ADPS1) | (1<<ADPS2);
+        LDI     R16, 204
+        STS     _A_ADCSRA, R16
+//   26     }
+        RET
+          CFI EndBlock cfiCond0
+          CFI EndBlock cfiBlock1
+          CFI EndBlock cfiPicker2
+//   27 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   28     __monitor void startConversion()
+??startConversion:
+          CFI Block cfiBlock3 Using cfiCommon0
+          CFI Function ??startConversion
+//   29     {
+        FUNCALL ??startConversion, ??setTimer
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R24
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        IN      R24, 0x3F
+        CLI
+//   30       if (isBusy)
+        LDS     R16, ??isBusy
+        TST     R16
+        BRNE    ??CrossCallReturnLabel_0
+//   31       {
+//   32         return;
+//   33       }
+//   34 
+//   35       isBusy = true;
+        LDI     R16, 1
+        STS     ??isBusy, R16
+//   36 
+//   37       GLOBAL::MultyThreading::setTimer(GLOBALTIMERS_ADC_ERRORTIMER, BATTERY_MEASURE_TIMEOUT);
+        LDI     R18, 232
+        LDI     R19, 3
+        LDI     R16, 4
+        CALL    ??setTimer
+//   38 
+//   39       PRR &= ~(1<<PRADC);
+        LDS     R16, 100
+        ANDI    R16, 0xFE
+        STS     100, R16
+//   40       scheduleConversion();
+        RCALL   ?Subroutine0
+//   41     }
+??CrossCallReturnLabel_0:
+        OUT     0x3F, R24
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock3
+        REQUIRE _A_PRR
+        REQUIRE _A_ADMUX
+        REQUIRE _A_ADCSRA
+//   42 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   43     __monitor void disable()
+??disable:
+          CFI Block cfiBlock4 Using cfiCommon0
+          CFI Function ??disable
+//   44     {
+        IN      R17, 0x3F
+        CLI
+//   45       ADCSRA &= ~(1<<ADEN);
+        LDS     R16, 122
+        ANDI    R16, 0x7F
+        STS     122, R16
+//   46       PRR |= (1<<PRADC);
+        LDS     R16, 100
+        ORI     R16, 0x01
+        STS     100, R16
+//   47 
+//   48       isBusy = false;
+        LDI     R16, 0
+        STS     ??isBusy, R16
+//   49     }
+        OUT     0x3F, R17
+        RET
+          CFI EndBlock cfiBlock4
+        REQUIRE _A_ADCSRA
+        REQUIRE _A_PRR
+//   50 
+//   51     #pragma vector=ADC_vect
+
+        RSEG CODE:CODE:NOROOT(1)
+//   52     __interrupt void irqADC()
+??irqADC:
+          CFI Block cfiBlock5 Using cfiCommon2
+          CFI Function ??irqADC
+//   53     {
+        FUNCALL ??irqADC, ??disable
+        LOCFRAME CSTACK, 15, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R24
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        ST      -Y, R31
+          CFI R31 Frame(CFA_Y, -2)
+          CFI CFA_Y Y+2
+        ST      -Y, R30
+          CFI R30 Frame(CFA_Y, -3)
+          CFI CFA_Y Y+3
+        ST      -Y, R3
+          CFI R3 Frame(CFA_Y, -4)
+          CFI CFA_Y Y+4
+        ST      -Y, R2
+          CFI R2 Frame(CFA_Y, -5)
+          CFI CFA_Y Y+5
+        ST      -Y, R1
+          CFI R1 Frame(CFA_Y, -6)
+          CFI CFA_Y Y+6
+        ST      -Y, R0
+          CFI R0 Frame(CFA_Y, -7)
+          CFI CFA_Y Y+7
+        ST      -Y, R23
+          CFI R23 Frame(CFA_Y, -8)
+          CFI CFA_Y Y+8
+        ST      -Y, R22
+          CFI R22 Frame(CFA_Y, -9)
+          CFI CFA_Y Y+9
+        ST      -Y, R21
+          CFI R21 Frame(CFA_Y, -10)
+          CFI CFA_Y Y+10
+        ST      -Y, R20
+          CFI R20 Frame(CFA_Y, -11)
+          CFI CFA_Y Y+11
+        ST      -Y, R19
+          CFI R19 Frame(CFA_Y, -12)
+          CFI CFA_Y Y+12
+        ST      -Y, R18
+          CFI R18 Frame(CFA_Y, -13)
+          CFI CFA_Y Y+13
+        ST      -Y, R17
+          CFI R17 Frame(CFA_Y, -14)
+          CFI CFA_Y Y+14
+        ST      -Y, R16
+          CFI R16 Frame(CFA_Y, -15)
+          CFI CFA_Y Y+15
+        IN      R24, 0x3F
+//   54       batteryCurrentVoltage = ADCH;
+        LDS     R16, 121
+        STS     (??isBusy + 3), R16
+//   55       curBatteryVoltageDetected = true;
+        LDI     R16, 1
+        STS     (??isBusy + 1), R16
+//   56 
+//   57       disable();
+        RCALL   ??disable
+//   58     }
+        OUT     0x3F, R24
+        LD      R16, Y+
+          CFI R16 SameValue
+          CFI CFA_Y Y+14
+        LD      R17, Y+
+          CFI R17 SameValue
+          CFI CFA_Y Y+13
+        LD      R18, Y+
+          CFI R18 SameValue
+          CFI CFA_Y Y+12
+        LD      R19, Y+
+          CFI R19 SameValue
+          CFI CFA_Y Y+11
+        LD      R20, Y+
+          CFI R20 SameValue
+          CFI CFA_Y Y+10
+        LD      R21, Y+
+          CFI R21 SameValue
+          CFI CFA_Y Y+9
+        LD      R22, Y+
+          CFI R22 SameValue
+          CFI CFA_Y Y+8
+        LD      R23, Y+
+          CFI R23 SameValue
+          CFI CFA_Y Y+7
+        LD      R0, Y+
+          CFI R0 SameValue
+          CFI CFA_Y Y+6
+        LD      R1, Y+
+          CFI R1 SameValue
+          CFI CFA_Y Y+5
+        LD      R2, Y+
+          CFI R2 SameValue
+          CFI CFA_Y Y+4
+        LD      R3, Y+
+          CFI R3 SameValue
+          CFI CFA_Y Y+3
+        LD      R30, Y+
+          CFI R30 SameValue
+          CFI CFA_Y Y+2
+        LD      R31, Y+
+          CFI R31 SameValue
+          CFI CFA_Y Y+1
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+0
+        RETI
+          CFI EndBlock cfiBlock5
+        REQUIRE _A_ADC
+//   59 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   60     __monitor bool isBatteryVoltageDetected()
+??isBatteryVoltageDetected:
+          CFI Block cfiBlock6 Using cfiCommon0
+          CFI Function ??isBatteryVoltageDetected
+//   61     {
+        IN      R17, 0x3F
+        CLI
+//   62       return curBatteryVoltageDetected;
+        LDS     R16, (??isBusy + 1)
+        OUT     0x3F, R17
+        RET
+          CFI EndBlock cfiBlock6
+//   63     }
+//   64 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   65     __monitor unsigned short getBatteryCurrentVoltage()
+??getBatteryCurrentVoltage:
+          CFI Block cfiBlock7 Using cfiCommon0
+          CFI Function ??getBatteryCurrentVoltage
+//   66     {
+        IN      R19, 0x3F
+        CLI
+//   67       return (((unsigned long)batteryCurrentVoltage) * 2 * BATTERY_REFERENCE_VOLTAGE) / 256;
+        LDS     R20, (??isBusy + 3)
+        LDI     R16, 38
+        LDI     R17, 2
+        CLR     R2
+        MUL     R17, R20
+        MOV     R17, R0
+        MOV     R18, R1
+        MUL     R16, R20
+        ADD     R17, R1
+        ADC     R18, R2
+        MOV     R16, R17
+        MOV     R17, R18
+        OUT     0x3F, R19
+        RET
+          CFI EndBlock cfiBlock7
+//   68     }
+//   69 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   70     __monitor void setCutOffVoltage(unsigned short _cutOffVoltage)
+??setCutOffVoltage:
+          CFI Block cfiBlock8 Using cfiCommon0
+          CFI Function ??setCutOffVoltage
+//   71     {
+        IN      R31, 0x3F
+        CLI
+//   72       batteryCutOffVoltage = (((unsigned long)_cutOffVoltage * 256) / 2 / BATTERY_REFERENCE_VOLTAGE);
+        LDI     R19, 0
+        MOV     R18, R17
+        LSR     R18
+        MOV     R17, R16
+        ROR     R17
+        LDI     R16, 0
+        ROR     R16
+        LDI     R20, 19
+        LDI     R21, 1
+        LDI     R22, 0
+        LDI     R23, 0
+        CALL    ?UL_DIVMOD_L03
+        STS     (??isBusy + 2), R16
+//   73     }
+        OUT     0x3F, R31
+        RET
+          CFI EndBlock cfiBlock8
+//   74 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   75     __monitor bool isLowBatteryVoltage()
+??isLowBatteryVoltage:
+          CFI Block cfiBlock9 Using cfiCommon0
+          CFI Function ??isLowBatteryVoltage
+//   76     {
+        IN      R18, 0x3F
+        CLI
+//   77       return batteryCurrentVoltage < batteryCutOffVoltage;
+        LDS     R16, (??isBusy + 3)
+        LDS     R17, (??isBusy + 2)
+        CP      R16, R17
+        BRCC    ??isLowBatteryVoltage_1
+        LDI     R16, 1
+        RJMP    ??isLowBatteryVoltage_2
+??isLowBatteryVoltage_1:
+        LDI     R16, 0
+??isLowBatteryVoltage_2:
+        OUT     0x3F, R18
+        RET
+          CFI EndBlock cfiBlock9
+//   78     }
+//   79 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   80     bool ready()
+??ready:
+          CFI Block cfiBlock10 Using cfiCommon0
+          CFI Function ??ready
+//   81     {
+//   82       return !isBusy;
+        LDS     R16, ??isBusy
+        LDI     R17, 1
+        EOR     R16, R17
+        RET
+          CFI EndBlock cfiBlock10
+//   83     }
+//   84 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   85     void init(unsigned short _cutOffVoltage)
+??init:
+          CFI Block cfiBlock11 Using cfiCommon0
+          CFI Function ??init
+//   86     {
+//   87       isBusy = true;
+        FUNCALL ??init, ??setCutOffVoltage
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??init, ??setTimer
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDI     R18, 1
+        STS     ??isBusy, R18
+//   88       curBatteryVoltageDetected = false;
+        LDI     R18, 0
+        STS     (??isBusy + 1), R18
+//   89 
+//   90       setCutOffVoltage(_cutOffVoltage);
+        RCALL   ??setCutOffVoltage
+//   91       GLOBAL::MultyThreading::setTimer(GLOBALTIMERS_ADC_ERRORTIMER, BATTERY_MEASURE_SWITCHON_TIME);
+        LDI     R18, 200
+        LDI     R19, 0
+        LDI     R16, 4
+        JMP     ??setTimer
+          CFI EndBlock cfiBlock11
+//   92     }
+//   93 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   94     void run()
+??run:
+          CFI Block cfiBlock12 Using cfiCommon0
+          CFI Function ??run
+//   95     {
+//   96       if (isBusy)
+        FUNCALL ??run, ??getTimer
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??disable
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??startConversion
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDS     R16, ??isBusy
+        TST     R16
+        BREQ    ??run_1
+//   97       {
+//   98         if (!GLOBAL::MultyThreading::getTimer(GLOBALTIMERS_ADC_ERRORTIMER))
+        LDI     R16, 4
+        CALL    ??getTimer
+        OR      R16, R17
+        BRNE    ??run_1
+//   99         {
+//  100           disable();
+        RCALL   ??disable
+//  101 
+//  102           if (!curBatteryVoltageDetected)
+        LDS     R16, (??isBusy + 1)
+        TST     R16
+        BRNE    ??run_1
+//  103           {
+//  104             startConversion();
+        RCALL   ??startConversion
+//  105           }
+//  106         }
+//  107       }
+//  108     }
+??run_1:
+        RET
+          CFI EndBlock cfiBlock12
+
+        ASEGN ABSOLUTE:DATA:NOROOT,01fH
+__?EECR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,020H
+__?EEDR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,021H
+__?EEARL:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,022H
+__?EEARH:
+
+        COMMON INTVEC:CODE:ROOT(1)
+        ORG 84
+`??irqADC??INTVEC 84`:
+        JMP     ??irqADC
+
+        RSEG NEAR_ID:CODE:NOROOT(0)
+`?<Initializer for isBusy>`:
+        DC8 0
+`?<Initializer for curBatteryVoltageDetected>`:
+        DC8 0
+`?<Initializer for batteryCutOffVoltage>`:
+        DC8 0
+`?<Initializer for batteryCurrentVoltage>`:
+        DC8 255
+
+        RSEG INITTAB:CODE:NOROOT(0)
+`?<Segment init: NEAR_I>`:
+        DC16    SFE(NEAR_I) - SFB(NEAR_I)
+        DC16    SFB(NEAR_I)
+        DC16    SFB(NEAR_ID)
+        REQUIRE ?need_segment_init
+
+        END
+//  109   }
+//  110 }
+//  111 
+//  112 #endif
+//  113 
+// 
+//   5 bytes in segment ABSOLUTE
+// 354 bytes in segment CODE
+//   6 bytes in segment INITTAB
+//   4 bytes in segment INTVEC
+//   4 bytes in segment NEAR_I
+//   4 bytes in segment NEAR_ID
+// 
+// 358 bytes of CODE memory (+ 10 bytes shared)
+//   4 bytes of DATA memory (+  5 bytes shared)
+//
+//Errors: none
+//Warnings: none

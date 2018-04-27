@@ -1,0 +1,1186 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V6.12.1.50500 for Atmel AVR       02/Aug/2014  01:50:55 /
+// Copyright 1996-2012 IAR Systems AB.                                        /
+//                                                                            /
+//    Source file  =  D:\Projects\BatteryCounter\_micro\BattRX\KeyBoardDriver /
+//                    .cpp                                                    /
+//    Command line =  D:\Projects\BatteryCounter\_micro\BattRX\KeyBoardDriver /
+//                    .cpp --cpu=m328p -ms -o "D:\Projects\BatteryCounter\_mi /
+//                    cro\BattRX\Release - Atmega328P\Obj\" -D NDEBUG -lA     /
+//                    "D:\Projects\BatteryCounter\_micro\BattRX\Release -     /
+//                    Atmega328P\List\" --initializers_in_flash               /
+//                    -DENABLE_BIT_DEFINITIONS --do_cross_call -e             /
+//                    --eeprom_size 1024 --dlib --dlib_config "C:\Program     /
+//                    Files (x86)\IAR Systems\Embedded Workbench              /
+//                    6.0\avr\LIB\DLIB\dlAVR-3s-ec_mul-sf-n.h" --eec++ -Ohs   /
+//    List file    =  D:\Projects\BatteryCounter\_micro\BattRX\Release -      /
+//                    Atmega328P\List\KeyBoardDriver.s90                      /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME KeyBoardDriver
+
+        RTMODEL "__64bit_doubles", "disabled"
+        RTMODEL "__SystemLibrary", "DLib"
+        RTMODEL "__cpu", "3"
+        RTMODEL "__cpu_name", "ATmega328P"
+        RTMODEL "__dlib_file_descriptor", "0"
+        RTMODEL "__enhanced_core", "enabled"
+        RTMODEL "__has_elpm", "false"
+        RTMODEL "__memory_model", "2"
+        RTMODEL "__rt_version", "3"
+
+        RSEG CSTACK:DATA:NOROOT(0)
+        RSEG RSTACK:DATA:NOROOT(0)
+
+        ERROR
+//NOTE: This module defines or uses C++ features that are not
+//      accessible from assembler code. Assembling this file will
+//      not produce an equivalent object file to the one produced
+//      by the C++ compiler.
+
+        EXTERN ?SS_DIVMOD_L02
+        EXTERN ?need_segment_init
+
+        PUBWEAK `?<Segment init: NEAR_Z>`
+        PUBLIC ??clearBuff
+        FUNCTION ??clearBuff,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??getKeyState
+        FUNCTION ??getKeyState,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??getUIRequest
+        FUNCTION ??getUIRequest,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??init
+        FUNCTION ??init,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??irqPinChange
+        FUNCTION ??irqPinChange,021233H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 19, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBWEAK `??irqPinChange??INTVEC 12`
+        PUBWEAK `??irqPinChange??INTVEC 20`
+        PUBLIC ??keyBuffHead
+        PUBLIC ??keyBuffTail
+        PUBLIC ??keyboardBuffer
+        PUBLIC ??lastKeyState
+        PUBLIC ??popBuff
+        FUNCTION ??popBuff,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??pushBuff
+        FUNCTION ??pushBuff,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 3, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??repeatKey
+        FUNCTION ??repeatKey,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??run
+        FUNCTION ??run,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??uiRequest
+        PUBWEAK _A_DDRB
+        PUBWEAK _A_DDRD
+        PUBWEAK _A_PCICR
+        PUBWEAK _A_PCMSK0
+        PUBWEAK _A_PCMSK1
+        PUBWEAK _A_PCMSK2
+        PUBWEAK _A_PINB
+        PUBWEAK _A_PIND
+        PUBWEAK _A_PORTB
+        PUBWEAK _A_PORTD
+        PUBWEAK __?EEARH
+        PUBWEAK __?EEARL
+        PUBWEAK __?EECR
+        PUBWEAK __?EEDR
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_Y Y DATA
+          CFI StackFrame CFA_SP SP DATA
+          CFI VirtualResource ?RetPad:1, ?RetHigh:8, ?RetLow:8, ?Ret:17
+          CFI Resource R0:8, R1:8, R2:8, R3:8, R4:8, R5:8, R6:8, R7:8, R8:8, R9:8
+          CFI Resource R10:8, R11:8, R12:8, R13:8, R14:8, R15:8, R16:8, R17:8
+          CFI Resource R18:8, R19:8, R20:8, R21:8, R22:8, R23:8, R24:8, R25:8
+          CFI Resource R26:8, R27:8, R28:8, R29:8, R30:8, R31:8
+          CFI Resource ?RetHighByteMask:8, SP:16, SPH:8, SPL:8, Y:16
+          CFI ResourceParts ?Ret ?RetHigh, ?RetLow, ?RetPad
+          CFI ResourceParts SP SPH, SPL
+          CFI ResourceParts Y R29, R28
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Y+0
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 SameValue
+          CFI R1 SameValue
+          CFI R2 SameValue
+          CFI R3 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 SameValue
+          CFI R17 SameValue
+          CFI R18 SameValue
+          CFI R19 SameValue
+          CFI R20 SameValue
+          CFI R21 SameValue
+          CFI R22 SameValue
+          CFI R23 SameValue
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 SameValue
+          CFI R31 SameValue
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Y+0
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 Undefined
+          CFI R17 Undefined
+          CFI R18 Undefined
+          CFI R19 Undefined
+          CFI R20 Undefined
+          CFI R21 Undefined
+          CFI R22 Undefined
+          CFI R23 Undefined
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 Undefined
+          CFI R31 Undefined
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI EndCommon cfiCommon1
+        
+        
+          CFI Common cfiCommon2 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Notused
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 SameValue
+          CFI R1 SameValue
+          CFI R2 SameValue
+          CFI R3 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 SameValue
+          CFI R17 SameValue
+          CFI R18 SameValue
+          CFI R19 SameValue
+          CFI R20 SameValue
+          CFI R21 SameValue
+          CFI R22 SameValue
+          CFI R23 SameValue
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 SameValue
+          CFI R31 SameValue
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI Y SameValue
+          CFI EndCommon cfiCommon2
+        
+`?<Name KeyBoardDriver 6>` SYMBOL "KeyBoardDriver"
+
+`??irqPinChange??INTVEC 12` SYMBOL "??INTVEC 12", ??irqPinChange
+`??irqPinChange??INTVEC 20` SYMBOL "??INTVEC 20", ??irqPinChange
+??keyBuffHead       SYMBOL "keyBuffHead", `?<Name KeyBoardDriver 6>`
+??keyBuffTail       SYMBOL "keyBuffTail", `?<Name KeyBoardDriver 6>`
+??keyboardBuffer    SYMBOL "keyboardBuffer", `?<Name KeyBoardDriver 6>`
+??lastKeyState      SYMBOL "lastKeyState", `?<Name KeyBoardDriver 6>`
+??uiRequest         SYMBOL "uiRequest", `?<Name KeyBoardDriver 6>`
+
+        EXTERN ??getTimer
+        FUNCTION ??getTimer,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??setTimer
+        FUNCTION ??setTimer,0202H
+        ARGFRAME RSTACK, 0, STACK
+
+// D:\Projects\BatteryCounter\_micro\BattRX\KeyBoardDriver.cpp
+//    1 #ifndef __KEYBOARDDRIVER_CPP_
+//    2 #define __KEYBOARDDRIVER_CPP_
+//    3 
+//    4 #include "GlobalSpace.h"
+
+        ASEGN ABSOLUTE:DATA:NOROOT,06dH
+// union <unnamed> volatile __io _A_PCMSK2
+_A_PCMSK2:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,06cH
+// union <unnamed> volatile __io _A_PCMSK1
+_A_PCMSK1:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,06bH
+// union <unnamed> volatile __io _A_PCMSK0
+_A_PCMSK0:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,068H
+// union <unnamed> volatile __io _A_PCICR
+_A_PCICR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,02bH
+// union <unnamed> volatile __io _A_PORTD
+_A_PORTD:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,02aH
+// union <unnamed> volatile __io _A_DDRD
+_A_DDRD:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,029H
+// union <unnamed> volatile __io _A_PIND
+_A_PIND:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,025H
+// union <unnamed> volatile __io _A_PORTB
+_A_PORTB:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,024H
+// union <unnamed> volatile __io _A_DDRB
+_A_DDRB:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,023H
+// union <unnamed> volatile __io _A_PINB
+_A_PINB:
+        DS8 1
+//    5 #include "KeyBoardDriver.h"
+//    6 #include "MultyThreading.h"
+//    7 
+//    8 #define KEYBOARD_BUFFER_SIZE                    (16)
+//    9 #define KEYBOARD_KEYREP_TIMEOUT1_MS             (2000)
+//   10 #define KEYBOARD_KEYREP_TIMEOUT2_MS             (250)
+//   11 #define KEYBOARD_KEYREP_KEYCHANGE_TIMEOUT_MS    (10)
+//   12 
+//   13 namespace KeyBoardDriver
+//   14 {
+
+        RSEG NEAR_Z:DATA:NOROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   15   unsigned char keyboardBuffer[KEYBOARD_BUFFER_SIZE];
+??keyboardBuffer:
+        DS8 16
+//   16   unsigned char keyBuffHead = 0;
+??keyBuffHead:
+        DS8 1
+//   17   unsigned char keyBuffTail = 0;
+??keyBuffTail:
+        DS8 1
+
+        RSEG NEAR_Z:DATA:NOROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   18   unsigned char lastKeyState = 0;
+??lastKeyState:
+        DS8 1
+//   19   bool uiRequest = false;
+??uiRequest:
+        DS8 1
+//   20 
+//   21   #pragma vector=PCINT0_vect,PCINT2_vect
+
+        RSEG CODE:CODE:NOROOT(1)
+//   22   __interrupt void irqPinChange()
+??irqPinChange:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function ??irqPinChange
+//   23   {
+        FUNCALL ??irqPinChange, ??pushBuff
+        LOCFRAME CSTACK, 19, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??irqPinChange, ??setTimer
+        LOCFRAME CSTACK, 19, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R27
+          CFI R27 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        ST      -Y, R26
+          CFI R26 Frame(CFA_Y, -2)
+          CFI CFA_Y Y+2
+        ST      -Y, R25
+          CFI R25 Frame(CFA_Y, -3)
+          CFI CFA_Y Y+3
+        ST      -Y, R24
+          CFI R24 Frame(CFA_Y, -4)
+          CFI CFA_Y Y+4
+        ST      -Y, R31
+          CFI R31 Frame(CFA_Y, -5)
+          CFI CFA_Y Y+5
+        ST      -Y, R30
+          CFI R30 Frame(CFA_Y, -6)
+          CFI CFA_Y Y+6
+        ST      -Y, R3
+          CFI R3 Frame(CFA_Y, -7)
+          CFI CFA_Y Y+7
+        ST      -Y, R2
+          CFI R2 Frame(CFA_Y, -8)
+          CFI CFA_Y Y+8
+        ST      -Y, R1
+          CFI R1 Frame(CFA_Y, -9)
+          CFI CFA_Y Y+9
+        ST      -Y, R0
+          CFI R0 Frame(CFA_Y, -10)
+          CFI CFA_Y Y+10
+        ST      -Y, R23
+          CFI R23 Frame(CFA_Y, -11)
+          CFI CFA_Y Y+11
+        ST      -Y, R22
+          CFI R22 Frame(CFA_Y, -12)
+          CFI CFA_Y Y+12
+        ST      -Y, R21
+          CFI R21 Frame(CFA_Y, -13)
+          CFI CFA_Y Y+13
+        ST      -Y, R20
+          CFI R20 Frame(CFA_Y, -14)
+          CFI CFA_Y Y+14
+        ST      -Y, R19
+          CFI R19 Frame(CFA_Y, -15)
+          CFI CFA_Y Y+15
+        ST      -Y, R18
+          CFI R18 Frame(CFA_Y, -16)
+          CFI CFA_Y Y+16
+        ST      -Y, R17
+          CFI R17 Frame(CFA_Y, -17)
+          CFI CFA_Y Y+17
+        ST      -Y, R16
+          CFI R16 Frame(CFA_Y, -18)
+          CFI CFA_Y Y+18
+        IN      R27, 0x3F
+//   24     unsigned char curKeyState =
+//   25       (MENU_KEY1_PIN ? 0x00 : 0x01) +
+//   26       (MENU_KEY2_PIN ? 0x00 : 0x02) +
+//   27       (MENU_KEY3_PIN ? 0x00 : 0x04) +
+//   28       (MENU_KEY4_PIN ? 0x00 : 0x08);
+        LDI     R26, 0
+        SBIC    0x03, 0x00
+        LDI     R26, 1
+??irqPinChange_1:
+        LDI     R16, 1
+        EOR     R26, R16
+        SBIS    0x09, 0x07
+        RJMP    ??irqPinChange_2
+        LDI     R20, 0
+        RJMP    ??irqPinChange_3
+??irqPinChange_2:
+        LDI     R20, 2
+??irqPinChange_3:
+        SBIS    0x09, 0x06
+        RJMP    ??irqPinChange_4
+        LDI     R18, 0
+        RJMP    ??irqPinChange_5
+??irqPinChange_4:
+        LDI     R18, 4
+??irqPinChange_5:
+        SBIS    0x09, 0x05
+        RJMP    ??irqPinChange_6
+        LDI     R16, 0
+        RJMP    ??irqPinChange_7
+??irqPinChange_6:
+        LDI     R16, 8
+??irqPinChange_7:
+        ADD     R26, R20
+        ADD     R26, R18
+        ADD     R26, R16
+//   29 
+//   30     __delay_cycles(10);
+        LDI     R16, 3
+        DEC     R16
+        BRNE    $-2
+        NOP
+//   31 
+//   32     curKeyState &=
+//   33       (MENU_KEY1_PIN ? 0x00 : 0x01) +
+//   34       (MENU_KEY2_PIN ? 0x00 : 0x02) +
+//   35       (MENU_KEY3_PIN ? 0x00 : 0x04) +
+//   36       (MENU_KEY4_PIN ? 0x00 : 0x08);
+        LDI     R22, 0
+        SBIC    0x03, 0x00
+        LDI     R22, 1
+??irqPinChange_8:
+        LDI     R16, 1
+        EOR     R22, R16
+        SBIS    0x09, 0x07
+        RJMP    ??irqPinChange_9
+        LDI     R20, 0
+        RJMP    ??irqPinChange_10
+??irqPinChange_9:
+        LDI     R20, 2
+??irqPinChange_10:
+        SBIS    0x09, 0x06
+        RJMP    ??irqPinChange_11
+        LDI     R18, 0
+        RJMP    ??irqPinChange_12
+??irqPinChange_11:
+        LDI     R18, 4
+??irqPinChange_12:
+        SBIS    0x09, 0x05
+        RJMP    ??irqPinChange_13
+        LDI     R16, 0
+        RJMP    ??irqPinChange_14
+??irqPinChange_13:
+        LDI     R16, 8
+??irqPinChange_14:
+        ADD     R22, R20
+        ADD     R22, R18
+        ADD     R22, R16
+        AND     R26, R22
+//   37 
+//   38     unsigned char curStateDiff = lastKeyState ^ curKeyState;
+        LDS     R25, ??lastKeyState
+        EOR     R25, R26
+//   39     lastKeyState = curKeyState;
+        STS     ??lastKeyState, R26
+//   40     for (unsigned char i = 1; i <= 4; i++)
+        LDI     R24, 1
+//   41     {
+//   42       if ((curStateDiff & 0x01) && (curKeyState & 0x01))
+??irqPinChange_15:
+        MOV     R16, R25
+        ANDI    R16, 0x01
+        MOV     R17, R26
+        ANDI    R17, 0x01
+        AND     R16, R17
+        BREQ    ??irqPinChange_16
+//   43       {
+//   44         pushBuff(i);
+        LDI     R17, 0
+        MOV     R16, R24
+        RCALL   ??pushBuff
+//   45 
+//   46         if (i == 4)
+        CPI     R24, 4
+        BRNE    ??irqPinChange_16
+//   47         {
+//   48           uiRequest = true;
+        LDI     R16, 1
+        STS     (??lastKeyState + 1), R16
+//   49         }
+//   50       }
+//   51 
+//   52       curStateDiff >>= 1;
+??irqPinChange_16:
+        LSR     R25
+//   53       curKeyState >>= 1;
+        LSR     R26
+//   54     }
+        INC     R24
+        CPI     R24, 5
+        BRCS    ??irqPinChange_15
+//   55 
+//   56     GLOBAL::MultyThreading::setTimer(GLOBALTIMERS_KEYBOARD_KEYREP, KEYBOARD_KEYREP_TIMEOUT1_MS);
+        LDI     R18, 208
+        LDI     R19, 7
+        RCALL   ?Subroutine2
+//   57   }
+??CrossCallReturnLabel_9:
+        OUT     0x3F, R27
+        LD      R16, Y+
+          CFI R16 SameValue
+          CFI CFA_Y Y+17
+        LD      R17, Y+
+          CFI R17 SameValue
+          CFI CFA_Y Y+16
+        LD      R18, Y+
+          CFI R18 SameValue
+          CFI CFA_Y Y+15
+        LD      R19, Y+
+          CFI R19 SameValue
+          CFI CFA_Y Y+14
+        LD      R20, Y+
+          CFI R20 SameValue
+          CFI CFA_Y Y+13
+        LD      R21, Y+
+          CFI R21 SameValue
+          CFI CFA_Y Y+12
+        LD      R22, Y+
+          CFI R22 SameValue
+          CFI CFA_Y Y+11
+        LD      R23, Y+
+          CFI R23 SameValue
+          CFI CFA_Y Y+10
+        LD      R0, Y+
+          CFI R0 SameValue
+          CFI CFA_Y Y+9
+        LD      R1, Y+
+          CFI R1 SameValue
+          CFI CFA_Y Y+8
+        LD      R2, Y+
+          CFI R2 SameValue
+          CFI CFA_Y Y+7
+        LD      R3, Y+
+          CFI R3 SameValue
+          CFI CFA_Y Y+6
+        LD      R30, Y+
+          CFI R30 SameValue
+          CFI CFA_Y Y+5
+        LD      R31, Y+
+          CFI R31 SameValue
+          CFI CFA_Y Y+4
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+3
+        LD      R25, Y+
+          CFI R25 SameValue
+          CFI CFA_Y Y+2
+        LD      R26, Y+
+          CFI R26 SameValue
+          CFI CFA_Y Y+1
+        LD      R27, Y+
+          CFI R27 SameValue
+          CFI CFA_Y Y+0
+        RETI
+          CFI EndBlock cfiBlock0
+        REQUIRE _A_PINB
+        REQUIRE _A_PIND
+//   58 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   59   __monitor void repeatKey()
+??repeatKey:
+          CFI Block cfiBlock1 Using cfiCommon1
+          CFI Function ??repeatKey
+//   60   {
+        FUNCALL ??repeatKey, ??pushBuff
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??repeatKey, ??pushBuff
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??repeatKey, ??setTimer
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R24
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        IN      R24, 0x3F
+        CLI
+//   61     switch (lastKeyState)
+        RCALL   ?Subroutine1
+??CrossCallReturnLabel_2:
+        SUBI    R16, 2
+        BREQ    ??repeatKey_1
+        SUBI    R16, 2
+        BREQ    ??repeatKey_2
+        RJMP    ??repeatKey_3
+//   62     {
+//   63       case 0x02:
+//   64         pushBuff(2, true);
+??repeatKey_1:
+        LDI     R17, 1
+        LDI     R16, 2
+        RJMP    ??repeatKey_4
+//   65         break;
+//   66 
+//   67       case 0x04:
+//   68         pushBuff(3, true);
+??repeatKey_2:
+        LDI     R17, 1
+        LDI     R16, 3
+??repeatKey_4:
+        RCALL   ??pushBuff
+//   69         break;
+//   70     }
+//   71 
+//   72     GLOBAL::MultyThreading::setTimer(GLOBALTIMERS_KEYBOARD_KEYREP, KEYBOARD_KEYREP_TIMEOUT2_MS);
+??repeatKey_3:
+        LDI     R18, 250
+        LDI     R19, 0
+        RCALL   ?Subroutine2
+//   73   }
+??CrossCallReturnLabel_8:
+        OUT     0x3F, R24
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock1
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine2:
+          CFI Block cfiCond2 Using cfiCommon0
+          CFI Function ??irqPinChange
+          CFI Conditional ??CrossCallReturnLabel_9
+          CFI R16 Frame(CFA_Y, -18)
+          CFI R17 Frame(CFA_Y, -17)
+          CFI R18 Frame(CFA_Y, -16)
+          CFI R19 Frame(CFA_Y, -15)
+          CFI R20 Frame(CFA_Y, -14)
+          CFI R21 Frame(CFA_Y, -13)
+          CFI R22 Frame(CFA_Y, -12)
+          CFI R23 Frame(CFA_Y, -11)
+          CFI R0 Frame(CFA_Y, -10)
+          CFI R1 Frame(CFA_Y, -9)
+          CFI R2 Frame(CFA_Y, -8)
+          CFI R3 Frame(CFA_Y, -7)
+          CFI R30 Frame(CFA_Y, -6)
+          CFI R31 Frame(CFA_Y, -5)
+          CFI R24 Frame(CFA_Y, -4)
+          CFI R25 Frame(CFA_Y, -3)
+          CFI R26 Frame(CFA_Y, -2)
+          CFI R27 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+18
+          CFI Block cfiCond3 Using cfiCommon1
+          CFI (cfiCond3) Function ??repeatKey
+          CFI (cfiCond3) Conditional ??CrossCallReturnLabel_8
+          CFI (cfiCond3) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond3) CFA_SP SP+4
+          CFI (cfiCond3) CFA_Y Y+1
+          CFI Block cfiPicker4 Using cfiCommon2
+          CFI (cfiPicker4) NoFunction
+          CFI (cfiPicker4) Picker
+        LDI     R16, 8
+        JMP     ??setTimer
+          CFI EndBlock cfiCond2
+          CFI EndBlock cfiCond3
+          CFI EndBlock cfiPicker4
+//   74 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   75   __monitor void pushBuff(unsigned char _key, bool _repeat)
+??pushBuff:
+          CFI Block cfiBlock5 Using cfiCommon1
+          CFI Function ??pushBuff
+//   76   {
+        MOVW    R23:R22, R25:R24
+        IN      R19, 0x3F
+        CLI
+//   77     keyboardBuffer[keyBuffHead] = (_key & 0x7F) + (_repeat ? 0x80 : 0x00);
+        TST     R17
+        BREQ    ??pushBuff_1
+        LDI     R18, 128
+        RJMP    ??pushBuff_2
+??pushBuff_1:
+        LDI     R18, 0
+??pushBuff_2:
+        LDS     R24, (??keyboardBuffer + 16)
+        LDI     R25, 0
+        ANDI    R16, 0x7F
+        ADD     R16, R18
+        MOVW    R31:R30, R25:R24
+        SUBI    R30, LOW((-(??keyboardBuffer) & 0xFFFF))
+        SBCI    R31, (-(??keyboardBuffer) & 0xFFFF) >> 8
+        ST      Z, R16
+//   78 
+//   79     keyBuffHead = (keyBuffHead + 1) % KEYBOARD_BUFFER_SIZE;
+        ADIW    R25:R24, 1
+        MOVW    R17:R16, R25:R24
+        RCALL   ?Subroutine3
+??CrossCallReturnLabel_10:
+        STS     (??keyboardBuffer + 16), R20
+//   80     if (keyBuffHead == keyBuffTail)
+        LDS     R16, (??keyboardBuffer + 17)
+        LDS     R17, (??keyboardBuffer + 16)
+        CP      R17, R16
+        BRNE    ??CrossCallReturnLabel_0
+//   81     {
+//   82       keyBuffTail = (keyBuffTail + 1) % KEYBOARD_BUFFER_SIZE;
+        LDI     R17, 0
+        RCALL   ?Subroutine0
+//   83     }
+//   84   }
+??CrossCallReturnLabel_0:
+        OUT     0x3F, R19
+        MOVW    R25:R24, R23:R22
+        RET
+          CFI EndBlock cfiBlock5
+//   85 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   86   __monitor unsigned char popBuff(bool _skipRepeat)
+??popBuff:
+          CFI Block cfiBlock6 Using cfiCommon1
+          CFI Function ??popBuff
+//   87   {
+        MOV     R2, R26
+        MOV     R19, R25
+        MOV     R22, R24
+        IN      R18, 0x3F
+        CLI
+        MOV     R25, R16
+        LDS     R26, (??keyboardBuffer + 16)
+//   88     while (keyBuffHead != keyBuffTail)
+??popBuff_1:
+        LDS     R16, (??keyboardBuffer + 17)
+        CP      R26, R16
+        BREQ    ??popBuff_2
+//   89     {
+//   90       unsigned char curKey = keyboardBuffer[keyBuffTail];
+        LDI     R17, 0
+        MOVW    R31:R30, R17:R16
+        SUBI    R30, LOW((-(??keyboardBuffer) & 0xFFFF))
+        SBCI    R31, (-(??keyboardBuffer) & 0xFFFF) >> 8
+        LD      R24, Z
+//   91 
+//   92       keyBuffTail = (keyBuffTail + 1) % KEYBOARD_BUFFER_SIZE;
+        RCALL   ?Subroutine0
+//   93 
+//   94       if ((!_skipRepeat) || (!(curKey & 0x80)))
+??CrossCallReturnLabel_1:
+        TST     R25
+        BREQ    ??popBuff_3
+        BST     R24, 7
+        BRTS    ??popBuff_1
+//   95       {
+//   96         return curKey & 0x7F;
+??popBuff_3:
+        ANDI    R24, 0x7F
+        MOV     R16, R24
+        RJMP    ??popBuff_4
+//   97       }
+//   98     }
+//   99 
+//  100     return 0;
+??popBuff_2:
+        LDI     R16, 0
+??popBuff_4:
+        OUT     0x3F, R18
+        MOV     R24, R22
+        MOV     R25, R19
+        MOV     R26, R2
+        RET
+          CFI EndBlock cfiBlock6
+//  101   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine0:
+          CFI Block cfiCond7 Using cfiCommon1
+          CFI Function ??pushBuff
+          CFI Conditional ??CrossCallReturnLabel_0
+          CFI CFA_SP SP+4
+          CFI Block cfiCond8 Using cfiCommon1
+          CFI (cfiCond8) Function ??popBuff
+          CFI (cfiCond8) Conditional ??CrossCallReturnLabel_1
+          CFI (cfiCond8) CFA_SP SP+4
+          CFI Block cfiPicker9 Using cfiCommon2
+          CFI (cfiPicker9) NoFunction
+          CFI (cfiPicker9) Picker
+        SUBI    R16, 255
+        SBCI    R17, 255
+        RCALL   ?Subroutine3
+??CrossCallReturnLabel_11:
+        STS     (??keyboardBuffer + 17), R20
+        RET
+          CFI EndBlock cfiCond7
+          CFI EndBlock cfiCond8
+          CFI EndBlock cfiPicker9
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine3:
+          CFI Block cfiCond10 Using cfiCommon1
+          CFI Function ??pushBuff
+          CFI Conditional ??CrossCallReturnLabel_10
+          CFI CFA_SP SP+4
+          CFI Block cfiCond11 Using cfiCommon1
+          CFI (cfiCond11) Function ??pushBuff
+          CFI (cfiCond11) Conditional ??CrossCallReturnLabel_11, ??CrossCallReturnLabel_0
+          CFI (cfiCond11) CFA_SP SP+6
+          CFI Block cfiCond12 Using cfiCommon1
+          CFI (cfiCond12) Function ??popBuff
+          CFI (cfiCond12) Conditional ??CrossCallReturnLabel_11, ??CrossCallReturnLabel_1
+          CFI (cfiCond12) CFA_SP SP+6
+          CFI Block cfiPicker13 Using cfiCommon2
+          CFI (cfiPicker13) NoFunction
+          CFI (cfiPicker13) Picker
+        LDI     R20, 16
+        LDI     R21, 0
+        JMP     ?SS_DIVMOD_L02
+          CFI EndBlock cfiCond10
+          CFI EndBlock cfiCond11
+          CFI EndBlock cfiCond12
+          CFI EndBlock cfiPicker13
+//  102 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  103   __monitor bool getKeyState(unsigned char _keyNum)
+??getKeyState:
+          CFI Block cfiBlock14 Using cfiCommon1
+          CFI Function ??getKeyState
+//  104   {
+        IN      R17, 0x3F
+        CLI
+//  105     switch (_keyNum)
+        DEC     R16
+        BREQ    ??getKeyState_1
+        DEC     R16
+        BREQ    ??getKeyState_2
+        DEC     R16
+        BREQ    ??getKeyState_3
+        DEC     R16
+        BREQ    ??getKeyState_4
+        RJMP    ??getKeyState_5
+//  106     {
+//  107       case 1: return (lastKeyState & 0x01) ? true : false;
+??getKeyState_1:
+        RCALL   ?Subroutine1
+??CrossCallReturnLabel_3:
+        ANDI    R16, 0x01
+        RJMP    ??getKeyState_6
+//  108       case 2: return (lastKeyState & 0x02) ? true : false;
+??getKeyState_2:
+        RCALL   ?Subroutine1
+??CrossCallReturnLabel_4:
+        BST     R16, 1
+        RJMP    ??getKeyState_7
+//  109       case 3: return (lastKeyState & 0x04) ? true : false;
+??getKeyState_3:
+        RCALL   ?Subroutine1
+??CrossCallReturnLabel_5:
+        BST     R16, 2
+        RJMP    ??getKeyState_7
+//  110       case 4: return (lastKeyState & 0x08) ? true : false;
+??getKeyState_4:
+        RCALL   ?Subroutine1
+//  111     }
+??CrossCallReturnLabel_6:
+        BST     R16, 3
+??getKeyState_7:
+        LDI     R16, 0
+        BLD     R16, 0
+        RJMP    ??getKeyState_6
+//  112 
+//  113     return false;
+??getKeyState_5:
+        LDI     R16, 0
+??getKeyState_6:
+        OUT     0x3F, R17
+        RET
+          CFI EndBlock cfiBlock14
+//  114   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine1:
+          CFI Block cfiCond15 Using cfiCommon1
+          CFI Function ??repeatKey
+          CFI Conditional ??CrossCallReturnLabel_2
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+1
+          CFI Block cfiCond16 Using cfiCommon1
+          CFI (cfiCond16) Function ??getKeyState
+          CFI (cfiCond16) Conditional ??CrossCallReturnLabel_3
+          CFI (cfiCond16) CFA_SP SP+4
+          CFI Block cfiCond17 Using cfiCommon1
+          CFI (cfiCond17) Function ??getKeyState
+          CFI (cfiCond17) Conditional ??CrossCallReturnLabel_4
+          CFI (cfiCond17) CFA_SP SP+4
+          CFI Block cfiCond18 Using cfiCommon1
+          CFI (cfiCond18) Function ??getKeyState
+          CFI (cfiCond18) Conditional ??CrossCallReturnLabel_5
+          CFI (cfiCond18) CFA_SP SP+4
+          CFI Block cfiCond19 Using cfiCommon1
+          CFI (cfiCond19) Function ??getKeyState
+          CFI (cfiCond19) Conditional ??CrossCallReturnLabel_6
+          CFI (cfiCond19) CFA_SP SP+4
+          CFI Block cfiCond20 Using cfiCommon1
+          CFI (cfiCond20) Function ??run
+          CFI (cfiCond20) Conditional ??CrossCallReturnLabel_7
+          CFI (cfiCond20) CFA_SP SP+4
+          CFI Block cfiPicker21 Using cfiCommon2
+          CFI (cfiPicker21) NoFunction
+          CFI (cfiPicker21) Picker
+        LDS     R16, ??lastKeyState
+        RET
+          CFI EndBlock cfiCond15
+          CFI EndBlock cfiCond16
+          CFI EndBlock cfiCond17
+          CFI EndBlock cfiCond18
+          CFI EndBlock cfiCond19
+          CFI EndBlock cfiCond20
+          CFI EndBlock cfiPicker21
+//  115 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  116   __monitor bool getUIRequest()
+??getUIRequest:
+          CFI Block cfiBlock22 Using cfiCommon1
+          CFI Function ??getUIRequest
+//  117   {
+        IN      R18, 0x3F
+        CLI
+//  118     bool curValue = uiRequest;
+        LDS     R16, (??lastKeyState + 1)
+//  119     uiRequest = false;
+        LDI     R17, 0
+        STS     (??lastKeyState + 1), R17
+//  120 
+//  121     return curValue;
+        OUT     0x3F, R18
+        RET
+          CFI EndBlock cfiBlock22
+//  122   }
+//  123 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  124   __monitor void clearBuff()
+??clearBuff:
+          CFI Block cfiBlock23 Using cfiCommon1
+          CFI Function ??clearBuff
+//  125   {
+        IN      R17, 0x3F
+        CLI
+//  126     keyBuffHead = 0;
+        LDI     R16, 0
+        STS     (??keyboardBuffer + 16), R16
+//  127     keyBuffTail = 0;
+        STS     (??keyboardBuffer + 17), R16
+//  128   }
+        OUT     0x3F, R17
+        RET
+          CFI EndBlock cfiBlock23
+//  129 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  130   __monitor void init()
+??init:
+          CFI Block cfiBlock24 Using cfiCommon1
+          CFI Function ??init
+//  131   {
+        FUNCALL ??init, ??clearBuff
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R24
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        IN      R24, 0x3F
+        CLI
+//  132     MENU_KEY1_DIR = 0;
+        CBI     0x04, 0x00
+//  133     MENU_KEY1_PORT = 1;
+        SBI     0x05, 0x00
+//  134 
+//  135     MENU_KEY2_DIR = 0;
+        CBI     0x0A, 0x07
+//  136     MENU_KEY2_PORT = 1;
+        SBI     0x0B, 0x07
+//  137 
+//  138     MENU_KEY3_DIR = 0;
+        CBI     0x0A, 0x06
+//  139     MENU_KEY3_PORT = 1;
+        SBI     0x0B, 0x06
+//  140 
+//  141     MENU_KEY4_DIR = 0;
+        CBI     0x0A, 0x05
+//  142     MENU_KEY4_PORT = 1;
+        SBI     0x0B, 0x05
+//  143 
+//  144     lastKeyState = 0;
+        LDI     R16, 0
+        STS     ??lastKeyState, R16
+//  145     uiRequest = false;
+        STS     (??lastKeyState + 1), R16
+//  146     clearBuff();
+        RCALL   ??clearBuff
+//  147 
+//  148     PCMSK0 = (1<<MENU_KEY1_INT);
+        LDI     R16, 1
+        STS     _A_PCMSK0, R16
+//  149     PCMSK1 = 0x00;
+        LDI     R16, 0
+        STS     _A_PCMSK1, R16
+//  150     PCMSK2 = (1<<MENU_KEY2_INT) | (1<<MENU_KEY3_INT) | (1<<MENU_KEY4_INT);
+        LDI     R16, 224
+        STS     _A_PCMSK2, R16
+//  151     PCICR = (1<<PCIE0) | (1<<PCIE2);
+        LDI     R16, 5
+        STS     _A_PCICR, R16
+//  152   }
+        OUT     0x3F, R24
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock24
+        REQUIRE _A_DDRB
+        REQUIRE _A_PORTB
+        REQUIRE _A_DDRD
+        REQUIRE _A_PORTD
+        REQUIRE _A_PCMSK0
+        REQUIRE _A_PCMSK1
+        REQUIRE _A_PCMSK2
+        REQUIRE _A_PCICR
+//  153 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  154   void run()
+??run:
+          CFI Block cfiBlock25 Using cfiCommon1
+          CFI Function ??run
+//  155   {
+//  156     if (!GLOBAL::MultyThreading::getTimer(GLOBALTIMERS_KEYBOARD_KEYREP))
+        FUNCALL ??run, ??getTimer
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??repeatKey
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDI     R16, 8
+        CALL    ??getTimer
+        OR      R16, R17
+        BRNE    ??run_1
+//  157     {
+//  158       uiRequest = false;
+        LDI     R16, 0
+        STS     (??lastKeyState + 1), R16
+//  159 
+//  160       if (lastKeyState)
+        RCALL   ?Subroutine1
+??CrossCallReturnLabel_7:
+        TST     R16
+        BREQ    ??run_1
+//  161       {
+//  162         repeatKey();
+        RCALL   ??repeatKey
+//  163       }
+//  164     }
+//  165   }
+??run_1:
+        RET
+          CFI EndBlock cfiBlock25
+
+        ASEGN ABSOLUTE:DATA:NOROOT,01fH
+__?EECR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,020H
+__?EEDR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,021H
+__?EEARL:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,022H
+__?EEARH:
+
+        COMMON INTVEC:CODE:ROOT(1)
+        ORG 12
+`??irqPinChange??INTVEC 12`:
+        JMP     ??irqPinChange
+
+        COMMON INTVEC:CODE:ROOT(1)
+        ORG 20
+`??irqPinChange??INTVEC 20`:
+        JMP     ??irqPinChange
+
+        RSEG INITTAB:CODE:NOROOT(0)
+`?<Segment init: NEAR_Z>`:
+        DC16    SFE(NEAR_Z) - SFB(NEAR_Z)
+        DC16    SFB(NEAR_Z)
+        DC16    0
+        REQUIRE ?need_segment_init
+
+        END
+//  166 }
+//  167 
+//  168 #endif
+// 
+//  10 bytes in segment ABSOLUTE
+// 620 bytes in segment CODE
+//   6 bytes in segment INITTAB
+//   8 bytes in segment INTVEC
+//  20 bytes in segment NEAR_Z
+// 
+// 620 bytes of CODE memory (+ 14 bytes shared)
+//  20 bytes of DATA memory (+ 10 bytes shared)
+//
+//Errors: none
+//Warnings: 2

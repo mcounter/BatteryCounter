@@ -1,0 +1,2391 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V6.12.1.50500 for Atmel AVR       03/Aug/2014  20:42:14 /
+// Copyright 1996-2012 IAR Systems AB.                                        /
+//                                                                            /
+//    Source file  =  D:\Projects\BatteryCounter\_micro\BattRX\DeviceManager. /
+//                    cpp                                                     /
+//    Command line =  D:\Projects\BatteryCounter\_micro\BattRX\DeviceManager. /
+//                    cpp --cpu=m328p -ms -o "D:\Projects\BatteryCounter\_mic /
+//                    ro\BattRX\Release - Atmega328P\Obj\" -D NDEBUG -lA      /
+//                    "D:\Projects\BatteryCounter\_micro\BattRX\Release -     /
+//                    Atmega328P\List\" --initializers_in_flash               /
+//                    -DENABLE_BIT_DEFINITIONS --do_cross_call -e             /
+//                    --eeprom_size 1024 --dlib --dlib_config "C:\Program     /
+//                    Files (x86)\IAR Systems\Embedded Workbench              /
+//                    6.0\avr\LIB\DLIB\dlAVR-3s-ec_mul-sf-n.h" --eec++ -Ohs   /
+//    List file    =  D:\Projects\BatteryCounter\_micro\BattRX\Release -      /
+//                    Atmega328P\List\DeviceManager.s90                       /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME DeviceManager
+
+        RTMODEL "__64bit_doubles", "disabled"
+        RTMODEL "__SystemLibrary", "DLib"
+        RTMODEL "__cpu", "3"
+        RTMODEL "__cpu_name", "ATmega328P"
+        RTMODEL "__dlib_file_descriptor", "0"
+        RTMODEL "__enhanced_core", "enabled"
+        RTMODEL "__has_elpm", "false"
+        RTMODEL "__memory_model", "2"
+        RTMODEL "__rt_version", "3"
+
+        RSEG CSTACK:DATA:NOROOT(0)
+        RSEG RSTACK:DATA:NOROOT(0)
+
+        ERROR
+//NOTE: This module defines or uses C++ features that are not
+//      accessible from assembler code. Assembling this file will
+//      not produce an equivalent object file to the one produced
+//      by the C++ compiler.
+
+        EXTERN ?ML_EEPROM_EEPROM_16_16EC_L07
+        EXTERN ?ML_EEPROM_GENERIC_16_24_L07
+        EXTERN ?ML_FLASH_GENERIC24_L07
+        EXTERN ?ML_SRAM_EEPROM_16_16_L07
+        EXTERN ?SS_DIVMOD_L02
+        EXTERN ?need_segment_init
+        EXTERN __eeget16_16
+        EXTERN __eeget24_16
+        EXTERN __eeget32_16
+        EXTERN __eeget8_16
+        EXTERN __eeput16_16
+        EXTERN __eeput24_16
+        EXTERN __eeput32_16
+        EXTERN __eeput8_16
+
+        PUBWEAK `?<Segment init: NEAR_Z>`
+        PUBLIC ??EEDefaultDeviceAdvancedSetup
+        PUBLIC ??EEDefaultDeviceCounterConfig
+        PUBLIC ??EEDefaultUserInterfaceSetup
+        PUBLIC ??EEDeviceAdvancedSetup
+        PUBLIC ??EEDeviceCounterConfig
+        PUBLIC ??EEDeviceSerialNumber
+        PUBLIC ??EEDeviceStartAction
+        PUBLIC ??EEDeviceStatusSaved
+        PUBLIC ??EEDeviceTotalsSaved
+        PUBLIC ??EEMemorySecureTemplate
+        PUBLIC ??EEPwdMaster
+        PUBLIC ??EEPwdReports
+        PUBLIC ??EEUserInterfaceSetup
+        PUBLIC ??checkPasswordMaster
+        FUNCTION ??checkPasswordMaster,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??checkPasswordReports
+        FUNCTION ??checkPasswordReports,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??deviceStatusCode
+        PUBLIC ??getTotalDataReset
+        FUNCTION ??getTotalDataReset,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??getTotalFactoryReset
+        FUNCTION ??getTotalFactoryReset,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??getTotalPwdFails
+        FUNCTION ??getTotalPwdFails,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??getTotalRestarts
+        FUNCTION ??getTotalRestarts,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??incPwdFails
+        FUNCTION ??incPwdFails,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??init
+        FUNCTION ??init,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??initModules
+        FUNCTION ??initModules,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??loadDeviceConfiguration
+        FUNCTION ??loadDeviceConfiguration,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 3, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??loadFactoryDefaults
+        FUNCTION ??loadFactoryDefaults,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??loadMemorySecureTemplate
+        FUNCTION ??loadMemorySecureTemplate,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??moduleRunTable
+        PUBLIC ??resetCounters
+        FUNCTION ??resetCounters,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??resetData
+        FUNCTION ??resetData,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??resetFull
+        FUNCTION ??resetFull,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??resetToFactoryDefaults
+        FUNCTION ??resetToFactoryDefaults,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??run_10
+        FUNCTION ??run_10,061203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??saveDeviceAdvancedSetup
+        FUNCTION ??saveDeviceAdvancedSetup,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??saveDeviceCounterConfig
+        FUNCTION ??saveDeviceCounterConfig,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??saveDeviceStatus
+        FUNCTION ??saveDeviceStatus,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??saveTotalsInOut
+        FUNCTION ??saveTotalsInOut,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??saveUserInterfaceSetup
+        FUNCTION ??saveUserInterfaceSetup,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??setPasswordMaster
+        FUNCTION ??setPasswordMaster,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??setPasswordReports
+        FUNCTION ??setPasswordReports,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC ??updateMemorySecureTemplate
+        FUNCTION ??updateMemorySecureTemplate,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBWEAK _A_DDRB
+        PUBWEAK _A_DDRC
+        PUBWEAK _A_DDRD
+        PUBWEAK _A_PINB
+        PUBWEAK _A_PIND
+        PUBWEAK _A_PORTB
+        PUBWEAK _A_PORTC
+        PUBWEAK _A_PORTD
+        PUBWEAK __?EEARH
+        PUBWEAK __?EEARL
+        PUBWEAK __?EECR
+        PUBWEAK __?EEDR
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_Y Y DATA
+          CFI StackFrame CFA_SP SP DATA
+          CFI VirtualResource ?RetPad:1, ?RetHigh:8, ?RetLow:8, ?Ret:17
+          CFI Resource R0:8, R1:8, R2:8, R3:8, R4:8, R5:8, R6:8, R7:8, R8:8, R9:8
+          CFI Resource R10:8, R11:8, R12:8, R13:8, R14:8, R15:8, R16:8, R17:8
+          CFI Resource R18:8, R19:8, R20:8, R21:8, R22:8, R23:8, R24:8, R25:8
+          CFI Resource R26:8, R27:8, R28:8, R29:8, R30:8, R31:8
+          CFI Resource ?RetHighByteMask:8, SP:16, SPH:8, SPL:8, Y:16
+          CFI ResourceParts ?Ret ?RetHigh, ?RetLow, ?RetPad
+          CFI ResourceParts SP SPH, SPL
+          CFI ResourceParts Y R29, R28
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Y+0
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 Undefined
+          CFI R17 Undefined
+          CFI R18 Undefined
+          CFI R19 Undefined
+          CFI R20 Undefined
+          CFI R21 Undefined
+          CFI R22 Undefined
+          CFI R23 Undefined
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 Undefined
+          CFI R31 Undefined
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Notused
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 SameValue
+          CFI R1 SameValue
+          CFI R2 SameValue
+          CFI R3 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 SameValue
+          CFI R17 SameValue
+          CFI R18 SameValue
+          CFI R19 SameValue
+          CFI R20 SameValue
+          CFI R21 SameValue
+          CFI R22 SameValue
+          CFI R23 SameValue
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 SameValue
+          CFI R31 SameValue
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI Y SameValue
+          CFI EndCommon cfiCommon1
+        
+`?<Name GLOBAL 0>`  SYMBOL "GLOBAL"
+`?<Name DeviceProfile 1>` SYMBOL "DeviceProfile", `?<Name GLOBAL 0>`
+??ApplicationVersion SYMBOL "ApplicationVersion", `?<Name DeviceProfile 1>`
+??DeviceAdvancedSetup SYMBOL "DeviceAdvancedSetup", `?<Name DeviceProfile 1>`
+??DeviceCounterConfig SYMBOL "DeviceCounterConfig", `?<Name DeviceProfile 1>`
+??DeviceSerialNumber SYMBOL "DeviceSerialNumber", `?<Name DeviceProfile 1>`
+??MemorySecureTemplate SYMBOL "MemorySecureTemplate", `?<Name DeviceProfile 1>`
+`?<Name RTC 7>`     SYMBOL "RTC", `?<Name GLOBAL 0>`
+??RTCConfig         SYMBOL "RTCConfig", `?<Name RTC 7>`
+??RTCDateTime       SYMBOL "RTCDateTime", `?<Name RTC 7>`
+??UserInterfaceSetup SYMBOL "UserInterfaceSetup", `?<Name DeviceProfile 1>`
+`?<Name DeviceManager 96>` SYMBOL "DeviceManager"
+??EEDefaultDeviceAdvancedSetup SYMBOL "EEDefaultDeviceAdvancedSetup", `?<Name DeviceManager 96>`
+??EEDefaultDeviceCounterConfig SYMBOL "EEDefaultDeviceCounterConfig", `?<Name DeviceManager 96>`
+??EEDefaultUserInterfaceSetup SYMBOL "EEDefaultUserInterfaceSetup", `?<Name DeviceManager 96>`
+??EEDeviceAdvancedSetup SYMBOL "EEDeviceAdvancedSetup", `?<Name DeviceManager 96>`
+??EEDeviceCounterConfig SYMBOL "EEDeviceCounterConfig", `?<Name DeviceManager 96>`
+??EEDeviceSerialNumber SYMBOL "EEDeviceSerialNumber", `?<Name DeviceManager 96>`
+??EEDeviceStartAction SYMBOL "EEDeviceStartAction", `?<Name DeviceManager 96>`
+??EEDeviceStatusSaved SYMBOL "EEDeviceStatusSaved", `?<Name DeviceManager 96>`
+??EEDeviceTotalsSaved SYMBOL "EEDeviceTotalsSaved", `?<Name DeviceManager 96>`
+??EEMemorySecureTemplate SYMBOL "EEMemorySecureTemplate", `?<Name DeviceManager 96>`
+??EEPwdMaster       SYMBOL "EEPwdMaster", `?<Name DeviceManager 96>`
+??EEPwdReports      SYMBOL "EEPwdReports", `?<Name DeviceManager 96>`
+??EEUserInterfaceSetup SYMBOL "EEUserInterfaceSetup", `?<Name DeviceManager 96>`
+??deviceStatusCode  SYMBOL "deviceStatusCode", `?<Name DeviceManager 96>`
+??moduleRunTable    SYMBOL "moduleRunTable", `?<Name DeviceManager 96>`
+
+        EXTERN ??ApplicationVersion
+        EXTERN ??DeviceAdvancedSetup
+        EXTERN ??DeviceCounterConfig
+        EXTERN ??DeviceSerialNumber
+        EXTERN ??MemorySecureTemplate
+        EXTERN ??RTCConfig
+        EXTERN ??RTCDateTime
+        EXTERN ??UserInterfaceSetup
+        EXTERN ??calcCRC8
+        FUNCTION ??calcCRC8,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??calcIsDeviceActiveBySchedule
+        FUNCTION ??calcIsDeviceActiveBySchedule,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??init_10
+        FUNCTION ??init_10,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??init_11
+        FUNCTION ??init_11,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??init_12
+        FUNCTION ??init_12,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??init_13
+        FUNCTION ??init_13,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??init_14
+        FUNCTION ??init_14,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??init_15
+        FUNCTION ??init_15,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??init_16
+        FUNCTION ??init_16,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??init_17
+        FUNCTION ??init_17,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??init_18
+        FUNCTION ??init_18,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??init_19
+        FUNCTION ??init_19,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??init_20
+        FUNCTION ??init_20,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??init_5
+        FUNCTION ??init_5,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??init_6
+        FUNCTION ??init_6,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??init_7
+        FUNCTION ??init_7,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??init_8
+        FUNCTION ??init_8,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??init_9
+        FUNCTION ??init_9,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??processIdleTime
+        FUNCTION ??processIdleTime,0602H
+        EXTERN ??processIdleTime_1
+        FUNCTION ??processIdleTime_1,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??resetData_1
+        FUNCTION ??resetData_1,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??run
+        FUNCTION ??run,0602H
+        EXTERN ??run_1
+        FUNCTION ??run_1,0602H
+        EXTERN ??run_2
+        FUNCTION ??run_2,0602H
+        EXTERN ??run_3
+        FUNCTION ??run_3,0602H
+        EXTERN ??run_4
+        FUNCTION ??run_4,0602H
+        EXTERN ??run_5
+        FUNCTION ??run_5,0602H
+        EXTERN ??run_6
+        FUNCTION ??run_6,0602H
+        EXTERN ??run_7
+        FUNCTION ??run_7,0602H
+        EXTERN ??run_8
+        FUNCTION ??run_8,0602H
+        EXTERN ??run_9
+        FUNCTION ??run_9,0602H
+        EXTERN ??setTotals
+        FUNCTION ??setTotals,0202H
+        ARGFRAME RSTACK, 0, STACK
+
+// D:\Projects\BatteryCounter\_micro\BattRX\DeviceManager.cpp
+//    1 #ifndef __DEVICEMANAGER_CPP_
+//    2 #define __DEVICEMANAGER_CPP_
+//    3 
+//    4 #include "DeviceManager.h"
+
+        ASEGN ABSOLUTE:DATA:NOROOT,02bH
+// union <unnamed> volatile __io _A_PORTD
+_A_PORTD:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,02aH
+// union <unnamed> volatile __io _A_DDRD
+_A_DDRD:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,029H
+// union <unnamed> volatile __io _A_PIND
+_A_PIND:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,028H
+// union <unnamed> volatile __io _A_PORTC
+_A_PORTC:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,027H
+// union <unnamed> volatile __io _A_DDRC
+_A_DDRC:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,025H
+// union <unnamed> volatile __io _A_PORTB
+_A_PORTB:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,024H
+// union <unnamed> volatile __io _A_DDRB
+_A_DDRB:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,023H
+// union <unnamed> volatile __io _A_PINB
+_A_PINB:
+        DS8 1
+//    5 #include "GlobalDeviceProfile.h"
+//    6 
+//    7 #include "GlobalRTC.h"
+//    8 #include "GlobalADC.h"
+//    9 #include "MultyThreading.h"
+//   10 #include "Timer0Handler.h"
+//   11 #include "Timer2Handler.h"
+//   12 #include "PhotoSensor.h"
+//   13 #include "KeyBoardDriver.h"
+//   14 #include "CommProtocol_TWI_Master.h"
+//   15 #include "CommProtocol_SPI_Master.h"
+//   16 #include "LCDDriver.h"
+//   17 #include "MemAT25Driver.h"
+//   18 #include "GlobalCounter.h"
+//   19 #include "IndicatorDriver.h"
+//   20 #include "BacklightDriver.h"
+//   21 #include "UserInterface.h"
+//   22 #include "MainThread.h"
+//   23 #include "CRC8.h"
+//   24 
+//   25 #define DEVICE_APPLICATION_VERSION  {0x01, 0x01, 0x01, 0x0001}
+//   26 #define DEVICE_SERIAL_NUMBER        {0x8B, 0x80, 0x0C, 0x57, 0xDF, 5, "R4EK3CHNK8Q6CD64"}
+//   27 
+//   28 using namespace GLOBAL::DeviceProfile;
+//   29 
+//   30 namespace DeviceManager
+//   31 {
+
+        RSEG NEAR_F:CODE:NOROOT(0)
+//   32   __flash const TApplicationVersion FFApplicationVersion = DEVICE_APPLICATION_VERSION;
+??FFApplicationVersion:
+        DC8 1, 1, 1
+        DC16 1
+//   33 
+
+        RSEG EEPROM_I:XDATA:NOROOT(0)
+//   34   __eeprom TDeviceSerialNumber EEDeviceSerialNumber = DEVICE_SERIAL_NUMBER;
+??EEDeviceSerialNumber:
+        DC8 139, 128, 12, 87, 223
+        DC16 5
+        DC8 "R4EK3CHNK8Q6CD64"
+
+        RSEG EEPROM_I:XDATA:NOROOT(0)
+//   35   __eeprom TDeviceCounterConfig EEDefaultDeviceCounterConfig =
+??EEDefaultDeviceCounterConfig:
+        DC8 1, 0, 14
+//   36     {
+//   37       .detectDirection = CounterDetectDirectionType_NoDetectionDiv2,  //Детекция направления
+//   38       .invertCounting = false,                                        //Не инвертировать счет
+//   39       .bodyDetectionLevel = (70 / timerDiscreteness),                 //Количество периодов детекции объекта
+//   40     };
+//   41 
+//   42   __eeprom TDeviceAdvancedSetup EEDefaultDeviceAdvancedSetup =
+??EEDefaultDeviceAdvancedSetup:
+        DC8 3, 1, 15, 127, 1
+        DC16 540, 1260, 780, 840, 300
+//   43   {
+//   44     .batterySaveMode = DeviceBatterySaveMode_Max,                   //Режим экономии батареи
+//   45     .backlight = true,                                              //Подсветка в меню
+//   46     .inactivityTime = 15,                                           //Время бездействия (в секундах)
+//   47     .workWeekMask = 0x7F,                                           //Маска рабочей недели
+//   48     .workDayStruct = WorkDayShiftStructure_Shift1,                  //Структура рабочего дня: одна смена
+//   49     .shiftStart1 = 540,                                             //Начало смены: 9-00
+//   50     .shiftEnd1 = 1260,                                              //Конец смены: 21-00
+//   51     .shiftStart2 = 780,                                             //Начало обеда: 13-00
+//   52     .shiftEnd2 = 840,                                               //Конец обеда: 14-00
+//   53 #if (BATTERY_CONFIGURATION_SELECTED == BATTERY_CONFIGURATION_LI)
+//   54     .batteryCutOff = 300,                                           //3.00 V
+//   55 #else
+//   56     .batteryCutOff = 200,                                           //2.00 V
+//   57 #endif
+//   58   };
+//   59 
+//   60   __eeprom TUserInterfaceSetup EEDefaultUserInterfaceSetup =
+??EEDefaultUserInterfaceSetup:
+        DC8 0, 1, 32, 32, 32, 32, 77, 67, 79, 85, 78, 84, 69, 82, 32, 32, 32
+        DC8 32, 32, 32, 32, 32, 32, 97, 116, 116, 111, 109, 32, 32, 32, 32, 32
+        DC8 32, 2, 1, 0, 0, 2, 0, 0, 4, 2, 0, 1, 3, 0, 0, 4, 3, 0, 1, 4, 0, 0
+//   61   {
+//   62     .language = UserInterfaceLanguage_RUS,
+//   63     .screenSaverSetup =
+//   64     {
+//   65       .screenSaverType = UserMenuScreenSaverType_Default,
+//   66       .defaultLine0 = {0x20, 0x20, 0x20, 0x20,  'M',  'C',  'O',  'U',  'N',  'T',  'E',  'R', 0x20, 0x20, 0x20, 0x20},
+//   67       .defaultLine1 = {0x20, 0x20, 0x20, 0x20, 0x20,  'a',  't',  't',  'o',  'm', 0x20, 0x20, 0x20, 0x20, 0x20, 0x20},
+//   68     },
+//   69 
+//   70     .infoblockMain =
+//   71     {
+//   72       .infoblockType = UserMenuInfoblockType_DateTimeShort2Cnt,
+//   73       .counter1 =
+//   74       {
+//   75         .counterType = UserMenuInfoblockCounterType_VisitorsHour,
+//   76         .counterDir = UserMenuInfoblockCounterDirType_In,
+//   77         .counterShift = 0,
+//   78       },
+//   79       .counter2 =
+//   80       {
+//   81         .counterType = UserMenuInfoblockCounterType_VisitorsDay,
+//   82         .counterDir = UserMenuInfoblockCounterDirType_In,
+//   83         .counterShift = 0,
+//   84       },
+//   85     },
+//   86 
+//   87     .infoblockLeft =
+//   88     {
+//   89       .infoblockType = UserMenuInfoblockType_Counter2,
+//   90       .counter1 =
+//   91       {
+//   92         .counterType = UserMenuInfoblockCounterType_VisitorsDay,
+//   93         .counterDir = UserMenuInfoblockCounterDirType_In,
+//   94         .counterShift = 1,
+//   95       },
+//   96       .counter2 =
+//   97       {
+//   98         .counterType = UserMenuInfoblockCounterType_VisitorsWeek,
+//   99         .counterDir = UserMenuInfoblockCounterDirType_In,
+//  100         .counterShift = 0,
+//  101       },
+//  102     },
+//  103 
+//  104     .infoblockRight =
+//  105     {
+//  106       .infoblockType = UserMenuInfoblockType_Counter2,
+//  107       .counter1 =
+//  108       {
+//  109         .counterType = UserMenuInfoblockCounterType_VisitorsWeek,
+//  110         .counterDir = UserMenuInfoblockCounterDirType_In,
+//  111         .counterShift = 1,
+//  112       },
+//  113       .counter2 =
+//  114       {
+//  115         .counterType = UserMenuInfoblockCounterType_VisitorsMonth,
+//  116         .counterDir = UserMenuInfoblockCounterDirType_In,
+//  117         .counterShift = 0,
+//  118       },
+//  119     },
+//  120   };
+//  121 
+
+        RSEG EEPROM_I:XDATA:NOROOT(0)
+//  122   __eeprom TDeviceStartAction EEDeviceStartAction = DeviceStartAction_FirstStart;
+//  123 
+//  124   typedef struct
+//  125   {
+//  126     unsigned short year;
+//  127     unsigned char month;    //1-12
+//  128     unsigned char day;      //1-31
+//  129     unsigned char hour;     //0-23
+//  130     unsigned char minute;   //0-59
+//  131     unsigned char second;   //0-59
+//  132     GLOBAL::RTC::TSummerTimeRule summerTimeRule;
+//  133   } TDeviceStatusSaved;
+//  134 
+//  135   typedef struct
+//  136   {
+//  137     unsigned long totalInCnt;
+//  138     unsigned long totalOutCnt;
+//  139     unsigned long totalRestarts;
+//  140     unsigned long totalDataReset;
+//  141     unsigned long totalFactoryReset;
+//  142     unsigned long totalPwdFails;
+//  143   } TDeviceTotalsSaved;
+//  144 
+//  145   __eeprom TDeviceStatusSaved EEDeviceStatusSaved =
+//  146   {
+//  147     .year = 2014,
+//  148     .month = 8,
+//  149     .day = 1,
+//  150     .hour = 0,
+//  151     .minute = 0,
+//  152     .second = 0,
+//  153     .summerTimeRule = GLOBAL::RTC::SummerTimeRule_Ukraine,
+//  154   };
+//  155 
+//  156   __eeprom TDeviceTotalsSaved EEDeviceTotalsSaved =
+??EEDeviceTotalsSaved:
+        DD 0, 0, 0, 0, 0, 0
+??EEDeviceStatusSaved:
+        DC16 2014
+        DC8 8, 1, 0, 0, 0, 2
+??EEDeviceStartAction:
+        DC8 1
+//  157   {
+//  158     .totalInCnt = 0,
+//  159     .totalOutCnt = 0,
+//  160     .totalRestarts = 0,
+//  161     .totalDataReset = 0,
+//  162     .totalFactoryReset = 0,
+//  163     .totalPwdFails = 0,
+//  164   };
+//  165 
+//  166   __eeprom unsigned char EEPwdMaster[DEVICE_PASSWORD_LENGTH] = {0, 0, 0, 0, 0, 0, 0, 0};
+??EEPwdMaster:
+        DC8 0, 0, 0, 0, 0, 0, 0, 0
+//  167   __eeprom unsigned char EEPwdReports[DEVICE_PASSWORD_LENGTH] = {0, 0, 0, 0, 0, 0, 0, 0};
+??EEPwdReports:
+        DC8 0, 0, 0, 0, 0, 0, 0, 0
+
+        RSEG EEPROM_I:XDATA:NOROOT(0)
+//  168   __eeprom unsigned char EEMemorySecureTemplate[EXT_MEMORY_SEGMENTSIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+??EEMemorySecureTemplate:
+        DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+//  169 
+
+        RSEG EEPROM_N:XDATA:NOROOT(0)
+//  170   __eeprom __no_init TDeviceCounterConfig EEDeviceCounterConfig;
+??EEDeviceCounterConfig:
+        DS8 3
+//  171   __eeprom __no_init TDeviceAdvancedSetup EEDeviceAdvancedSetup;
+??EEDeviceAdvancedSetup:
+        DS8 15
+
+        RSEG EEPROM_N:XDATA:NOROOT(0)
+//  172   __eeprom __no_init TUserInterfaceSetup EEUserInterfaceSetup;
+??EEUserInterfaceSetup:
+        DS8 55
+//  173 
+
+        RSEG NEAR_Z:DATA:NOROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//  174   TDeviceStatusCode deviceStatusCode;
+??deviceStatusCode:
+        DS8 1
+//  175 
+//  176   void loadFactoryDefaults();
+//  177   void loadDeviceConfiguration();
+//  178   void initModules();
+//  179   void loadMemorySecureTemplate();
+//  180   void updateMemorySecureTemplate();
+//  181 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  182   void init()
+??init:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function ??init
+//  183   {
+//  184     EEDeviceTotalsSaved.totalRestarts++;
+        FUNCALL ??init, ??loadMemorySecureTemplate
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??init, ??updateMemorySecureTemplate
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??init, ??loadFactoryDefaults
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??init, ??loadDeviceConfiguration
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??init, ??initModules
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDI     R20, ((??EEDeviceTotalsSaved + 8) & 0xff) & 0xFF
+        LDI     R21, (((??EEDeviceTotalsSaved + 8) >> 8) & 0xff) & 0xFF
+        RCALL   ?Subroutine0
+??CrossCallReturnLabel_0:
+        RCALL   ?Subroutine3
+//  185 
+//  186     bool isLoadFactoryDefaults = (EEDeviceStartAction == DeviceStartAction_FirstStart);
+??CrossCallReturnLabel_6:
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 32))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 32))
+        RCALL   ??Subroutine13_0
+??CrossCallReturnLabel_38:
+        CPI     R16, 1
+        BRNE    ??init_1
+//  187 
+//  188     if (EEDeviceStartAction == DeviceStartAction_FirstStart)
+//  189     {
+//  190       loadMemorySecureTemplate();
+        RCALL   ??loadMemorySecureTemplate
+//  191       updateMemorySecureTemplate();
+        RCALL   ??updateMemorySecureTemplate
+        RJMP    ??init_2
+//  192     }
+//  193 
+//  194     if (!isLoadFactoryDefaults)
+//  195     {
+//  196       MENU_KEY1_DIR = 0;
+??init_1:
+        CBI     0x04, 0x00
+//  197       MENU_KEY1_PORT = 1;
+        SBI     0x05, 0x00
+//  198 
+//  199       MENU_KEY4_DIR = 0;
+        CBI     0x0A, 0x05
+//  200       MENU_KEY4_PORT = 1;
+        SBI     0x0B, 0x05
+//  201 
+//  202       isLoadFactoryDefaults = true;
+//  203 
+//  204       for (unsigned char i = 0; i < 100; i++)
+        LDI     R16, 100
+//  205       {
+//  206         if (MENU_KEY1_PIN || MENU_KEY4_PIN)
+??init_3:
+        SBIC    0x03, 0x00
+        RJMP    ??init_4
+        SBIC    0x09, 0x05
+        RJMP    ??init_4
+//  207         {
+//  208           isLoadFactoryDefaults = false;
+//  209           break;
+//  210         }
+//  211       }
+        DEC     R16
+        BRNE    ??init_3
+//  212     }
+//  213 
+//  214     if (isLoadFactoryDefaults)
+//  215     {
+//  216       loadFactoryDefaults();
+??init_2:
+        RCALL   ??loadFactoryDefaults
+//  217 
+//  218       INDICATOR_LED_DIR = 1;
+        SBI     0x07, 0x02
+//  219       INDICATOR_LED_PORT = 1;
+        SBI     0x08, 0x02
+//  220       __delay_cycles(clockFrequency);
+        LDI     R16, 255
+        LDI     R17, 124
+        SUBI    R16, 1
+        SBCI    R17, 0
+        BRNE    $-4
+        RJMP    $+2
+        NOP
+//  221       INDICATOR_LED_PORT = 0;
+        CBI     0x08, 0x02
+//  222       __delay_cycles(clockFrequency / 2);
+        LDI     R16, 127
+        LDI     R17, 62
+        SUBI    R16, 1
+        SBCI    R17, 0
+        BRNE    $-4
+        RJMP    $+2
+        NOP
+//  223     }
+//  224 
+//  225     loadDeviceConfiguration();
+??init_4:
+        RCALL   ??loadDeviceConfiguration
+//  226 
+//  227     deviceStatusCode = DeviceStatusCode_Initialization;
+        LDI     R16, 0
+        STS     ??deviceStatusCode, R16
+//  228 
+//  229     initModules();
+        RJMP    ??initModules
+          CFI EndBlock cfiBlock0
+        REQUIRE _A_DDRB
+        REQUIRE _A_PORTB
+        REQUIRE _A_DDRD
+        REQUIRE _A_PORTD
+        REQUIRE _A_PINB
+        REQUIRE _A_PIND
+        REQUIRE _A_DDRC
+        REQUIRE _A_PORTC
+//  230   }
+//  231 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  232   void loadFactoryDefaults()
+??loadFactoryDefaults:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function ??loadFactoryDefaults
+//  233   {
+        MOV     R1, R25
+        MOV     R2, R24
+//  234     EEDeviceTotalsSaved.totalFactoryReset++;
+        LDI     R24, LOW(??EEDeviceTotalsSaved)
+        LDI     R25, (??EEDeviceTotalsSaved) >> 8
+        LDI     R20, ((??EEDeviceTotalsSaved + 16) & 0xff) & 0xFF
+        LDI     R21, (((??EEDeviceTotalsSaved + 16) >> 8) & 0xff) & 0xFF
+        RCALL   ?Subroutine0
+??CrossCallReturnLabel_1:
+        LDI     R20, ((??EEDeviceTotalsSaved + 16) & 0xff) & 0xFF
+        LDI     R21, (((??EEDeviceTotalsSaved + 16) >> 8) & 0xff) & 0xFF
+        RCALL   ?Subroutine12
+//  235 
+//  236     EEDeviceCounterConfig = EEDefaultDeviceCounterConfig;
+??CrossCallReturnLabel_32:
+        LDI     R20, LOW(??EEDefaultDeviceCounterConfig)
+        LDI     R21, (??EEDefaultDeviceCounterConfig) >> 8
+        CALL    __eeget24_16
+        LDI     R20, LOW(??EEDeviceCounterConfig)
+        LDI     R21, (??EEDeviceCounterConfig) >> 8
+        CALL    __eeput24_16
+//  237     EEDeviceAdvancedSetup = EEDefaultDeviceAdvancedSetup;
+        LDI     R18, LOW((??EEDeviceCounterConfig + 3))
+        LDI     R19, HIGH((??EEDeviceCounterConfig + 3))
+        LDI     R22, LOW((??EEDefaultDeviceCounterConfig + 3))
+        LDI     R23, HIGH((??EEDefaultDeviceCounterConfig + 3))
+        LDI     R30, 15
+        LDI     R31, 0
+        CALL    ?ML_EEPROM_EEPROM_16_16EC_L07
+//  238     EEUserInterfaceSetup = EEDefaultUserInterfaceSetup;
+        LDI     R18, LOW(??EEUserInterfaceSetup)
+        LDI     R19, (??EEUserInterfaceSetup) >> 8
+        LDI     R30, 55
+        CALL    ?ML_EEPROM_EEPROM_16_16EC_L07
+//  239 
+//  240     for (unsigned char i = 0; i < DEVICE_PASSWORD_LENGTH; i++)
+        LDI     R18, ((??EEDeviceTotalsSaved + 33) & 0xff) & 0xFF
+        LDI     R19, (((??EEDeviceTotalsSaved + 33) >> 8) & 0xff) & 0xFF
+        ADIW    R25:R24, 41
+        LDI     R17, 8
+//  241     {
+//  242       EEPwdMaster[i] = 0;
+??loadFactoryDefaults_1:
+        LDI     R16, 0
+        MOVW    R21:R20, R19:R18
+        RCALL   ?Subroutine5
+//  243       EEPwdReports[i] = 0;
+??CrossCallReturnLabel_8:
+        MOVW    R21:R20, R25:R24
+        RCALL   ?Subroutine5
+//  244     }
+??CrossCallReturnLabel_9:
+        ADIW    R25:R24, 1
+        SUBI    R18, 255
+        SBCI    R19, 255
+        DEC     R17
+        BRNE    ??loadFactoryDefaults_1
+//  245 
+//  246     EEDeviceStartAction = DeviceStartAction_Standard;
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 32))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 32))
+        RCALL   ?Subroutine5
+//  247   }
+??CrossCallReturnLabel_10:
+        MOV     R24, R2
+        MOV     R25, R1
+        RET
+          CFI EndBlock cfiBlock1
+//  248 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  249   void loadDeviceConfiguration()
+??loadDeviceConfiguration:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function ??loadDeviceConfiguration
+//  250   {
+//  251     ApplicationVersion = FFApplicationVersion;
+        FUNCALL ??loadDeviceConfiguration, ??loadMemorySecureTemplate
+        LOCFRAME CSTACK, 3, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDI     R17, (??ApplicationVersion) >> 8
+        LDI     R18, 0
+        LDI     R16, LOW(??ApplicationVersion)
+        LDI     R30, LOW(??FFApplicationVersion)
+        LDI     R31, (??FFApplicationVersion) >> 8
+        LDI     R19, 0
+        LDI     R20, 5
+        LDI     R21, 0
+        LDI     R22, 0
+        CALL    ?ML_FLASH_GENERIC24_L07
+//  252     DeviceSerialNumber = EEDeviceSerialNumber;
+        LDI     R30, LOW(??DeviceSerialNumber)
+        LDI     R31, (??DeviceSerialNumber) >> 8
+        LDI     R20, LOW(??EEDeviceSerialNumber)
+        LDI     R21, (??EEDeviceSerialNumber) >> 8
+        LDI     R17, 24
+        CALL    ?ML_EEPROM_GENERIC_16_24_L07
+//  253     DeviceCounterConfig = EEDeviceCounterConfig;
+        LDI     R20, LOW(??EEDeviceCounterConfig)
+        LDI     R21, (??EEDeviceCounterConfig) >> 8
+        CALL    __eeget24_16
+        LDI     R30, LOW(??DeviceCounterConfig)
+        LDI     R31, (??DeviceCounterConfig) >> 8
+        LDI     R19, 0
+        ST      Z, R16
+        STD     Z+1, R17
+        STD     Z+2, R18
+//  254     DeviceAdvancedSetup = EEDeviceAdvancedSetup;
+        LDI     R30, LOW(??DeviceAdvancedSetup)
+        LDI     R31, (??DeviceAdvancedSetup) >> 8
+        LDI     R20, LOW((??EEDeviceCounterConfig + 3))
+        LDI     R21, HIGH((??EEDeviceCounterConfig + 3))
+        LDI     R17, 15
+        RCALL   ?Subroutine7
+//  255     UserInterfaceSetup = EEUserInterfaceSetup;
+??CrossCallReturnLabel_21:
+        LDI     R30, LOW(??UserInterfaceSetup)
+        LDI     R31, (??UserInterfaceSetup) >> 8
+        LDI     R20, LOW(??EEUserInterfaceSetup)
+        LDI     R21, (??EEUserInterfaceSetup) >> 8
+        LDI     R19, 0
+        LDI     R17, 55
+        RCALL   ?Subroutine7
+//  256 
+//  257     loadMemorySecureTemplate();
+??CrossCallReturnLabel_22:
+        RJMP    ??loadMemorySecureTemplate
+          CFI EndBlock cfiBlock2
+//  258   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine7:
+          CFI Block cfiCond3 Using cfiCommon0
+          CFI Function ??loadDeviceConfiguration
+          CFI Conditional ??CrossCallReturnLabel_21
+          CFI CFA_SP SP+4
+          CFI Block cfiCond4 Using cfiCommon0
+          CFI (cfiCond4) Function ??loadDeviceConfiguration
+          CFI (cfiCond4) Conditional ??CrossCallReturnLabel_22
+          CFI (cfiCond4) CFA_SP SP+4
+          CFI Block cfiPicker5 Using cfiCommon1
+          CFI (cfiPicker5) NoFunction
+          CFI (cfiPicker5) Picker
+        LDI     R18, 0
+        JMP     ?ML_EEPROM_GENERIC_16_24_L07
+          CFI EndBlock cfiCond3
+          CFI EndBlock cfiCond4
+          CFI EndBlock cfiPicker5
+//  259 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  260   void loadMemorySecureTemplate()
+??loadMemorySecureTemplate:
+          CFI Block cfiBlock6 Using cfiCommon0
+          CFI Function ??loadMemorySecureTemplate
+//  261   {
+//  262     for (unsigned char i = 0; i < EXT_MEMORY_SEGMENTSIZE; i++)
+        LDI     R30, LOW(??MemorySecureTemplate)
+        LDI     R31, (??MemorySecureTemplate) >> 8
+        LDI     R20, LOW(??EEMemorySecureTemplate)
+        LDI     R21, (??EEMemorySecureTemplate) >> 8
+        LDI     R17, 16
+//  263     {
+//  264       MemorySecureTemplate[i] = EEMemorySecureTemplate[i];
+??loadMemorySecureTemplate_1:
+        RCALL   ??Subroutine13_0
+//  265     }
+??CrossCallReturnLabel_39:
+        ST      Z+, R16
+        RCALL   ?Subroutine6
+??CrossCallReturnLabel_17:
+        BRNE    ??loadMemorySecureTemplate_1
+//  266   }
+        RET
+          CFI EndBlock cfiBlock6
+//  267 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  268   void updateMemorySecureTemplate()
+??updateMemorySecureTemplate:
+          CFI Block cfiBlock7 Using cfiCommon0
+          CFI Function ??updateMemorySecureTemplate
+//  269   {
+        FUNCALL ??updateMemorySecureTemplate, ??calcCRC8
+        LOCFRAME CSTACK, 4, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R27
+          CFI R27 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        ST      -Y, R26
+          CFI R26 Frame(CFA_Y, -2)
+          CFI CFA_Y Y+2
+        ST      -Y, R25
+          CFI R25 Frame(CFA_Y, -3)
+          CFI CFA_Y Y+3
+        ST      -Y, R24
+          CFI R24 Frame(CFA_Y, -4)
+          CFI CFA_Y Y+4
+//  270     for (unsigned char i = 0; i < EXT_MEMORY_SEGMENTSIZE; i++)
+        LDI     R16, 0
+        LDI     R26, LOW(??MemorySecureTemplate)
+        LDI     R27, (??MemorySecureTemplate) >> 8
+//  271     {
+//  272       MemorySecureTemplate[i] ^= *((&GLOBAL::RTC::RTCDateTime.day) + (i % 4));
+??updateMemorySecureTemplate_1:
+        MOV     R18, R16
+        ANDI    R18, 0x03
+        LDI     R31, 0
+        MOV     R30, R18
+        SUBI    R30, LOW((-(??RTCDateTime) & 0xFFFF))
+        SBCI    R31, (-(??RTCDateTime) & 0xFFFF) >> 8
+        LDD     R17, Z+3
+        LD      R18, X
+        EOR     R18, R17
+        ST      X+, R18
+//  273     }
+        INC     R16
+        CPI     R16, 16
+        BRCS    ??updateMemorySecureTemplate_1
+//  274 
+//  275     for (unsigned char iteration = 0; iteration < 2; iteration++)
+        LDI     R25, 2
+//  276     {
+//  277       for (unsigned char i = 0; i < EXT_MEMORY_SEGMENTSIZE; i++)
+??updateMemorySecureTemplate_2:
+        LDI     R24, 0
+        LDI     R26, LOW(??MemorySecureTemplate)
+        LDI     R27, (??MemorySecureTemplate) >> 8
+//  278       {
+//  279         MemorySecureTemplate[i] = CRC8::calcCRC8(MemorySecureTemplate, i + 1);
+??updateMemorySecureTemplate_3:
+        MOV     R18, R24
+        INC     R18
+        LDI     R16, LOW(??MemorySecureTemplate)
+        LDI     R17, (??MemorySecureTemplate) >> 8
+        CALL    ??calcCRC8
+        ST      X+, R16
+//  280       }
+        INC     R24
+        CPI     R24, 16
+        BRCS    ??updateMemorySecureTemplate_3
+//  281     }
+        DEC     R25
+        BRNE    ??updateMemorySecureTemplate_2
+//  282 
+//  283     for (unsigned char i = 0; i < EXT_MEMORY_SEGMENTSIZE; i++)
+        LDI     R20, LOW(??EEMemorySecureTemplate)
+        LDI     R21, (??EEMemorySecureTemplate) >> 8
+        LDI     R30, LOW(??MemorySecureTemplate)
+        LDI     R31, (??MemorySecureTemplate) >> 8
+        LDI     R17, 16
+//  284     {
+//  285       EEMemorySecureTemplate[i] = MemorySecureTemplate[i];
+??updateMemorySecureTemplate_4:
+        LD      R16, Z+
+        RCALL   ?Subroutine5
+//  286     }
+??CrossCallReturnLabel_11:
+        RCALL   ?Subroutine6
+??CrossCallReturnLabel_18:
+        BRNE    ??updateMemorySecureTemplate_4
+//  287   }
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+3
+        LD      R25, Y+
+          CFI R25 SameValue
+          CFI CFA_Y Y+2
+        LD      R26, Y+
+          CFI R26 SameValue
+          CFI CFA_Y Y+1
+        LD      R27, Y+
+          CFI R27 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock7
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine5:
+          CFI Block cfiCond8 Using cfiCommon0
+          CFI Function ??loadFactoryDefaults
+          CFI Conditional ??CrossCallReturnLabel_8
+          CFI CFA_SP SP+4
+          CFI Block cfiCond9 Using cfiCommon0
+          CFI (cfiCond9) Function ??loadFactoryDefaults
+          CFI (cfiCond9) Conditional ??CrossCallReturnLabel_9
+          CFI (cfiCond9) CFA_SP SP+4
+          CFI Block cfiCond10 Using cfiCommon0
+          CFI (cfiCond10) Function ??loadFactoryDefaults
+          CFI (cfiCond10) Conditional ??CrossCallReturnLabel_10
+          CFI (cfiCond10) CFA_SP SP+4
+          CFI Block cfiCond11 Using cfiCommon0
+          CFI (cfiCond11) Function ??updateMemorySecureTemplate
+          CFI (cfiCond11) Conditional ??CrossCallReturnLabel_11
+          CFI (cfiCond11) R24 Frame(CFA_Y, -4)
+          CFI (cfiCond11) R25 Frame(CFA_Y, -3)
+          CFI (cfiCond11) R26 Frame(CFA_Y, -2)
+          CFI (cfiCond11) R27 Frame(CFA_Y, -1)
+          CFI (cfiCond11) CFA_SP SP+4
+          CFI (cfiCond11) CFA_Y Y+4
+          CFI Block cfiCond12 Using cfiCommon0
+          CFI (cfiCond12) Function ??saveDeviceStatus
+          CFI (cfiCond12) Conditional ??CrossCallReturnLabel_12
+          CFI (cfiCond12) CFA_SP SP+4
+          CFI Block cfiCond13 Using cfiCommon0
+          CFI (cfiCond13) Function ??saveDeviceStatus
+          CFI (cfiCond13) Conditional ??CrossCallReturnLabel_13
+          CFI (cfiCond13) CFA_SP SP+4
+          CFI Block cfiCond14 Using cfiCommon0
+          CFI (cfiCond14) Function ??saveDeviceStatus
+          CFI (cfiCond14) Conditional ??CrossCallReturnLabel_14
+          CFI (cfiCond14) CFA_SP SP+4
+          CFI Block cfiCond15 Using cfiCommon0
+          CFI (cfiCond15) Function ??saveDeviceStatus
+          CFI (cfiCond15) Conditional ??CrossCallReturnLabel_15
+          CFI (cfiCond15) CFA_SP SP+4
+          CFI Block cfiCond16 Using cfiCommon0
+          CFI (cfiCond16) Function ??saveDeviceStatus
+          CFI (cfiCond16) Conditional ??CrossCallReturnLabel_16
+          CFI (cfiCond16) CFA_SP SP+4
+          CFI Block cfiPicker17 Using cfiCommon1
+          CFI (cfiPicker17) NoFunction
+          CFI (cfiPicker17) Picker
+        JMP     __eeput8_16
+          CFI EndBlock cfiCond8
+          CFI EndBlock cfiCond9
+          CFI EndBlock cfiCond10
+          CFI EndBlock cfiCond11
+          CFI EndBlock cfiCond12
+          CFI EndBlock cfiCond13
+          CFI EndBlock cfiCond14
+          CFI EndBlock cfiCond15
+          CFI EndBlock cfiCond16
+          CFI EndBlock cfiPicker17
+//  288 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  289   void initModules()
+??initModules:
+          CFI Block cfiBlock18 Using cfiCommon0
+          CFI Function ??initModules
+//  290   {
+//  291     Timer0Handler::init();
+        FUNCALL ??initModules, ??init_5
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??initModules, ??init_6
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??initModules, ??init_7
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??initModules, ??init_8
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??initModules, ??init_9
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??initModules, ??init_10
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??initModules, ??init_11
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??initModules, ??init_12
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??initModules, ??init_13
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??initModules, ??init_14
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??initModules, ??init_15
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??initModules, ??setTotals
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??initModules, ??init_16
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??initModules, ??init_17
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??initModules, ??init_18
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??initModules, ??init_19
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??initModules, ??init_20
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        CALL    ??init_5
+//  292     Timer2Handler::init();
+        CALL    ??init_6
+//  293 
+//  294     GLOBAL::RTC::init(EEDeviceStatusSaved.year, EEDeviceStatusSaved.month, EEDeviceStatusSaved.day,
+//  295                       EEDeviceStatusSaved.hour, EEDeviceStatusSaved.minute, EEDeviceStatusSaved.second,
+//  296                       EEDeviceStatusSaved.summerTimeRule);
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 31))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 31))
+        RCALL   ??Subroutine13_0
+??CrossCallReturnLabel_40:
+        MOV     R23, R16
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 30))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 30))
+        RCALL   ??Subroutine13_0
+??CrossCallReturnLabel_41:
+        MOV     R22, R16
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 29))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 29))
+        RCALL   ??Subroutine13_0
+??CrossCallReturnLabel_42:
+        MOV     R17, R16
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 28))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 28))
+        RCALL   ??Subroutine13_0
+??CrossCallReturnLabel_43:
+        MOV     R21, R17
+        MOV     R17, R16
+        MOV     R18, R21
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 27))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 27))
+        RCALL   ??Subroutine13_0
+??CrossCallReturnLabel_44:
+        MOV     R19, R16
+        MOV     R0, R18
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 26))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 26))
+        RCALL   ??Subroutine13_0
+??CrossCallReturnLabel_45:
+        MOV     R18, R16
+        MOV     R21, R0
+        MOV     R0, R17
+        MOV     R1, R21
+        LDI     R20, ((??EEDeviceTotalsSaved + 24) & 0xff) & 0xFF
+        LDI     R21, (((??EEDeviceTotalsSaved + 24) >> 8) & 0xff) & 0xFF
+        CALL    __eeget16_16
+        MOVW    R21:R20, R1:R0
+        CALL    ??init_7
+//  297     GLOBAL::ADC::init(DeviceAdvancedSetup.batteryCutOff);
+        LDI     R30, LOW(??DeviceAdvancedSetup)
+        LDI     R31, (??DeviceAdvancedSetup) >> 8
+        LDD     R16, Z+13
+        LDD     R17, Z+14
+        CALL    ??init_8
+//  298     GLOBAL::MultyThreading::init();
+        CALL    ??init_9
+//  299 
+//  300     PhotoSensor::init();
+        CALL    ??init_10
+//  301 
+//  302     CommProtocol_TWI_Master::init();
+        CALL    ??init_11
+//  303     LCDDriver::init();
+        CALL    ??init_12
+//  304 
+//  305     CommProtocol_SPI_Master::init();
+        CALL    ??init_13
+//  306     MemAT25Driver::init();
+        CALL    ??init_14
+//  307 
+//  308     GLOBAL::Counter::init();
+        CALL    ??init_15
+//  309     GLOBAL::Counter::setTotals(EEDeviceTotalsSaved.totalInCnt, EEDeviceTotalsSaved.totalOutCnt);
+        LDI     R20, ((??EEDeviceTotalsSaved + 4) & 0xff) & 0xFF
+        LDI     R21, (((??EEDeviceTotalsSaved + 4) >> 8) & 0xff) & 0xFF
+        RCALL   ?Subroutine11
+??CrossCallReturnLabel_29:
+        MOVW    R23:R22, R19:R18
+        MOVW    R1:R0, R17:R16
+        LDI     R20, LOW(??EEDeviceTotalsSaved)
+        LDI     R21, (??EEDeviceTotalsSaved) >> 8
+        RCALL   ?Subroutine11
+??CrossCallReturnLabel_30:
+        MOVW    R21:R20, R1:R0
+        CALL    ??setTotals
+//  310 
+//  311     KeyBoardDriver::init();
+        CALL    ??init_16
+//  312     IndicatorDriver::init();
+        CALL    ??init_17
+//  313     BacklightDriver::init();
+        CALL    ??init_18
+//  314     UserInterface::init();
+        CALL    ??init_19
+//  315 
+//  316     MainThread::init();
+        JMP     ??init_20
+          CFI EndBlock cfiBlock18
+//  317   }
+//  318 
+//  319 #define MODULE_RUN_TABLE_SIZE         (11)
+
+        RSEG NEAR_F:CODE:NOROOT(0)
+//  320 __flash const void* moduleRunTable[MODULE_RUN_TABLE_SIZE] =
+??moduleRunTable:
+        DC16 ??processIdleTime/2, ??run/2, ??run_1/2, ??run_2/2, ??run_3/2
+        DC16 ??run_4/2, ??run_5/2, ??run_6/2, ??run_7/2, ??run_8/2, ??run_9/2
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine2:
+          CFI Block cfiCond19 Using cfiCommon0
+          CFI Function ??checkPasswordMaster
+          CFI Conditional ??CrossCallReturnLabel_46
+          CFI CFA_SP SP+4
+          CFI Block cfiCond20 Using cfiCommon0
+          CFI (cfiCond20) Function ??checkPasswordReports
+          CFI (cfiCond20) Conditional ??CrossCallReturnLabel_47
+          CFI (cfiCond20) CFA_SP SP+4
+          CFI Block cfiPicker21 Using cfiCommon1
+          CFI (cfiPicker21) NoFunction
+          CFI (cfiPicker21) Picker
+        LD      R18, Z+
+          CFI EndBlock cfiCond19
+          CFI EndBlock cfiCond20
+          CFI EndBlock cfiPicker21
+        REQUIRE ??Subroutine13_0
+        ;               // Fall through to label ??Subroutine13_0
+
+        RSEG CODE:CODE:NOROOT(1)
+??Subroutine13_0:
+          CFI Block cfiCond22 Using cfiCommon0
+          CFI Function ??init
+          CFI Conditional ??CrossCallReturnLabel_38
+          CFI CFA_SP SP+4
+          CFI Block cfiCond23 Using cfiCommon0
+          CFI (cfiCond23) Function ??loadMemorySecureTemplate
+          CFI (cfiCond23) Conditional ??CrossCallReturnLabel_39
+          CFI (cfiCond23) CFA_SP SP+4
+          CFI Block cfiCond24 Using cfiCommon0
+          CFI (cfiCond24) Function ??initModules
+          CFI (cfiCond24) Conditional ??CrossCallReturnLabel_40
+          CFI (cfiCond24) CFA_SP SP+4
+          CFI Block cfiCond25 Using cfiCommon0
+          CFI (cfiCond25) Function ??initModules
+          CFI (cfiCond25) Conditional ??CrossCallReturnLabel_41
+          CFI (cfiCond25) CFA_SP SP+4
+          CFI Block cfiCond26 Using cfiCommon0
+          CFI (cfiCond26) Function ??initModules
+          CFI (cfiCond26) Conditional ??CrossCallReturnLabel_42
+          CFI (cfiCond26) CFA_SP SP+4
+          CFI Block cfiCond27 Using cfiCommon0
+          CFI (cfiCond27) Function ??initModules
+          CFI (cfiCond27) Conditional ??CrossCallReturnLabel_43
+          CFI (cfiCond27) CFA_SP SP+4
+          CFI Block cfiCond28 Using cfiCommon0
+          CFI (cfiCond28) Function ??initModules
+          CFI (cfiCond28) Conditional ??CrossCallReturnLabel_44
+          CFI (cfiCond28) CFA_SP SP+4
+          CFI Block cfiCond29 Using cfiCommon0
+          CFI (cfiCond29) Function ??initModules
+          CFI (cfiCond29) Conditional ??CrossCallReturnLabel_45
+          CFI (cfiCond29) CFA_SP SP+4
+          CFI Block cfiCond30 Using cfiCommon0
+          CFI (cfiCond30) Function ??checkPasswordMaster
+          CFI (cfiCond30) Conditional ??CrossCallReturnLabel_46
+          CFI (cfiCond30) CFA_SP SP+4
+          CFI Block cfiCond31 Using cfiCommon0
+          CFI (cfiCond31) Function ??checkPasswordReports
+          CFI (cfiCond31) Conditional ??CrossCallReturnLabel_47
+          CFI (cfiCond31) CFA_SP SP+4
+          CFI Block cfiPicker32 Using cfiCommon1
+          CFI (cfiPicker32) NoFunction
+          CFI (cfiPicker32) Picker
+        JMP     __eeget8_16
+          CFI EndBlock cfiCond22
+          CFI EndBlock cfiCond23
+          CFI EndBlock cfiCond24
+          CFI EndBlock cfiCond25
+          CFI EndBlock cfiCond26
+          CFI EndBlock cfiCond27
+          CFI EndBlock cfiCond28
+          CFI EndBlock cfiCond29
+          CFI EndBlock cfiCond30
+          CFI EndBlock cfiCond31
+          CFI EndBlock cfiPicker32
+//  321 {
+//  322   (void*)(&(GLOBAL::RTC::processIdleTime)),
+//  323   (void*)(&(GLOBAL::ADC::run)),
+//  324   (void*)(&(CommProtocol_SPI_Master::run)),
+//  325   (void*)(&(CommProtocol_TWI_Master::run)),
+//  326   (void*)(&(MemAT25Driver::run)),
+//  327   (void*)(&(LCDDriver::run)),
+//  328   (void*)(&(GLOBAL::Counter::run)),
+//  329   (void*)(&(IndicatorDriver::run)),
+//  330   (void*)(&(MainThread::run)),
+//  331   (void*)(&(KeyBoardDriver::run)),
+//  332   (void*)(&(UserInterface::run)),
+//  333 };
+//  334 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  335   void run()
+??run_10:
+          CFI Block cfiBlock33 Using cfiCommon0
+          CFI Function ??run_10
+//  336   {
+        FUNCALL ??run_10
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run_10, ??processIdleTime_1
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R25
+          CFI R25 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        ST      -Y, R24
+          CFI R24 Frame(CFA_Y, -2)
+          CFI CFA_Y Y+2
+//  337     unsigned char curProcess = 0;
+        LDI     R24, 0
+//  338 
+//  339     while (true)
+//  340     {
+//  341       if (moduleRunTable[curProcess])
+??run_11:
+        LDI     R25, 0
+        MOVW    R17:R16, R25:R24
+        LSL     R16
+        ROL     R17
+        MOVW    R31:R30, R17:R16
+        SUBI    R30, LOW((-(??moduleRunTable) & 0xFFFF))
+        SBCI    R31, (-(??moduleRunTable) & 0xFFFF) >> 8
+        LPM     R16, Z+
+        LPM     R17, Z
+        MOV     R18, R16
+        OR      R18, R17
+        BREQ    ??run_12
+//  342       {
+//  343         (*(void(*)(void))(moduleRunTable[curProcess]))();
+        MOVW    R31:R30, R17:R16
+        ICALL
+//  344       }
+//  345 
+//  346       __watchdog_reset();
+??run_12:
+        WDR
+//  347 
+//  348       curProcess = (curProcess + 1) % MODULE_RUN_TABLE_SIZE;
+        ADIW    R25:R24, 1
+        MOVW    R17:R16, R25:R24
+        LDI     R20, 11
+        LDI     R21, 0
+        CALL    ?SS_DIVMOD_L02
+        MOV     R24, R20
+//  349 
+//  350       if (curProcess == 0)
+        TST     R20
+        BRNE    ??run_11
+//  351       {
+//  352         GLOBAL::MultyThreading::processIdleTime();
+        CALL    ??processIdleTime_1
+        RJMP    ??run_11
+          CFI EndBlock cfiBlock33
+//  353       }
+//  354     }
+//  355   }
+//  356 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  357   void saveDeviceStatus()
+??saveDeviceStatus:
+          CFI Block cfiBlock34 Using cfiCommon0
+          CFI Function ??saveDeviceStatus
+//  358   {
+        LDI     R30, LOW(??RTCDateTime)
+        LDI     R31, (??RTCDateTime) >> 8
+        LD      R16, Z
+        LDD     R17, Z+1
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 24))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 24))
+        CALL    __eeput16_16
+        LDD     R16, Z+2
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 26))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 26))
+        RCALL   ?Subroutine5
+??CrossCallReturnLabel_12:
+        LDD     R16, Z+3
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 27))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 27))
+        RCALL   ?Subroutine5
+??CrossCallReturnLabel_13:
+        LDD     R16, Z+4
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 28))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 28))
+        RCALL   ?Subroutine5
+??CrossCallReturnLabel_14:
+        LDD     R16, Z+5
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 29))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 29))
+        RCALL   ?Subroutine5
+??CrossCallReturnLabel_15:
+        LDD     R16, Z+6
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 30))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 30))
+        RCALL   ?Subroutine5
+??CrossCallReturnLabel_16:
+        LDS     R16, ??RTCConfig
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 31))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 31))
+        JMP     __eeput8_16
+          CFI EndBlock cfiBlock34
+//  359     TDeviceStatusSaved curDeviceStatus =
+//  360     {
+//  361       .year = GLOBAL::RTC::RTCDateTime.year,
+//  362       .month = GLOBAL::RTC::RTCDateTime.month,
+//  363       .day = GLOBAL::RTC::RTCDateTime.day,
+//  364       .hour = GLOBAL::RTC::RTCDateTime.hour,
+//  365       .minute = GLOBAL::RTC::RTCDateTime.minute,
+//  366       .second = GLOBAL::RTC::RTCDateTime.second,
+//  367       .summerTimeRule = GLOBAL::RTC::RTCConfig.summerTimeRule,
+//  368      };
+//  369 
+//  370     EEDeviceStatusSaved = curDeviceStatus;
+//  371   }
+//  372 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  373   void saveTotalsInOut(unsigned long _totalInCnt, unsigned long _totalOutCnt)
+??saveTotalsInOut:
+          CFI Block cfiBlock35 Using cfiCommon0
+          CFI Function ??saveTotalsInOut
+//  374   {
+        MOV     R1, R25
+        MOV     R2, R24
+        MOVW    R25:R24, R21:R20
+//  375     EEDeviceTotalsSaved.totalInCnt = _totalInCnt;
+        LDI     R20, LOW(??EEDeviceTotalsSaved)
+        LDI     R21, (??EEDeviceTotalsSaved) >> 8
+        RCALL   ?Subroutine12
+//  376     EEDeviceTotalsSaved.totalOutCnt = _totalOutCnt;
+??CrossCallReturnLabel_33:
+        MOVW    R17:R16, R25:R24
+        MOVW    R19:R18, R23:R22
+        LDI     R20, ((??EEDeviceTotalsSaved + 4) & 0xff) & 0xFF
+        LDI     R21, (((??EEDeviceTotalsSaved + 4) >> 8) & 0xff) & 0xFF
+        RCALL   ?Subroutine12
+//  377   }
+??CrossCallReturnLabel_34:
+        MOV     R24, R2
+        MOV     R25, R1
+        RET
+          CFI EndBlock cfiBlock35
+//  378 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  379   void saveDeviceCounterConfig()
+??saveDeviceCounterConfig:
+          CFI Block cfiBlock36 Using cfiCommon0
+          CFI Function ??saveDeviceCounterConfig
+//  380   {
+//  381     EEDeviceCounterConfig = DeviceCounterConfig;
+        LDI     R30, LOW(??DeviceCounterConfig)
+        LDI     R31, (??DeviceCounterConfig) >> 8
+        LD      R16, Z
+        LDD     R17, Z+1
+        LDD     R18, Z+2
+        LDI     R20, LOW(??EEDeviceCounterConfig)
+        LDI     R21, (??EEDeviceCounterConfig) >> 8
+        JMP     __eeput24_16
+          CFI EndBlock cfiBlock36
+//  382   }
+//  383 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  384   void saveDeviceAdvancedSetup()
+??saveDeviceAdvancedSetup:
+          CFI Block cfiBlock37 Using cfiCommon0
+          CFI Function ??saveDeviceAdvancedSetup
+//  385   {
+//  386     EEDeviceAdvancedSetup = DeviceAdvancedSetup;
+        FUNCALL ??saveDeviceAdvancedSetup, ??calcIsDeviceActiveBySchedule
+        LOCFRAME CSTACK, 2, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDI     R20, LOW((??EEDeviceCounterConfig + 3))
+        LDI     R21, HIGH((??EEDeviceCounterConfig + 3))
+        LDI     R30, LOW(??DeviceAdvancedSetup)
+        LDI     R31, (??DeviceAdvancedSetup) >> 8
+        LDI     R17, 15
+        LDI     R18, 0
+        CALL    ?ML_SRAM_EEPROM_16_16_L07
+//  387     MainThread::calcIsDeviceActiveBySchedule();
+        JMP     ??calcIsDeviceActiveBySchedule
+          CFI EndBlock cfiBlock37
+//  388   }
+//  389 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  390   void saveUserInterfaceSetup()
+??saveUserInterfaceSetup:
+          CFI Block cfiBlock38 Using cfiCommon0
+          CFI Function ??saveUserInterfaceSetup
+//  391   {
+//  392     EEUserInterfaceSetup = UserInterfaceSetup;
+        LDI     R20, LOW(??EEUserInterfaceSetup)
+        LDI     R21, (??EEUserInterfaceSetup) >> 8
+        LDI     R30, LOW(??UserInterfaceSetup)
+        LDI     R31, (??UserInterfaceSetup) >> 8
+        LDI     R17, 55
+        LDI     R18, 0
+        JMP     ?ML_SRAM_EEPROM_16_16_L07
+          CFI EndBlock cfiBlock38
+//  393   }
+//  394 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  395   __monitor void resetCounters()
+??resetCounters:
+          CFI Block cfiBlock39 Using cfiCommon0
+          CFI Function ??resetCounters
+//  396   {
+        FUNCALL ??resetCounters, ??setTotals
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine8
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+//  397     GLOBAL::Counter::setTotals(0, 0);
+??CrossCallReturnLabel_23:
+        LDI     R20, 0
+        LDI     R21, 0
+        LDI     R22, 0
+        LDI     R23, 0
+        RCALL   ?Subroutine10
+??CrossCallReturnLabel_27:
+        CALL    ??setTotals
+//  398     EEDeviceTotalsSaved.totalInCnt = 0;
+        RCALL   ?Subroutine1
+//  399     EEDeviceTotalsSaved.totalOutCnt = 0;
+//  400     EEDeviceTotalsSaved.totalRestarts = 0;
+??CrossCallReturnLabel_5:
+        RCALL   ?Subroutine3
+//  401     EEDeviceTotalsSaved.totalPwdFails = 0;
+??CrossCallReturnLabel_7:
+        LDI     R20, ((??EEDeviceTotalsSaved + 20) & 0xff) & 0xFF
+        LDI     R21, (((??EEDeviceTotalsSaved + 20) >> 8) & 0xff) & 0xFF
+        RCALL   ?Subroutine12
+//  402   }
+??CrossCallReturnLabel_35:
+        RJMP    ?Subroutine9
+          CFI EndBlock cfiBlock39
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine3:
+          CFI Block cfiCond40 Using cfiCommon0
+          CFI Function ??init
+          CFI Conditional ??CrossCallReturnLabel_6
+          CFI CFA_SP SP+4
+          CFI Block cfiCond41 Using cfiCommon0
+          CFI (cfiCond41) Function ??resetCounters
+          CFI (cfiCond41) Conditional ??CrossCallReturnLabel_7
+          CFI (cfiCond41) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond41) CFA_SP SP+4
+          CFI (cfiCond41) CFA_Y Y+1
+          CFI Block cfiPicker42 Using cfiCommon1
+          CFI (cfiPicker42) NoFunction
+          CFI (cfiPicker42) Picker
+        LDI     R20, ((??EEDeviceTotalsSaved + 8) & 0xff) & 0xFF
+        LDI     R21, (((??EEDeviceTotalsSaved + 8) >> 8) & 0xff) & 0xFF
+        RJMP    ?Subroutine12
+          CFI EndBlock cfiCond40
+          CFI EndBlock cfiCond41
+          CFI EndBlock cfiPicker42
+//  403 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  404   __monitor void resetToFactoryDefaults()
+??resetToFactoryDefaults:
+          CFI Block cfiBlock43 Using cfiCommon0
+          CFI Function ??resetToFactoryDefaults
+//  405   {
+        FUNCALL ??resetToFactoryDefaults, ??loadFactoryDefaults
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??resetToFactoryDefaults, ??loadDeviceConfiguration
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine8
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+//  406     loadFactoryDefaults();
+??CrossCallReturnLabel_24:
+        RCALL   ??loadFactoryDefaults
+//  407     loadDeviceConfiguration();
+        RCALL   ??loadDeviceConfiguration
+//  408   }
+        RJMP    ?Subroutine9
+          CFI EndBlock cfiBlock43
+//  409 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  410   __monitor void resetData()
+??resetData:
+          CFI Block cfiBlock44 Using cfiCommon0
+          CFI Function ??resetData
+//  411   {
+        FUNCALL ??resetData, ??updateMemorySecureTemplate
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??resetData, ??resetData_1
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine8
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+//  412     updateMemorySecureTemplate();
+??CrossCallReturnLabel_25:
+        RCALL   ??updateMemorySecureTemplate
+//  413 
+//  414     EEDeviceTotalsSaved.totalInCnt = 0;
+        RCALL   ?Subroutine1
+//  415     EEDeviceTotalsSaved.totalOutCnt = 0;
+//  416     EEDeviceTotalsSaved.totalDataReset++;
+??CrossCallReturnLabel_4:
+        LDI     R20, ((??EEDeviceTotalsSaved + 12) & 0xff) & 0xFF
+        LDI     R21, (((??EEDeviceTotalsSaved + 12) >> 8) & 0xff) & 0xFF
+        RCALL   ?Subroutine0
+??CrossCallReturnLabel_2:
+        LDI     R20, ((??EEDeviceTotalsSaved + 12) & 0xff) & 0xFF
+        LDI     R21, (((??EEDeviceTotalsSaved + 12) >> 8) & 0xff) & 0xFF
+        RCALL   ?Subroutine12
+//  417 
+//  418     GLOBAL::Counter::resetData();
+??CrossCallReturnLabel_36:
+        CALL    ??resetData_1
+          CFI EndBlock cfiBlock44
+//  419   }
+        REQUIRE ?Subroutine9
+        ;               // Fall through to label ?Subroutine9
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine9:
+          CFI Block cfiBlock45 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA_Y Y+1
+          CFI R24 Frame(CFA_Y, -1)
+          CFI Block cfiPicker46 Using cfiCommon1
+          CFI (cfiPicker46) NoFunction
+          CFI (cfiPicker46) Picker
+        OUT     0x3F, R24
+        LD      R24, Y+
+          CFI (cfiBlock45) CFA_Y Y+0
+          CFI (cfiBlock45) R24 SameValue
+        RET
+          CFI EndBlock cfiBlock45
+          CFI EndBlock cfiPicker46
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine8:
+          CFI Block cfiCond47 Using cfiCommon0
+          CFI Function ??resetCounters
+          CFI Conditional ??CrossCallReturnLabel_23
+          CFI CFA_SP SP+4
+          CFI Block cfiCond48 Using cfiCommon0
+          CFI (cfiCond48) Function ??resetToFactoryDefaults
+          CFI (cfiCond48) Conditional ??CrossCallReturnLabel_24
+          CFI (cfiCond48) CFA_SP SP+4
+          CFI Block cfiCond49 Using cfiCommon0
+          CFI (cfiCond49) Function ??resetData
+          CFI (cfiCond49) Conditional ??CrossCallReturnLabel_25
+          CFI (cfiCond49) CFA_SP SP+4
+          CFI Block cfiCond50 Using cfiCommon0
+          CFI (cfiCond50) Function ??resetFull
+          CFI (cfiCond50) Conditional ??CrossCallReturnLabel_26
+          CFI (cfiCond50) CFA_SP SP+4
+          CFI Block cfiPicker51 Using cfiCommon1
+          CFI (cfiPicker51) NoFunction
+          CFI (cfiPicker51) Picker
+        ST      -Y, R24
+          CFI (cfiCond47) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond47) CFA_Y Y+1
+          CFI (cfiCond48) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond48) CFA_Y Y+1
+          CFI (cfiCond49) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond49) CFA_Y Y+1
+          CFI (cfiCond50) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond50) CFA_Y Y+1
+          CFI (cfiPicker51) R24 Frame(CFA_Y, -1)
+        IN      R24, 0x3F
+        CLI
+        RET
+          CFI EndBlock cfiCond47
+          CFI EndBlock cfiCond48
+          CFI EndBlock cfiCond49
+          CFI EndBlock cfiCond50
+          CFI EndBlock cfiPicker51
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine1:
+          CFI Block cfiCond52 Using cfiCommon0
+          CFI Function ??resetCounters
+          CFI Conditional ??CrossCallReturnLabel_5
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+1
+          CFI Block cfiCond53 Using cfiCommon0
+          CFI (cfiCond53) Function ??resetData
+          CFI (cfiCond53) Conditional ??CrossCallReturnLabel_4
+          CFI (cfiCond53) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond53) CFA_SP SP+4
+          CFI (cfiCond53) CFA_Y Y+1
+          CFI Block cfiPicker54 Using cfiCommon1
+          CFI (cfiPicker54) NoFunction
+          CFI (cfiPicker54) Picker
+        RCALL   ?Subroutine10
+??CrossCallReturnLabel_28:
+        LDI     R20, LOW(??EEDeviceTotalsSaved)
+        LDI     R21, (??EEDeviceTotalsSaved) >> 8
+        RCALL   ?Subroutine12
+??CrossCallReturnLabel_37:
+        LDI     R20, ((??EEDeviceTotalsSaved + 4) & 0xff) & 0xFF
+        LDI     R21, (((??EEDeviceTotalsSaved + 4) >> 8) & 0xff) & 0xFF
+          CFI EndBlock cfiCond52
+          CFI EndBlock cfiCond53
+          CFI EndBlock cfiPicker54
+        REQUIRE ?Subroutine12
+        ;               // Fall through to label ?Subroutine12
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine12:
+          CFI Block cfiCond55 Using cfiCommon0
+          CFI Function ??init
+          CFI Conditional ??CrossCallReturnLabel_6
+          CFI CFA_SP SP+4
+          CFI Block cfiCond56 Using cfiCommon0
+          CFI (cfiCond56) Function ??resetCounters
+          CFI (cfiCond56) Conditional ??CrossCallReturnLabel_7
+          CFI (cfiCond56) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond56) CFA_SP SP+4
+          CFI (cfiCond56) CFA_Y Y+1
+          CFI Block cfiCond57 Using cfiCommon0
+          CFI (cfiCond57) Function ??loadFactoryDefaults
+          CFI (cfiCond57) Conditional ??CrossCallReturnLabel_32
+          CFI (cfiCond57) CFA_SP SP+4
+          CFI Block cfiCond58 Using cfiCommon0
+          CFI (cfiCond58) Function ??saveTotalsInOut
+          CFI (cfiCond58) Conditional ??CrossCallReturnLabel_33
+          CFI (cfiCond58) CFA_SP SP+4
+          CFI Block cfiCond59 Using cfiCommon0
+          CFI (cfiCond59) Function ??saveTotalsInOut
+          CFI (cfiCond59) Conditional ??CrossCallReturnLabel_34
+          CFI (cfiCond59) CFA_SP SP+4
+          CFI Block cfiCond60 Using cfiCommon0
+          CFI (cfiCond60) Function ??resetCounters
+          CFI (cfiCond60) Conditional ??CrossCallReturnLabel_35
+          CFI (cfiCond60) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond60) CFA_SP SP+4
+          CFI (cfiCond60) CFA_Y Y+1
+          CFI Block cfiCond61 Using cfiCommon0
+          CFI (cfiCond61) Function ??resetData
+          CFI (cfiCond61) Conditional ??CrossCallReturnLabel_36
+          CFI (cfiCond61) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond61) CFA_SP SP+4
+          CFI (cfiCond61) CFA_Y Y+1
+          CFI Block cfiCond62 Using cfiCommon0
+          CFI (cfiCond62) Function ??resetCounters
+          CFI (cfiCond62) Conditional ??CrossCallReturnLabel_37, ??CrossCallReturnLabel_5
+          CFI (cfiCond62) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond62) CFA_SP SP+6
+          CFI (cfiCond62) CFA_Y Y+1
+          CFI Block cfiCond63 Using cfiCommon0
+          CFI (cfiCond63) Function ??resetData
+          CFI (cfiCond63) Conditional ??CrossCallReturnLabel_37, ??CrossCallReturnLabel_4
+          CFI (cfiCond63) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond63) CFA_SP SP+6
+          CFI (cfiCond63) CFA_Y Y+1
+          CFI Block cfiCond64 Using cfiCommon0
+          CFI (cfiCond64) Function ??resetCounters
+          CFI (cfiCond64) Conditional ??CrossCallReturnLabel_5
+          CFI (cfiCond64) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond64) CFA_SP SP+4
+          CFI (cfiCond64) CFA_Y Y+1
+          CFI Block cfiCond65 Using cfiCommon0
+          CFI (cfiCond65) Function ??resetData
+          CFI (cfiCond65) Conditional ??CrossCallReturnLabel_4
+          CFI (cfiCond65) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond65) CFA_SP SP+4
+          CFI (cfiCond65) CFA_Y Y+1
+          CFI Block cfiPicker66 Using cfiCommon1
+          CFI (cfiPicker66) NoFunction
+          CFI (cfiPicker66) Picker
+        JMP     __eeput32_16
+          CFI EndBlock cfiCond55
+          CFI EndBlock cfiCond56
+          CFI EndBlock cfiCond57
+          CFI EndBlock cfiCond58
+          CFI EndBlock cfiCond59
+          CFI EndBlock cfiCond60
+          CFI EndBlock cfiCond61
+          CFI EndBlock cfiCond62
+          CFI EndBlock cfiCond63
+          CFI EndBlock cfiCond64
+          CFI EndBlock cfiCond65
+          CFI EndBlock cfiPicker66
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine10:
+          CFI Block cfiCond67 Using cfiCommon0
+          CFI Function ??resetCounters
+          CFI Conditional ??CrossCallReturnLabel_27
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+1
+          CFI Block cfiCond68 Using cfiCommon0
+          CFI (cfiCond68) Function ??resetCounters
+          CFI (cfiCond68) Conditional ??CrossCallReturnLabel_28, ??CrossCallReturnLabel_5
+          CFI (cfiCond68) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond68) CFA_SP SP+6
+          CFI (cfiCond68) CFA_Y Y+1
+          CFI Block cfiCond69 Using cfiCommon0
+          CFI (cfiCond69) Function ??resetData
+          CFI (cfiCond69) Conditional ??CrossCallReturnLabel_28, ??CrossCallReturnLabel_4
+          CFI (cfiCond69) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond69) CFA_SP SP+6
+          CFI (cfiCond69) CFA_Y Y+1
+          CFI Block cfiPicker70 Using cfiCommon1
+          CFI (cfiPicker70) NoFunction
+          CFI (cfiPicker70) Picker
+        LDI     R16, 0
+        LDI     R17, 0
+        LDI     R18, 0
+        LDI     R19, 0
+        RET
+          CFI EndBlock cfiCond67
+          CFI EndBlock cfiCond68
+          CFI EndBlock cfiCond69
+          CFI EndBlock cfiPicker70
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine0:
+          CFI Block cfiCond71 Using cfiCommon0
+          CFI Function ??init
+          CFI Conditional ??CrossCallReturnLabel_0
+          CFI CFA_SP SP+4
+          CFI Block cfiCond72 Using cfiCommon0
+          CFI (cfiCond72) Function ??loadFactoryDefaults
+          CFI (cfiCond72) Conditional ??CrossCallReturnLabel_1
+          CFI (cfiCond72) CFA_SP SP+4
+          CFI Block cfiCond73 Using cfiCommon0
+          CFI (cfiCond73) Function ??resetData
+          CFI (cfiCond73) Conditional ??CrossCallReturnLabel_2
+          CFI (cfiCond73) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond73) CFA_SP SP+4
+          CFI (cfiCond73) CFA_Y Y+1
+          CFI Block cfiCond74 Using cfiCommon0
+          CFI (cfiCond74) Function ??incPwdFails
+          CFI (cfiCond74) Conditional ??CrossCallReturnLabel_3
+          CFI (cfiCond74) CFA_SP SP+4
+          CFI Block cfiPicker75 Using cfiCommon1
+          CFI (cfiPicker75) NoFunction
+          CFI (cfiPicker75) Picker
+        RCALL   ?Subroutine11
+??CrossCallReturnLabel_31:
+        SUBI    R16, 255
+        SBCI    R17, 255
+        SBCI    R18, 255
+        SBCI    R19, 255
+        RET
+          CFI EndBlock cfiCond71
+          CFI EndBlock cfiCond72
+          CFI EndBlock cfiCond73
+          CFI EndBlock cfiCond74
+          CFI EndBlock cfiPicker75
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine11:
+          CFI Block cfiCond76 Using cfiCommon0
+          CFI Function ??initModules
+          CFI Conditional ??CrossCallReturnLabel_29
+          CFI CFA_SP SP+4
+          CFI Block cfiCond77 Using cfiCommon0
+          CFI (cfiCond77) Function ??initModules
+          CFI (cfiCond77) Conditional ??CrossCallReturnLabel_30
+          CFI (cfiCond77) CFA_SP SP+4
+          CFI Block cfiCond78 Using cfiCommon0
+          CFI (cfiCond78) Function ??init
+          CFI (cfiCond78) Conditional ??CrossCallReturnLabel_31, ??CrossCallReturnLabel_0
+          CFI (cfiCond78) CFA_SP SP+6
+          CFI Block cfiCond79 Using cfiCommon0
+          CFI (cfiCond79) Function ??loadFactoryDefaults
+          CFI (cfiCond79) Conditional ??CrossCallReturnLabel_31, ??CrossCallReturnLabel_1
+          CFI (cfiCond79) CFA_SP SP+6
+          CFI Block cfiCond80 Using cfiCommon0
+          CFI (cfiCond80) Function ??resetData
+          CFI (cfiCond80) Conditional ??CrossCallReturnLabel_31, ??CrossCallReturnLabel_2
+          CFI (cfiCond80) R24 Frame(CFA_Y, -1)
+          CFI (cfiCond80) CFA_SP SP+6
+          CFI (cfiCond80) CFA_Y Y+1
+          CFI Block cfiCond81 Using cfiCommon0
+          CFI (cfiCond81) Function ??incPwdFails
+          CFI (cfiCond81) Conditional ??CrossCallReturnLabel_31, ??CrossCallReturnLabel_3
+          CFI (cfiCond81) CFA_SP SP+6
+          CFI Block cfiPicker82 Using cfiCommon1
+          CFI (cfiPicker82) NoFunction
+          CFI (cfiPicker82) Picker
+        JMP     __eeget32_16
+          CFI EndBlock cfiCond76
+          CFI EndBlock cfiCond77
+          CFI EndBlock cfiCond78
+          CFI EndBlock cfiCond79
+          CFI EndBlock cfiCond80
+          CFI EndBlock cfiCond81
+          CFI EndBlock cfiPicker82
+//  420 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  421   __monitor void resetFull()
+??resetFull:
+          CFI Block cfiBlock83 Using cfiCommon0
+          CFI Function ??resetFull
+//  422   {
+        FUNCALL ??resetFull, ??resetToFactoryDefaults
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??resetFull, ??resetData
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??resetFull, ??resetCounters
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine8
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+//  423     resetToFactoryDefaults();
+??CrossCallReturnLabel_26:
+        RCALL   ??resetToFactoryDefaults
+//  424     resetData();
+        RCALL   ??resetData
+//  425     resetCounters();
+        RCALL   ??resetCounters
+//  426   }
+        RJMP    ?Subroutine9
+          CFI EndBlock cfiBlock83
+//  427 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  428   void incPwdFails()
+??incPwdFails:
+          CFI Block cfiBlock84 Using cfiCommon0
+          CFI Function ??incPwdFails
+//  429   {
+//  430     EEDeviceTotalsSaved.totalPwdFails++;
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 20))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 20))
+        RCALL   ?Subroutine0
+??CrossCallReturnLabel_3:
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 20))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 20))
+        JMP     __eeput32_16
+          CFI EndBlock cfiBlock84
+//  431   }
+//  432 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  433   bool checkPasswordMaster(unsigned char* _password)
+??checkPasswordMaster:
+          CFI Block cfiBlock85 Using cfiCommon0
+          CFI Function ??checkPasswordMaster
+//  434   {
+//  435     for (unsigned char i = 0; i < DEVICE_PASSWORD_LENGTH; i++)
+        MOVW    R31:R30, R17:R16
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 33))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 33))
+        LDI     R17, 8
+//  436     {
+//  437       if (_password[i] != EEPwdMaster[i])
+??checkPasswordMaster_1:
+        RCALL   ?Subroutine2
+??CrossCallReturnLabel_46:
+        CP      R18, R16
+        BREQ    ??checkPasswordMaster_2
+//  438       {
+//  439         return false;
+        LDI     R16, 0
+        RET
+//  440       }
+//  441     }
+??checkPasswordMaster_2:
+        RCALL   ?Subroutine6
+??CrossCallReturnLabel_19:
+        BRNE    ??checkPasswordMaster_1
+//  442 
+//  443     return true;
+        LDI     R16, 1
+        RET
+          CFI EndBlock cfiBlock85
+//  444   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine6:
+          CFI Block cfiCond86 Using cfiCommon0
+          CFI Function ??loadMemorySecureTemplate
+          CFI Conditional ??CrossCallReturnLabel_17
+          CFI CFA_SP SP+4
+          CFI Block cfiCond87 Using cfiCommon0
+          CFI (cfiCond87) Function ??updateMemorySecureTemplate
+          CFI (cfiCond87) Conditional ??CrossCallReturnLabel_18
+          CFI (cfiCond87) R24 Frame(CFA_Y, -4)
+          CFI (cfiCond87) R25 Frame(CFA_Y, -3)
+          CFI (cfiCond87) R26 Frame(CFA_Y, -2)
+          CFI (cfiCond87) R27 Frame(CFA_Y, -1)
+          CFI (cfiCond87) CFA_SP SP+4
+          CFI (cfiCond87) CFA_Y Y+4
+          CFI Block cfiCond88 Using cfiCommon0
+          CFI (cfiCond88) Function ??checkPasswordMaster
+          CFI (cfiCond88) Conditional ??CrossCallReturnLabel_19
+          CFI (cfiCond88) CFA_SP SP+4
+          CFI Block cfiCond89 Using cfiCommon0
+          CFI (cfiCond89) Function ??checkPasswordReports
+          CFI (cfiCond89) Conditional ??CrossCallReturnLabel_20
+          CFI (cfiCond89) CFA_SP SP+4
+          CFI Block cfiPicker90 Using cfiCommon1
+          CFI (cfiPicker90) NoFunction
+          CFI (cfiPicker90) Picker
+        SUBI    R20, 255
+        SBCI    R21, 255
+        DEC     R17
+        RET
+          CFI EndBlock cfiCond86
+          CFI EndBlock cfiCond87
+          CFI EndBlock cfiCond88
+          CFI EndBlock cfiCond89
+          CFI EndBlock cfiPicker90
+//  445 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  446   bool checkPasswordReports(unsigned char* _password)
+??checkPasswordReports:
+          CFI Block cfiBlock91 Using cfiCommon0
+          CFI Function ??checkPasswordReports
+//  447   {
+//  448     for (unsigned char i = 0; i < DEVICE_PASSWORD_LENGTH; i++)
+        MOVW    R31:R30, R17:R16
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 41))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 41))
+        LDI     R17, 8
+//  449     {
+//  450       if (_password[i] != EEPwdReports[i])
+??checkPasswordReports_1:
+        RCALL   ?Subroutine2
+??CrossCallReturnLabel_47:
+        CP      R18, R16
+        BREQ    ??checkPasswordReports_2
+//  451       {
+//  452         return false;
+        LDI     R16, 0
+        RET
+//  453       }
+//  454     }
+??checkPasswordReports_2:
+        RCALL   ?Subroutine6
+??CrossCallReturnLabel_20:
+        BRNE    ??checkPasswordReports_1
+//  455 
+//  456     return true;
+        LDI     R16, 1
+        RET
+          CFI EndBlock cfiBlock91
+//  457   }
+//  458 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  459   void setPasswordMaster(unsigned char* _password)
+??setPasswordMaster:
+          CFI Block cfiBlock92 Using cfiCommon0
+          CFI Function ??setPasswordMaster
+//  460   {
+//  461     for (unsigned char i = 0; i < DEVICE_PASSWORD_LENGTH; i++)
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 33))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 33))
+        RJMP    ?Subroutine4
+          CFI EndBlock cfiBlock92
+//  462     {
+//  463       EEPwdMaster[i] = _password[i];
+//  464     }
+//  465   }
+//  466 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  467   void setPasswordReports(unsigned char* _password)
+??setPasswordReports:
+          CFI Block cfiBlock93 Using cfiCommon0
+          CFI Function ??setPasswordReports
+//  468   {
+//  469     for (unsigned char i = 0; i < DEVICE_PASSWORD_LENGTH; i++)
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 41))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 41))
+          CFI EndBlock cfiBlock93
+        REQUIRE ?Subroutine4
+        ;               // Fall through to label ?Subroutine4
+//  470     {
+//  471       EEPwdReports[i] = _password[i];
+//  472     }
+//  473   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine4:
+          CFI Block cfiBlock94 Using cfiCommon0
+          CFI NoFunction
+          CFI Block cfiPicker95 Using cfiCommon1
+          CFI (cfiPicker95) NoFunction
+          CFI (cfiPicker95) Picker
+        MOVW    R31:R30, R17:R16
+        LDI     R17, 8
+??Subroutine4_0:
+        LD      R16, Z+
+        CALL    __eeput8_16
+        SUBI    R20, 255
+        SBCI    R21, 255
+        DEC     R17
+        BRNE    ??Subroutine4_0
+        RET
+          CFI EndBlock cfiBlock94
+          CFI EndBlock cfiPicker95
+//  474 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  475   unsigned long getTotalRestarts()
+??getTotalRestarts:
+          CFI Block cfiBlock96 Using cfiCommon0
+          CFI Function ??getTotalRestarts
+//  476   {
+//  477     return EEDeviceTotalsSaved.totalRestarts;
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 8))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 8))
+        JMP     __eeget32_16
+          CFI EndBlock cfiBlock96
+//  478   }
+//  479 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  480   unsigned long getTotalDataReset()
+??getTotalDataReset:
+          CFI Block cfiBlock97 Using cfiCommon0
+          CFI Function ??getTotalDataReset
+//  481   {
+//  482     return EEDeviceTotalsSaved.totalDataReset;
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 12))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 12))
+        JMP     __eeget32_16
+          CFI EndBlock cfiBlock97
+//  483   }
+//  484 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  485   unsigned long getTotalFactoryReset()
+??getTotalFactoryReset:
+          CFI Block cfiBlock98 Using cfiCommon0
+          CFI Function ??getTotalFactoryReset
+//  486   {
+//  487     return EEDeviceTotalsSaved.totalFactoryReset;
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 16))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 16))
+        JMP     __eeget32_16
+          CFI EndBlock cfiBlock98
+//  488   }
+//  489 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  490   unsigned long getTotalPwdFails()
+??getTotalPwdFails:
+          CFI Block cfiBlock99 Using cfiCommon0
+          CFI Function ??getTotalPwdFails
+//  491   {
+//  492     return EEDeviceTotalsSaved.totalPwdFails;
+        LDI     R20, LOW((??EEDeviceTotalsSaved + 20))
+        LDI     R21, HIGH((??EEDeviceTotalsSaved + 20))
+        JMP     __eeget32_16
+          CFI EndBlock cfiBlock99
+//  493   }
+
+        ASEGN ABSOLUTE:DATA:NOROOT,01fH
+__?EECR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,020H
+__?EEDR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,021H
+__?EEARL:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,022H
+__?EEARH:
+
+        RSEG INITTAB:CODE:NOROOT(0)
+`?<Segment init: NEAR_Z>`:
+        DC16    SFE(NEAR_Z) - SFB(NEAR_Z)
+        DC16    SFB(NEAR_Z)
+        DC16    0
+        REQUIRE ?need_segment_init
+
+        END
+//  494 }
+//  495 
+//  496 #endif
+//  497 
+// 
+//     8 bytes in segment ABSOLUTE
+// 1 054 bytes in segment CODE
+//   162 bytes in segment EEPROM_I
+//    73 bytes in segment EEPROM_N
+//     6 bytes in segment INITTAB
+//    27 bytes in segment NEAR_F
+//     1 byte  in segment NEAR_Z
+// 
+// 1 081 bytes of CODE  memory (+ 6 bytes shared)
+//     1 byte  of DATA  memory (+ 8 bytes shared)
+//   235 bytes of XDATA memory
+//
+//Errors: none
+//Warnings: none

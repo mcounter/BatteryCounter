@@ -1,0 +1,1058 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V6.12.1.50500 for Atmel AVR       27/Jul/2014  17:04:03 /
+// Copyright 1996-2012 IAR Systems AB.                                        /
+//                                                                            /
+//    Source file  =  D:\Projects\BatteryCounter\_micro\BattTX\UserInterfaceM /
+//                    enuBuilder.cpp                                          /
+//    Command line =  D:\Projects\BatteryCounter\_micro\BattTX\UserInterfaceM /
+//                    enuBuilder.cpp --cpu=m48pa -ms -o                       /
+//                    "D:\Projects\BatteryCounter\_micro\BattTX\Release -     /
+//                    Atmega48PA\Obj\" -D NDEBUG -lA                          /
+//                    "D:\Projects\BatteryCounter\_micro\BattTX\Release -     /
+//                    Atmega48PA\List\" --initializers_in_flash               /
+//                    -DENABLE_BIT_DEFINITIONS --do_cross_call -e             /
+//                    --eeprom_size 256 --dlib --dlib_config "C:\Program      /
+//                    Files (x86)\IAR Systems\Embedded Workbench              /
+//                    6.0\avr\LIB\DLIB\dlAVR-1s-ec_mul-n.h" --eec++ -Ohs      /
+//    List file    =  D:\Projects\BatteryCounter\_micro\BattTX\Release -      /
+//                    Atmega48PA\List\UserInterfaceMenuBuilder.s90            /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME UserInterfaceMenuBuilder
+
+        RTMODEL "__64bit_doubles", "disabled"
+        RTMODEL "__SystemLibrary", "DLib"
+        RTMODEL "__cpu", "1"
+        RTMODEL "__cpu_name", "ATmega48PA"
+        RTMODEL "__enhanced_core", "enabled"
+        RTMODEL "__has_elpm", "false"
+        RTMODEL "__memory_model", "2"
+        RTMODEL "__rt_version", "3"
+
+        RSEG CSTACK:DATA:NOROOT(0)
+        RSEG RSTACK:DATA:NOROOT(0)
+
+        ERROR
+//NOTE: This module defines or uses C++ features that are not
+//      accessible from assembler code. Assembling this file will
+//      not produce an equivalent object file to the one produced
+//      by the C++ compiler.
+
+        PUBLIC ??menuDescription
+        PUBLIC ??menuFunctions
+        PUBWEAK __?EEARL
+        PUBWEAK __?EECR
+        PUBWEAK __?EEDR
+`?<Name UserInterface 0>` SYMBOL "UserInterface"
+??menuDescription   SYMBOL "menuDescription", `?<Name UserInterface 0>`
+??menuFunctions     SYMBOL "menuFunctions", `?<Name UserInterface 0>`
+
+        EXTERN ??functionAuthenticationScreen
+        FUNCTION ??functionAuthenticationScreen,0602H
+        EXTERN ??functionBatteryVoltage
+        FUNCTION ??functionBatteryVoltage,0602H
+        EXTERN ??functionCancel
+        FUNCTION ??functionCancel,0602H
+        EXTERN ??functionMenu
+        FUNCTION ??functionMenu,0602H
+        EXTERN ??functionReportVisitorsTotal
+        FUNCTION ??functionReportVisitorsTotal,0602H
+        EXTERN ??functionReports
+        FUNCTION ??functionReports,0602H
+        EXTERN ??functionReset
+        FUNCTION ??functionReset,0602H
+        EXTERN ??functionResetNum
+        FUNCTION ??functionResetNum,0602H
+        EXTERN ??functionSafeBattRemove
+        FUNCTION ??functionSafeBattRemove,0602H
+        EXTERN ??functionScreenSaver
+        FUNCTION ??functionScreenSaver,0602H
+        EXTERN ??functionSerialNumber
+        FUNCTION ??functionSerialNumber,0602H
+        EXTERN ??functionSetupDateTime
+        FUNCTION ??functionSetupDateTime,0602H
+        EXTERN ??functionSetupDetectionTime
+        FUNCTION ??functionSetupDetectionTime,0602H
+        EXTERN ??functionSetupDetector
+        FUNCTION ??functionSetupDetector,0602H
+        EXTERN ??functionSetupDetectorMenu
+        FUNCTION ??functionSetupDetectorMenu,0602H
+        EXTERN ??functionSetupInactivityTime
+        FUNCTION ??functionSetupInactivityTime,0602H
+        EXTERN ??functionSetupInventCnt
+        FUNCTION ??functionSetupInventCnt,0602H
+        EXTERN ??functionSetupInventCntMenu
+        FUNCTION ??functionSetupInventCntMenu,0602H
+        EXTERN ??functionSetupLanguage
+        FUNCTION ??functionSetupLanguage,0602H
+        EXTERN ??functionSetupLanguageMenu
+        FUNCTION ??functionSetupLanguageMenu,0602H
+        EXTERN ??functionSetupPassword
+        FUNCTION ??functionSetupPassword,0602H
+        EXTERN ??functionSetupSaveMode
+        FUNCTION ??functionSetupSaveMode,0602H
+        EXTERN ??functionSetupSaveModeMenu
+        FUNCTION ??functionSetupSaveModeMenu,0602H
+        EXTERN ??functionSetupSummerTime
+        FUNCTION ??functionSetupSummerTime,0602H
+        EXTERN ??functionSetupSummerTimeMenu
+        FUNCTION ??functionSetupSummerTimeMenu,0602H
+        EXTERN ??functionSetupWorkDay
+        FUNCTION ??functionSetupWorkDay,0602H
+        EXTERN ??functionSetupWorkDayMenu
+        FUNCTION ??functionSetupWorkDayMenu,0602H
+        EXTERN ??functionSetupWorkToday
+        FUNCTION ??functionSetupWorkToday,0602H
+        EXTERN ??functionSetupWorkTodayMenu
+        FUNCTION ??functionSetupWorkTodayMenu,0602H
+        EXTERN ??functionSetupWorkWeek
+        FUNCTION ??functionSetupWorkWeek,0602H
+        EXTERN ??functionWidget
+        FUNCTION ??functionWidget,0602H
+
+// D:\Projects\BatteryCounter\_micro\BattTX\UserInterfaceMenuBuilder.cpp
+//    1 #ifndef __USERINTERFACEMENUBUILDER_CPP_
+//    2 #define __USERINTERFACEMENUBUILDER_CPP_
+//    3 
+//    4 #include "UserInterfaceMenuBuilder.h"
+//    5 #include "UserInterface.h"
+//    6 #include "UserInterfaceLang.h"
+//    7 
+//    8 namespace UserInterface
+//    9 {
+
+        RSEG NEAR_F:CODE:NOROOT(0)
+//   10   __flash const TMenuFunctionReference menuFunctions[] =
+??menuFunctions:
+        DC16 0H
+        DC8 0
+        DC16 ??functionScreenSaver/2
+        DC8 0
+        DC16 ??functionWidget/2
+        DC8 0
+        DC16 ??functionCancel/2
+        DC8 0
+        DC16 ??functionMenu/2
+        DC8 0
+        DC16 ??functionMenu/2
+        DC8 5
+        DC16 ??functionMenu/2
+        DC8 8
+        DC16 ??functionMenu/2
+        DC8 16
+        DC16 ??functionMenu/2
+        DC8 22
+        DC16 ??functionMenu/2
+        DC8 26
+        DC16 ??functionMenu/2
+        DC8 32
+        DC16 ??functionSetupSummerTimeMenu/2
+        DC8 35
+        DC16 ??functionMenu/2
+        DC8 39
+        DC16 ??functionMenu/2
+        DC8 43
+        DC16 ??functionMenu/2
+        DC8 49
+        DC16 ??functionMenu/2
+        DC8 51
+        DC16 ??functionMenu/2
+        DC8 54
+        DC16 ??functionMenu/2
+        DC8 57
+        DC16 ??functionMenu/2
+        DC8 60
+        DC16 ??functionMenu/2
+        DC8 63
+        DC16 ??functionSetupDetectorMenu/2
+        DC8 68
+        DC16 ??functionSetupInventCntMenu/2
+        DC8 74
+        DC16 ??functionSetupSaveModeMenu/2
+        DC8 77
+        DC16 ??functionSetupWorkTodayMenu/2
+        DC8 82
+        DC16 ??functionSetupWorkDayMenu/2
+        DC8 85
+        DC16 ??functionSetupLanguageMenu/2
+        DC8 90
+        DC16 ??functionMenu/2
+        DC8 94
+        DC16 ??functionMenu/2
+        DC8 98
+        DC16 ??functionMenu/2
+        DC8 104
+        DC16 ??functionMenu/2
+        DC8 107
+        DC16 ??functionSetupWorkTodayMenu/2
+        DC8 110
+        DC16 ??functionSetupDateTime/2
+        DC8 0
+        DC16 ??functionSetupSummerTime/2
+        DC8 0
+        DC16 ??functionSetupSummerTime/2
+        DC8 1
+        DC16 ??functionSetupSummerTime/2
+        DC8 2
+        DC16 ??functionSetupDetector/2
+        DC8 0
+        DC16 ??functionSetupDetector/2
+        DC8 1
+        DC16 ??functionSetupDetector/2
+        DC8 2
+        DC16 ??functionSetupDetector/2
+        DC8 3
+        DC16 ??functionSetupDetector/2
+        DC8 4
+        DC16 ??functionSetupInventCnt/2
+        DC8 0
+        DC16 ??functionSetupInventCnt/2
+        DC8 1
+        DC16 ??functionSetupDetectionTime/2
+        DC8 0
+        DC16 ??functionSetupSaveMode/2
+        DC8 0
+        DC16 ??functionSetupSaveMode/2
+        DC8 1
+        DC16 ??functionSetupSaveMode/2
+        DC8 2
+        DC16 ??functionSetupSaveMode/2
+        DC8 3
+        DC16 ??functionSetupInactivityTime/2
+        DC8 0
+        DC16 ??functionSetupWorkWeek/2
+        DC8 0
+        DC16 ??functionSetupWorkToday/2
+        DC8 0
+        DC16 ??functionSetupWorkToday/2
+        DC8 1
+        DC16 ??functionSetupWorkDay/2
+        DC8 0
+        DC16 ??functionSetupWorkDay/2
+        DC8 1
+        DC16 ??functionSetupWorkDay/2
+        DC8 2
+        DC16 ??functionSetupWorkDay/2
+        DC8 3
+        DC16 ??functionSetupPassword/2
+        DC8 0
+        DC16 ??functionSetupPassword/2
+        DC8 1
+        DC16 ??functionSetupLanguage/2
+        DC8 0
+        DC16 ??functionSetupLanguage/2
+        DC8 1
+        DC16 ??functionSetupLanguage/2
+        DC8 2
+        DC16 ??functionReset/2
+        DC8 1
+        DC16 ??functionReset/2
+        DC8 2
+        DC16 ??functionReset/2
+        DC8 3
+        DC16 ??functionReset/2
+        DC8 4
+        DC16 ??functionSafeBattRemove/2
+        DC8 0
+        DC16 ??functionReportVisitorsTotal/2
+        DC8 0
+        DC16 ??functionReports/2
+        DC8 1
+        DC16 ??functionReports/2
+        DC8 2
+        DC16 ??functionReports/2
+        DC8 3
+        DC16 ??functionReports/2
+        DC8 4
+        DC16 ??functionReports/2
+        DC8 5
+        DC16 ??functionReports/2
+        DC8 6
+        DC16 ??functionAuthenticationScreen/2
+        DC8 0
+        DC16 ??functionResetNum/2
+        DC8 0
+        DC16 ??functionResetNum/2
+        DC8 1
+        DC16 ??functionResetNum/2
+        DC8 2
+        DC16 ??functionResetNum/2
+        DC8 3
+        DC16 ??functionSerialNumber/2
+        DC8 0
+        DC16 ??functionBatteryVoltage/2
+        DC8 0
+//   11   {
+//   12     {.entryPoint = 0},                                                                                            //   0 - NONE
+//   13     {.entryPoint = (void*)(&(UserInterface::functionScreenSaver)),                                                //   1 - SCREENSAVER
+//   14      .args.parm = 0},                                                                                             //
+//   15     {.entryPoint = (void*)(&(UserInterface::functionWidget)),                                                     //   2 - WIDGET
+//   16      .args.parm = 0},                                                                                             //
+//   17     {.entryPoint = (void*)(&(UserInterface::functionCancel)),                                                     //   3 - CANCEL
+//   18      .args.parm = 0},                                                                                             //
+//   19     {.entryPoint = (void*)(&(UserInterface::functionMenu)),                                                       //   4 - USER_MENU_MAIN_MENU
+//   20      .args.parm = USER_MENU_MAIN_MENU},                                                                           //
+//   21     {.entryPoint = (void*)(&(UserInterface::functionMenu)),                                                       //   5 - USER_MENU_REPORTS
+//   22      .args.parm = USER_MENU_REPORTS},                                                                             //
+//   23     {.entryPoint = (void*)(&(UserInterface::functionMenu)),                                                       //   6 - USER_MENU_SETUP
+//   24      .args.parm = USER_MENU_SETUP},                                                                               //
+//   25     {.entryPoint = (void*)(&(UserInterface::functionMenu)),                                                       //   7 - USER_MENU_MAINTENANCE
+//   26      .args.parm = USER_MENU_MAINTENANCE},                                                                         //
+//   27     {.entryPoint = (void*)(&(UserInterface::functionMenu)),                                                       //   8 - USER_MENU_INFO
+//   28      .args.parm = USER_MENU_INFO},                                                                                //
+//   29     {.entryPoint = (void*)(&(UserInterface::functionMenu)),                                                       //   9 - USER_MENU_REPORTS_VISITORS
+//   30      .args.parm = USER_MENU_REPORTS_VISITORS},                                                                    //
+//   31     {.entryPoint = (void*)(&(UserInterface::functionMenu)),                                                       //  10 - USER_MENU_REPORTS_NOSENSOR
+//   32      .args.parm = USER_MENU_REPORTS_NOSENSOR},                                                                    //
+//   33     {.entryPoint = (void*)(&(UserInterface::functionSetupSummerTimeMenu)),                                        //  11 - USER_MENU_SETUP_SUMMERTIME
+//   34      .args.parm = USER_MENU_SETUP_SUMMERTIME},                                                                    //
+//   35     {.entryPoint = (void*)(&(UserInterface::functionMenu)),                                                       //  12 - USER_MENU_SETUP_COUNTER
+//   36      .args.parm = USER_MENU_SETUP_COUNTER},                                                                       //
+//   37     {.entryPoint = (void*)(&(UserInterface::functionMenu)),                                                       //  13 - USER_MENU_SETUP_ENERGYSAVING
+//   38      .args.parm = USER_MENU_SETUP_ENERGYSAVING},                                                                  //
+//   39     {.entryPoint = (void*)(&(UserInterface::functionMenu)),                                                       //  14 - USER_MENU_SETUP_INTERFACE
+//   40      .args.parm = USER_MENU_SETUP_INTERFACE},                                                                     //
+//   41     {.entryPoint = (void*)(&(UserInterface::functionMenu)),                                                       //  15 - USER_MENU_MAINTENANCE_RESET_COUNTERS
+//   42      .args.parm = USER_MENU_MAINTENANCE_RESET_COUNTERS},                                                          //
+//   43     {.entryPoint = (void*)(&(UserInterface::functionMenu)),                                                       //  16 - USER_MENU_MAINTENANCE_RESET_FACTORY
+//   44      .args.parm = USER_MENU_MAINTENANCE_RESET_FACTORY},                                                           //
+//   45     {.entryPoint = (void*)(&(UserInterface::functionMenu)),                                                       //  17 - USER_MENU_MAINTENANCE_RESET_DATA
+//   46      .args.parm = USER_MENU_MAINTENANCE_RESET_DATA},                                                              //
+//   47     {.entryPoint = (void*)(&(UserInterface::functionMenu)),                                                       //  18 - USER_MENU_MAINTENANCE_RESET_FULL
+//   48      .args.parm = USER_MENU_MAINTENANCE_RESET_FULL},                                                              //
+//   49     {.entryPoint = (void*)(&(UserInterface::functionMenu)),                                                       //  19 - USER_MENU_INFO_RESETNUM
+//   50      .args.parm = USER_MENU_INFO_RESETNUM},                                                                       //
+//   51     {.entryPoint = (void*)(&(UserInterface::functionSetupDetectorMenu)),                                          //  20 - USER_MENU_SETUP_COUNTER_DETECTOR
+//   52      .args.parm = USER_MENU_SETUP_COUNTER_DETECTOR},                                                              //
+//   53     {.entryPoint = (void*)(&(UserInterface::functionSetupInventCntMenu)),                                         //  21 - USER_MENU_SETUP_COUNTER_INVERTCOUNT
+//   54      .args.parm = USER_MENU_SETUP_COUNTER_INVERTCOUNT},                                                           //
+//   55     {.entryPoint = (void*)(&(UserInterface::functionSetupSaveModeMenu)),                                          //  22 - USER_MENU_SETUP_ENERGYSAVING_SAVEMODE
+//   56      .args.parm = USER_MENU_SETUP_ENERGYSAVING_SAVEMODE},                                                         //
+//   57     {.entryPoint = (void*)(&(UserInterface::functionSetupWorkTodayMenu)),                                         //  23 - USER_MENU_SETUP_ENERGYSAVING_WORKTODAY
+//   58      .args.parm = USER_MENU_SETUP_ENERGYSAVING_WORKTODAY},                                                        //
+//   59     {.entryPoint = (void*)(&(UserInterface::functionSetupWorkDayMenu)),                                           //  24 - USER_MENU_SETUP_ENERGYSAVING_WORKDAY
+//   60      .args.parm = USER_MENU_SETUP_ENERGYSAVING_WORKDAY},                                                          //
+//   61     {.entryPoint = (void*)(&(UserInterface::functionSetupLanguageMenu)),                                          //  25 - USER_MENU_SETUP_INTERFACE_LANG
+//   62      .args.parm = USER_MENU_SETUP_INTERFACE_LANG},                                                                //
+//   63     {.entryPoint = (void*)(&(UserInterface::functionMenu)),                                                       //  26 - USER_MENU_MAIN_MENU_REPORTS
+//   64      .args.parm = USER_MENU_MAIN_MENU_REPORTS},                                                                   //
+//   65     {.entryPoint = (void*)(&(UserInterface::functionMenu)),                                                       //  27 - USER_MENU_REPORTS_VISITORS2
+//   66      .args.parm = USER_MENU_REPORTS_VISITORS2},                                                                   //
+//   67     {.entryPoint = (void*)(&(UserInterface::functionMenu)),                                                       //  28 - USER_MENU_REPORTS_NOSENSOR2
+//   68      .args.parm = USER_MENU_REPORTS_NOSENSOR2},                                                                   //
+//   69     {.entryPoint = (void*)(&(UserInterface::functionMenu)),                                                       //  29 - USER_MENU_SETUP2
+//   70      .args.parm = USER_MENU_SETUP2},                                                                              //
+//   71     {.entryPoint = (void*)(&(UserInterface::functionSetupWorkTodayMenu)),                                         //  30 - USER_MENU_SETUP_ENERGYSAVING_WORKTODAY2
+//   72      .args.parm = USER_MENU_SETUP_ENERGYSAVING_WORKTODAY2},                                                       //
+//   73     {.entryPoint = (void*)(&(UserInterface::functionSetupDateTime)),                                              //  31 - SETUP_CLOCK
+//   74      .args.parm = 0},                                                                                             //
+//   75     {.entryPoint = (void*)(&(UserInterface::functionSetupSummerTime)),                                            //  32 - SETUP_SUMMERTIME_OFF
+//   76      .args.parm = 0},                                                                                             //
+//   77     {.entryPoint = (void*)(&(UserInterface::functionSetupSummerTime)),                                            //  33 - SETUP_SUMMERTIME_ON
+//   78      .args.parm = 1},                                                                                             //
+//   79     {.entryPoint = (void*)(&(UserInterface::functionSetupSummerTime)),                                            //  34 - SETUP_SUMMERTIME_UKR
+//   80      .args.parm = 2},                                                                                             //
+//   81     {.entryPoint = (void*)(&(UserInterface::functionSetupDetector)),                                              //  35 - SETUP_COUNTER_DETECTOR_NODETECTION
+//   82      .args.parm = 0},                                                                                             //
+//   83     {.entryPoint = (void*)(&(UserInterface::functionSetupDetector)),                                              //  36 - SETUP_COUNTER_DETECTOR_NODETECTIONDIV2
+//   84      .args.parm = 1},                                                                                             //
+//   85     {.entryPoint = (void*)(&(UserInterface::functionSetupDetector)),                                              //  37 - SETUP_COUNTER_DETECTOR_SIMULATION
+//   86      .args.parm = 2},                                                                                             //
+//   87     {.entryPoint = (void*)(&(UserInterface::functionSetupDetector)),                                              //  38 - SETUP_COUNTER_DETECTOR_STRONGDETECTION
+//   88      .args.parm = 3},                                                                                             //
+//   89     {.entryPoint = (void*)(&(UserInterface::functionSetupDetector)),                                              //  39 - SETUP_COUNTER_DETECTOR_SOFTDETECTION
+//   90      .args.parm = 4},                                                                                             //
+//   91     {.entryPoint = (void*)(&(UserInterface::functionSetupInventCnt)),                                             //  40 - SETUP_COUNTER_INVERTCOUNT_OFF
+//   92      .args.parm = 0},                                                                                             //
+//   93     {.entryPoint = (void*)(&(UserInterface::functionSetupInventCnt)),                                             //  41 - SETUP_COUNTER_INVERTCOUNT_ON
+//   94      .args.parm = 1},                                                                                             //
+//   95     {.entryPoint = (void*)(&(UserInterface::functionSetupDetectionTime)),                                         //  42 - SETUP_COUNTER_DETECTIONTIME
+//   96      .args.parm = 0},                                                                                             //
+//   97     {.entryPoint = (void*)(&(UserInterface::functionSetupSaveMode)),                                              //  43 - SETUP_ENERGYSAVING_SAVEMODE_MIN
+//   98      .args.parm = 0},                                                                                             //
+//   99     {.entryPoint = (void*)(&(UserInterface::functionSetupSaveMode)),                                              //  44 - SETUP_ENERGYSAVING_SAVEMODE_NOCOUNT
+//  100      .args.parm = 1},                                                                                             //
+//  101     {.entryPoint = (void*)(&(UserInterface::functionSetupSaveMode)),                                              //  45 - SETUP_ENERGYSAVING_SAVEMODE_NOSCREEN
+//  102      .args.parm = 2},                                                                                             //
+//  103     {.entryPoint = (void*)(&(UserInterface::functionSetupSaveMode)),                                              //  46 - SETUP_ENERGYSAVING_SAVEMODE_MAX
+//  104      .args.parm = 3},                                                                                             //
+//  105     {.entryPoint = (void*)(&(UserInterface::functionSetupInactivityTime)),                                        //  47 - SETUP_ENERGYSAVING_INACTIVITYTIME
+//  106      .args.parm = 0},                                                                                             //
+//  107     {.entryPoint = (void*)(&(UserInterface::functionSetupWorkWeek)),                                              //  48 - SETUP_ENERGYSAVING_WORKWEEK
+//  108      .args.parm = 0},                                                                                             //
+//  109     {.entryPoint = (void*)(&(UserInterface::functionSetupWorkToday)),                                             //  49 - SETUP_ENERGYSAVING_WORKTODAY_OFF
+//  110      .args.parm = 0},                                                                                             //
+//  111     {.entryPoint = (void*)(&(UserInterface::functionSetupWorkToday)),                                             //  50 - SETUP_ENERGYSAVING_WORKTODAY_ON
+//  112      .args.parm = 1},                                                                                             //
+//  113     {.entryPoint = (void*)(&(UserInterface::functionSetupWorkDay)),                                               //  51 - SETUP_ENERGYSAVING_WORKDAY_24H
+//  114      .args.parm = 0},                                                                                             //
+//  115     {.entryPoint = (void*)(&(UserInterface::functionSetupWorkDay)),                                               //  52 - SETUP_ENERGYSAVING_WORKDAY_1SHIFT
+//  116      .args.parm = 1},                                                                                             //
+//  117     {.entryPoint = (void*)(&(UserInterface::functionSetupWorkDay)),                                               //  53 - SETUP_ENERGYSAVING_WORKDAY_2SHIFTS
+//  118      .args.parm = 2},                                                                                             //
+//  119     {.entryPoint = (void*)(&(UserInterface::functionSetupWorkDay)),                                               //  54 - SETUP_ENERGYSAVING_WORKDAY_1SH_WITHLUNCH
+//  120      .args.parm = 3},                                                                                             //
+//  121     {.entryPoint = (void*)(&(UserInterface::functionSetupPassword)),                                              //  55 - SETUP_PASSWORD_MASTER
+//  122      .args.parm = 0},                                                                                             //
+//  123     {.entryPoint = (void*)(&(UserInterface::functionSetupPassword)),                                              //  56 - SETUP_PASSWORD_MANAGER
+//  124      .args.parm = 1},                                                                                             //
+//  125     {.entryPoint = (void*)(&(UserInterface::functionSetupLanguage)),                                              //  57 - SETUP_INTERFACE_LANG_RUS
+//  126      .args.parm = 0},                                                                                             //
+//  127     {.entryPoint = (void*)(&(UserInterface::functionSetupLanguage)),                                              //  58 - SETUP_INTERFACE_LANG_ENG
+//  128      .args.parm = 1},                                                                                             //
+//  129     {.entryPoint = (void*)(&(UserInterface::functionSetupLanguage)),                                              //  59 - SETUP_INTERFACE_LANG_UKR
+//  130      .args.parm = 2},                                                                                             //
+//  131     {.entryPoint = (void*)(&(UserInterface::functionReset)),                                                      //  60 - MAINTENANCE_RESET_COUNTERS
+//  132      .args.parm = 1},                                                                                             //
+//  133     {.entryPoint = (void*)(&(UserInterface::functionReset)),                                                      //  61 - MAINTENANCE_RESET_FACTORY
+//  134      .args.parm = 2},                                                                                             //
+//  135     {.entryPoint = (void*)(&(UserInterface::functionReset)),                                                      //  62 - MAINTENANCE_RESET_DATA
+//  136      .args.parm = 3},                                                                                             //
+//  137     {.entryPoint = (void*)(&(UserInterface::functionReset)),                                                      //  63 - MAINTENANCE_RESET_FULL
+//  138      .args.parm = 4},                                                                                             //
+//  139     {.entryPoint = (void*)(&(UserInterface::functionSafeBattRemove)),                                             //  64 - MAINTENANCE_SAFE_BATT_REMOVE
+//  140      .args.parm = 0},                                                                                             //
+//  141     {.entryPoint = (void*)(&(UserInterface::functionReportVisitorsTotal)),                                        //  65 - REPORTS_VISITORS_TOTAL
+//  142      .args.parm = 0},                                                                                             //
+//  143     {.entryPoint = (void*)(&(UserInterface::functionReports)),                                                    //  66 - REPORTS_VISITORS_HOUR
+//  144      .args.parm = 1},                                                                                             //
+//  145     {.entryPoint = (void*)(&(UserInterface::functionReports)),                                                    //  67 - REPORTS_VISITORS_DAY
+//  146      .args.parm = 2},                                                                                             //
+//  147     {.entryPoint = (void*)(&(UserInterface::functionReports)),                                                    //  68 - REPORTS_VISITORS_WEEK
+//  148      .args.parm = 3},                                                                                             //
+//  149     {.entryPoint = (void*)(&(UserInterface::functionReports)),                                                    //  69 - REPORTS_VISITORS_MONTH
+//  150      .args.parm = 4},                                                                                             //
+//  151     {.entryPoint = (void*)(&(UserInterface::functionReports)),                                                    //  70 - REPORTS_NOSENSOR_HOUR
+//  152      .args.parm = 5},                                                                                             //
+//  153     {.entryPoint = (void*)(&(UserInterface::functionReports)),                                                    //  71 - REPORTS_NOSENSOR_DAY
+//  154      .args.parm = 6},                                                                                             //
+//  155     {.entryPoint = (void*)(&(UserInterface::functionAuthenticationScreen)),                                       //  72 - AUTHENTICATION_SCREEN
+//  156      .args.parm = 0},                                                                                             //
+//  157     {.entryPoint = (void*)(&(UserInterface::functionResetNum)),                                                   //  73 - INFO_RESETNUM_RESTARTS
+//  158      .args.parm = 0},                                                                                             //
+//  159     {.entryPoint = (void*)(&(UserInterface::functionResetNum)),                                                   //  74 - INFO_RESETNUM_DATARESET
+//  160      .args.parm = 1},                                                                                             //
+//  161     {.entryPoint = (void*)(&(UserInterface::functionResetNum)),                                                   //  75 - INFO_RESETNUM_FACTORYRESET
+//  162      .args.parm = 2},                                                                                             //
+//  163     {.entryPoint = (void*)(&(UserInterface::functionResetNum)),                                                   //  76 - INFO_RESETNUM_PASSWORDFAILS
+//  164      .args.parm = 3},                                                                                             //
+//  165     {.entryPoint = (void*)(&(UserInterface::functionSerialNumber)),                                               //  77 - INFO_SERIALNUM
+//  166      .args.parm = 0},                                                                                             //
+//  167     {.entryPoint = (void*)(&(UserInterface::functionBatteryVoltage)),                                             //  78 - INFO_BATTERY_VOLTAGE
+//  168      .args.parm = 0},                                                                                             //
+//  169   };
+//  170 
+
+        RSEG NEAR_F:CODE:NOROOT(0)
+//  171   __flash const TMenuDescription menuDescription[] =
+??menuDescription:
+        DC8 5, 8, 0, 6, 9, 0, 7, 10, 0, 8, 11, 0, 0, 0, 0, 9, 71, 0, 10, 77, 0
+        DC8 0, 0, 0, 31, 12, 0, 11, 13, 14, 12, 17, 18, 13, 29, 30, 55, 52, 53
+        DC8 56, 52, 54, 14, 58, 0, 0, 0, 0, 15, 63, 64, 16, 65, 66, 17, 67, 0
+        DC8 18, 68, 0, 64, 69, 70, 0, 0, 0, 19, 110, 111, 77, 117, 0, 78, 118
+        DC8 0, 0, 0, 0, 65, 71, 72, 66, 71, 73, 67, 71, 74, 68, 71, 75, 69, 71
+        DC8 76, 0, 0, 0, 70, 77, 73, 71, 77, 74, 0, 0, 0, 32, 4, 0, 33, 5, 0
+        DC8 34, 15, 16, 0, 0, 0, 20, 19, 20, 21, 26, 27, 42, 28, 0, 0, 0, 0, 22
+        DC8 31, 32, 47, 39, 40, 48, 41, 42, 23, 44, 45, 24, 46, 47, 0, 0, 0, 25
+        DC8 59, 0, 0, 0, 0, 3, 6, 0, 60, 7, 0, 0, 0, 0, 3, 6, 0, 61, 7, 0, 0, 0
+        DC8 0, 3, 6, 0, 62, 7, 0, 0, 0, 0, 3, 6, 0, 63, 7, 0, 0, 0, 0, 73, 112
+        DC8 0, 74, 113, 0, 75, 114, 0, 76, 115, 116, 0, 0, 0, 35, 21, 0, 36, 22
+        DC8 0, 37, 23, 0, 38, 24, 0, 39, 25, 0, 0, 0, 0, 40, 6, 0, 41, 7, 0, 0
+        DC8 0, 0, 43, 33, 0, 44, 34, 35, 45, 36, 37, 46, 38, 0, 0, 0, 0, 49, 6
+        DC8 0, 50, 7, 0, 0, 0, 0, 51, 48, 0, 52, 49, 0, 53, 50, 0, 54, 49, 51
+        DC8 0, 0, 0, 57, 60, 0, 58, 61, 0, 59, 62, 0, 0, 0, 0, 27, 71, 0, 28
+        DC8 77, 0, 29, 9, 0, 0, 0, 0, 65, 71, 72, 66, 71, 73, 67, 71, 74, 68
+        DC8 71, 75, 69, 71, 76, 0, 0, 0, 70, 77, 73, 71, 77, 74, 0, 0, 0, 56
+        DC8 52, 54, 30, 44, 45, 0, 0, 0, 49, 6, 0, 50, 7, 0, 0, 0, 0
+
+        ASEGN ABSOLUTE:DATA:NOROOT,01fH
+__?EECR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,020H
+__?EEDR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,021H
+__?EEARL:
+
+        END
+//  172   {
+//  173     {                                                                                                             //   0
+//  174       .menuFunction = USER_MENUITEM_REPORTS,
+//  175       .textRefLine0 = USER_TEXT_CONST_MENU_REPORTS,
+//  176       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  177     },
+//  178     {                                                                                                             //   1
+//  179       .menuFunction = USER_MENUITEM_SETUP,
+//  180       .textRefLine0 = USER_TEXT_CONST_MENU_SETUP,
+//  181       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  182     },
+//  183     {                                                                                                             //   2
+//  184       .menuFunction = USER_MENUITEM_MAINTENANCE,
+//  185       .textRefLine0 = USER_TEXT_CONST_MENU_MAINTENANCE,
+//  186       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  187     },
+//  188     {                                                                                                             //   3
+//  189       .menuFunction = USER_MENUITEM_INFO,
+//  190       .textRefLine0 = USER_TEXT_CONST_MENU_INFO,
+//  191       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  192     },
+//  193     {                                                                                                             //   4
+//  194       .menuFunction = 0,
+//  195       .textRefLine0 = 0,
+//  196       .textRefLine1 = 0,
+//  197     },
+//  198     {                                                                                                             //   5
+//  199       .menuFunction = USER_MENUITEM_REPORTS_VISITORS,
+//  200       .textRefLine0 = USER_TEXT_CONST_REPORTS_VISITORS,
+//  201       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  202     },
+//  203     {                                                                                                             //   6
+//  204       .menuFunction = USER_MENUITEM_REPORTS_NOSENSOR,
+//  205       .textRefLine0 = USER_TEXT_CONST_REPORTS_NOSENSOR,
+//  206       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  207     },
+//  208     {                                                                                                             //   7
+//  209       .menuFunction = 0,
+//  210       .textRefLine0 = 0,
+//  211       .textRefLine1 = 0,
+//  212     },
+//  213     {                                                                                                             //   8
+//  214       .menuFunction = USER_FUNCTION_SETUP_CLOCK,
+//  215       .textRefLine0 = USER_TEXT_CONST_SETUP_CLOCK,
+//  216       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  217     },
+//  218     {                                                                                                             //   9
+//  219       .menuFunction = USER_MENUITEM_SETUP_SUMMERTIME,
+//  220       .textRefLine0 = USER_TEXT_CONST_SETUP_SUMMERTIME_L1,
+//  221       .textRefLine1 = USER_TEXT_CONST_SETUP_SUMMERTIME_L2,
+//  222     },
+//  223     {                                                                                                             //  10
+//  224       .menuFunction = USER_MENUITEM_SETUP_COUNTER,
+//  225       .textRefLine0 = USER_TEXT_CONST_SETUP_COUNTER_L1,
+//  226       .textRefLine1 = USER_TEXT_CONST_SETUP_COUNTER_L2,
+//  227     },
+//  228     {                                                                                                             //  11
+//  229       .menuFunction = USER_MENUITEM_SETUP_ENERGYSAVING,
+//  230       .textRefLine0 = USER_TEXT_CONST_SETUP_ENERGYSAVING_L1,
+//  231       .textRefLine1 = USER_TEXT_CONST_SETUP_ENERGYSAVING_L2,
+//  232     },
+//  233     {                                                                                                             //  12
+//  234       .menuFunction = USER_FUNCTION_SETUP_PASSWORD_MASTER,
+//  235       .textRefLine0 = USER_TEXT_CONST_SETUP_PASSWORD,
+//  236       .textRefLine1 = USER_TEXT_CONST_SETUP_PASSWORD_MASTER,
+//  237     },
+//  238     {                                                                                                             //  13
+//  239       .menuFunction = USER_FUNCTION_SETUP_PASSWORD_MANAGER,
+//  240       .textRefLine0 = USER_TEXT_CONST_SETUP_PASSWORD,
+//  241       .textRefLine1 = USER_TEXT_CONST_SETUP_PASSWORD_MANAGER,
+//  242     },
+//  243     {                                                                                                             //  14
+//  244       .menuFunction = USER_MENUITEM_SETUP_INTERFACE,
+//  245       .textRefLine0 = USER_TEXT_CONST_SETUP_INTERFACE,
+//  246       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  247     },
+//  248     {                                                                                                             //  15
+//  249       .menuFunction = 0,
+//  250       .textRefLine0 = 0,
+//  251       .textRefLine1 = 0,
+//  252     },
+//  253     {                                                                                                             //  16
+//  254       .menuFunction = USER_MENUITEM_MAINTENANCE_RESET_COUNTERS,
+//  255       .textRefLine0 = USER_TEXT_CONST_MAINTENANCE_RESET_COUNTERS_L1,
+//  256       .textRefLine1 = USER_TEXT_CONST_MAINTENANCE_RESET_COUNTERS_L2,
+//  257     },
+//  258     {                                                                                                             //  17
+//  259       .menuFunction = USER_MENUITEM_MAINTENANCE_RESET_FACTORY,
+//  260       .textRefLine0 = USER_TEXT_CONST_MAINTENANCE_RESET_FACTORY_L1,
+//  261       .textRefLine1 = USER_TEXT_CONST_MAINTENANCE_RESET_FACTORY_L2,
+//  262     },
+//  263     {                                                                                                             //  18
+//  264       .menuFunction = USER_MENUITEM_MAINTENANCE_RESET_DATA,
+//  265       .textRefLine0 = USER_TEXT_CONST_MAINTENANCE_RESET_DATA,
+//  266       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  267     },
+//  268     {                                                                                                             //  19
+//  269       .menuFunction = USER_MENUITEM_MAINTENANCE_RESET_FULL,
+//  270       .textRefLine0 = USER_TEXT_CONST_MAINTENANCE_RESET_FULL,
+//  271       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  272     },
+//  273     {                                                                                                             //  20
+//  274       .menuFunction = USER_FUNCTION_MAINTENANCE_SAFE_BATT_REMOVE,
+//  275       .textRefLine0 = USER_TEXT_CONST_MAINTENANCE_SAFE_BATT_REMOVE_L1,
+//  276       .textRefLine1 = USER_TEXT_CONST_MAINTENANCE_SAFE_BATT_REMOVE_L2,
+//  277     },
+//  278     {                                                                                                             //  21
+//  279       .menuFunction = 0,
+//  280       .textRefLine0 = 0,
+//  281       .textRefLine1 = 0,
+//  282     },
+//  283     {                                                                                                             //  22
+//  284       .menuFunction = USER_MENUITEM_INFO_RESETNUM,
+//  285       .textRefLine0 = USER_TEXT_CONST_INFO_RESETNUM_L1,
+//  286       .textRefLine1 = USER_TEXT_CONST_INFO_RESETNUM_L2,
+//  287     },
+//  288     {                                                                                                             //  23
+//  289       .menuFunction = USER_FUNCTION_INFO_SERIALNUM,
+//  290       .textRefLine0 = USER_TEXT_CONST_INFO_SERIALNUM,
+//  291       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  292     },
+//  293     {                                                                                                             //  24
+//  294       .menuFunction = USER_FUNCTION_INFO_BATTERY_VOLTAGE,
+//  295       .textRefLine0 = USER_TEXT_CONST_INFO_BATTERY_VOLTAGE,
+//  296       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  297     },
+//  298     {                                                                                                             //  25
+//  299       .menuFunction = 0,
+//  300       .textRefLine0 = 0,
+//  301       .textRefLine1 = 0,
+//  302     },
+//  303     {                                                                                                             //  26
+//  304       .menuFunction = USER_FUNCTION_REPORTS_VISITORS_TOTAL,
+//  305       .textRefLine0 = USER_TEXT_CONST_REPORTS_VISITORS,
+//  306       .textRefLine1 = USER_TEXT_CONST_REPORTS_TOTAL,
+//  307     },
+//  308     {                                                                                                             //  27
+//  309       .menuFunction = USER_FUNCTION_REPORTS_VISITORS_HOUR,
+//  310       .textRefLine0 = USER_TEXT_CONST_REPORTS_VISITORS,
+//  311       .textRefLine1 = USER_TEXT_CONST_REPORTS_HOUR,
+//  312     },
+//  313     {                                                                                                             //  28
+//  314       .menuFunction = USER_FUNCTION_REPORTS_VISITORS_DAY,
+//  315       .textRefLine0 = USER_TEXT_CONST_REPORTS_VISITORS,
+//  316       .textRefLine1 = USER_TEXT_CONST_REPORTS_DAY,
+//  317     },
+//  318     {                                                                                                             //  29
+//  319       .menuFunction = USER_FUNCTION_REPORTS_VISITORS_WEEK,
+//  320       .textRefLine0 = USER_TEXT_CONST_REPORTS_VISITORS,
+//  321       .textRefLine1 = USER_TEXT_CONST_REPORTS_WEEK,
+//  322     },
+//  323     {                                                                                                             //  30
+//  324       .menuFunction = USER_FUNCTION_REPORTS_VISITORS_MONTH,
+//  325       .textRefLine0 = USER_TEXT_CONST_REPORTS_VISITORS,
+//  326       .textRefLine1 = USER_TEXT_CONST_REPORTS_MONTH,
+//  327     },
+//  328     {                                                                                                             //  31
+//  329       .menuFunction = 0,
+//  330       .textRefLine0 = 0,
+//  331       .textRefLine1 = 0,
+//  332     },
+//  333     {                                                                                                             //  32
+//  334       .menuFunction = USER_FUNCTION_REPORTS_NOSENSOR_HOUR,
+//  335       .textRefLine0 = USER_TEXT_CONST_REPORTS_NOSENSOR,
+//  336       .textRefLine1 = USER_TEXT_CONST_REPORTS_HOUR,
+//  337     },
+//  338     {                                                                                                             //  33
+//  339       .menuFunction = USER_FUNCTION_REPORTS_NOSENSOR_DAY,
+//  340       .textRefLine0 = USER_TEXT_CONST_REPORTS_NOSENSOR,
+//  341       .textRefLine1 = USER_TEXT_CONST_REPORTS_DAY,
+//  342     },
+//  343     {                                                                                                             //  34
+//  344       .menuFunction = 0,
+//  345       .textRefLine0 = 0,
+//  346       .textRefLine1 = 0,
+//  347     },
+//  348     {                                                                                                             //  35
+//  349       .menuFunction = USER_FUNCTION_SETUP_SUMMERTIME_OFF,
+//  350       .textRefLine0 = USER_TEXT_CONST_SWITCH_OFF,
+//  351       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  352     },
+//  353     {                                                                                                             //  36
+//  354       .menuFunction = USER_FUNCTION_SETUP_SUMMERTIME_ON,
+//  355       .textRefLine0 = USER_TEXT_CONST_SWITCH_ON,
+//  356       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  357     },
+//  358     {                                                                                                             //  37
+//  359       .menuFunction = USER_FUNCTION_SETUP_SUMMERTIME_UKR,
+//  360       .textRefLine0 = USER_TEXT_CONST_SETUP_SUMMERTIME_AUTO,
+//  361       .textRefLine1 = USER_TEXT_CONST_SETUP_SUMMERTIME_UKR,
+//  362     },
+//  363     {                                                                                                             //  38
+//  364       .menuFunction = 0,
+//  365       .textRefLine0 = 0,
+//  366       .textRefLine1 = 0,
+//  367     },
+//  368     {                                                                                                             //  39
+//  369       .menuFunction = USER_MENUITEM_SETUP_COUNTER_DETECTOR,
+//  370       .textRefLine0 = USER_TEXT_CONST_SETUP_COUNTER_DETECTOR_L1,
+//  371       .textRefLine1 = USER_TEXT_CONST_SETUP_COUNTER_DETECTOR_L2,
+//  372     },
+//  373     {                                                                                                             //  40
+//  374       .menuFunction = USER_MENUITEM_SETUP_COUNTER_INVERTCOUNT,
+//  375       .textRefLine0 = USER_TEXT_CONST_SETUP_COUNTER_INVERTCOUNT_L1,
+//  376       .textRefLine1 = USER_TEXT_CONST_SETUP_COUNTER_INVERTCOUNT_L2,
+//  377     },
+//  378     {                                                                                                             //  41
+//  379       .menuFunction = USER_FUNCTION_SETUP_COUNTER_DETECTIONTIME,
+//  380       .textRefLine0 = USER_TEXT_CONST_SETUP_COUNTER_DETECTIONTIME,
+//  381       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  382     },
+//  383     {                                                                                                             //  42
+//  384       .menuFunction = 0,
+//  385       .textRefLine0 = 0,
+//  386       .textRefLine1 = 0,
+//  387     },
+//  388     {                                                                                                             //  43
+//  389       .menuFunction = USER_MENUITEM_SETUP_ENERGYSAVING_SAVEMODE,
+//  390       .textRefLine0 = USER_TEXT_CONST_SETUP_ENERGYSAVING_SAVEMODE_L1,
+//  391       .textRefLine1 = USER_TEXT_CONST_SETUP_ENERGYSAVING_SAVEMODE_L2,
+//  392     },
+//  393     {                                                                                                             //  44
+//  394       .menuFunction = USER_FUNCTION_SETUP_ENERGYSAVING_INACTIVITYTIME,
+//  395       .textRefLine0 = USER_TEXT_CONST_SETUP_ENERGYSAVING_INACTIVITYTIME_L1,
+//  396       .textRefLine1 = USER_TEXT_CONST_SETUP_ENERGYSAVING_INACTIVITYTIME_L2,
+//  397     },
+//  398     {                                                                                                             //  45
+//  399       .menuFunction = USER_FUNCTION_SETUP_ENERGYSAVING_WORKWEEK,
+//  400       .textRefLine0 = USER_TEXT_CONST_SETUP_ENERGYSAVING_WORKWEEK_L1,
+//  401       .textRefLine1 = USER_TEXT_CONST_SETUP_ENERGYSAVING_WORKWEEK_L2,
+//  402     },
+//  403     {                                                                                                             //  46
+//  404       .menuFunction = USER_MENUITEM_SETUP_ENERGYSAVING_WORKTODAY,
+//  405       .textRefLine0 = USER_TEXT_CONST_SETUP_ENERGYSAVING_WORKTODAY_L1,
+//  406       .textRefLine1 = USER_TEXT_CONST_SETUP_ENERGYSAVING_WORKTODAY_L2,
+//  407     },
+//  408     {                                                                                                             //  47
+//  409       .menuFunction = USER_MENUITEM_SETUP_ENERGYSAVING_WORKDAY,
+//  410       .textRefLine0 = USER_TEXT_CONST_SETUP_ENERGYSAVING_WORKDAY_L1,
+//  411       .textRefLine1 = USER_TEXT_CONST_SETUP_ENERGYSAVING_WORKDAY_L2,
+//  412     },
+//  413     {                                                                                                             //  48
+//  414       .menuFunction = 0,
+//  415       .textRefLine0 = 0,
+//  416       .textRefLine1 = 0,
+//  417     },
+//  418     {                                                                                                             //  49
+//  419       .menuFunction = USER_MENUITEM_SETUP_INTERFACE_LANG,
+//  420       .textRefLine0 = USER_TEXT_CONST_SETUP_INTERFACE_LANG,
+//  421       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  422     },
+//  423     {                                                                                                             //  50
+//  424       .menuFunction = 0,
+//  425       .textRefLine0 = 0,
+//  426       .textRefLine1 = 0,
+//  427     },
+//  428     {                                                                                                             //  51
+//  429       .menuFunction = USER_FUNCTION_CANCEL,
+//  430       .textRefLine0 = USER_TEXT_CONST_SWITCH_NO,
+//  431       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  432     },
+//  433     {                                                                                                             //  52
+//  434       .menuFunction = USER_FUNCTION_MAINTENANCE_RESET_COUNTERS,
+//  435       .textRefLine0 = USER_TEXT_CONST_SWITCH_YES,
+//  436       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  437     },
+//  438     {                                                                                                             //  53
+//  439       .menuFunction = 0,
+//  440       .textRefLine0 = 0,
+//  441       .textRefLine1 = 0,
+//  442     },
+//  443     {                                                                                                             //  54
+//  444       .menuFunction = USER_FUNCTION_CANCEL,
+//  445       .textRefLine0 = USER_TEXT_CONST_SWITCH_NO,
+//  446       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  447     },
+//  448     {                                                                                                             //  55
+//  449       .menuFunction = USER_FUNCTION_MAINTENANCE_RESET_FACTORY,
+//  450       .textRefLine0 = USER_TEXT_CONST_SWITCH_YES,
+//  451       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  452     },
+//  453     {                                                                                                             //  56
+//  454       .menuFunction = 0,
+//  455       .textRefLine0 = 0,
+//  456       .textRefLine1 = 0,
+//  457     },
+//  458     {                                                                                                             //  57
+//  459       .menuFunction = USER_FUNCTION_CANCEL,
+//  460       .textRefLine0 = USER_TEXT_CONST_SWITCH_NO,
+//  461       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  462     },
+//  463     {                                                                                                             //  58
+//  464       .menuFunction = USER_FUNCTION_MAINTENANCE_RESET_DATA,
+//  465       .textRefLine0 = USER_TEXT_CONST_SWITCH_YES,
+//  466       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  467     },
+//  468     {                                                                                                             //  59
+//  469       .menuFunction = 0,
+//  470       .textRefLine0 = 0,
+//  471       .textRefLine1 = 0,
+//  472     },
+//  473     {                                                                                                             //  60
+//  474       .menuFunction = USER_FUNCTION_CANCEL,
+//  475       .textRefLine0 = USER_TEXT_CONST_SWITCH_NO,
+//  476       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  477     },
+//  478     {                                                                                                             //  61
+//  479       .menuFunction = USER_FUNCTION_MAINTENANCE_RESET_FULL,
+//  480       .textRefLine0 = USER_TEXT_CONST_SWITCH_YES,
+//  481       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  482     },
+//  483     {                                                                                                             //  62
+//  484       .menuFunction = 0,
+//  485       .textRefLine0 = 0,
+//  486       .textRefLine1 = 0,
+//  487     },
+//  488     {                                                                                                             //  63
+//  489       .menuFunction = USER_FUNCTION_INFO_RESETNUM_RESTARTS,
+//  490       .textRefLine0 = USER_TEXT_CONST_INFO_RESETNUM_RESTARTS,
+//  491       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  492     },
+//  493     {                                                                                                             //  64
+//  494       .menuFunction = USER_FUNCTION_INFO_RESETNUM_DATARESET,
+//  495       .textRefLine0 = USER_TEXT_CONST_INFO_RESETNUM_DATARESET,
+//  496       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  497     },
+//  498     {                                                                                                             //  65
+//  499       .menuFunction = USER_FUNCTION_INFO_RESETNUM_FACTORYRESET,
+//  500       .textRefLine0 = USER_TEXT_CONST_INFO_RESETNUM_FACTORYRESET,
+//  501       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  502     },
+//  503     {                                                                                                             //  66
+//  504       .menuFunction = USER_FUNCTION_INFO_RESETNUM_PASSWORDFAILS,
+//  505       .textRefLine0 = USER_TEXT_CONST_INFO_RESETNUM_PASSWORDFAILS_L1,
+//  506       .textRefLine1 = USER_TEXT_CONST_INFO_RESETNUM_PASSWORDFAILS_L2,
+//  507     },
+//  508     {                                                                                                             //  67
+//  509       .menuFunction = 0,
+//  510       .textRefLine0 = 0,
+//  511       .textRefLine1 = 0,
+//  512     },
+//  513     {                                                                                                             //  68
+//  514       .menuFunction = USER_FUNCTION_SETUP_COUNTER_DETECTOR_NODETECTION,
+//  515       .textRefLine0 = USER_TEXT_CONST_SETUP_COUNTER_DETECTOR_NODETECTION,
+//  516       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  517     },
+//  518     {                                                                                                             //  69
+//  519       .menuFunction = USER_FUNCTION_SETUP_COUNTER_DETECTOR_NODETECTIONDIV2,
+//  520       .textRefLine0 = USER_TEXT_CONST_SETUP_COUNTER_DETECTOR_NODETECTIONDIV2,
+//  521       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  522     },
+//  523     {                                                                                                             //  70
+//  524       .menuFunction = USER_FUNCTION_SETUP_COUNTER_DETECTOR_SIMULATION,
+//  525       .textRefLine0 = USER_TEXT_CONST_SETUP_COUNTER_DETECTOR_SIMULATION,
+//  526       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  527     },
+//  528     {                                                                                                             //  71
+//  529       .menuFunction = USER_FUNCTION_SETUP_COUNTER_DETECTOR_STRONGDETECTION,
+//  530       .textRefLine0 = USER_TEXT_CONST_SETUP_COUNTER_DETECTOR_STRONGDETECTION,
+//  531       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  532     },
+//  533     {                                                                                                             //  72
+//  534       .menuFunction = USER_FUNCTION_SETUP_COUNTER_DETECTOR_SOFTDETECTION,
+//  535       .textRefLine0 = USER_TEXT_CONST_SETUP_COUNTER_DETECTOR_SOFTDETECTION,
+//  536       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  537     },
+//  538     {                                                                                                             //  73
+//  539       .menuFunction = 0,
+//  540       .textRefLine0 = 0,
+//  541       .textRefLine1 = 0,
+//  542     },
+//  543     {                                                                                                             //  74
+//  544       .menuFunction = USER_FUNCTION_SETUP_COUNTER_INVERTCOUNT_OFF,
+//  545       .textRefLine0 = USER_TEXT_CONST_SWITCH_NO,
+//  546       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  547     },
+//  548     {                                                                                                             //  75
+//  549       .menuFunction = USER_FUNCTION_SETUP_COUNTER_INVERTCOUNT_ON,
+//  550       .textRefLine0 = USER_TEXT_CONST_SWITCH_YES,
+//  551       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  552     },
+//  553     {                                                                                                             //  76
+//  554       .menuFunction = 0,
+//  555       .textRefLine0 = 0,
+//  556       .textRefLine1 = 0,
+//  557     },
+//  558     {                                                                                                             //  77
+//  559       .menuFunction = USER_FUNCTION_SETUP_ENERGYSAVING_SAVEMODE_MIN,
+//  560       .textRefLine0 = USER_TEXT_CONST_SETUP_ENERGYSAVING_SAVEMODE_MIN,
+//  561       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  562     },
+//  563     {                                                                                                             //  78
+//  564       .menuFunction = USER_FUNCTION_SETUP_ENERGYSAVING_SAVEMODE_NOCOUNT,
+//  565       .textRefLine0 = USER_TEXT_CONST_SETUP_ENERGYSAVING_SAVEMODE_NOCOUNT_L1,
+//  566       .textRefLine1 = USER_TEXT_CONST_SETUP_ENERGYSAVING_SAVEMODE_NOCOUNT_L2,
+//  567     },
+//  568     {                                                                                                             //  79
+//  569       .menuFunction = USER_FUNCTION_SETUP_ENERGYSAVING_SAVEMODE_NOSCREEN,
+//  570       .textRefLine0 = USER_TEXT_CONST_SETUP_ENERGYSAVING_SAVEMODE_NOSCREEN_L1,
+//  571       .textRefLine1 = USER_TEXT_CONST_SETUP_ENERGYSAVING_SAVEMODE_NOSCREEN_L2,
+//  572     },
+//  573     {                                                                                                             //  80
+//  574       .menuFunction = USER_FUNCTION_SETUP_ENERGYSAVING_SAVEMODE_MAX,
+//  575       .textRefLine0 = USER_TEXT_CONST_SETUP_ENERGYSAVING_SAVEMODE_MAX,
+//  576       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  577     },
+//  578     {                                                                                                             //  81
+//  579       .menuFunction = 0,
+//  580       .textRefLine0 = 0,
+//  581       .textRefLine1 = 0,
+//  582     },
+//  583     {                                                                                                             //  82
+//  584       .menuFunction = USER_FUNCTION_SETUP_ENERGYSAVING_WORKTODAY_OFF,
+//  585       .textRefLine0 = USER_TEXT_CONST_SWITCH_NO,
+//  586       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  587     },
+//  588     {                                                                                                             //  83
+//  589       .menuFunction = USER_FUNCTION_SETUP_ENERGYSAVING_WORKTODAY_ON,
+//  590       .textRefLine0 = USER_TEXT_CONST_SWITCH_YES,
+//  591       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  592     },
+//  593     {                                                                                                             //  84
+//  594       .menuFunction = 0,
+//  595       .textRefLine0 = 0,
+//  596       .textRefLine1 = 0,
+//  597     },
+//  598     {                                                                                                             //  85
+//  599       .menuFunction = USER_FUNCTION_SETUP_ENERGYSAVING_WORKDAY_24H,
+//  600       .textRefLine0 = USER_TEXT_CONST_SETUP_ENERGYSAVING_WORKDAY_24H,
+//  601       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  602     },
+//  603     {                                                                                                             //  86
+//  604       .menuFunction = USER_FUNCTION_SETUP_ENERGYSAVING_WORKDAY_1SHIFT,
+//  605       .textRefLine0 = USER_TEXT_CONST_SETUP_ENERGYSAVING_WORKDAY_1SHIFT,
+//  606       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  607     },
+//  608     {                                                                                                             //  87
+//  609       .menuFunction = USER_FUNCTION_SETUP_ENERGYSAVING_WORKDAY_2SHIFTS,
+//  610       .textRefLine0 = USER_TEXT_CONST_SETUP_ENERGYSAVING_WORKDAY_2SHIFTS,
+//  611       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  612     },
+//  613     {                                                                                                             //  88
+//  614       .menuFunction = USER_FUNCTION_SETUP_ENERGYSAVING_WORKDAY_1SH_WITHLUNCH,
+//  615       .textRefLine0 = USER_TEXT_CONST_SETUP_ENERGYSAVING_WORKDAY_1SHIFT,
+//  616       .textRefLine1 = USER_TEXT_CONST_SETUP_ENERGYSAVING_WORKDAY_WITHLUNCH,
+//  617     },
+//  618     {                                                                                                             //  89
+//  619       .menuFunction = 0,
+//  620       .textRefLine0 = 0,
+//  621       .textRefLine1 = 0,
+//  622     },
+//  623     {                                                                                                             //  90
+//  624       .menuFunction = USER_FUNCTION_SETUP_INTERFACE_LANG_RUS,
+//  625       .textRefLine0 = USER_TEXT_CONST_SETUP_INTERFACE_LANG_RUS,
+//  626       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  627     },
+//  628     {                                                                                                             //  91
+//  629       .menuFunction = USER_FUNCTION_SETUP_INTERFACE_LANG_ENG,
+//  630       .textRefLine0 = USER_TEXT_CONST_SETUP_INTERFACE_LANG_ENG,
+//  631       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  632     },
+//  633     {                                                                                                             //  92
+//  634       .menuFunction = USER_FUNCTION_SETUP_INTERFACE_LANG_UKR,
+//  635       .textRefLine0 = USER_TEXT_CONST_SETUP_INTERFACE_LANG_UKR,
+//  636       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  637     },
+//  638     {                                                                                                             //  93
+//  639       .menuFunction = 0,
+//  640       .textRefLine0 = 0,
+//  641       .textRefLine1 = 0,
+//  642     },
+//  643     {                                                                                                             //  94
+//  644       .menuFunction = USER_MENUITEM_REPORTS_VISITORS2,
+//  645       .textRefLine0 = USER_TEXT_CONST_REPORTS_VISITORS,
+//  646       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  647     },
+//  648     {                                                                                                             //  95
+//  649       .menuFunction = USER_MENUITEM_REPORTS_NOSENSOR2,
+//  650       .textRefLine0 = USER_TEXT_CONST_REPORTS_NOSENSOR,
+//  651       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  652     },
+//  653     {                                                                                                             //  96
+//  654       .menuFunction = USER_MENUITEM_SETUP2,
+//  655       .textRefLine0 = USER_TEXT_CONST_MENU_SETUP,
+//  656       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  657     },
+//  658     {                                                                                                             //  97
+//  659       .menuFunction = 0,
+//  660       .textRefLine0 = 0,
+//  661       .textRefLine1 = 0,
+//  662     },
+//  663     {                                                                                                             //  98
+//  664       .menuFunction = USER_FUNCTION_REPORTS_VISITORS_TOTAL,
+//  665       .textRefLine0 = USER_TEXT_CONST_REPORTS_VISITORS,
+//  666       .textRefLine1 = USER_TEXT_CONST_REPORTS_TOTAL,
+//  667     },
+//  668     {                                                                                                             //  99
+//  669       .menuFunction = USER_FUNCTION_REPORTS_VISITORS_HOUR,
+//  670       .textRefLine0 = USER_TEXT_CONST_REPORTS_VISITORS,
+//  671       .textRefLine1 = USER_TEXT_CONST_REPORTS_HOUR,
+//  672     },
+//  673     {                                                                                                             // 100
+//  674       .menuFunction = USER_FUNCTION_REPORTS_VISITORS_DAY,
+//  675       .textRefLine0 = USER_TEXT_CONST_REPORTS_VISITORS,
+//  676       .textRefLine1 = USER_TEXT_CONST_REPORTS_DAY,
+//  677     },
+//  678     {                                                                                                             // 101
+//  679       .menuFunction = USER_FUNCTION_REPORTS_VISITORS_WEEK,
+//  680       .textRefLine0 = USER_TEXT_CONST_REPORTS_VISITORS,
+//  681       .textRefLine1 = USER_TEXT_CONST_REPORTS_WEEK,
+//  682     },
+//  683     {                                                                                                             // 102
+//  684       .menuFunction = USER_FUNCTION_REPORTS_VISITORS_MONTH,
+//  685       .textRefLine0 = USER_TEXT_CONST_REPORTS_VISITORS,
+//  686       .textRefLine1 = USER_TEXT_CONST_REPORTS_MONTH,
+//  687     },
+//  688     {                                                                                                             // 103
+//  689       .menuFunction = 0,
+//  690       .textRefLine0 = 0,
+//  691       .textRefLine1 = 0,
+//  692     },
+//  693     {                                                                                                             // 104
+//  694       .menuFunction = USER_FUNCTION_REPORTS_NOSENSOR_HOUR,
+//  695       .textRefLine0 = USER_TEXT_CONST_REPORTS_NOSENSOR,
+//  696       .textRefLine1 = USER_TEXT_CONST_REPORTS_HOUR,
+//  697     },
+//  698     {                                                                                                             // 105
+//  699       .menuFunction = USER_FUNCTION_REPORTS_NOSENSOR_DAY,
+//  700       .textRefLine0 = USER_TEXT_CONST_REPORTS_NOSENSOR,
+//  701       .textRefLine1 = USER_TEXT_CONST_REPORTS_DAY,
+//  702     },
+//  703     {                                                                                                             // 106
+//  704       .menuFunction = 0,
+//  705       .textRefLine0 = 0,
+//  706       .textRefLine1 = 0,
+//  707     },
+//  708     {                                                                                                             // 107
+//  709       .menuFunction = USER_FUNCTION_SETUP_PASSWORD_MANAGER,
+//  710       .textRefLine0 = USER_TEXT_CONST_SETUP_PASSWORD,
+//  711       .textRefLine1 = USER_TEXT_CONST_SETUP_PASSWORD_MANAGER,
+//  712     },
+//  713     {                                                                                                             // 108
+//  714       .menuFunction = USER_MENUITEM_SETUP_ENERGYSAVING_WORKTODAY2,
+//  715       .textRefLine0 = USER_TEXT_CONST_SETUP_ENERGYSAVING_WORKTODAY_L1,
+//  716       .textRefLine1 = USER_TEXT_CONST_SETUP_ENERGYSAVING_WORKTODAY_L2,
+//  717     },
+//  718     {                                                                                                             // 109
+//  719       .menuFunction = 0,
+//  720       .textRefLine0 = 0,
+//  721       .textRefLine1 = 0,
+//  722     },
+//  723     {                                                                                                             // 110
+//  724       .menuFunction = USER_FUNCTION_SETUP_ENERGYSAVING_WORKTODAY_OFF,
+//  725       .textRefLine0 = USER_TEXT_CONST_SWITCH_NO,
+//  726       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  727     },
+//  728     {                                                                                                             // 111
+//  729       .menuFunction = USER_FUNCTION_SETUP_ENERGYSAVING_WORKTODAY_ON,
+//  730       .textRefLine0 = USER_TEXT_CONST_SWITCH_YES,
+//  731       .textRefLine1 = USER_TEXT_CONST_EMPTY,
+//  732     },
+//  733     {                                                                                                             // 112
+//  734       .menuFunction = 0,
+//  735       .textRefLine0 = 0,
+//  736       .textRefLine1 = 0,
+//  737     },
+//  738   };
+//  739 
+//  740 }
+//  741 
+//  742 #endif
+// 
+// 576 bytes in segment NEAR_F
+// 
+// 576 bytes of CODE memory
+//
+//Errors: none
+//Warnings: none

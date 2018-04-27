@@ -1,0 +1,348 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V6.12.1.50500 for Atmel AVR       27/Jul/2014  21:44:35 /
+// Copyright 1996-2012 IAR Systems AB.                                        /
+//                                                                            /
+//    Source file  =  D:\Projects\BatteryCounter\_micro\BattTX\main.cpp       /
+//    Command line =  D:\Projects\BatteryCounter\_micro\BattTX\main.cpp       /
+//                    --cpu=m48pa -ms -o "D:\Projects\BatteryCounter\_micro\B /
+//                    attTX\Release - Atmega48PA\Obj\" -D NDEBUG -lA          /
+//                    "D:\Projects\BatteryCounter\_micro\BattTX\Release -     /
+//                    Atmega48PA\List\" --initializers_in_flash               /
+//                    -DENABLE_BIT_DEFINITIONS --do_cross_call -e             /
+//                    --eeprom_size 256 --dlib --dlib_config "C:\Program      /
+//                    Files (x86)\IAR Systems\Embedded Workbench              /
+//                    6.0\avr\LIB\DLIB\dlAVR-1s-ec_mul-n.h" --eec++ -Ohs      /
+//    List file    =  D:\Projects\BatteryCounter\_micro\BattTX\Release -      /
+//                    Atmega48PA\List\main.s90                                /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME main
+
+        RTMODEL "__64bit_doubles", "disabled"
+        RTMODEL "__SystemLibrary", "DLib"
+        RTMODEL "__cpu", "1"
+        RTMODEL "__cpu_name", "ATmega48PA"
+        RTMODEL "__dlib_file_descriptor", "0"
+        RTMODEL "__enhanced_core", "enabled"
+        RTMODEL "__has_elpm", "false"
+        RTMODEL "__memory_model", "2"
+        RTMODEL "__rt_version", "3"
+
+        RSEG CSTACK:DATA:NOROOT(0)
+        RSEG RSTACK:DATA:NOROOT(0)
+
+        ERROR
+//NOTE: This module defines or uses C++ features that are not
+//      accessible from assembler code. Assembling this file will
+//      not produce an equivalent object file to the one produced
+//      by the C++ compiler.
+
+        PUBLIC ??Initialization
+        FUNCTION ??Initialization,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBWEAK _A_ACSR
+        PUBWEAK _A_DDRB
+        PUBWEAK _A_DDRC
+        PUBWEAK _A_DDRD
+        PUBWEAK _A_EIMSK
+        PUBWEAK _A_PORTB
+        PUBWEAK _A_PORTC
+        PUBWEAK _A_PORTD
+        PUBWEAK _A_PRR
+        PUBWEAK _A_SMCR
+        PUBWEAK _A_TIMSK0
+        PUBWEAK _A_TIMSK1
+        PUBWEAK _A_TIMSK2
+        PUBWEAK __?EEARL
+        PUBWEAK __?EECR
+        PUBWEAK __?EEDR
+        PUBLIC main
+        FUNCTION main,021a03H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_Y Y DATA
+          CFI StackFrame CFA_SP SP DATA
+          CFI VirtualResource ?RetPad:1, ?RetHigh:8, ?RetLow:8, ?Ret:17
+          CFI Resource R0:8, R1:8, R2:8, R3:8, R4:8, R5:8, R6:8, R7:8, R8:8, R9:8
+          CFI Resource R10:8, R11:8, R12:8, R13:8, R14:8, R15:8, R16:8, R17:8
+          CFI Resource R18:8, R19:8, R20:8, R21:8, R22:8, R23:8, R24:8, R25:8
+          CFI Resource R26:8, R27:8, R28:8, R29:8, R30:8, R31:8
+          CFI Resource ?RetHighByteMask:8, SP:16, SPH:8, SPL:8, Y:16
+          CFI ResourceParts ?Ret ?RetHigh, ?RetLow, ?RetPad
+          CFI ResourceParts SP SPH, SPL
+          CFI ResourceParts Y R29, R28
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Y+0
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 Undefined
+          CFI R17 Undefined
+          CFI R18 Undefined
+          CFI R19 Undefined
+          CFI R20 Undefined
+          CFI R21 Undefined
+          CFI R22 Undefined
+          CFI R23 Undefined
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 Undefined
+          CFI R31 Undefined
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI EndCommon cfiCommon0
+        
+        EXTERN ??init
+        FUNCTION ??init,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??run
+        FUNCTION ??run,0202H
+        ARGFRAME RSTACK, 0, STACK
+
+// D:\Projects\BatteryCounter\_micro\BattTX\main.cpp
+//    1 #ifndef _MAIN_CPP_
+//    2 #define _MAIN_CPP_
+//    3 
+//    4 #include "GlobalSpace.h"
+
+        ASEGN ABSOLUTE:DATA:NOROOT,070H
+// union <unnamed> volatile __io _A_TIMSK2
+_A_TIMSK2:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,06fH
+// union <unnamed> volatile __io _A_TIMSK1
+_A_TIMSK1:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,06eH
+// union <unnamed> volatile __io _A_TIMSK0
+_A_TIMSK0:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,064H
+// union <unnamed> volatile __io _A_PRR
+_A_PRR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,053H
+// union <unnamed> volatile __io _A_SMCR
+_A_SMCR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,050H
+// union <unnamed> volatile __io _A_ACSR
+_A_ACSR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,03dH
+// union <unnamed> volatile __io _A_EIMSK
+_A_EIMSK:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,02bH
+// union <unnamed> volatile __io _A_PORTD
+_A_PORTD:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,02aH
+// union <unnamed> volatile __io _A_DDRD
+_A_DDRD:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,028H
+// union <unnamed> volatile __io _A_PORTC
+_A_PORTC:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,027H
+// union <unnamed> volatile __io _A_DDRC
+_A_DDRC:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,025H
+// union <unnamed> volatile __io _A_PORTB
+_A_PORTB:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,024H
+// union <unnamed> volatile __io _A_DDRB
+_A_DDRB:
+        DS8 1
+//    5 #include "DeviceManager.h"
+//    6 
+
+        RSEG CODE:CODE:NOROOT(1)
+//    7 void Initialization()
+??Initialization:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function ??Initialization
+//    8 {
+//    9   __disable_interrupt();
+        FUNCALL ??Initialization, ??init
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        CLI
+//   10 
+//   11   //Swith off analog comparator
+//   12   ACSR=(1<<ACD);  //Analog Comparator: Off
+        LDI     R16, 128
+        OUT     0x30, R16
+//   13 
+//   14   //__watchdog_reset();
+//   15   //WDTCSR = (1<<WDCE) | (1<<WDE);
+//   16   //WDTCSR = (1<<WDP3) | (1<<WDE);
+//   17 
+//   18   //Enable pullup on all ports
+//   19 
+//   20   DDRB = 0x00;
+        LDI     R16, 0
+        OUT     0x04, R16
+//   21   PORTB = 0xFF;
+        LDI     R16, 255
+        OUT     0x05, R16
+//   22 
+//   23   DDRC = 0x00;
+        LDI     R16, 0
+        OUT     0x07, R16
+//   24   PORTC = 0xFF ^ ((1<<INDICATOR_LED_BIT) | (1<<IR_GENERATOR_BIT));
+        LDI     R16, 250
+        OUT     0x08, R16
+//   25   DDRC = ((1<<INDICATOR_LED_BIT) | (1<<IR_GENERATOR_BIT));
+        LDI     R16, 5
+        OUT     0x07, R16
+//   26 
+//   27   DDRD = 0x00;
+        LDI     R16, 0
+        OUT     0x0A, R16
+//   28   PORTD = 0xFF;
+        LDI     R16, 255
+        OUT     0x0B, R16
+//   29 
+//   30   //Disable all external interrupts
+//   31   EIMSK = 0x00;
+        LDI     R16, 0
+        OUT     0x1D, R16
+//   32 
+//   33   //Disable all timer interrupts
+//   34   TIMSK0 = 0x00;
+        STS     _A_TIMSK0, R16
+//   35   TIMSK1 = 0x00;
+        STS     _A_TIMSK1, R16
+//   36   TIMSK2 = 0x00;
+        STS     _A_TIMSK2, R16
+//   37 
+//   38   //Disable unused modules
+//   39   PRR = (1<<PRTWI) | /*(1<<PRTIM0) |*/ (1<<PRTIM1) |            //Disable TWI, Timer0, Timer1,
+//   40         (1<<PRTIM2) | (1<<PRSPI) | (1<<PRUSART0) | (1<<PRADC);  //Timer2, SPI, USART0, ADC
+        LDI     R16, 207
+        STS     _A_PRR, R16
+//   41 
+//   42   SMCR = 0x00; //Sleep Mode = Idle
+        LDI     R16, 0
+        OUT     0x33, R16
+//   43 
+//   44   DeviceManager::init();
+        RCALL   ??init
+//   45 
+//   46   __enable_interrupt();
+        SEI
+//   47 }
+        RET
+          CFI EndBlock cfiBlock0
+        REQUIRE _A_ACSR
+        REQUIRE _A_DDRB
+        REQUIRE _A_PORTB
+        REQUIRE _A_DDRC
+        REQUIRE _A_PORTC
+        REQUIRE _A_DDRD
+        REQUIRE _A_PORTD
+        REQUIRE _A_EIMSK
+        REQUIRE _A_TIMSK0
+        REQUIRE _A_TIMSK1
+        REQUIRE _A_TIMSK2
+        REQUIRE _A_PRR
+        REQUIRE _A_SMCR
+//   48 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   49 int main()
+main:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function main
+//   50 {
+//   51   Initialization();
+        FUNCALL main, ??Initialization
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL main, ??run
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ??Initialization
+//   52 
+//   53   DeviceManager::run();
+        RCALL   ??run
+//   54 }
+        LDI     R16, 0
+        LDI     R17, 0
+        RET
+          CFI EndBlock cfiBlock1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,01fH
+__?EECR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,020H
+__?EEDR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,021H
+__?EEARL:
+
+        END
+//   55 
+//   56 #endif
+// 
+// 13 bytes in segment ABSOLUTE
+// 76 bytes in segment CODE
+// 
+// 76 bytes of CODE memory
+//  0 bytes of DATA memory (+ 13 bytes shared)
+//
+//Errors: none
+//Warnings: none

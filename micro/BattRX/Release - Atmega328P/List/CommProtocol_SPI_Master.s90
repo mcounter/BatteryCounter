@@ -1,0 +1,1298 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V6.12.1.50500 for Atmel AVR       02/Aug/2014  01:50:52 /
+// Copyright 1996-2012 IAR Systems AB.                                        /
+//                                                                            /
+//    Source file  =  D:\Projects\BatteryCounter\_micro\BattRX\CommProtocol_S /
+//                    PI_Master.cpp                                           /
+//    Command line =  D:\Projects\BatteryCounter\_micro\BattRX\CommProtocol_S /
+//                    PI_Master.cpp --cpu=m328p -ms -o                        /
+//                    "D:\Projects\BatteryCounter\_micro\BattRX\Release -     /
+//                    Atmega328P\Obj\" -D NDEBUG -lA                          /
+//                    "D:\Projects\BatteryCounter\_micro\BattRX\Release -     /
+//                    Atmega328P\List\" --initializers_in_flash               /
+//                    -DENABLE_BIT_DEFINITIONS --do_cross_call -e             /
+//                    --eeprom_size 1024 --dlib --dlib_config "C:\Program     /
+//                    Files (x86)\IAR Systems\Embedded Workbench              /
+//                    6.0\avr\LIB\DLIB\dlAVR-3s-ec_mul-sf-n.h" --eec++ -Ohs   /
+//    List file    =  D:\Projects\BatteryCounter\_micro\BattRX\Release -      /
+//                    Atmega328P\List\CommProtocol_SPI_Master.s90             /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME CommProtocol_SPI_Master
+
+        RTMODEL "__64bit_doubles", "disabled"
+        RTMODEL "__SystemLibrary", "DLib"
+        RTMODEL "__cpu", "3"
+        RTMODEL "__cpu_name", "ATmega328P"
+        RTMODEL "__dlib_file_descriptor", "0"
+        RTMODEL "__enhanced_core", "enabled"
+        RTMODEL "__has_elpm", "false"
+        RTMODEL "__memory_model", "2"
+        RTMODEL "__rt_version", "3"
+
+        RSEG CSTACK:DATA:NOROOT(0)
+        RSEG RSTACK:DATA:NOROOT(0)
+
+        ERROR
+//NOTE: This module defines or uses C++ features that are not
+//      accessible from assembler code. Assembling this file will
+//      not produce an equivalent object file to the one produced
+//      by the C++ compiler.
+
+        EXTERN ?need_segment_init
+
+        PUBWEAK `?<Segment init: NEAR_Z>`
+        PUBLIC ??SPIEventIRQ
+        FUNCTION ??SPIEventIRQ,0233H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 9, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBWEAK `??SPIEventIRQ??INTVEC 68`
+        PUBLIC ??bufferPos
+        PUBLIC ??bufferSPI
+        PUBLIC ??cancelWithError
+        FUNCTION ??cancelWithError,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??disable
+        FUNCTION ??disable,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??enable
+        FUNCTION ??enable,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??enabled
+        FUNCTION ??enabled,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??init
+        FUNCTION ??init,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??isEnabled
+        PUBLIC ??ready
+        FUNCTION ??ready,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??run
+        FUNCTION ??run,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??send
+        FUNCTION ??send,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??sendByte
+        FUNCTION ??sendByte,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??spiStart
+        FUNCTION ??spiStart,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??spiStop
+        FUNCTION ??spiStop,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??start
+        FUNCTION ??start,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 3, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ??stop
+        FUNCTION ??stop,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBWEAK _A_DDRB
+        PUBWEAK _A_PORTB
+        PUBWEAK _A_PRR
+        PUBWEAK _A_SPCR
+        PUBWEAK _A_SPDR
+        PUBWEAK _A_SPSR
+        PUBWEAK __?EEARH
+        PUBWEAK __?EEARL
+        PUBWEAK __?EECR
+        PUBWEAK __?EEDR
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_Y Y DATA
+          CFI StackFrame CFA_SP SP DATA
+          CFI VirtualResource ?RetPad:1, ?RetHigh:8, ?RetLow:8, ?Ret:17
+          CFI Resource R0:8, R1:8, R2:8, R3:8, R4:8, R5:8, R6:8, R7:8, R8:8, R9:8
+          CFI Resource R10:8, R11:8, R12:8, R13:8, R14:8, R15:8, R16:8, R17:8
+          CFI Resource R18:8, R19:8, R20:8, R21:8, R22:8, R23:8, R24:8, R25:8
+          CFI Resource R26:8, R27:8, R28:8, R29:8, R30:8, R31:8
+          CFI Resource ?RetHighByteMask:8, SP:16, SPH:8, SPL:8, Y:16
+          CFI ResourceParts ?Ret ?RetHigh, ?RetLow, ?RetPad
+          CFI ResourceParts SP SPH, SPL
+          CFI ResourceParts Y R29, R28
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Y+0
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 Undefined
+          CFI R17 Undefined
+          CFI R18 Undefined
+          CFI R19 Undefined
+          CFI R20 Undefined
+          CFI R21 Undefined
+          CFI R22 Undefined
+          CFI R23 Undefined
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 Undefined
+          CFI R31 Undefined
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Notused
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 SameValue
+          CFI R1 SameValue
+          CFI R2 SameValue
+          CFI R3 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 SameValue
+          CFI R17 SameValue
+          CFI R18 SameValue
+          CFI R19 SameValue
+          CFI R20 SameValue
+          CFI R21 SameValue
+          CFI R22 SameValue
+          CFI R23 SameValue
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 SameValue
+          CFI R31 SameValue
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI Y SameValue
+          CFI EndCommon cfiCommon1
+        
+        
+          CFI Common cfiCommon2 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign 1
+          CFI ReturnAddress ?Ret CODE
+          CFI CFA_Y Y+0
+          CFI CFA_SP SP+2
+          CFI ?RetPad 0
+          CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+          CFI ?RetLow Frame(CFA_SP, 0)
+          CFI ?Ret Concat
+          CFI R0 SameValue
+          CFI R1 SameValue
+          CFI R2 SameValue
+          CFI R3 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI R8 SameValue
+          CFI R9 SameValue
+          CFI R10 SameValue
+          CFI R11 SameValue
+          CFI R12 SameValue
+          CFI R13 SameValue
+          CFI R14 SameValue
+          CFI R15 SameValue
+          CFI R16 SameValue
+          CFI R17 SameValue
+          CFI R18 SameValue
+          CFI R19 SameValue
+          CFI R20 SameValue
+          CFI R21 SameValue
+          CFI R22 SameValue
+          CFI R23 SameValue
+          CFI R24 SameValue
+          CFI R25 SameValue
+          CFI R26 SameValue
+          CFI R27 SameValue
+          CFI R28 Undefined
+          CFI R29 Undefined
+          CFI R30 SameValue
+          CFI R31 SameValue
+          CFI ?RetHighByteMask SameValue
+          CFI SPH Undefined
+          CFI SPL Undefined
+          CFI EndCommon cfiCommon2
+        
+`?<Name CommProtocol_SPI_Mas 6>` SYMBOL "CommProtocol_SPI_Master"
+
+`??SPIEventIRQ??INTVEC 68` SYMBOL "??INTVEC 68", ??SPIEventIRQ
+??bufferPos         SYMBOL "bufferPos", `?<Name CommProtocol_SPI_Mas 6>`
+??bufferSPI         SYMBOL "bufferSPI", `?<Name CommProtocol_SPI_Mas 6>`
+??isEnabled         SYMBOL "isEnabled", `?<Name CommProtocol_SPI_Mas 6>`
+
+        EXTERN ??getTimer
+        FUNCTION ??getTimer,0202H
+        ARGFRAME RSTACK, 0, STACK
+        EXTERN ??setTimer
+        FUNCTION ??setTimer,0202H
+        ARGFRAME RSTACK, 0, STACK
+
+// D:\Projects\BatteryCounter\_micro\BattRX\CommProtocol_SPI_Master.cpp
+//    1 #ifndef __COMMPROTOCOL_SPI_MASTER_CPP_
+//    2 #define __COMMPROTOCOL_SPI_MASTER_CPP_
+//    3 
+//    4 #include "CommProtocol_SPI_Master.h"
+
+        ASEGN ABSOLUTE:DATA:NOROOT,064H
+// union <unnamed> volatile __io _A_PRR
+_A_PRR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,04eH
+// union <unnamed> volatile __io _A_SPDR
+_A_SPDR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,04dH
+// union <unnamed> volatile __io _A_SPSR
+_A_SPSR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,04cH
+// union <unnamed> volatile __io _A_SPCR
+_A_SPCR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,025H
+// union <unnamed> volatile __io _A_PORTB
+_A_PORTB:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,024H
+// union <unnamed> volatile __io _A_DDRB
+_A_DDRB:
+        DS8 1
+//    5 #include "MultyThreading.h"
+//    6 
+//    7 #define SPI_BUFFER_TRANS_TIMEOUT        (1000)
+//    8 #define SPI_MASTER_HOLDTIME             (1)
+//    9 
+//   10 namespace CommProtocol_SPI_Master
+//   11 {
+
+        RSEG NEAR_Z:DATA:NOROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   12   TSPIBuffer bufferSPI =
+??bufferSPI:
+        DS8 35
+//   13   {
+//   14     .length = 0,
+//   15     .status = SPIBufferStatus_None,
+//   16     .result = SPIResultCodeType_OK,
+//   17   };
+//   18 
+//   19   bool isEnabled = false;
+//   20   unsigned short bufferPos = 0;
+??bufferPos:
+        DS8 2
+??isEnabled:
+        DS8 1
+//   21 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   22   void spiStart()
+??spiStart:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function ??spiStart
+//   23   {
+        SBIW    R29:R28, 1
+          CFI CFA_Y Y+1
+//   24     // Clear the SPIF flag
+//   25     volatile unsigned char dummy;
+//   26     dummy = SPSR;
+        RCALL   ?Subroutine0
+//   27     dummy = SPDR;
+//   28 
+//   29     MEM_SS_PORT = 0;
+//   30 
+//   31     SPCR |= (1 << SPIE);
+//   32   }
+??CrossCallReturnLabel_0:
+        ADIW    R29:R28, 1
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock0
+        REQUIRE _A_SPSR
+        REQUIRE _A_SPDR
+        REQUIRE _A_PORTB
+        REQUIRE _A_SPCR
+//   33 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   34   void spiStop()
+??spiStop:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function ??spiStop
+//   35   {
+//   36     MEM_SS_PORT = 1;
+        RJMP    ?Subroutine7
+          CFI EndBlock cfiBlock1
+        REQUIRE _A_PORTB
+        REQUIRE _A_SPCR
+//   37 
+//   38     SPCR &= ~(1 << SPIE);
+//   39   }
+//   40 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   41   __monitor void enable()
+??enable:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function ??enable
+//   42   {
+        IN      R17, 0x3F
+        CLI
+//   43     bufferSPI.status = SPIBufferStatus_None;
+        LDI     R16, 0
+        RCALL   ??Subroutine8_0
+//   44 
+//   45     PRR &= ~(1<<PRSPI);
+??CrossCallReturnLabel_17:
+        LDS     R16, 100
+        ANDI    R16, 0xFB
+        STS     100, R16
+//   46     SPCR = (0<<SPE);                    // Disable the SPI
+        LDI     R16, 0
+        OUT     0x2C, R16
+//   47 
+//   48     MEM_SS_DIR = 1;
+        RCALL   ?Subroutine1
+//   49     MEM_SS_PORT = 1;
+//   50 
+//   51     SPI_SCK_DIR = 1;
+//   52     SPI_SCK_PORT = 1;
+//   53 
+//   54     SPI_MOSI_DIR = 1;
+//   55     SPI_MOSI_PORT = 1;
+//   56 
+//   57     SPI_MISO_DIR = 0;
+//   58     SPI_MISO_PORT = 1;
+//   59 
+//   60     SPCR = (1<<MSTR);                   // Select the master mode prior to enable the SPI
+??CrossCallReturnLabel_2:
+        LDI     R16, 16
+        OUT     0x2C, R16
+//   61     SPSR = 1<<SPI2X;                    // Select double speed mode;
+        LDI     R16, 1
+        OUT     0x2D, R16
+//   62     SPCR = (0<<SPIE) |                  // Disable the SPI interrupt line,
+//   63            (1<<SPE) |                   // Enable the SPI
+//   64            (1<<MSTR) |                  // Select the master
+//   65            (0<<DORD) |                  // Select the MSB first transmitted bit
+//   66            (0<<CPOL) | (0<<CPHA) |      // SPI mode 0
+//   67            (0<<SPR1) | (0<<SPR0);       // Clock prescaler 2
+        LDI     R16, 80
+        OUT     0x2C, R16
+//   68 
+//   69     spiStop();
+        RCALL   ?Subroutine7
+//   70 
+//   71     isEnabled = true;
+??CrossCallReturnLabel_12:
+        LDI     R16, 1
+        STS     (??bufferSPI + 37), R16
+//   72   }
+        OUT     0x3F, R17
+        RET
+          CFI EndBlock cfiBlock2
+        REQUIRE _A_PRR
+        REQUIRE _A_SPCR
+        REQUIRE _A_DDRB
+        REQUIRE _A_PORTB
+        REQUIRE _A_SPSR
+//   73 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   74   __monitor void disable()
+??disable:
+          CFI Block cfiBlock3 Using cfiCommon0
+          CFI Function ??disable
+//   75   {
+        IN      R17, 0x3F
+        CLI
+//   76     isEnabled = false;
+        LDI     R16, 0
+        STS     (??bufferSPI + 37), R16
+//   77 
+//   78     SPCR = (0<<SPE);                    // Disable the SPI
+        OUT     0x2C, R16
+//   79     PRR |= (1<<PRSPI);
+        LDS     R16, 100
+        ORI     R16, 0x04
+        STS     100, R16
+//   80 
+//   81     MEM_SS_DIR = 1;
+        RCALL   ?Subroutine1
+//   82     MEM_SS_PORT = 1;
+//   83 
+//   84     SPI_SCK_DIR = 1;
+//   85     SPI_SCK_PORT = 1;
+//   86 
+//   87     SPI_MOSI_DIR = 1;
+//   88     SPI_MOSI_PORT = 1;
+//   89 
+//   90     SPI_MISO_DIR = 0;
+//   91     SPI_MISO_PORT = 1;
+//   92   }
+??CrossCallReturnLabel_3:
+        OUT     0x3F, R17
+        RET
+          CFI EndBlock cfiBlock3
+        REQUIRE _A_SPCR
+        REQUIRE _A_PRR
+        REQUIRE _A_DDRB
+        REQUIRE _A_PORTB
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine1:
+          CFI Block cfiCond4 Using cfiCommon0
+          CFI Function ??enable
+          CFI Conditional ??CrossCallReturnLabel_2
+          CFI CFA_SP SP+4
+          CFI Block cfiCond5 Using cfiCommon0
+          CFI (cfiCond5) Function ??disable
+          CFI (cfiCond5) Conditional ??CrossCallReturnLabel_3
+          CFI (cfiCond5) CFA_SP SP+4
+          CFI Block cfiPicker6 Using cfiCommon1
+          CFI (cfiPicker6) NoFunction
+          CFI (cfiPicker6) Picker
+        SBI     0x04, 0x02
+        SBI     0x05, 0x02
+        SBI     0x04, 0x05
+        SBI     0x05, 0x05
+        SBI     0x04, 0x03
+        SBI     0x05, 0x03
+        CBI     0x04, 0x04
+        SBI     0x05, 0x04
+        RET
+          CFI EndBlock cfiCond4
+          CFI EndBlock cfiCond5
+          CFI EndBlock cfiPicker6
+//   93 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   94   bool enabled()
+??enabled:
+          CFI Block cfiBlock7 Using cfiCommon0
+          CFI Function ??enabled
+//   95   {
+//   96     return isEnabled;
+        LDS     R16, (??bufferSPI + 37)
+        RET
+          CFI EndBlock cfiBlock7
+//   97   }
+//   98 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   99   bool ready()
+??ready:
+          CFI Block cfiBlock8 Using cfiCommon0
+          CFI Function ??ready
+//  100   {
+//  101     return isEnabled &&
+//  102            ((bufferSPI.status == SPIBufferStatus_None) ||
+//  103             (bufferSPI.status == SPIBufferStatus_Processed));
+        RCALL   ?Subroutine6
+??CrossCallReturnLabel_7:
+        LDD     R16, Z+37
+        TST     R16
+        BREQ    ??ready_1
+        LDD     R16, Z+1
+        TST     R16
+        BREQ    ??ready_2
+        CPI     R16, 3
+        BRNE    ??ready_1
+??ready_2:
+        LDI     R16, 1
+        RET
+??ready_1:
+        LDI     R16, 0
+        RET
+          CFI EndBlock cfiBlock8
+//  104   }
+//  105 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  106   __monitor void init()
+??init:
+          CFI Block cfiBlock9 Using cfiCommon0
+          CFI Function ??init
+//  107   {
+        FUNCALL ??init, ??disable
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R24
+          CFI R24 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        IN      R24, 0x3F
+        CLI
+//  108     disable();
+        RCALL   ??disable
+//  109   }
+        OUT     0x3F, R24
+        LD      R24, Y+
+          CFI R24 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock9
+//  110 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  111   void sendByte()
+??sendByte:
+          CFI Block cfiBlock10 Using cfiCommon0
+          CFI Function ??sendByte
+//  112   {
+//  113     SPDR = bufferSPI.buffer[bufferPos];
+        RCALL   ?Subroutine6
+??CrossCallReturnLabel_8:
+        LDD     R16, Z+35
+        LDD     R31, Z+36
+        MOV     R30, R16
+        SUBI    R30, LOW((-(??bufferSPI) & 0xFFFF))
+        SBCI    R31, (-(??bufferSPI) & 0xFFFF) >> 8
+        LDD     R16, Z+3
+        OUT     0x2E, R16
+//  114   }
+        RET
+          CFI EndBlock cfiBlock10
+        REQUIRE _A_SPDR
+//  115 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  116   void cancelWithError()
+??cancelWithError:
+          CFI Block cfiBlock11 Using cfiCommon0
+          CFI Function ??cancelWithError
+//  117   {
+//  118     spiStop();
+        RCALL   ?Subroutine7
+//  119 
+//  120     bufferSPI.result = SPIResultCodeType_Error;
+??CrossCallReturnLabel_13:
+        RCALL   ?Subroutine6
+??CrossCallReturnLabel_9:
+        RJMP    ?Subroutine5
+          CFI EndBlock cfiBlock11
+        REQUIRE _A_PORTB
+        REQUIRE _A_SPCR
+//  121     bufferSPI.length = 0;
+//  122     bufferSPI.status = SPIBufferStatus_Processed;
+//  123   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine6:
+          CFI Block cfiCond12 Using cfiCommon0
+          CFI Function ??ready
+          CFI Conditional ??CrossCallReturnLabel_7
+          CFI CFA_SP SP+4
+          CFI Block cfiCond13 Using cfiCommon0
+          CFI (cfiCond13) Function ??sendByte
+          CFI (cfiCond13) Conditional ??CrossCallReturnLabel_8
+          CFI (cfiCond13) CFA_SP SP+4
+          CFI Block cfiCond14 Using cfiCommon0
+          CFI (cfiCond14) Function ??cancelWithError
+          CFI (cfiCond14) Conditional ??CrossCallReturnLabel_9
+          CFI (cfiCond14) CFA_SP SP+4
+          CFI Block cfiCond15 Using cfiCommon0
+          CFI (cfiCond15) Function ??start
+          CFI (cfiCond15) Conditional ??CrossCallReturnLabel_10
+          CFI (cfiCond15) R26 Frame(CFA_Y, -2)
+          CFI (cfiCond15) R27 Frame(CFA_Y, -1)
+          CFI (cfiCond15) CFA_SP SP+4
+          CFI (cfiCond15) CFA_Y Y+3
+          CFI Block cfiCond16 Using cfiCommon2
+          CFI (cfiCond16) Function ??SPIEventIRQ
+          CFI (cfiCond16) Conditional ??CrossCallReturnLabel_11
+          CFI (cfiCond16) R16 Frame(CFA_Y, -9)
+          CFI (cfiCond16) R17 Frame(CFA_Y, -8)
+          CFI (cfiCond16) R18 Frame(CFA_Y, -7)
+          CFI (cfiCond16) R19 Frame(CFA_Y, -6)
+          CFI (cfiCond16) R20 Frame(CFA_Y, -5)
+          CFI (cfiCond16) R30 Frame(CFA_Y, -4)
+          CFI (cfiCond16) R31 Frame(CFA_Y, -3)
+          CFI (cfiCond16) R26 Frame(CFA_Y, -2)
+          CFI (cfiCond16) R27 Frame(CFA_Y, -1)
+          CFI (cfiCond16) CFA_SP SP+4
+          CFI (cfiCond16) CFA_Y Y+9
+          CFI Block cfiPicker17 Using cfiCommon1
+          CFI (cfiPicker17) NoFunction
+          CFI (cfiPicker17) Picker
+        LDI     R30, LOW(??bufferSPI)
+        LDI     R31, (??bufferSPI) >> 8
+        RET
+          CFI EndBlock cfiCond12
+          CFI EndBlock cfiCond13
+          CFI EndBlock cfiCond14
+          CFI EndBlock cfiCond15
+          CFI EndBlock cfiCond16
+          CFI EndBlock cfiPicker17
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine5:
+          CFI Block cfiCond18 Using cfiCommon2
+          CFI Function ??SPIEventIRQ
+          CFI Conditional ??CrossCallReturnLabel_6
+          CFI R16 Frame(CFA_Y, -9)
+          CFI R17 Frame(CFA_Y, -8)
+          CFI R18 Frame(CFA_Y, -7)
+          CFI R19 Frame(CFA_Y, -6)
+          CFI R20 Frame(CFA_Y, -5)
+          CFI R30 Frame(CFA_Y, -4)
+          CFI R31 Frame(CFA_Y, -3)
+          CFI R26 Frame(CFA_Y, -2)
+          CFI R27 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+9
+          CFI Block cfiBlock19 Using cfiCommon0
+          CFI (cfiBlock19) NoFunction
+          CFI Block cfiPicker20 Using cfiCommon1
+          CFI (cfiPicker20) NoFunction
+          CFI (cfiPicker20) Picker
+        LDI     R16, 255
+        STD     Z+2, R16
+        LDI     R16, 0
+        ST      Z, R16
+        LDI     R16, 3
+        STD     Z+1, R16
+        RET
+          CFI EndBlock cfiCond18
+          CFI EndBlock cfiBlock19
+          CFI EndBlock cfiPicker20
+//  124 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  125   void start()
+??start:
+          CFI Block cfiBlock21 Using cfiCommon0
+          CFI Function ??start
+//  126   {
+        FUNCALL ??start, ??setTimer
+        LOCFRAME CSTACK, 3, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R27
+          CFI R27 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        ST      -Y, R26
+          CFI R26 Frame(CFA_Y, -2)
+          CFI CFA_Y Y+2
+        SBIW    R29:R28, 1
+          CFI CFA_Y Y+3
+//  127     if (bufferSPI.length <= 0)
+        LDI     R26, LOW((??bufferSPI + 35))
+        LDI     R27, HIGH((??bufferSPI + 35))
+        LDS     R16, ??bufferSPI
+        TST     R16
+        BRNE    ??start_1
+//  128     {
+//  129       cancelWithError();
+        RCALL   ?Subroutine2
+??CrossCallReturnLabel_4:
+        RCALL   ?Subroutine4
+//  130       return;
+??CrossCallReturnLabel_19:
+        RJMP    ??start_2
+//  131     }
+//  132 
+//  133     bufferPos = 0;
+??start_1:
+        LDI     R16, 0
+        ST      X+, R16
+        ST      X, R16
+        SBIW    R27:R26, 1
+//  134     bufferSPI.result = SPIResultCodeType_OK;
+        STS     (??bufferSPI + 2), R16
+//  135     bufferSPI.status = SPIBufferStatus_InProcess;
+        LDI     R16, 2
+        RCALL   ??Subroutine8_0
+//  136     GLOBAL::MultyThreading::setTimer(GLOBALTIMERS_SPIMASTER_ERRORTIMER, SPI_BUFFER_TRANS_TIMEOUT);
+??CrossCallReturnLabel_18:
+        LDI     R18, 232
+        LDI     R19, 3
+        LDI     R16, 1
+        CALL    ??setTimer
+//  137 
+//  138     spiStart();
+        RCALL   ?Subroutine0
+//  139 
+//  140     sendByte();
+??CrossCallReturnLabel_1:
+        LD      R16, X+
+        LD      R17, X
+        RCALL   ?Subroutine6
+??CrossCallReturnLabel_10:
+        ADD     R30, R16
+        ADC     R31, R17
+        LDD     R16, Z+3
+        OUT     0x2E, R16
+//  141   }
+??start_2:
+        ADIW    R29:R28, 1
+          CFI CFA_Y Y+2
+        LD      R26, Y+
+          CFI R26 SameValue
+          CFI CFA_Y Y+1
+        LD      R27, Y+
+          CFI R27 SameValue
+          CFI CFA_Y Y+0
+        RET
+          CFI EndBlock cfiBlock21
+        REQUIRE _A_PORTB
+        REQUIRE _A_SPCR
+        REQUIRE _A_SPDR
+        REQUIRE _A_SPSR
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine0:
+          CFI Block cfiCond22 Using cfiCommon0
+          CFI Function ??spiStart
+          CFI Conditional ??CrossCallReturnLabel_0
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+1
+          CFI Block cfiCond23 Using cfiCommon0
+          CFI (cfiCond23) Function ??start
+          CFI (cfiCond23) Conditional ??CrossCallReturnLabel_1
+          CFI (cfiCond23) R26 Frame(CFA_Y, -2)
+          CFI (cfiCond23) R27 Frame(CFA_Y, -1)
+          CFI (cfiCond23) CFA_SP SP+4
+          CFI (cfiCond23) CFA_Y Y+3
+          CFI Block cfiPicker24 Using cfiCommon1
+          CFI (cfiPicker24) NoFunction
+          CFI (cfiPicker24) Picker
+        IN      R16, 0x2D
+        ST      Y, R16
+        IN      R16, 0x2E
+        ST      Y, R16
+        CBI     0x05, 0x02
+        IN      R16, 0x2C
+        ORI     R16, 0x80
+        OUT     0x2C, R16
+        RET
+          CFI EndBlock cfiCond22
+          CFI EndBlock cfiCond23
+          CFI EndBlock cfiPicker24
+//  142 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  143   void stop()
+??stop:
+          CFI Block cfiBlock25 Using cfiCommon0
+          CFI Function ??stop
+//  144   {
+//  145     bufferSPI.result = SPIResultCodeType_OK;
+        LDI     R16, 0
+        STS     (??bufferSPI + 2), R16
+//  146     bufferSPI.status = SPIBufferStatus_Processed;
+        RCALL   ?Subroutine4
+//  147 
+//  148     spiStop();
+??CrossCallReturnLabel_20:
+        RJMP    ?Subroutine7
+          CFI EndBlock cfiBlock25
+        REQUIRE _A_PORTB
+        REQUIRE _A_SPCR
+//  149   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine4:
+          CFI Block cfiCond26 Using cfiCommon0
+          CFI Function ??start
+          CFI Conditional ??CrossCallReturnLabel_19
+          CFI R26 Frame(CFA_Y, -2)
+          CFI R27 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+3
+          CFI Block cfiCond27 Using cfiCommon0
+          CFI (cfiCond27) Function ??stop
+          CFI (cfiCond27) Conditional ??CrossCallReturnLabel_20
+          CFI (cfiCond27) CFA_SP SP+4
+          CFI Block cfiCond28 Using cfiCommon0
+          CFI (cfiCond28) Function ??run
+          CFI (cfiCond28) Conditional ??CrossCallReturnLabel_21
+          CFI (cfiCond28) CFA_SP SP+4
+          CFI Block cfiPicker29 Using cfiCommon1
+          CFI (cfiPicker29) NoFunction
+          CFI (cfiPicker29) Picker
+        LDI     R16, 3
+          CFI EndBlock cfiCond26
+          CFI EndBlock cfiCond27
+          CFI EndBlock cfiCond28
+          CFI EndBlock cfiPicker29
+        REQUIRE ??Subroutine8_0
+        ;               // Fall through to label ??Subroutine8_0
+
+        RSEG CODE:CODE:NOROOT(1)
+??Subroutine8_0:
+          CFI Block cfiCond30 Using cfiCommon0
+          CFI Function ??enable
+          CFI Conditional ??CrossCallReturnLabel_17
+          CFI CFA_SP SP+4
+          CFI Block cfiCond31 Using cfiCommon0
+          CFI (cfiCond31) Function ??start
+          CFI (cfiCond31) Conditional ??CrossCallReturnLabel_18
+          CFI (cfiCond31) R26 Frame(CFA_Y, -2)
+          CFI (cfiCond31) R27 Frame(CFA_Y, -1)
+          CFI (cfiCond31) CFA_SP SP+4
+          CFI (cfiCond31) CFA_Y Y+3
+          CFI Block cfiCond32 Using cfiCommon0
+          CFI (cfiCond32) Function ??start
+          CFI (cfiCond32) Conditional ??CrossCallReturnLabel_19
+          CFI (cfiCond32) R26 Frame(CFA_Y, -2)
+          CFI (cfiCond32) R27 Frame(CFA_Y, -1)
+          CFI (cfiCond32) CFA_SP SP+4
+          CFI (cfiCond32) CFA_Y Y+3
+          CFI Block cfiCond33 Using cfiCommon0
+          CFI (cfiCond33) Function ??stop
+          CFI (cfiCond33) Conditional ??CrossCallReturnLabel_20
+          CFI (cfiCond33) CFA_SP SP+4
+          CFI Block cfiCond34 Using cfiCommon0
+          CFI (cfiCond34) Function ??run
+          CFI (cfiCond34) Conditional ??CrossCallReturnLabel_21
+          CFI (cfiCond34) CFA_SP SP+4
+          CFI Block cfiPicker35 Using cfiCommon1
+          CFI (cfiPicker35) NoFunction
+          CFI (cfiPicker35) Picker
+        STS     (??bufferSPI + 1), R16
+        RET
+          CFI EndBlock cfiCond30
+          CFI EndBlock cfiCond31
+          CFI EndBlock cfiCond32
+          CFI EndBlock cfiCond33
+          CFI EndBlock cfiCond34
+          CFI EndBlock cfiPicker35
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine7:
+          CFI Block cfiCond36 Using cfiCommon0
+          CFI Function ??enable
+          CFI Conditional ??CrossCallReturnLabel_12
+          CFI CFA_SP SP+4
+          CFI Block cfiCond37 Using cfiCommon0
+          CFI (cfiCond37) Function ??cancelWithError
+          CFI (cfiCond37) Conditional ??CrossCallReturnLabel_13
+          CFI (cfiCond37) CFA_SP SP+4
+          CFI Block cfiCond38 Using cfiCommon2
+          CFI (cfiCond38) Function ??SPIEventIRQ
+          CFI (cfiCond38) Conditional ??CrossCallReturnLabel_14
+          CFI (cfiCond38) R16 Frame(CFA_Y, -9)
+          CFI (cfiCond38) R17 Frame(CFA_Y, -8)
+          CFI (cfiCond38) R18 Frame(CFA_Y, -7)
+          CFI (cfiCond38) R19 Frame(CFA_Y, -6)
+          CFI (cfiCond38) R20 Frame(CFA_Y, -5)
+          CFI (cfiCond38) R30 Frame(CFA_Y, -4)
+          CFI (cfiCond38) R31 Frame(CFA_Y, -3)
+          CFI (cfiCond38) R26 Frame(CFA_Y, -2)
+          CFI (cfiCond38) R27 Frame(CFA_Y, -1)
+          CFI (cfiCond38) CFA_SP SP+4
+          CFI (cfiCond38) CFA_Y Y+9
+          CFI Block cfiCond39 Using cfiCommon2
+          CFI (cfiCond39) Function ??SPIEventIRQ
+          CFI (cfiCond39) Conditional ??CrossCallReturnLabel_15
+          CFI (cfiCond39) R16 Frame(CFA_Y, -9)
+          CFI (cfiCond39) R17 Frame(CFA_Y, -8)
+          CFI (cfiCond39) R18 Frame(CFA_Y, -7)
+          CFI (cfiCond39) R19 Frame(CFA_Y, -6)
+          CFI (cfiCond39) R20 Frame(CFA_Y, -5)
+          CFI (cfiCond39) R30 Frame(CFA_Y, -4)
+          CFI (cfiCond39) R31 Frame(CFA_Y, -3)
+          CFI (cfiCond39) R26 Frame(CFA_Y, -2)
+          CFI (cfiCond39) R27 Frame(CFA_Y, -1)
+          CFI (cfiCond39) CFA_SP SP+4
+          CFI (cfiCond39) CFA_Y Y+9
+          CFI Block cfiCond40 Using cfiCommon0
+          CFI (cfiCond40) Function ??start
+          CFI (cfiCond40) Conditional ??CrossCallReturnLabel_16, ??CrossCallReturnLabel_4
+          CFI (cfiCond40) R26 Frame(CFA_Y, -2)
+          CFI (cfiCond40) R27 Frame(CFA_Y, -1)
+          CFI (cfiCond40) CFA_SP SP+6
+          CFI (cfiCond40) CFA_Y Y+3
+          CFI Block cfiCond41 Using cfiCommon0
+          CFI (cfiCond41) Function ??run
+          CFI (cfiCond41) Conditional ??CrossCallReturnLabel_16, ??CrossCallReturnLabel_5
+          CFI (cfiCond41) CFA_SP SP+6
+          CFI Block cfiBlock42 Using cfiCommon0
+          CFI (cfiBlock42) NoFunction
+          CFI Block cfiPicker43 Using cfiCommon1
+          CFI (cfiPicker43) NoFunction
+          CFI (cfiPicker43) Picker
+        SBI     0x05, 0x02
+        IN      R16, 0x2C
+        ANDI    R16, 0x7F
+        OUT     0x2C, R16
+        RET
+          CFI EndBlock cfiCond36
+          CFI EndBlock cfiCond37
+          CFI EndBlock cfiCond38
+          CFI EndBlock cfiCond39
+          CFI EndBlock cfiCond40
+          CFI EndBlock cfiCond41
+          CFI EndBlock cfiBlock42
+          CFI EndBlock cfiPicker43
+//  150 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  151   bool send()
+??send:
+          CFI Block cfiBlock44 Using cfiCommon0
+          CFI Function ??send
+//  152   {
+//  153     if (bufferSPI.status != SPIBufferStatus_Ready)
+        FUNCALL ??send, ??start
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDS     R16, (??bufferSPI + 1)
+        CPI     R16, 1
+        BREQ    ??send_1
+//  154     {
+//  155       return false;
+        LDI     R16, 0
+        RET
+//  156     }
+//  157 
+//  158     start();
+??send_1:
+        RCALL   ??start
+//  159 
+//  160     return true;
+        LDI     R16, 1
+        RET
+          CFI EndBlock cfiBlock44
+//  161   }
+//  162 
+//  163   #pragma vector=SPI_STC_vect
+
+        RSEG CODE:CODE:NOROOT(1)
+//  164   __interrupt void SPIEventIRQ()
+??SPIEventIRQ:
+          CFI Block cfiBlock45 Using cfiCommon2
+          CFI Function ??SPIEventIRQ
+//  165   {
+        ST      -Y, R27
+          CFI R27 Frame(CFA_Y, -1)
+          CFI CFA_Y Y+1
+        ST      -Y, R26
+          CFI R26 Frame(CFA_Y, -2)
+          CFI CFA_Y Y+2
+        ST      -Y, R31
+          CFI R31 Frame(CFA_Y, -3)
+          CFI CFA_Y Y+3
+        ST      -Y, R30
+          CFI R30 Frame(CFA_Y, -4)
+          CFI CFA_Y Y+4
+        ST      -Y, R20
+          CFI R20 Frame(CFA_Y, -5)
+          CFI CFA_Y Y+5
+        ST      -Y, R19
+          CFI R19 Frame(CFA_Y, -6)
+          CFI CFA_Y Y+6
+        ST      -Y, R18
+          CFI R18 Frame(CFA_Y, -7)
+          CFI CFA_Y Y+7
+        ST      -Y, R17
+          CFI R17 Frame(CFA_Y, -8)
+          CFI CFA_Y Y+8
+        ST      -Y, R16
+          CFI R16 Frame(CFA_Y, -9)
+          CFI CFA_Y Y+9
+        IN      R20, 0x3F
+//  166     if (bufferSPI.status != SPIBufferStatus_InProcess)
+        RCALL   ?Subroutine6
+??CrossCallReturnLabel_11:
+        LDD     R16, Z+1
+        CPI     R16, 2
+        BRNE    ??SPIEventIRQ_1
+//  167     {
+//  168       spiStop();
+//  169       return;
+//  170     }
+//  171 
+//  172     if (SPSR & (1 << WCOL))
+        IN      R16, 0x2D
+        SBRS    R16, 6
+        RJMP    ??SPIEventIRQ_2
+//  173     {
+//  174       cancelWithError();
+        RCALL   ?Subroutine7
+??CrossCallReturnLabel_14:
+        RCALL   ?Subroutine5
+//  175       return;
+??CrossCallReturnLabel_6:
+        RJMP    ??SPIEventIRQ_3
+//  176     }
+//  177 
+//  178     bufferSPI.buffer[bufferPos] = SPDR;
+??SPIEventIRQ_2:
+        IN      R16, 0x2E
+        LDD     R18, Z+35
+        LDD     R19, Z+36
+        MOVW    R27:R26, R31:R30
+        ADD     R26, R18
+        ADC     R27, R19
+        ADIW    R27:R26, 3
+        ST      X, R16
+//  179     bufferPos++;
+        LDD     R16, Z+35
+        LDD     R17, Z+36
+        SUBI    R16, 255
+        SBCI    R17, 255
+        STD     Z+35, R16
+        STD     Z+36, R17
+//  180 
+//  181     if (bufferPos >= bufferSPI.length)
+        MOVW    R19:R18, R17:R16
+        LD      R16, Z
+        LDI     R17, 0
+        CP      R18, R16
+        CPC     R19, R17
+        BRCS    ??SPIEventIRQ_4
+//  182     {
+//  183       stop();
+        STD     Z+2, R17
+        LDI     R16, 3
+        STD     Z+1, R16
+??SPIEventIRQ_1:
+        RCALL   ?Subroutine7
+//  184     }
+??CrossCallReturnLabel_15:
+        RJMP    ??SPIEventIRQ_3
+//  185     else
+//  186     {
+//  187       sendByte();
+??SPIEventIRQ_4:
+        ADD     R30, R18
+        ADC     R31, R19
+        LDD     R16, Z+3
+        OUT     0x2E, R16
+//  188     }
+??SPIEventIRQ_3:
+        OUT     0x3F, R20
+        LD      R16, Y+
+          CFI R16 SameValue
+          CFI CFA_Y Y+8
+        LD      R17, Y+
+          CFI R17 SameValue
+          CFI CFA_Y Y+7
+        LD      R18, Y+
+          CFI R18 SameValue
+          CFI CFA_Y Y+6
+        LD      R19, Y+
+          CFI R19 SameValue
+          CFI CFA_Y Y+5
+        LD      R20, Y+
+          CFI R20 SameValue
+          CFI CFA_Y Y+4
+        LD      R30, Y+
+          CFI R30 SameValue
+          CFI CFA_Y Y+3
+        LD      R31, Y+
+          CFI R31 SameValue
+          CFI CFA_Y Y+2
+        LD      R26, Y+
+          CFI R26 SameValue
+          CFI CFA_Y Y+1
+        LD      R27, Y+
+          CFI R27 SameValue
+          CFI CFA_Y Y+0
+        RETI
+          CFI EndBlock cfiBlock45
+        REQUIRE _A_SPSR
+        REQUIRE _A_SPDR
+        REQUIRE _A_PORTB
+        REQUIRE _A_SPCR
+//  189   }
+//  190 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  191   void run()
+??run:
+          CFI Block cfiBlock46 Using cfiCommon0
+          CFI Function ??run
+//  192   {
+        FUNCALL ??run, ??start
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ??run, ??getTimer
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDS     R16, (??bufferSPI + 37)
+        TST     R16
+        BREQ    ??CrossCallReturnLabel_21
+//  193     if (!isEnabled)
+//  194     {
+//  195       return;
+//  196     }
+//  197 
+//  198     switch (bufferSPI.status)
+        LDS     R16, (??bufferSPI + 1)
+        DEC     R16
+        BREQ    ??run_1
+        DEC     R16
+        BREQ    ??run_2
+        RET
+//  199     {
+//  200       case SPIBufferStatus_Ready:
+//  201         send();
+??run_1:
+        RJMP    ??start
+//  202         break;
+//  203 
+//  204       case SPIBufferStatus_InProcess:
+//  205         if (!GLOBAL::MultyThreading::getTimer(GLOBALTIMERS_SPIMASTER_ERRORTIMER))
+??run_2:
+        LDI     R16, 1
+        CALL    ??getTimer
+        OR      R16, R17
+        BRNE    ??CrossCallReturnLabel_21
+//  206         {
+//  207           cancelWithError();
+        RCALL   ?Subroutine2
+??CrossCallReturnLabel_5:
+        LDI     R16, 0
+        STS     ??bufferSPI, R16
+        RCALL   ?Subroutine4
+//  208         }
+//  209         break;
+//  210     }
+??CrossCallReturnLabel_21:
+        RET
+          CFI EndBlock cfiBlock46
+        REQUIRE _A_PORTB
+        REQUIRE _A_SPCR
+//  211   }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine2:
+          CFI Block cfiCond47 Using cfiCommon0
+          CFI Function ??start
+          CFI Conditional ??CrossCallReturnLabel_4
+          CFI R26 Frame(CFA_Y, -2)
+          CFI R27 Frame(CFA_Y, -1)
+          CFI CFA_SP SP+4
+          CFI CFA_Y Y+3
+          CFI Block cfiCond48 Using cfiCommon0
+          CFI (cfiCond48) Function ??run
+          CFI (cfiCond48) Conditional ??CrossCallReturnLabel_5
+          CFI (cfiCond48) CFA_SP SP+4
+          CFI Block cfiPicker49 Using cfiCommon1
+          CFI (cfiPicker49) NoFunction
+          CFI (cfiPicker49) Picker
+        RCALL   ?Subroutine7
+??CrossCallReturnLabel_16:
+        LDI     R16, 255
+        STS     (??bufferSPI + 2), R16
+        RET
+          CFI EndBlock cfiCond47
+          CFI EndBlock cfiCond48
+          CFI EndBlock cfiPicker49
+
+        ASEGN ABSOLUTE:DATA:NOROOT,01fH
+__?EECR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,020H
+__?EEDR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,021H
+__?EEARL:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,022H
+__?EEARH:
+
+        COMMON INTVEC:CODE:ROOT(1)
+        ORG 68
+`??SPIEventIRQ??INTVEC 68`:
+        JMP     ??SPIEventIRQ
+
+        RSEG INITTAB:CODE:NOROOT(0)
+`?<Segment init: NEAR_Z>`:
+        DC16    SFE(NEAR_Z) - SFB(NEAR_Z)
+        DC16    SFB(NEAR_Z)
+        DC16    0
+        REQUIRE ?need_segment_init
+
+        END
+//  212 }
+//  213 
+//  214 #endif
+//  215 
+// 
+//   6 bytes in segment ABSOLUTE
+// 508 bytes in segment CODE
+//   6 bytes in segment INITTAB
+//   4 bytes in segment INTVEC
+//  38 bytes in segment NEAR_Z
+// 
+// 508 bytes of CODE memory (+ 10 bytes shared)
+//  38 bytes of DATA memory (+  6 bytes shared)
+//
+//Errors: none
+//Warnings: none
