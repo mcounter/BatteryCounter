@@ -7,6 +7,7 @@ This small device can work approximately 1 year with just 2 *LiSOCl2* AA batteri
 I have no much time to provide good documentation for this projects. But I believe it's well-structured even for people with minimal experience in Embedding Devices. PCB layouts includes mechanical layers which can be visualized in 3D to easy understand location of all components and it physical sizes.
 
 ![Battery Counter](./images/main.png)
+
 *The photo of the real prototype of the device receiver, manually assembled by me. Hand on the background is not mine :)*
 
 **Brief description**
@@ -25,7 +26,7 @@ The device is used for automatic counting of people in shopping centers. It cons
 * [micro/BattRX](./micro/BattRX) - Receiver project.
 * [micro/BattTX](./micro/BattTX) - Transmitter project.
 * [schemas](./schemas) - folder with component library, board rules and PCB layouts designed in Altium Designer.
-* [schemas/Rules](./schemas/Rules) - board rules for Altium Designer.
+* [schemas/Common/Rules](./schemas/Common/Rules) - board rules for Altium Designer.
 * [schemas/Common/Library](./schemas/Common/Library) - component library for Altium Designer.
 * [schemas/BatteryCounter](./schemas/BatteryCounter) - PCB layouts for Receiver and Transmitter parts.
 * [other/LCDMenuBuilder](./other/LCDMenuBuilder) - menu builder - C# .NET program to design and build device menu, use it to translate menu. Program converts menu in set of UserInterface* header and cpp files. Specify target path to [micro/BattRX](./micro/BattRX) and files will be automatically added in the project.
